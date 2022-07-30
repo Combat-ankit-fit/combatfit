@@ -10,15 +10,14 @@ const ItemCard = (props) => {
             h="40px"
             {...props}
         >
-            <NextImage
-                src="/polo-shirt.png"
-                layout="responsive"
-                objectFit="cover"
-                height="20px"
-                width="20px"
-            />
-
             <Box p="6">
+                <NextImage
+                    src="/polo-shirt.png"
+                    layout="responsive"
+                    objectFit="cover"
+                    height="20px"
+                    width="20px"
+                />
                 <Text>Combat Fit</Text>
             </Box>
         </Box>
