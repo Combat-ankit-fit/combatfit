@@ -9,6 +9,8 @@ import {
     MenuItem,
     Menu,
     MenuButton,
+    Radio,
+    RadioGroup,
 } from '@chakra-ui/react';
 import SliderControl from './SliderControl';
 import React from 'react';
@@ -17,6 +19,7 @@ import { ArrowDownIcon } from '@chakra-ui/icon';
 const DesktopDrawer = () => {
     const sizeItems = ['small', 'Medium', 'Large', 'XL', 'XXL'];
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [selectSize, setSelectedSize] = React.useState('');
 
     return (
         <Box
@@ -29,7 +32,7 @@ const DesktopDrawer = () => {
             position={'fixed'}
         >
             <Flex flexDirection={'column'} w="256px" px="3">
-                <Divider orientation="horizontal" mb="4" />
+                <Divider orientation="horizontal" mb="8" />
                 <Text color={'white'}>Filter your search</Text>
                 <SliderControl />
                 <Menu
@@ -59,16 +62,27 @@ const DesktopDrawer = () => {
                     >
                         {sizeItems.map((item) => {
                             return (
-                                <MenuItem
-                                    color={'white'}
-                                    sx={{
-                                        _hover: {
-                                            bgColor: 'black',
-                                        },
-                                    }}
-                                >
-                                    {item}
-                                </MenuItem>
+                                <React.Fragment>
+                                    <RadioGroup
+                                        onChange={(size) => {
+                                            setSelectedSize(size);
+                                        }}
+                                        value={selectSize}
+                                    >
+                                        <Radio value={item}>
+                                            <MenuItem
+                                                color={'white'}
+                                                sx={{
+                                                    _hover: {
+                                                        bgColor: 'black',
+                                                    },
+                                                }}
+                                            >
+                                                {item}
+                                            </MenuItem>
+                                        </Radio>
+                                    </RadioGroup>
+                                </React.Fragment>
                             );
                         })}
                     </MenuList>
