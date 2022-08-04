@@ -7,63 +7,113 @@ import {
     GridItem,
     Box,
     Flex,
-    Input,
     Textarea,
     Spacer,
     Divider,
     Button,
-    FormControl,
     FormLabel,
 } from '@chakra-ui/react';
 import Layout from '../components/Layout';
 import ItemCard from '../components/ItemCard';
+import { Form, Formik } from 'formik';
+import * as Yup from 'yup';
+import { InputControl, FormControl, TextAreaControl } from '../exporter';
 
 const ContactUs = () => {
+    const submitHandler = (values) => {
+        console.log('Values are:-', values);
+    };
+
+    const validate = Yup.object({
+        firstname: Yup.string().required('Required'),
+        lastname: Yup.string().required('Required'),
+        phonenumber: Yup.string().required('Required'),
+        email: Yup.string().required('Email is required'),
+        description: Yup.string().required('Email is required'),
+    });
+
     return (
         <Layout sidebarRequired={false}>
             <Flex>
                 <Flex flexDirection={'row'} w="40%">
-                    <Flex flexDirection={'column'} gridRowGap="8">
-                        <Flex gridColumnGap={'4'}>
-                            <FormControl>
-                                <FormLabel fontSize={'xs'}>
-                                    First Name*
-                                </FormLabel>
-                                <Input borderColor={'black'} />
-                            </FormControl>
-                            <FormControl>
-                                <FormLabel fontSize={'xs'}>
-                                    Last Name*
-                                </FormLabel>
-                                <Input borderColor={'black'} />
-                            </FormControl>
-                        </Flex>
-                        <Flex gridColumnGap={'4'}>
-                            <FormControl>
-                                <FormLabel fontSize={'xs'}>
-                                    Phone number*
-                                </FormLabel>
-                                <Input borderColor={'black'} />
-                            </FormControl>
-                            <FormControl>
-                                <FormLabel fontSize={'xs'}>Email*</FormLabel>
-                                <Input borderColor={'black'} />
-                            </FormControl>
-                        </Flex>
-                        <FormControl>
-                            <FormLabel fontSize={'xs'}>
-                                Tell us about your requirement*
-                            </FormLabel>
-                            <Textarea
-                                borderColor={'black'}
-                                placeholder="Here is a sample placeholder"
-                                size="sm"
-                            />
-                        </FormControl>
-                        <Button width="40%" colorScheme="primary">
-                            Submit
-                        </Button>
-                    </Flex>
+                    <Formik
+                        initialValues={{
+                            firstname: '',
+                            lastname: '',
+                            phonenumber: '',
+                            email: '',
+                            description: '',
+                        }}
+                        validationSchema={Yup.object().shape({
+                            firstname: Yup.string().required(
+                                'This field is required'
+                            ),
+                            lastname: Yup.string().required(
+                                'This field is required'
+                            ),
+                            phonenumber: Yup.string().required(
+                                'This field is required'
+                            ),
+                            email: Yup.string().required(
+                                'This field is required'
+                            ),
+                            description: Yup.string().required(
+                                'This field is required'
+                            ),
+                        })}
+                        onSubmit={submitHandler}
+                        enableReinitialize
+                    >
+                        {(formikProps) => {
+                            console.log(
+                                'All the props  are:-',
+                                formikProps?.errors
+                            );
+                            return (
+                                <Form>
+                                    <Flex
+                                        flexDirection={'column'}
+                                        gridRowGap="8"
+                                    >
+                                        <Flex gridColumnGap={'4'}>
+                                            <InputControl
+                                                name="firstname"
+                                                label="First Name"
+                                            />
+
+                                            <InputControl
+                                                name="lastname"
+                                                label="Last Name"
+                                            />
+                                        </Flex>
+                                        <Flex gridColumnGap={'4'}>
+                                            <InputControl
+                                                name="phonenumber"
+                                                label="Phone Number"
+                                            />
+                                            <InputControl
+                                                name="email"
+                                                label="Email"
+                                            />
+                                        </Flex>
+
+                                        <TextAreaControl
+                                            name="description"
+                                            label="Tell us about your requirement"
+                                        />
+
+                                        <Button
+                                            type="submit"
+                                            width="40%"
+                                            colorScheme="primary"
+                                        >
+                                            Submit
+                                        </Button>
+                                    </Flex>
+                                </Form>
+                            );
+                        }}
+                    </Formik>
                 </Flex>
                 <Spacer />
                 <Flex
