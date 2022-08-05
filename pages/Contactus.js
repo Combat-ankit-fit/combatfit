@@ -18,24 +18,41 @@ import ItemCard from '../components/ItemCard';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { InputControl, FormControl, TextAreaControl } from '../exporter';
+import NextImage from 'next/image';
+import React from 'react';
+import { app, database } from '../firebase';
+import axios from 'axios';
 
 const ContactUs = () => {
-    const submitHandler = (values) => {
-        console.log('Values are:-', values);
+    const [isRequestSubmitted, setRequestSubmitted] = React.useState(false);
+
+    const submitHandler = async (values) => {
+        setRequestSubmitted(true);
+
+        await axios.post(
+            'https://clothing-app-b7613-default-rtdb.firebaseio.com/queries.json',
+            values
+        );
     };
 
     const validate = Yup.object({
         firstname: Yup.string().required('Required'),
         lastname: Yup.string().required('Required'),
         phonenumber: Yup.string().required('Required'),
-        email: Yup.string().required('Email is required'),
+        email: Yup.string().email('Invalid email').required('Required'),
         description: Yup.string().required('Email is required'),
     });
 
     return (
-        <Layout sidebarRequired={false}>
-            <Flex>
-                <Flex flexDirection={'row'} w="40%">
+        <Layout sidebarRequired={false} heroImage={true}>
+            <Flex id="first">
+                <Flex
+                    flexDirection={'row'}
+                    w="40%"
+                    {...(isRequestSubmitted && {
+                        alignItems: 'center',
+                    })}
+                >
                     <Formik
                         initialValues={{
                             firstname: '',
@@ -54,9 +71,9 @@ const ContactUs = () => {
                             phonenumber: Yup.string().required(
                                 'This field is required'
                             ),
-                            email: Yup.string().required(
-                                'This field is required'
-                            ),
+                            email: Yup.string()
+                                .email('Invalid email')
+                                .required('Required'),
                             description: Yup.string().required(
                                 'This field is required'
                             ),
@@ -65,11 +82,7 @@ const ContactUs = () => {
                         enableReinitialize
                     >
                         {(formikProps) => {
-                            console.log(
-                                'All the props  are:-',
-                                formikProps?.errors
-                            );
-                            return (
+                            return !isRequestSubmitted ? (
                                 <Form>
                                     <Flex
                                         flexDirection={'column'}
@@ -111,6 +124,10 @@ const ContactUs = () => {
                                         </Button>
                                     </Flex>
                                 </Form>
+                            ) : (
+                                <Text textAlign={'center'}>
+                                    Your request has submitted
+                                </Text>
                             );
                         }}
                     </Formik>
@@ -126,14 +143,26 @@ const ContactUs = () => {
                     <Flex flexDirection={'column'} gridRowGap={'4'}>
                         <Text color="white">For customer Support</Text>
                         <Divider />
-                        <Text color="white">combatfitwears@gmail.com</Text>
+                        <Text
+                            color="white"
+                            textDecoration={'underline'}
+                            cursor="pointer"
+                        >
+                            combatfitwears@gmail.com
+                        </Text>
                         <Text color="white">+91 9719493210</Text>
                     </Flex>
                     <Flex flexDirection={'column'} gridRowGap={'4'}>
                         <Text color="white">Address</Text>
                         <Divider />
                         <Text color="white">Faridabad</Text>
-                        <Text color="white">combatfitwears@gmail.com</Text>
+                        <Text
+                            color="white"
+                            textDecoration={'underline'}
+                            cursor="pointer"
+                        >
+                            combatfitwears@gmail.com
+                        </Text>
                         <Text color="white">combatfitwears.com</Text>
                     </Flex>
                 </Flex>

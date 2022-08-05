@@ -6,7 +6,7 @@ import Layout from '../components/Layout';
 import ItemCard from '../components/ItemCard';
 
 export default function Home() {
-    const items = [...Array(16)];
+    const items = [...Array(40)];
 
     return (
         <Layout sidebarRequired={true}>

@@ -11,6 +11,7 @@ const Footer = () => {
             w="100%"
             p="4"
             marginTop="50px"
+            position={'relative'}
         >
             <Flex
                 justifyContent={'space-between'}

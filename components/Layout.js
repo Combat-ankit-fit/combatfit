@@ -11,36 +11,30 @@ import Header from './Header';
 import Footer from './Footer';
 
 import React from 'react';
+import NextImage from 'next/image';
 
-const Layout = ({ children, sidebarRequired = true }) => {
+const Layout = ({ children, sidebarRequired = true, heroImage = false }) => {
     return (
-        <React.Fragment>
+        <Box id="layout" minH="100vh">
             <Box>
                 <Header />
-
-                <Box minH="100vh">
-                    {sidebarRequired && <Sidebar />}
-                    <Container
-                        pos={'relative'}
-                        maxW="4xl"
-                        p="6"
-                        top="150px"
-                        px="0"
-                    >
-                        {children}
-                    </Container>
-                </Box>
             </Box>
-            <Container
-                position="relative"
-                maxW={sidebarRequired ? '4xl' : 'full'}
-                p="6"
-                px="0"
-            >
-                {' '}
-                <Footer />
-            </Container>
-        </React.Fragment>
+            {sidebarRequired && <Sidebar />}
+            <Box minH="100vh" ms="256px" id="box__container">
+                <Container
+                    pos={'relative'}
+                    maxW="4xl"
+                    p="6"
+                    top="150px"
+                    px="0"
+                    flex="1"
+                    id="main__container"
+                >
+                    {children}
+                    <Footer />
+                </Container>
+            </Box>
+        </Box>
     );
 };
 

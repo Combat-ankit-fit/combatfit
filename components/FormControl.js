@@ -7,7 +7,6 @@ import { useField } from 'formik';
 
 export const FormControl = ({ children, name, validate, label, ...rest }) => {
     const [, { error, touched }] = useField({ name, validate });
-    console.log('Error here is:-', error);
 
     return (
         <ChakraFormControl isInvalid={!!error && touched} {...rest}>

@@ -20,6 +20,8 @@ const DesktopDrawer = () => {
     const sizeItems = ['small', 'Medium', 'Large', 'XL', 'XXL'];
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const [selectSize, setSelectedSize] = React.useState('');
+    const fit = ['Regular', 'Extra Slim', 'Boxy', 'Super slim', 'slim'];
+    const [selectedFit, setSelectedFit] = React.useState(false);
 
     return (
         <Box
