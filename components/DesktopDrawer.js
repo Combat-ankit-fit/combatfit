@@ -28,7 +28,7 @@ const DesktopDrawer = () => {
             bgColor={'black'}
             id="desktop_drawer"
             w="256px"
-            height="100vh"
+            height="150vh"
             pt="10"
             as="nav"
             position={'fixed'}
@@ -37,58 +37,122 @@ const DesktopDrawer = () => {
                 <Divider orientation="horizontal" mb="8" />
                 <Text color={'white'}>Filter your search</Text>
                 <SliderControl />
-                <Menu
-                    isOpen={true}
-                    isLazy
-                    closeOnSelect={false}
-                    sx={{
-                        border: 'none',
-                        _hover: {
-                            bgColor: 'none',
-                        },
-                    }}
-                >
-                    <MenuButton
-                        alignSelf="flex-start"
-                        color={'white'}
-                        rightIcon={<ArrowDownIcon />}
-                    >
-                        Sizes
-                    </MenuButton>
-                    <MenuList
-                        w="10"
-                        bgColor={'black'}
+                <Box id="menu_1" mb="300px">
+                    <Menu
+                        isOpen={true}
+                        isLazy
+                        closeOnSelect={false}
                         sx={{
                             border: 'none',
+                            _hover: {
+                                bgColor: 'none',
+                            },
                         }}
                     >
-                        {sizeItems.map((item) => {
-                            return (
-                                <React.Fragment>
-                                    <RadioGroup
-                                        onChange={(size) => {
-                                            setSelectedSize(size);
-                                        }}
-                                        value={selectSize}
-                                    >
-                                        <Radio value={item}>
-                                            <MenuItem
-                                                color={'white'}
-                                                sx={{
-                                                    _hover: {
-                                                        bgColor: 'black',
-                                                    },
-                                                }}
-                                            >
-                                                {item}
-                                            </MenuItem>
-                                        </Radio>
-                                    </RadioGroup>
-                                </React.Fragment>
-                            );
-                        })}
-                    </MenuList>
-                </Menu>
+                        <MenuButton
+                            alignSelf="flex-start"
+                            color={'white'}
+                            rightIcon={<ArrowDownIcon />}
+                        >
+                            Sizes
+                        </MenuButton>
+                        <MenuList
+                            id="list1"
+                            w="10"
+                            bgColor={'black'}
+                            sx={{
+                                border: 'none',
+                            }}
+                        >
+                            {sizeItems.map((item) => {
+                                return (
+                                    <React.Fragment>
+                                        <RadioGroup
+                                            onChange={(size) => {
+                                                setSelectedSize(size);
+                                            }}
+                                            value={selectSize}
+                                        >
+                                            <Radio value={item} mb="4">
+                                                <MenuItem
+                                                    color={'white'}
+                                                    sx={{
+                                                        _hover: {
+                                                            bgColor: 'black',
+                                                        },
+                                                        _focus: {
+                                                            bgColor: 'black',
+                                                        },
+                                                    }}
+                                                >
+                                                    {item}
+                                                </MenuItem>
+                                            </Radio>
+                                        </RadioGroup>
+                                    </React.Fragment>
+                                );
+                            })}
+                        </MenuList>
+                    </Menu>
+                </Box>
+                <Box id="menu_1" mb="40px">
+                    <Menu
+                        isOpen={true}
+                        isLazy
+                        closeOnSelect={false}
+                        sx={{
+                            border: 'none',
+                            _hover: {
+                                bgColor: 'none',
+                            },
+                        }}
+                    >
+                        <MenuButton
+                            alignSelf="flex-start"
+                            color={'white'}
+                            rightIcon={<ArrowDownIcon />}
+                        >
+                            Fit
+                        </MenuButton>
+                        <MenuList
+                            id="list1"
+                            w="10"
+                            bgColor={'black'}
+                            sx={{
+                                border: 'none',
+                            }}
+                        >
+                            {fit.map((item) => {
+                                return (
+                                    <React.Fragment>
+                                        <RadioGroup
+                                            onChange={(size) => {
+                                                setSelectedSize(size);
+                                            }}
+                                            value={selectSize}
+                                        >
+                                            <Radio value={item} mb="4">
+                                                <MenuItem
+                                                    color={'white'}
+                                                    sx={{
+                                                        _hover: {
+                                                            bgColor: 'black',
+                                                        },
+                                                        _focus: {
+                                                            bgColor: 'black',
+                                                        },
+                                                    }}
+                                                >
+                                                    {item}
+                                                </MenuItem>
+                                            </Radio>
+                                        </RadioGroup>
+                                    </React.Fragment>
+                                );
+                            })}
+                        </MenuList>
+                    </Menu>
+                </Box>
             </Flex>
         </Box>
     );

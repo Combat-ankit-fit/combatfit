@@ -15,7 +15,7 @@ const ItemCard = (props) => {
                     src="/polo-shirt.png"
                     layout="responsive"
                     objectFit="cover"
-                    height="20px"
+                    height="18px"
                     width="20px"
                 />
                 <Text>Combat Fit</Text>

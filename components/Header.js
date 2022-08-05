@@ -1,6 +1,14 @@
-import { Box, Flex, List, Text, Container } from '@chakra-ui/react';
+import { Box, Flex, List, Text, Container, useRadio } from '@chakra-ui/react';
+import Link from 'next/link';
+import styled from 'styled-components';
+import router, { useRouter } from 'next/router';
+
+const WhiteLink = styled.a`
+    color: white;
+`;
 
 const Header = () => {
+    const router = useRouter();
     return (
         <Container
             maxW={'full'}
@@ -19,7 +27,16 @@ const Header = () => {
             >
                 <Text color={'white'}>Icon</Text>
                 <Flex justifyContent={'space-around'} w="xs">
-                    <Text color={'white'}>Home</Text>
+                    <Text
+                        color="white"
+                        cursor={'pointer'}
+                        onClick={() => {
+                            router.push('/');
+                        }}
+                    >
+                        Home
+                    </Text>
+
                     <Text color={'white'}>Find Outlet</Text>
                     <Text color={'white'}>Download Catalogue</Text>
                 </Flex>
