@@ -73,7 +73,7 @@ const DesktopDrawer = () => {
                                             }}
                                             value={selectSize}
                                         >
-                                            <Radio value={item} mb="4">
+                                            <Radio value={item}>
                                                 <MenuItem
                                                     color={'white'}
                                                     sx={{
@@ -95,7 +95,7 @@ const DesktopDrawer = () => {
                         </MenuList>
                     </Menu>
                 </Box>
-                <Box id="menu_1" mb="40px">
+                <Box id="menu_1" mb="300px">
                     <Menu
                         isOpen={true}
                         isLazy
@@ -112,7 +112,7 @@ const DesktopDrawer = () => {
                             color={'white'}
                             rightIcon={<ArrowDownIcon />}
                         >
-                            Fit
+                            Sizes
                         </MenuButton>
                         <MenuList
                             id="list1"
@@ -122,7 +122,7 @@ const DesktopDrawer = () => {
                                 border: 'none',
                             }}
                         >
-                            {fit.map((item) => {
+                            {sizeItems.map((item) => {
                                 return (
                                     <React.Fragment>
                                         <RadioGroup
@@ -131,7 +131,65 @@ const DesktopDrawer = () => {
                                             }}
                                             value={selectSize}
                                         >
-                                            <Radio value={item} mb="4">
+                                            <Radio value={item}>
+                                                <MenuItem
+                                                    color={'white'}
+                                                    sx={{
+                                                        _hover: {
+                                                            bgColor: 'black',
+                                                        },
+                                                        _focus: {
+                                                            bgColor: 'black',
+                                                        },
+                                                    }}
+                                                >
+                                                    {item}
+                                                </MenuItem>
+                                            </Radio>
+                                        </RadioGroup>
+                                    </React.Fragment>
+                                );
+                            })}
+                        </MenuList>
+                    </Menu>
+                </Box>
+                <Box id="menu_1" mb="300px">
+                    <Menu
+                        isOpen={true}
+                        isLazy
+                        closeOnSelect={false}
+                        sx={{
+                            border: 'none',
+                            _hover: {
+                                bgColor: 'none',
+                            },
+                        }}
+                    >
+                        <MenuButton
+                            alignSelf="flex-start"
+                            color={'white'}
+                            rightIcon={<ArrowDownIcon />}
+                        >
+                            Sizes
+                        </MenuButton>
+                        <MenuList
+                            id="list1"
+                            w="10"
+                            bgColor={'black'}
+                            sx={{
+                                border: 'none',
+                            }}
+                        >
+                            {sizeItems.map((item) => {
+                                return (
+                                    <React.Fragment>
+                                        <RadioGroup
+                                            onChange={(size) => {
+                                                setSelectedSize(size);
+                                            }}
+                                            value={selectSize}
+                                        >
+                                            <Radio value={item}>
                                                 <MenuItem
                                                     color={'white'}
                                                     sx={{
