@@ -2,7 +2,6 @@ import { Box, Button, Flex, Text } from '@chakra-ui/react';
 import NextImage from 'next/image';
 
 const ItemCard = (props) => {
-    console.log('Name is:-', props.name);
     const itemName = props.name;
     return (
         <Box border="2px solid black">

@@ -2,6 +2,7 @@ import { Box, Flex, List, Text, Container, useRadio } from '@chakra-ui/react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import router, { useRouter } from 'next/router';
+import NextImage from 'next/image';
 
 const WhiteLink = styled.a`
     color: white;
@@ -25,7 +26,15 @@ const Header = () => {
                 h="full"
                 alignItems={'center'}
             >
-                <Text color={'white'}>Icon</Text>
+                <Box
+                    onClick={() => {
+                        router.push('/');
+                    }}
+                    cursor="pointer"
+                >
+                    <NextImage src="/logo.png" height="40px" width="90px" />
+                </Box>
+
                 <Flex justifyContent={'space-around'} w="xs">
                     <Text
                         color="white"
