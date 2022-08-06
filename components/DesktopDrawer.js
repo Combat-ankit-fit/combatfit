@@ -11,6 +11,7 @@ import {
     MenuButton,
     Radio,
     RadioGroup,
+    Stack,
 } from '@chakra-ui/react';
 import SliderControl from './SliderControl';
 import React from 'react';
@@ -33,68 +34,62 @@ const DesktopDrawer = () => {
             height="auto"
             position={'relative'}
         >
-            <Flex flexDirection={'column'} w="256px" px="3" height={'inherit'}>
+            <Flex
+                flexDirection={'column'}
+                w="256px"
+                px="3"
+                height={'inherit'}
+                gridRowGap={4}
+            >
                 <Divider orientation="horizontal" mb="8" />
                 <Text color={'white'}>Filter your search</Text>
                 <SliderControl />
-                <Box id="menu_1" mt="12">
-                    <Menu
-                        isOpen={true}
-                        isLazy
-                        closeOnSelect={false}
-                        sx={{
-                            border: 'none',
-                            _hover: {
-                                bgColor: 'none',
-                            },
+                <Flex flexDirection={'column'}>
+                    <Text color="white" mb="4">
+                        Size
+                    </Text>
+                    <RadioGroup
+                        onChange={(size) => {
+                            setSelectedSize(size);
                         }}
+                        value={selectSize}
                     >
-                        <MenuButton
-                            alignSelf="flex-start"
-                            color={'white'}
-                            rightIcon={<ArrowDownIcon />}
-                        >
-                            Sizes
-                        </MenuButton>
-                        <MenuList
-                            id="list1"
-                            w="10"
-                            bgColor={'black'}
+                        <Stack
                             sx={{
-                                border: 'none',
+                                'label span': {
+                                    color: 'white',
+                                },
                             }}
                         >
                             {sizeItems.map((item) => {
-                                return (
-                                    <React.Fragment>
-                                        <RadioGroup
-                                            onChange={(size) => {
-                                                setSelectedSize(size);
-                                            }}
-                                            value={selectSize}
-                                        >
-                                            <Radio value={item}>
-                                                <MenuItem
-                                                    color={'white'}
-                                                    sx={{
-                                                        _hover: {
-                                                            bgColor: 'black',
-                                                        },
-                                                        _focus: {
-                                                            bgColor: 'black',
-                                                        },
-                                                    }}
-                                                >
-                                                    {item}
-                                                </MenuItem>
-                                            </Radio>
-                                        </RadioGroup>
-                                    </React.Fragment>
-                                );
+                                return <Radio value={item}>{item}</Radio>;
                             })}
-                        </MenuList>
-                    </Menu>
-                </Box>
+                        </Stack>
+                    </RadioGroup>
+                </Flex>
+                <Flex flexDirection={'column'}>
+                    <Text color="white" mb="4">
+                        Fit
+                    </Text>
+                    <RadioGroup
+                        onChange={(size) => {
+                            setSelectedFit(size);
+                        }}
+                        value={selectedFit}
+                    >
+                        <Stack
+                            sx={{
+                                'label span': {
+                                    color: 'white',
+                                },
+                            }}
+                        >
+                            {fit.map((item) => {
+                                return <Radio value={item}>{item}</Radio>;
+                            })}
+                        </Stack>
+                    </RadioGroup>
+                </Flex>
             </Flex>
         </Box>
     );

@@ -25,10 +25,10 @@ const Layout = ({ children, sidebarRequired = true, heroImage = false }) => {
                 width="full"
             >
                 <Container
+                    mt="12"
                     pos={'relative'}
                     maxW="4xl"
                     p="6"
-                    top="150px"
                     px="0"
                     flex="1"
                     id="main__container"
