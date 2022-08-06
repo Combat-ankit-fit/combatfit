@@ -11,16 +11,19 @@ import Header from './Header';
 import Footer from './Footer';
 
 import React from 'react';
-import NextImage from 'next/image';
 
 const Layout = ({ children, sidebarRequired = true, heroImage = false }) => {
     return (
-        <Box id="layout" minH="100vh">
-            <Box>
-                <Header />
-            </Box>
+        <Box id="layout" display={'flex'}>
+            <Header />
+
             {sidebarRequired && <Sidebar />}
-            <Box minH="100vh" ms="256px" id="box__container">
+            <Box
+                id="box__container"
+                display={'flex'}
+                justifyContent="center"
+                width="full"
+            >
                 <Container
                     pos={'relative'}
                     maxW="4xl"
