@@ -8,7 +8,6 @@ import { data } from '../utils/data';
 
 export default function Home() {
     const items = [...Array(40)];
-    console.log('Data is:-', data);
 
     return (
         <Layout sidebarRequired={true}>

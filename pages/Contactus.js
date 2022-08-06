@@ -54,7 +54,7 @@ const ContactUs = () => {
                     id="first"
                     justifyContent={'center'}
                     alignItems="center"
-                    height={'90vh'}
+                    height={'100vh'}
                 >
                     <Flex
                         flexDirection={'row'}

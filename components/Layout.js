@@ -14,7 +14,7 @@ import React from 'react';
 
 const Layout = ({ children, sidebarRequired = true, heroImage = false }) => {
     return (
-        <Box id="layout" display={'flex'}>
+        <Box id="layout" display={'flex'} minH="100vh">
             <Header />
 
             {sidebarRequired && <Sidebar />}
