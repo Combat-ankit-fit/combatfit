@@ -13,6 +13,7 @@ import {
     Button,
     FormLabel,
     Container,
+    useBreakpointValue,
 } from '@chakra-ui/react';
 import Layout from '../components/Layout';
 import ItemCard from '../components/ItemCard';
@@ -28,6 +29,7 @@ import Footer from '../components/Footer';
 
 const ContactUs = () => {
     const [isRequestSubmitted, setRequestSubmitted] = React.useState(false);
+    const isMobileView = useBreakpointValue({ base: true, md: false });
 
     const submitHandler = async (values) => {
         setRequestSubmitted(true);
@@ -54,11 +56,15 @@ const ContactUs = () => {
                     id="first"
                     justifyContent={'center'}
                     alignItems="center"
-                    height={'100vh'}
+                    {...(!isMobileView && {
+                        h: '100vh',
+                    })}
+                    flexDirection={{ base: 'column', md: 'row' }}
+                    mt={{ base: '80px' }}
                 >
                     <Flex
                         flexDirection={'row'}
-                        w="40%"
+                        w={{ base: 'full', md: '40%' }}
                         {...(isRequestSubmitted && {
                             alignItems: 'center',
                         })}
@@ -93,12 +99,18 @@ const ContactUs = () => {
                         >
                             {(formikProps) => {
                                 return !isRequestSubmitted ? (
-                                    <Form>
+                                    <Form style={{ width: '100%' }}>
                                         <Flex
                                             flexDirection={'column'}
                                             gridRowGap="8"
                                         >
-                                            <Flex gridColumnGap={'4'}>
+                                            <Flex
+                                                gridColumnGap={'4'}
+                                                flexDirection={{
+                                                    base: 'column',
+                                                    md: 'row',
+                                                }}
+                                            >
                                                 <InputControl
                                                     name="firstname"
                                                     label="First Name"
@@ -109,7 +121,13 @@ const ContactUs = () => {
                                                     label="Last Name"
                                                 />
                                             </Flex>
-                                            <Flex gridColumnGap={'4'}>
+                                            <Flex
+                                                gridColumnGap={'4'}
+                                                flexDirection={{
+                                                    base: 'column',
+                                                    md: 'row',
+                                                }}
+                                            >
                                                 <InputControl
                                                     name="phonenumber"
                                                     label="Phone Number"
@@ -129,6 +147,7 @@ const ContactUs = () => {
                                                 type="submit"
                                                 width="40%"
                                                 colorScheme="primary"
+                                                margin="8px auto"
                                             >
                                                 Submit
                                             </Button>
@@ -142,13 +161,18 @@ const ContactUs = () => {
                             }}
                         </Formik>
                     </Flex>
-                    <Spacer />
+
+                    {!isMobileView && <Spacer />}
+
                     <Flex
-                        w="40%"
+                        w={isMobileView ? '100%' : '40%'}
                         flexDirection={'column'}
                         bgColor="#696969"
                         p="4"
                         borderRadius={12}
+                        {...(isMobileView && {
+                            mb: '100px',
+                        })}
                     >
                         <Flex flexDirection={'column'} gridRowGap={'4'}>
                             <Text color="white">For customer Support</Text>

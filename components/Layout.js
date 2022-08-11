@@ -42,7 +42,55 @@ const Layout = ({
                 flexDirection={'column'}
             >
                 {firstImage && (
-                    <Box w="full" id="firstimage" mt="8">
+                    <Box w="full" id="firstimage" mt="8" position={'relative'}>
+                        <Box
+                            position={'absolute'}
+                            top="30%"
+                            left="10%"
+                            w="full"
+                            h="full"
+                            id="hello"
+                            zIndex={'modal'}
+                        >
+                            <Flex flexDirection={'column'}>
+                                <Text
+                                    color="white"
+                                    fontSize={'3xl'}
+                                    maxW="xs"
+                                    textAlign={'center'}
+                                >
+                                    Wear your
+                                </Text>
+                                <Text
+                                    color="white"
+                                    fontWeight={'bold'}
+                                    fontSize="4xl"
+                                    maxW="xs"
+                                    textAlign={'center'}
+                                >
+                                    Values to be change
+                                </Text>
+                                <Text
+                                    color="black"
+                                    fontWeight={'bold'}
+                                    maxW="xs"
+                                    textAlign={'center'}
+                                    fontSize="3xl"
+                                    bgColor="orange"
+                                    mb="4"
+                                >
+                                    CHANGE
+                                </Text>
+                                <Button
+                                    colorScheme="primary"
+                                    color="black"
+                                    maxW="xs"
+                                >
+                                    Explore Now
+                                </Button>
+                            </Flex>
+                        </Box>
+
                         <NextImage
                             src="/banner01.jpg"
                             objectFit="cover"
