@@ -4,7 +4,6 @@ import NextImage from 'next/image';
 const ItemCard = (props) => {
     const itemName = props.name;
     const extension = props.extension;
-    const itemText = props.itemText;
 
     return (
         <Box border="2px solid black">
@@ -15,13 +14,7 @@ const ItemCard = (props) => {
                 flexDirection={'column'}
                 gridRowGap={4}
                 alignItems="center"
-                mb="4"
-            >
-                <Text>Round Neck Polo Tshirt</Text>
-                <Button colorScheme="primary" width="50%">
-                    Rs. 500
-                </Button>
-            </Flex>
+            ></Flex>
         </Box>
     );
 };

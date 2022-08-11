@@ -13,7 +13,13 @@ export default function Home() {
         <Layout sidebarRequired={true}>
             <Grid templateColumns="repeat(4, 1fr)" gap={3} mb="16" w="full">
                 {data.map((item, i) => {
-                    return <ItemCard height="200px" name={item.name} />;
+                    return (
+                        <ItemCard
+                            height="200px"
+                            name={item.name}
+                            extension="jpg"
+                        />
+                    );
                 })}
             </Grid>
         </Layout>
