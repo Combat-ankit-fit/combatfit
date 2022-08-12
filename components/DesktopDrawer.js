@@ -62,7 +62,11 @@ const DesktopDrawer = () => {
                             }}
                         >
                             {sizeItems.map((item) => {
-                                return <Radio value={item}>{item}</Radio>;
+                                return (
+                                    <Radio key={item} value={item}>
+                                        {item}
+                                    </Radio>
+                                );
                             })}
                         </Stack>
                     </RadioGroup>
@@ -85,7 +89,11 @@ const DesktopDrawer = () => {
                             }}
                         >
                             {fit.map((item) => {
-                                return <Radio value={item}>{item}</Radio>;
+                                return (
+                                    <Radio key={item} value={item}>
+                                        {item}
+                                    </Radio>
+                                );
                             })}
                         </Stack>
                     </RadioGroup>

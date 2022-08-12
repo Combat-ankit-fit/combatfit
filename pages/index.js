@@ -29,6 +29,7 @@ export default function Home() {
                 {data.map((item, i) => {
                     return (
                         <ItemCard
+                            key={i}
                             height="200px"
                             name={item.name}
                             extension="jpg"

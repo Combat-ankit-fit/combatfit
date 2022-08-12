@@ -176,6 +176,7 @@ const Layout = ({
                         {[1, 2, 3, 4, 5].map((item, i) => {
                             return (
                                 <HomepageGridImages
+                                    key={item}
                                     height="200px"
                                     name={item}
                                     extension="png"
@@ -197,6 +198,7 @@ const Layout = ({
                         {[1, 2, 3].map((item, i) => {
                             return (
                                 <HomepageGridImages
+                                    key={item}
                                     height="200px"
                                     name={item}
                                     extension="png"
@@ -218,6 +220,7 @@ const Layout = ({
                         {[4, 5].map((item, i) => {
                             return (
                                 <HomepageGridImages
+                                    key={item}
                                     height="200px"
                                     name={item}
                                     extension="png"
