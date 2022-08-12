@@ -105,10 +105,10 @@ const Layout = ({
                                 position={'absolute'}
                                 top="0"
                                 left="0"
-                                w="sm"
+                                w="xs"
                                 h="full"
                                 id="hello"
-                                zIndex={'modal'}
+                                zIndex={'overlay'}
                                 p="4"
                             >
                                 <Flex
@@ -158,7 +158,7 @@ const Layout = ({
                         <NextImage
                             src="/banner01.jpg"
                             objectFit="cover"
-                            height={600}
+                            height={isMobileView ? 800 : 600}
                             width={1200}
                             layout="responsive"
                         />
@@ -232,11 +232,101 @@ const Layout = ({
                 )}
 
                 {secondImage && (
-                    <Box w="full" id="firstimage" mt="8">
+                    <Box w="full" id="firstimage" mt="8" position={'relative'}>
+                        <Box
+                            position={'absolute'}
+                            w="full"
+                            h="inherit"
+                            zIndex={'overlay'}
+                        >
+                            <Flex
+                                w="inherit"
+                                justifyContent={'center'}
+                                alignItems="center"
+                            >
+                                <Text color="white" fontWeight={'bold'}>
+                                    Millitary Inspired clothing
+                                </Text>
+                            </Flex>
+                        </Box>
+
+                        {isMobileView && (
+                            <Box
+                                position={'absolute'}
+                                id="new"
+                                zIndex={'overlay'}
+                                h="full"
+                                mt="5"
+                                right="10%"
+                            >
+                                <Flex
+                                    flexDirection={'column'}
+                                    h="inherit"
+                                    alignItems={'center'}
+                                    justifyContent="center"
+                                >
+                                    <Text color="white" fontWeight={'bold'}>
+                                        Stay
+                                    </Text>
+                                    <Text color="white">Active</Text>
+                                    <Text color="white" fontWeight={'bold'}>
+                                        Stay
+                                    </Text>
+                                    <Text color="white">Young</Text>
+                                    <Button colorScheme="primary" color="black">
+                                        Explore Now
+                                    </Button>
+                                </Flex>
+                            </Box>
+                        )}
+
+                        {!isMobileView && (
+                            <Box
+                                position={'absolute'}
+                                id="new"
+                                zIndex={'overlay'}
+                                h="full"
+                                mt="5"
+                                right="10%"
+                                w="md"
+                            >
+                                <Flex
+                                    flexDirection={'column'}
+                                    h="inherit"
+                                    alignItems={'center'}
+                                    justifyContent="center"
+                                >
+                                    <Text
+                                        color="white"
+                                        fontWeight={'bold'}
+                                        fontSize="5xl"
+                                    >
+                                        Stay
+                                    </Text>
+                                    <Text color="white" fontSize="4xl">
+                                        Active
+                                    </Text>
+                                    <Text
+                                        color="white"
+                                        fontWeight={'bold'}
+                                        fontSize="5xl"
+                                    >
+                                        Stay
+                                    </Text>
+                                    <Text color="white" fontSize="4xl">
+                                        Young
+                                    </Text>
+                                    <Button colorScheme="primary" color="black">
+                                        Explore Now
+                                    </Button>
+                                </Flex>
+                            </Box>
+                        )}
+
                         <NextImage
                             src="/banner02.jpg"
                             objectFit="cover"
-                            height={600}
+                            height={isMobileView ? 800 : 600}
                             width={1200}
                             layout="responsive"
                         />
