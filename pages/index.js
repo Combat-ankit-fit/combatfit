@@ -30,7 +30,7 @@ export default function Home() {
                     return (
                         <ItemCard
                             key={i}
-                            height="200px"
+                            height={isMobileView ? '150px' : '200px'}
                             name={item.name}
                             extension="jpg"
                         />

@@ -17,8 +17,8 @@ const ItemCard = (props) => {
                 alignItems="center"
                 mb="4"
             >
-                <Text>Round Neck Polo Tshirt</Text>
-                <Button colorScheme="primary" width="50%">
+                <Text textAlign={'center'}>Round Neck Polo Tshirt</Text>
+                <Button colorScheme="primary" maxW="sm">
                     Rs. 500
                 </Button>
             </Flex>
