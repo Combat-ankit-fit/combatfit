@@ -53,48 +53,58 @@ const Layout = ({
                         {!isMobileView && (
                             <Box
                                 position={'absolute'}
-                                top="30%"
                                 left="10%"
                                 w="sm"
                                 h="full"
                                 id="hello"
                                 zIndex={'modal'}
+                                mt="24"
                             >
-                                <Flex flexDirection={'column'}>
-                                    <Text
-                                        color="white"
-                                        fontSize={'3xl'}
-                                        maxW="xs"
-                                        textAlign={'center'}
-                                    >
-                                        Wear your
-                                    </Text>
-                                    <Text
-                                        color="white"
-                                        fontWeight={'bold'}
-                                        fontSize="4xl"
-                                        maxW="xs"
-                                        textAlign={'center'}
-                                    >
-                                        Values to be change
-                                    </Text>
-                                    <Text
+                                <Flex flexDirection={'column'} w="xs">
+                                    <Box mb="12">
+                                        <Text
+                                            color="white"
+                                            fontSize={'3xl'}
+                                            maxW="xs"
+                                            textAlign={'center'}
+                                        >
+                                            Wear your
+                                        </Text>
+                                        <Text
+                                            color="white"
+                                            fontWeight={'bold'}
+                                            fontSize="4xl"
+                                            maxW="xs"
+                                            textAlign={'center'}
+                                        >
+                                            Values to be change
+                                        </Text>
+                                        <Text
+                                            color="white"
+                                            fontWeight={'bold'}
+                                            maxW="xs"
+                                            textAlign={'center'}
+                                            fontSize="3xl"
+                                            bgColor="orange"
+                                            mb="4"
+                                        >
+                                            CHANGE
+                                        </Text>
+                                    </Box>
+                                    <Button
+                                        colorScheme="primary"
                                         color="black"
-                                        fontWeight={'bold'}
-                                        maxW="xs"
-                                        textAlign={'center'}
-                                        fontSize="3xl"
-                                        bgColor="orange"
+                                        width={'xs'}
                                         mb="4"
                                     >
-                                        CHANGE
-                                    </Text>
+                                        Explore Now
+                                    </Button>
                                     <Button
                                         colorScheme="primary"
                                         color="black"
                                         maxW="xs"
                                     >
-                                        Explore Now
+                                        Go To Products
                                     </Button>
                                 </Flex>
                             </Box>
@@ -105,11 +115,11 @@ const Layout = ({
                                 position={'absolute'}
                                 top="0"
                                 left="0"
-                                w="xs"
                                 h="full"
                                 id="hello"
                                 zIndex={'overlay'}
-                                p="4"
+                                pt="4"
+                                ps="2"
                             >
                                 <Flex
                                     flexDirection={'column'}
@@ -158,8 +168,8 @@ const Layout = ({
                         <NextImage
                             src="/banner01.jpg"
                             objectFit="cover"
-                            height={isMobileView ? 800 : 600}
-                            width={1200}
+                            height={isMobileView ? 1000 : 900}
+                            width={1600}
                             layout="responsive"
                         />
                     </Box>
