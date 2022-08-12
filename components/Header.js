@@ -1,4 +1,12 @@
-import { Box, Flex, List, Text, Container, useRadio } from '@chakra-ui/react';
+import {
+    Box,
+    Flex,
+    List,
+    Text,
+    Container,
+    useRadio,
+    useBreakpointValue,
+} from '@chakra-ui/react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import router, { useRouter } from 'next/router';
@@ -9,6 +17,7 @@ const WhiteLink = styled.a`
 `;
 
 const Header = () => {
+    const isMobileView = useBreakpointValue({ base: true, md: false });
     const router = useRouter();
     return (
         <Container

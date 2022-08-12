@@ -8,6 +8,7 @@ import {
     Grid,
     SimpleGrid,
     Button,
+    useBreakpointValue,
 } from '@chakra-ui/react';
 import Sidebar from './Sidebar';
 import Header from './Header';
@@ -29,9 +30,10 @@ const Layout = ({
     souvenirs = false,
     mugs = false,
 }) => {
+    const isMobileView = useBreakpointValue({ base: true, md: false });
     return (
         <Box id="layout" display={'flex'} minH="100vh">
-            <Header />
+            {!isMobileView && <Header />}
 
             {sidebarRequired && <Sidebar />}
             <Box
@@ -42,54 +44,116 @@ const Layout = ({
                 flexDirection={'column'}
             >
                 {firstImage && (
-                    <Box w="full" id="firstimage" mt="8" position={'relative'}>
-                        <Box
-                            position={'absolute'}
-                            top="30%"
-                            left="10%"
-                            w="full"
-                            h="full"
-                            id="hello"
-                            zIndex={'modal'}
-                        >
-                            <Flex flexDirection={'column'}>
-                                <Text
-                                    color="white"
-                                    fontSize={'3xl'}
-                                    maxW="xs"
-                                    textAlign={'center'}
+                    <Box
+                        w="full"
+                        id="firstimage"
+                        mt={{ base: 0, md: 8 }}
+                        position={'relative'}
+                    >
+                        {!isMobileView && (
+                            <Box
+                                position={'absolute'}
+                                top="30%"
+                                left="10%"
+                                w="full"
+                                h="full"
+                                id="hello"
+                                zIndex={'modal'}
+                            >
+                                <Flex flexDirection={'column'}>
+                                    <Text
+                                        color="white"
+                                        fontSize={'3xl'}
+                                        maxW="xs"
+                                        textAlign={'center'}
+                                    >
+                                        Wear your
+                                    </Text>
+                                    <Text
+                                        color="white"
+                                        fontWeight={'bold'}
+                                        fontSize="4xl"
+                                        maxW="xs"
+                                        textAlign={'center'}
+                                    >
+                                        Values to be change
+                                    </Text>
+                                    <Text
+                                        color="black"
+                                        fontWeight={'bold'}
+                                        maxW="xs"
+                                        textAlign={'center'}
+                                        fontSize="3xl"
+                                        bgColor="orange"
+                                        mb="4"
+                                    >
+                                        CHANGE
+                                    </Text>
+                                    <Button
+                                        colorScheme="primary"
+                                        color="black"
+                                        maxW="xs"
+                                    >
+                                        Explore Now
+                                    </Button>
+                                </Flex>
+                            </Box>
+                        )}
+
+                        {isMobileView && (
+                            <Box
+                                position={'absolute'}
+                                top="0"
+                                left="0"
+                                w="sm"
+                                h="full"
+                                id="hello"
+                                zIndex={'modal'}
+                                p="4"
+                            >
+                                <Flex
+                                    flexDirection={'column'}
+                                    alignItems="center"
                                 >
-                                    Wear your
-                                </Text>
-                                <Text
-                                    color="white"
-                                    fontWeight={'bold'}
-                                    fontSize="4xl"
-                                    maxW="xs"
-                                    textAlign={'center'}
-                                >
-                                    Values to be change
-                                </Text>
-                                <Text
-                                    color="black"
-                                    fontWeight={'bold'}
-                                    maxW="xs"
-                                    textAlign={'center'}
-                                    fontSize="3xl"
-                                    bgColor="orange"
-                                    mb="4"
-                                >
-                                    CHANGE
-                                </Text>
-                                <Button
-                                    colorScheme="primary"
-                                    color="black"
-                                    maxW="xs"
-                                >
-                                    Explore Now
-                                </Button>
-                            </Flex>
-                        </Box>
+                                    <Text
+                                        color="white"
+                                        fontSize={'xl'}
+                                        maxW="xs"
+                                        textAlign={'center'}
+                                    >
+                                        Wear your
+                                    </Text>
+                                    <Text
+                                        color="white"
+                                        fontWeight={'bold'}
+                                        fontSize="2xl"
+                                        maxW="xs"
+                                        textAlign={'center'}
+                                    >
+                                        Values to be change
+                                    </Text>
+                                    <Text
+                                        color="black"
+                                        fontWeight={'bold'}
+                                        maxW={'min-content'}
+                                        textAlign={'center'}
+                                        fontSize="2xl"
+                                        bgColor="orange"
+                                        mb="4"
+                                        p="2"
+                                    >
+                                        CHANGE
+                                    </Text>
+                                    <Button
+                                        colorScheme="primary"
+                                        color="black"
+                                        maxW={'min-content'}
+                                    >
+                                        Explore Now
+                                    </Button>
+                                </Flex>
+                            </Box>
+                        )}
 
                         <NextImage
                             src="/banner01.jpg"
@@ -101,7 +165,7 @@ const Layout = ({
                     </Box>
                 )}
 
-                {streamImages && (
+                {streamImages && !isMobileView && (
                     <Grid
                         templateColumns="repeat(5, 1fr)"
                         gap={1}
@@ -110,6 +174,48 @@ const Layout = ({
                         mt="4"
                     >
                         {[1, 2, 3, 4, 5].map((item, i) => {
+                            return (
+                                <HomepageGridImages
+                                    height="200px"
+                                    name={item}
+                                    extension="png"
+                                    bgColor="brown"
+                                />
+                            );
+                        })}
+                    </Grid>
+                )}
+
+                {streamImages && isMobileView && (
+                    <Grid
+                        templateColumns="repeat(3, 1fr)"
+                        gap={1}
+                        mb="2"
+                        w="full"
+                        mt="4"
+                    >
+                        {[1, 2, 3].map((item, i) => {
+                            return (
+                                <HomepageGridImages
+                                    height="200px"
+                                    name={item}
+                                    extension="png"
+                                    bgColor="brown"
+                                />
+                            );
+                        })}
+                    </Grid>
+                )}
+
+                {streamImages && isMobileView && (
+                    <Grid
+                        templateColumns="repeat(2, 1fr)"
+                        gap={1}
+                        mb="2"
+                        w="full"
+                        mt="4"
+                    >
+                        {[4, 5].map((item, i) => {
                             return (
                                 <HomepageGridImages
                                     height="200px"
