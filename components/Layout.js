@@ -625,6 +625,9 @@ const Layout = ({
                         p: 6,
                     })}
                 >
+                    {homepage && (
+                        <NextImage src="/banner-souviners.png" layout="fill" />
+                    )}
                     {children}
                 </Container>
                 <Footer1 />
