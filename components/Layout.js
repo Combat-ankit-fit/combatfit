@@ -209,10 +209,10 @@ const Layout = ({
                             return (
                                 <HomepageGridImages
                                     key={item}
-                                    height="200px"
+                                    height="150px"
                                     name={item}
                                     extension="png"
-                                    bgColor="brown"
+                                    bgColor="#2D2D2D"
                                 />
                             );
                         })}
@@ -231,10 +231,10 @@ const Layout = ({
                             return (
                                 <HomepageGridImages
                                     key={item}
-                                    height="200px"
+                                    height="150px"
                                     name={item}
                                     extension="png"
-                                    bgColor="brown"
+                                    bgColor="#2D2D2D"
                                 />
                             );
                         })}
@@ -282,7 +282,9 @@ const Layout = ({
                                     <Text color="white" fontWeight={'bold'}>
                                         Stay
                                     </Text>
-                                    <Text color="white">Young</Text>
+                                    <Text color="white" mb="2">
+                                        Young
+                                    </Text>
                                     <Button colorScheme="primary" color="black">
                                         Explore Now
                                     </Button>
@@ -343,7 +345,7 @@ const Layout = ({
                     </Box>
                 )}
 
-                {bottomGridImages && (
+                {bottomGridImages && !isMobileView && (
                     <SimpleGrid columns={2} w="full" id="grid">
                         <React.Fragment>
                             <Box p="4">
@@ -400,8 +402,56 @@ const Layout = ({
                     </SimpleGrid>
                 )}
 
+                {bottomGridImages && isMobileView && (
+                    <Box position={'relative'}>
+                        <Box
+                            position={'absolute'}
+                            id="new"
+                            zIndex={'overlay'}
+                            h="full"
+                            right="10%"
+                            w="md"
+                        >
+                            <Flex
+                                flexDirection={'column'}
+                                h="inherit"
+                                alignItems={'center'}
+                                justifyContent="center"
+                            >
+                                <Text
+                                    color="white"
+                                    fontWeight={'bold'}
+                                    fontSize="2xl"
+                                >
+                                    Regular Clothing
+                                </Text>
+
+                                <Text
+                                    color="white"
+                                    fontSize="4xl"
+                                    fontWeight={'bold'}
+                                >
+                                    Beyond
+                                </Text>
+                                <Text color="white" fontSize="2xl" mb="2">
+                                    Regular
+                                </Text>
+                                <Button colorScheme="primary" color="black">
+                                    Explore Now
+                                </Button>
+                            </Flex>
+                        </Box>
+                        <NextImage
+                            src="/banner03.jpg"
+                            objectFit="cover"
+                            width={900}
+                            height={700}
+                        />
+                    </Box>
+                )}
+
                 {souvenirs && (
-                    <SimpleGrid columns={2} w="full" id="grid">
+                    <SimpleGrid columns={{ base: 1, md: 2 }} w="full" id="grid">
                         <Box>
                             <Box
                                 position="relative"
