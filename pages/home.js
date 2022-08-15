@@ -13,6 +13,7 @@ const Home = () => {
             bottomGridImages={true}
             souvenirs={true}
             mugs={true}
+            homepage={true}
         ></Layout>
     );
 };

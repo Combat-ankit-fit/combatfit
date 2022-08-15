@@ -29,6 +29,7 @@ const Layout = ({
     bottomGridImages = false,
     souvenirs = false,
     mugs = false,
+    homepage = false,
 }) => {
     const isMobileView = useBreakpointValue({ base: true, md: false });
     return (
@@ -189,7 +190,7 @@ const Layout = ({
                                     height="200px"
                                     name={item}
                                     extension="png"
-                                    bgColor="#2D2D2D"
+                                    bgColor="brown"
                                 />
                             );
                         })}
@@ -619,6 +620,10 @@ const Layout = ({
                     px="0"
                     flex="1"
                     id="main__container"
+                    {...(!homepage && {
+                        mt: 12,
+                        p: 6,
+                    })}
                 >
                     {children}
                 </Container>
