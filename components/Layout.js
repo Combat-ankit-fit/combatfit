@@ -32,10 +32,11 @@ const Layout = ({
 }) => {
     const isMobileView = useBreakpointValue({ base: true, md: false });
     return (
-        <Box id="layout" display={'flex'} minH="100vh">
+        <Box id="layout" display={'flex'} minH="300vh">
             {!isMobileView && <Header />}
 
             {sidebarRequired && <Sidebar />}
+
             <Box
                 id="box__container"
                 display={'flex'}
@@ -174,11 +175,9 @@ const Layout = ({
                         />
                     </Box>
                 )}
-
                 {streamImages && !isMobileView && (
                     <Grid
                         templateColumns="repeat(5, 1fr)"
-                        gap={1}
                         mb="2"
                         w="full"
                         mt="4"
@@ -190,20 +189,19 @@ const Layout = ({
                                     height="200px"
                                     name={item}
                                     extension="png"
-                                    bgColor="brown"
+                                    bgColor="#2D2D2D"
                                 />
                             );
                         })}
                     </Grid>
                 )}
-
                 {streamImages && isMobileView && (
                     <Grid
                         templateColumns="repeat(3, 1fr)"
                         gap={1}
                         mb="2"
                         w="full"
-                        mt="4"
+                        mt="1"
                     >
                         {[1, 2, 3].map((item, i) => {
                             return (
@@ -218,14 +216,12 @@ const Layout = ({
                         })}
                     </Grid>
                 )}
-
                 {streamImages && isMobileView && (
                     <Grid
                         templateColumns="repeat(2, 1fr)"
                         gap={1}
                         mb="2"
                         w="full"
-                        mt="4"
                     >
                         {[4, 5].map((item, i) => {
                             return (
@@ -240,9 +236,8 @@ const Layout = ({
                         })}
                     </Grid>
                 )}
-
                 {secondImage && (
-                    <Box w="full" id="firstimage" mt="8" position={'relative'}>
+                    <Box w="full" id="firstimage" position={'relative'}>
                         <Box
                             position={'absolute'}
                             w="full"
@@ -344,7 +339,6 @@ const Layout = ({
                         />
                     </Box>
                 )}
-
                 {bottomGridImages && !isMobileView && (
                     <SimpleGrid columns={2} w="full" id="grid">
                         <React.Fragment>
@@ -401,7 +395,6 @@ const Layout = ({
                         </React.Fragment>
                     </SimpleGrid>
                 )}
-
                 {bottomGridImages && isMobileView && (
                     <Box position={'relative'}>
                         <Box
@@ -449,7 +442,42 @@ const Layout = ({
                         />
                     </Box>
                 )}
+                {bottomGridImages && isMobileView && (
+                    <Box position={'relative'}>
+                        <Box
+                            position={'absolute'}
+                            id="new"
+                            zIndex={'overlay'}
+                            h="full"
+                            mt="5"
+                            right="10%"
+                        >
+                            <Flex
+                                flexDirection={'column'}
+                                h="inherit"
+                                alignItems={'center'}
+                                justifyContent="center"
+                            >
+                                <Text color="white" fontWeight={'bold'}>
+                                    New way to
+                                </Text>
+                                <Text color="white" mb="2">
+                                    Go Beyond
+                                </Text>
 
+                                <Button colorScheme="primary" color="black">
+                                    Explore Now
+                                </Button>
+                            </Flex>
+                        </Box>
+                        <NextImage
+                            src="/banner04.jpg"
+                            objectFit="cover"
+                            width={900}
+                            height={700}
+                        />
+                    </Box>
+                )}
                 {souvenirs && (
                     <SimpleGrid columns={{ base: 1, md: 2 }} w="full" id="grid">
                         <Box>
@@ -476,54 +504,118 @@ const Layout = ({
                                 />
                             </Box>
                         </Box>
-                        <Box p="4">
-                            <Flex
-                                w="full"
-                                h="full"
-                                justifyContent={'center'}
-                                alignItems="Center"
-                                flexDirection={'column'}
-                            >
-                                <Text>Lifestyle Products</Text>
-                                <Text>The Military way</Text>
-                            </Flex>
-                        </Box>
+                        {!isMobileView && (
+                            <Box p="4">
+                                <Flex
+                                    w="full"
+                                    h="full"
+                                    justifyContent={'center'}
+                                    alignItems="Center"
+                                    flexDirection={'column'}
+                                >
+                                    <Text>Lifestyle Products</Text>
+                                    <Text>The Military way</Text>
+                                </Flex>
+                            </Box>
+                        )}
                     </SimpleGrid>
                 )}
-
-                {mugs && (
-                    <SimpleGrid columns={2} w="full">
-                        <Box
-                            position="relative"
-                            overflow={'hidden'}
-                            border="2px solid white"
+                {mugs && !isMobileView && (
+                    <Box position={'relative'}>
+                        <SimpleGrid
+                            columns={2}
+                            w="full"
+                            {...(isMobileView && {
+                                position: 'absolute',
+                            })}
+                            mb="4"
                         >
-                            <NextImage
-                                src="/banner07.jpg"
-                                width={900}
-                                height={700}
-                            />
-                        </Box>
+                            <Box
+                                position="relative"
+                                overflow={'hidden'}
+                                border="2px solid white"
+                            >
+                                <NextImage
+                                    src="/banner07.jpg"
+                                    width={900}
+                                    height={800}
+                                />
+                            </Box>
 
-                        <Box
-                            position="relative"
-                            overflow={'hidden'}
-                            border="2px solid white"
+                            <Box
+                                position="relative"
+                                overflow={'hidden'}
+                                border="2px solid white"
+                            >
+                                <NextImage
+                                    src="/banner08.jpg"
+                                    width={900}
+                                    height={800}
+                                />
+                            </Box>
+                        </SimpleGrid>
+                    </Box>
+                )}
+
+                {mugs && isMobileView && (
+                    <Box position={'relative'}>
+                        <SimpleGrid
+                            columns={2}
+                            w="full"
+                            position={'absolute'}
+                            h="full"
                         >
-                            <NextImage
-                                src="/banner08.jpg"
-                                width={900}
-                                height={700}
-                            />
-                        </Box>
-                    </SimpleGrid>
+                            <Box
+                                zIndex={'overlay'}
+                                p="4"
+                                position={'relative'}
+                                display="flex"
+                                alignItems={'center'}
+                                id="new_box"
+                                sx={{
+                                    '&>span': {
+                                        border: '2px solid white !important',
+                                    },
+                                }}
+                            >
+                                <NextImage
+                                    width="150px"
+                                    height="200px"
+                                    src="/banner08.jpg"
+                                />
+                            </Box>
+
+                            <Box
+                                zIndex={'overlay'}
+                                p="4"
+                                display="flex"
+                                alignItems={'center'}
+                                sx={{
+                                    '&>span': {
+                                        border: '2px solid white !important',
+                                    },
+                                }}
+                            >
+                                <NextImage
+                                    width="150px"
+                                    height="200px"
+                                    src="/banner07.jpg"
+                                />
+                            </Box>
+                        </SimpleGrid>
+                        <NextImage
+                            src="/banner-souviners.png"
+                            objectFit="cover"
+                            height={isMobileView ? 1000 : 900}
+                            width={1600}
+                            layout="responsive"
+                        />
+                    </Box>
                 )}
 
                 <Container
-                    mt="12"
                     pos={'relative'}
                     maxW="4xl"
-                    p="6"
                     px="0"
                     flex="1"
                     id="main__container"
