@@ -33,7 +33,7 @@ const Layout = ({
 }) => {
     const isMobileView = useBreakpointValue({ base: true, md: false });
     return (
-        <Box id="layout" display={'flex'} minH="300vh">
+        <Box id="layout" display={'flex'} minH={homepage ? '300vh' : '100vh'}>
             {!isMobileView && <Header />}
 
             {sidebarRequired && <Sidebar />}
@@ -630,7 +630,7 @@ const Layout = ({
                     )}
                     {children}
                 </Container>
-                <Footer1 />
+                <Footer1 homepage={homepage} />
             </Box>
         </Box>
     );

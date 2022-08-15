@@ -1,7 +1,7 @@
 import { Flex, HStack, Text, Button, Portal } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
-const Footer = () => {
+const Footer = ({ homepage = false }) => {
     const router = useRouter();
     return (
         <Flex
@@ -10,7 +10,9 @@ const Footer = () => {
             bottom={0}
             w="100%"
             p="4"
-            marginTop="50px"
+            {...(!homepage && {
+                marginTop: '50px',
+            })}
         >
             <Flex
                 justifyContent={'space-between'}
