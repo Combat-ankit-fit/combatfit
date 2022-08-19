@@ -19,6 +19,7 @@ import React from 'react';
 import ItemCard from '../components/ItemCard';
 import HomepageGridImages from '../components/HomepageGridImages';
 import Footer1 from './Footer1';
+import router, { useRouter } from 'next/router';
 
 const Layout = ({
     children,
@@ -32,6 +33,8 @@ const Layout = ({
     mugs = false,
     homepage = false,
 }) => {
+    const router = useRouter();
+    console.log('Path is:-', router.pathname);
     const isMobileView = useBreakpointValue({ base: true, md: false });
     return (
         <Box id="layout" display={'flex'} minH={homepage ? '300vh' : '100vh'}>
@@ -39,12 +42,23 @@ const Layout = ({
 
             {sidebarRequired && <Sidebar />}
 
+            {router.pathname === '/home' && (
+                <Box w="full" height={'full'} position="absolute">
+                    <NextImage
+                        src="/banner-souviners.png"
+                        objectFit="cover"
+                        layout="fill"
+                    />
+                </Box>
+            )}
+
             <Box
                 id="box__container"
                 display={'flex'}
                 justifyContent="center"
                 width="full"
                 flexDirection={'column'}
+                position="relative"
             >
                 {firstImage && (
                     <Box
@@ -258,7 +272,7 @@ const Layout = ({
                                 <Divider
                                     orientation="horizontal"
                                     {...(isMobileView && {
-                                        borderColor: 'yellow',
+                                        borderColor: 'orange',
                                     })}
                                 />
                                 <Text
@@ -271,7 +285,7 @@ const Layout = ({
                                 {isMobileView && (
                                     <Divider
                                         orientation="horizontal"
-                                        borderColor={'yellow'}
+                                        borderColor={'orange'}
                                     />
                                 )}
                             </Flex>
@@ -394,7 +408,7 @@ const Layout = ({
                                     >
                                         <Divider
                                             orientation="horizontal"
-                                            borderColor={'yellow'}
+                                            borderColor={'orange'}
                                         />
                                         <Text
                                             color="white"
@@ -469,7 +483,7 @@ const Layout = ({
                                     >
                                         <Divider
                                             orientation="horizontal"
-                                            borderColor={'yellow'}
+                                            borderColor={'orange'}
                                         />
                                         <Text
                                             zIndex="overlay"
@@ -531,7 +545,7 @@ const Layout = ({
                                 <Box>
                                     <Divider
                                         orientation="horizontal"
-                                        borderColor={'yellow'}
+                                        borderColor={'orange'}
                                     />
                                     <Text
                                         color="white"
@@ -542,7 +556,7 @@ const Layout = ({
                                     </Text>
                                     <Divider
                                         orientation="horizontal"
-                                        borderColor={'yellow'}
+                                        borderColor={'orange'}
                                     />
                                 </Box>
 
@@ -593,7 +607,7 @@ const Layout = ({
                                 >
                                     <Divider
                                         orientation="horizontal"
-                                        borderColor={'yellow'}
+                                        borderColor={'orange'}
                                     />
                                     <Text color="white" fontWeight={'bold'}>
                                         OUTDOOR AND
@@ -604,7 +618,7 @@ const Layout = ({
                                     </Text>
                                     <Divider
                                         orientation="horizontal"
-                                        borderColor={'yellow'}
+                                        borderColor={'orange'}
                                     />
                                 </Box>
 

@@ -6,11 +6,17 @@ import {
     Container,
     useRadio,
     useBreakpointValue,
+    InputGroup,
+    InputRightElement,
+    Input,
+    color,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import router, { useRouter } from 'next/router';
 import NextImage from 'next/image';
+import { InputControl, FormControl, TextAreaControl } from '../exporter';
+import { SearchIcon } from '@chakra-ui/icons';
 
 const WhiteLink = styled.a`
     color: white;
@@ -24,7 +30,6 @@ const Header = () => {
             maxW={'full'}
             height="56px"
             bgColor={'black'}
-            borderBottom="2px solid white"
             position={'fixed'}
             maxH="60px"
             zIndex={'modal'}
@@ -44,7 +49,12 @@ const Header = () => {
                     <NextImage src="/logo.png" height="40px" width="90px" />
                 </Box>
 
-                <Flex justifyContent={'space-around'} w="xs">
+                <Flex
+                    justifyContent={'space-around'}
+                    w="md"
+                    gridColumnGap={6}
+                    alignItems="baseline"
+                >
                     <Text
                         color="white"
                         cursor={'pointer'}
@@ -55,8 +65,25 @@ const Header = () => {
                         Home
                     </Text>
 
-                    <Text color={'white'}>Find Outlet</Text>
-                    <Text color={'white'}>Download Catalogue</Text>
+                    <Text color={'white'} flexShrink={0}>
+                        Find Outlet
+                    </Text>
+                    <InputGroup>
+                        <Input
+                            placeholder="Search Product"
+                            name="search"
+                            bgColor={'orange'}
+                            _placeholder={{
+                                color: 'black',
+                            }}
+                            sx={{
+                                borderRadius: '0px',
+                            }}
+                        />
+                        <InputRightElement
+                            children={<SearchIcon color="black" />}
+                        />
+                    </InputGroup>
                 </Flex>
             </Flex>
         </Container>
