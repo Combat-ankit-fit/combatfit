@@ -54,7 +54,12 @@ const ContactUs = () => {
         <Flex flexDirection={'column'}>
             {!isMobileView && <Header />}
 
-            <Box position={'relative'}>
+            <Box
+                position={'relative'}
+                {...(isMobileView && {
+                    mb: '16',
+                })}
+            >
                 <Box
                     position={'absolute'}
                     left="0"
