@@ -42,7 +42,7 @@ const Layout = ({
 
             {sidebarRequired && <Sidebar />}
 
-            {router.pathname === '/home' && (
+            {router.pathname === '/' && (
                 <Box w="full" height={'full'} position="absolute">
                     <NextImage
                         src="/banner-souviners.png"
