@@ -6,7 +6,7 @@ import NextImage from 'next/image';
 const Home = () => {
     return (
         <Layout
-            sidebarRequired={true}
+            sidebarRequired={false}
             firstImage={true}
             streamImages={true}
             secondImage={true}

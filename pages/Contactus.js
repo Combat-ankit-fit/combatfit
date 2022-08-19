@@ -50,7 +50,46 @@ const ContactUs = () => {
 
     return (
         <Flex flexDirection={'column'}>
-            <Header />
+            {!isMobileView && <Header />}
+
+            <Box position={'relative'}>
+                <Box
+                    position={'absolute'}
+                    left="0"
+                    height={'full'}
+                    width="full"
+                    zIndex={'overlay'}
+                >
+                    <Flex
+                        height={'full'}
+                        width="full"
+                        justifyContent={'center'}
+                        alignItems="center"
+                        flexDir={'column'}
+                        gridRowGap="3"
+                    >
+                        <Text
+                            color="white"
+                            fontWeight={'bold'}
+                            fontSize={{ base: '2xl', md: '7xl' }}
+                        >
+                            COMBATFIT
+                        </Text>
+                        <Text color="white" fontSize="lg">
+                            Just a call away
+                        </Text>
+                        <Button colorScheme="primary">React out</Button>
+                    </Flex>
+                </Box>
+                <NextImage
+                    src="/contact.png"
+                    objectFit="cover"
+                    height={isMobileView ? 1000 : 500}
+                    width={1600}
+                    layout="responsive"
+                />
+            </Box>
+
             <Container maxW="4xl">
                 <Flex
                     id="first"
@@ -60,7 +99,7 @@ const ContactUs = () => {
                         h: '100vh',
                     })}
                     flexDirection={{ base: 'column', md: 'row' }}
-                    mt={{ base: '80px' }}
+                    mt={{ base: '20px', md: 0 }}
                 >
                     <Flex
                         flexDirection={'row'}
