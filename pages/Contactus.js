@@ -26,8 +26,10 @@ import { app, database } from '../firebase';
 import axios from 'axios';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import router, { useRouter } from 'next/router';
 
 const ContactUs = () => {
+    const router = useRouter();
     const [isRequestSubmitted, setRequestSubmitted] = React.useState(false);
     const isMobileView = useBreakpointValue({ base: true, md: false });
 
@@ -80,6 +82,22 @@ const ContactUs = () => {
                         </Text>
                         <Button colorScheme="primary">React out</Button>
                     </Flex>
+                    <Box
+                        bgColor={'orange'}
+                        w="full"
+                        height="12"
+                        display={'flex'}
+                        alignItems="center"
+                        px="4"
+                    >
+                        <Text
+                            color="white"
+                            cursor={'pointer'}
+                            onClick={() => router.push('/home')}
+                        >
+                            &lt;Back
+                        </Text>
+                    </Box>
                 </Box>
                 <NextImage
                     src="/contact.png"
