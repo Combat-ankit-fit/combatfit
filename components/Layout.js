@@ -9,6 +9,7 @@ import {
     SimpleGrid,
     Button,
     useBreakpointValue,
+    Divider,
 } from '@chakra-ui/react';
 import Sidebar from './Sidebar';
 import Header from './Header';
@@ -59,7 +60,7 @@ const Layout = ({
                                 w="sm"
                                 h="full"
                                 id="hello"
-                                zIndex={'modal'}
+                                zIndex={'overlay'}
                                 mt="24"
                             >
                                 <Flex flexDirection={'column'} w="xs">
@@ -187,7 +188,7 @@ const Layout = ({
                             return (
                                 <HomepageGridImages
                                     key={item}
-                                    height="200px"
+                                    height="300px"
                                     name={item}
                                     extension="png"
                                     bgColor="brown"
@@ -244,15 +245,35 @@ const Layout = ({
                             w="full"
                             h="inherit"
                             zIndex={'overlay'}
+                            display="flex"
+                            justifyContent={'center'}
+                            alignItems="center"
                         >
                             <Flex
-                                w="inherit"
                                 justifyContent={'center'}
                                 alignItems="center"
+                                flexDirection={'column'}
+                                mt="4"
                             >
-                                <Text color="white" fontWeight={'bold'}>
+                                <Divider
+                                    orientation="horizontal"
+                                    {...(isMobileView && {
+                                        borderColor: 'yellow',
+                                    })}
+                                />
+                                <Text
+                                    color="white"
+                                    fontWeight={'bold'}
+                                    fontSize={{ base: 'xl', md: '6xl' }}
+                                >
                                     Millitary Inspired clothing
                                 </Text>
+                                {isMobileView && (
+                                    <Divider
+                                        orientation="horizontal"
+                                        borderColor={'yellow'}
+                                    />
+                                )}
                             </Flex>
                         </Box>
 
@@ -343,51 +364,146 @@ const Layout = ({
                 {bottomGridImages && !isMobileView && (
                     <SimpleGrid columns={2} w="full" id="grid">
                         <React.Fragment>
-                            <Box p="4">
+                            <Box position={'relative'}>
+                                <Box
+                                    w="full"
+                                    height={'full'}
+                                    position="absolute"
+                                >
+                                    <NextImage
+                                        src="/banner-souviners.png"
+                                        objectFit="cover"
+                                        layout="fill"
+                                    />
+                                </Box>
                                 <Flex
                                     h="full"
                                     justifyContent={'center'}
                                     alignItems="center"
                                     flexDirection={'column'}
+                                    gridRowGap="3"
                                 >
-                                    <Text>Regular Clothing</Text>
-                                    <Text>Beyond Regular</Text>
+                                    <Box
+                                        zIndex="overlay"
+                                        width={'md'}
+                                        display="flex"
+                                        justifyContent={'center'}
+                                        alignItems="center"
+                                        flexDirection={'column'}
+                                        gridRowGap="3"
+                                    >
+                                        <Divider
+                                            orientation="horizontal"
+                                            borderColor={'yellow'}
+                                        />
+                                        <Text
+                                            color="white"
+                                            zIndex="overlay"
+                                            fontWeight={'bold'}
+                                        >
+                                            Regular Clothing
+                                        </Text>
+                                    </Box>
+
+                                    <Text
+                                        zIndex="overlay"
+                                        color="white"
+                                        fontWeight={'bold'}
+                                        fontSize="5xl"
+                                    >
+                                        Beyond
+                                    </Text>
+                                    <Text
+                                        zIndex="overlay"
+                                        color="white"
+                                        fontSize="3xl"
+                                    >
+                                        Regular
+                                    </Text>
                                     <Button colorScheme="primary" color="black">
                                         Explore Now
                                     </Button>
                                 </Flex>
                             </Box>
-                            <Box
-                                position="relative"
-                                overflow={'hidden'}
-                                border="2px solid white"
-                            >
+                            <Box position="relative" overflow={'hidden'}>
                                 <NextImage
                                     src="/banner03.jpg"
                                     width={900}
                                     height={700}
                                 />
                             </Box>
-                            <Box
-                                position="relative"
-                                overflow={'hidden'}
-                                border="2px solid white"
-                            >
+                            <Box position="relative" overflow={'hidden'}>
                                 <NextImage
                                     src="/banner04.jpg"
                                     width={900}
                                     height={700}
                                 />
                             </Box>
-                            <Box p="4">
+                            <Box position={'relative'}>
+                                <Box
+                                    w="full"
+                                    height={'full'}
+                                    position="absolute"
+                                >
+                                    <NextImage
+                                        src="/banner-souviners.png"
+                                        objectFit="cover"
+                                        layout="fill"
+                                    />
+                                </Box>
                                 <Flex
                                     h="full"
                                     justifyContent={'center'}
                                     alignItems="center"
                                     flexDirection={'column'}
+                                    gridRowGap="3"
                                 >
-                                    <Text>Outdoor and Functional Wear</Text>
-                                    <Text>New Way</Text>
+                                    <Box
+                                        zIndex="overlay"
+                                        width={'md'}
+                                        display="flex"
+                                        justifyContent={'center'}
+                                        alignItems="center"
+                                        flexDirection={'column'}
+                                        gridRowGap="3"
+                                    >
+                                        <Divider
+                                            orientation="horizontal"
+                                            borderColor={'yellow'}
+                                        />
+                                        <Text
+                                            zIndex="overlay"
+                                            fontWeight={'bold'}
+                                            color="white"
+                                            fontSize={'3xl'}
+                                        >
+                                            Outdoor and
+                                        </Text>
+                                        <Text
+                                            zIndex="overlay"
+                                            fontWeight={'bold'}
+                                            color="white"
+                                            fontSize={'3xl'}
+                                        >
+                                            Functional Wear
+                                        </Text>
+                                    </Box>
+
+                                    <Text
+                                        zIndex="overlay"
+                                        fontWeight={'bold'}
+                                        color="white"
+                                        fontSize={'5xl'}
+                                    >
+                                        New Way
+                                    </Text>
+                                    <Text
+                                        zIndex="overlay"
+                                        fontSize={'3xl'}
+                                        color="white"
+                                    >
+                                        To go Beyond
+                                    </Text>
                                     <Button colorScheme="primary" color="black">
                                         Explore Now
                                     </Button>
@@ -412,13 +528,23 @@ const Layout = ({
                                 alignItems={'center'}
                                 justifyContent="center"
                             >
-                                <Text
-                                    color="white"
-                                    fontWeight={'bold'}
-                                    fontSize="2xl"
-                                >
-                                    Regular Clothing
-                                </Text>
+                                <Box>
+                                    <Divider
+                                        orientation="horizontal"
+                                        borderColor={'yellow'}
+                                    />
+                                    <Text
+                                        color="white"
+                                        fontWeight={'bold'}
+                                        fontSize="2xl"
+                                    >
+                                        Regular Clothing
+                                    </Text>
+                                    <Divider
+                                        orientation="horizontal"
+                                        borderColor={'yellow'}
+                                    />
+                                </Box>
 
                                 <Text
                                     color="white"
@@ -459,6 +585,29 @@ const Layout = ({
                                 alignItems={'center'}
                                 justifyContent="center"
                             >
+                                <Box
+                                    display={'flex'}
+                                    flexDirection="column"
+                                    alignItems={'center'}
+                                    justifyContent="center"
+                                >
+                                    <Divider
+                                        orientation="horizontal"
+                                        borderColor={'yellow'}
+                                    />
+                                    <Text color="white" fontWeight={'bold'}>
+                                        OUTDOOR AND
+                                    </Text>
+
+                                    <Text color="white" fontWeight={'bold'}>
+                                        FUNCTIONAL WEAR
+                                    </Text>
+                                    <Divider
+                                        orientation="horizontal"
+                                        borderColor={'yellow'}
+                                    />
+                                </Box>
+
                                 <Text color="white" fontWeight={'bold'}>
                                     New way to
                                 </Text>
@@ -482,22 +631,14 @@ const Layout = ({
                 {souvenirs && (
                     <SimpleGrid columns={{ base: 1, md: 2 }} w="full" id="grid">
                         <Box>
-                            <Box
-                                position="relative"
-                                overflow={'hidden'}
-                                border="2px solid white"
-                            >
+                            <Box position="relative" overflow={'hidden'}>
                                 <NextImage
                                     src="/banner05.jpg"
                                     width={900}
                                     height={700}
                                 />
                             </Box>
-                            <Box
-                                position="relative"
-                                overflow={'hidden'}
-                                border="2px solid white"
-                            >
+                            <Box position="relative" overflow={'hidden'}>
                                 <NextImage
                                     src="/banner06.jpg"
                                     width={900}
@@ -506,16 +647,68 @@ const Layout = ({
                             </Box>
                         </Box>
                         {!isMobileView && (
-                            <Box p="4">
+                            <Box position={'relative'}>
+                                <Box
+                                    w="full"
+                                    height={'full'}
+                                    position="absolute"
+                                >
+                                    <NextImage
+                                        src="/banner-souviners.png"
+                                        objectFit="cover"
+                                        layout="fill"
+                                    />
+                                </Box>
                                 <Flex
                                     w="full"
                                     h="full"
                                     justifyContent={'center'}
                                     alignItems="Center"
                                     flexDirection={'column'}
+                                    gridRowGap="5"
                                 >
-                                    <Text>Lifestyle Products</Text>
-                                    <Text>The Military way</Text>
+                                    <Text
+                                        color="white"
+                                        zIndex="overlay"
+                                        fontWeight={'bold'}
+                                        fontSize="4xl"
+                                    >
+                                        Lifestyle
+                                    </Text>
+                                    <Text
+                                        color="white"
+                                        zIndex="overlay"
+                                        fontWeight={'bold'}
+                                        fontSize="5xl"
+                                    >
+                                        Products
+                                    </Text>
+                                    <Box
+                                        zIndex={'overlay'}
+                                        display="flex"
+                                        flexDirection={'column'}
+                                        maxW="md"
+                                        justifyContent={'center'}
+                                        alignContent="center"
+                                    >
+                                        <Text
+                                            color="white"
+                                            zIndex="overlay"
+                                            fontWeight={'bold'}
+                                            fontSize="5xl"
+                                        >
+                                            The Military way
+                                        </Text>
+                                        <Divider borderColor={'white'} />
+                                    </Box>
+
+                                    <Button
+                                        colorScheme="primary"
+                                        color="black"
+                                        width={'xs'}
+                                    >
+                                        Explore Now
+                                    </Button>
                                 </Flex>
                             </Box>
                         )}
@@ -531,11 +724,7 @@ const Layout = ({
                             })}
                             mb="4"
                         >
-                            <Box
-                                position="relative"
-                                overflow={'hidden'}
-                                border="2px solid white"
-                            >
+                            <Box position="relative" overflow={'hidden'}>
                                 <NextImage
                                     src="/banner07.jpg"
                                     width={900}
@@ -543,11 +732,7 @@ const Layout = ({
                                 />
                             </Box>
 
-                            <Box
-                                position="relative"
-                                overflow={'hidden'}
-                                border="2px solid white"
-                            >
+                            <Box position="relative" overflow={'hidden'}>
                                 <NextImage
                                     src="/banner08.jpg"
                                     width={900}
