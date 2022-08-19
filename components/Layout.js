@@ -442,14 +442,14 @@ const Layout = ({
                             <Box position="relative" overflow={'hidden'}>
                                 <NextImage
                                     src="/banner03.jpg"
-                                    width={900}
+                                    width={1200}
                                     height={700}
                                 />
                             </Box>
                             <Box position="relative" overflow={'hidden'}>
                                 <NextImage
                                     src="/banner04.jpg"
-                                    width={900}
+                                    width={1200}
                                     height={700}
                                 />
                             </Box>
@@ -648,14 +648,14 @@ const Layout = ({
                             <Box position="relative" overflow={'hidden'}>
                                 <NextImage
                                     src="/banner05.jpg"
-                                    width={900}
+                                    width={1200}
                                     height={700}
                                 />
                             </Box>
                             <Box position="relative" overflow={'hidden'}>
                                 <NextImage
                                     src="/banner06.jpg"
-                                    width={900}
+                                    width={1200}
                                     height={700}
                                 />
                             </Box>
@@ -741,7 +741,7 @@ const Layout = ({
                             <Box position="relative" overflow={'hidden'}>
                                 <NextImage
                                     src="/banner07.jpg"
-                                    width={900}
+                                    width={1200}
                                     height={800}
                                 />
                             </Box>
@@ -749,7 +749,7 @@ const Layout = ({
                             <Box position="relative" overflow={'hidden'}>
                                 <NextImage
                                     src="/banner08.jpg"
-                                    width={900}
+                                    width={1200}
                                     height={800}
                                 />
                             </Box>
