@@ -11,7 +11,7 @@ import {
 const SliderControl = ({ label, name }) => {
     return (
         <FormControl>
-            <FormLabel>{label}</FormLabel>
+            <FormLabel color="white">{label}</FormLabel>
             <Slider id={name} colorScheme="orange">
                 <SliderTrack height="6px">
                     <SliderFilledTrack />
