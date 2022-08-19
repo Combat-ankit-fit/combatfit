@@ -34,7 +34,7 @@ const Layout = ({
     homepage = false,
 }) => {
     const router = useRouter();
-    console.log('Path is:-', router.pathname);
+
     const isMobileView = useBreakpointValue({ base: true, md: false });
     return (
         <Box id="layout" display={'flex'} minH={homepage ? '300vh' : '100vh'}>
