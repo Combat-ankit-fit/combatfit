@@ -80,9 +80,6 @@ const Header = () => {
                                 borderRadius: '0px',
                             }}
                         />
-                        <InputRightElement
-                            children={<SearchIcon color="black" />}
-                        />
                     </InputGroup>
                 </Flex>
             </Flex>
