@@ -33,7 +33,7 @@ const MobileDrawer = ({ breadCrumbsPath }) => {
         'Customized clothings',
     ];
     const souvenirs = [
-        { item: 'Coffee Mugs', path: '/' },
+        { item: 'Coffee Mugs', path: '/coffee-mugs' },
         { item: 'Beer Mugs', path: '/beer' },
         { item: 'Whisky Glasses', path: '/' },
         { item: 'Posters', path: '/' },

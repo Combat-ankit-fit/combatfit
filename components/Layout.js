@@ -670,7 +670,13 @@ const Layout = ({
                                     height={700}
                                 />
                             </Box>
-                            <Box position="relative" overflow={'hidden'}>
+                            <Box
+                                position="relative"
+                                overflow={'hidden'}
+                                onClick={() => {
+                                    router.push('/items/coffee-mugs');
+                                }}
+                            >
                                 <NextImage
                                     src="/banner06.jpg"
                                     width={1200}
@@ -756,7 +762,14 @@ const Layout = ({
                             })}
                             mb="4"
                         >
-                            <Box position="relative" overflow={'hidden'}>
+                            <Box
+                                position="relative"
+                                overflow={'hidden'}
+                                cursor="pointer"
+                                onClick={() => {
+                                    router.push('/items/coffee-mugs');
+                                }}
+                            >
                                 <NextImage
                                     src="/banner07.jpg"
                                     width={1200}
@@ -822,6 +835,9 @@ const Layout = ({
                                     '&>span': {
                                         border: '2px solid white !important',
                                     },
+                                }}
+                                onClick={() => {
+                                    router.push('/items/coffee-mugs');
                                 }}
                             >
                                 <NextImage

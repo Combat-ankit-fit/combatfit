@@ -10,11 +10,23 @@ import {
     useBreakpointValue,
 } from '@chakra-ui/react';
 import { beerMugs } from '../../utils/beer';
-import MobileDrawer from '../../components/MobileDrawer';
+import { coffeeMugs } from '../../utils/mugs';
 
 const Item = () => {
     const isMobileView = useBreakpointValue({ base: true, md: false });
     const router = useRouter();
+
+    const queryParam = router?.query?.item;
+
+    let data;
+
+    if (queryParam === 'beer') {
+        data = [...beerMugs];
+    }
+
+    if (queryParam === 'coffee-mugs') {
+        data = [...coffeeMugs];
+    }
 
     const itemName =
         router?.query?.item?.charAt(0).toUpperCase() +
@@ -35,7 +47,7 @@ const Item = () => {
                 mb="16"
                 w="full"
             >
-                {beerMugs.map((item, i) => {
+                {data?.map((item, i) => {
                     return (
                         <GenericItemCard
                             key={i}
