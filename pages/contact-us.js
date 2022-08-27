@@ -131,7 +131,10 @@ const ContactUs = () => {
                                 <Box p="2" px="4">
                                     {clothingItems?.map((clothingItem) => {
                                         return (
-                                            <ListItem color={'white'}>
+                                            <ListItem
+                                                color={'white'}
+                                                key={clothingItem}
+                                            >
                                                 <ListIcon
                                                     as={ChevronRightIcon}
                                                     color="white"
@@ -149,7 +152,10 @@ const ContactUs = () => {
                                 <Box py="2" px="4">
                                     {souvenirs?.map((souvenir) => {
                                         return (
-                                            <ListItem color={'white'}>
+                                            <ListItem
+                                                color={'white'}
+                                                key={souvenir}
+                                            >
                                                 <ListIcon
                                                     as={ChevronRightIcon}
                                                     color="white"
