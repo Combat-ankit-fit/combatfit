@@ -1,6 +1,3 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
 import {
     Text,
     Grid,
@@ -14,6 +11,12 @@ import {
     FormLabel,
     Container,
     useBreakpointValue,
+    useDisclosure,
+    List,
+    ListItem,
+    ListIcon,
+    OrderedList,
+    UnorderedList,
 } from '@chakra-ui/react';
 import Layout from '../components/Layout';
 import ItemCard from '../components/ItemCard';
@@ -22,16 +25,34 @@ import * as Yup from 'yup';
 import { InputControl, FormControl, TextAreaControl } from '../exporter';
 import NextImage from 'next/image';
 import React from 'react';
-import { app, database } from '../firebase';
+
 import axios from 'axios';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import router, { useRouter } from 'next/router';
+import { HamburgerIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons';
 
 const ContactUs = () => {
     const router = useRouter();
     const [isRequestSubmitted, setRequestSubmitted] = React.useState(false);
     const isMobileView = useBreakpointValue({ base: true, md: false });
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const clothingItems = [
+        'Tshirts',
+        'Shirts',
+        'Sweatshirts',
+        'Trousers',
+        'Shorts',
+        'Customized clothings',
+    ];
+    const souvenirs = [
+        'Coffee Mugs',
+        'Beer Mugs',
+        'Whisky Glasses',
+        'Posters',
+        'Keyrings',
+        'Notepad',
+    ];
 
     const submitHandler = async (values) => {
         setRequestSubmitted(true);
@@ -60,6 +81,100 @@ const ContactUs = () => {
                     mb: '16',
                 })}
             >
+                {isMobileView && (
+                    <Box p="4" position={'absolute'} id="icon" zIndex={'modal'}>
+                        {!isOpen && (
+                            <HamburgerIcon
+                                color={'white'}
+                                boxSize={6}
+                                onClick={() => {
+                                    isOpen ? onClose() : onOpen();
+                                }}
+                            />
+                        )}
+                    </Box>
+                )}
+                {isOpen && (
+                    <Box
+                        w="full"
+                        as="nav"
+                        position={'fixed'}
+                        overflow="hidden"
+                        zIndex={'modal'}
+                        bgColor="#343434"
+                        h={isOpen ? 'full' : '0px'}
+                        p="4"
+                        display={'flex'}
+                        flexDirection="column"
+                    >
+                        <CloseIcon
+                            color="white"
+                            boxSize={5}
+                            onClick={() => {
+                                isOpen ? onClose() : onOpen();
+                            }}
+                        />
+
+                        <Box py="4" display={'flex'}>
+                            <Text
+                                color="white"
+                                onClick={() => {
+                                    router.push('/');
+                                }}
+                            >
+                                Home
+                            </Text>
+                        </Box>
+                        <Box pb="4" display={'flex'} flexDirection="column">
+                            <Text color="white">Clothing</Text>
+                            <List spacing={3}>
+                                <Box p="2" px="4">
+                                    {clothingItems?.map((clothingItem) => {
+                                        return (
+                                            <ListItem color={'white'}>
+                                                <ListIcon
+                                                    as={ChevronRightIcon}
+                                                    color="white"
+                                                />
+                                                {clothingItem}
+                                            </ListItem>
+                                        );
+                                    })}
+                                </Box>
+                            </List>
+                        </Box>
+                        <Box pb="4" display={'flex'} flexDirection="column">
+                            <Text color="white">Souviners</Text>
+                            <List spacing={3}>
+                                <Box py="2" px="4">
+                                    {souvenirs?.map((souvenir) => {
+                                        return (
+                                            <ListItem color={'white'}>
+                                                <ListIcon
+                                                    as={ChevronRightIcon}
+                                                    color="white"
+                                                />
+                                                {souvenir}
+                                            </ListItem>
+                                        );
+                                    })}
+                                </Box>
+                            </List>
+                        </Box>
+                        <Box pb="4" display={'flex'}>
+                            <Text color="white">Services</Text>
+                        </Box>
+                        <Box pb="4" display={'flex'}>
+                            <Text color="white">Military Stories</Text>
+                        </Box>
+                        <Box pb="4" display={'flex'}>
+                            <Text color="white">Vision</Text>
+                        </Box>
+                        <Box pb="4" display={'flex'}>
+                            <Text color="white">ContactUs</Text>
+                        </Box>
+                    </Box>
+                )}
                 <Box
                     position={'absolute'}
                     left="0"
@@ -85,7 +200,7 @@ const ContactUs = () => {
                         <Text color="white" fontSize="lg">
                             Just a call away
                         </Text>
-                        <Button colorScheme="primary">React out</Button>
+                        <Button colorScheme="primary">Reach out</Button>
                     </Flex>
                     <Box
                         bgColor={'orange'}

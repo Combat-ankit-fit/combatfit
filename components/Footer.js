@@ -23,7 +23,7 @@ const Footer = () => {
                     colorScheme="primary"
                     color="black"
                     onClick={() => {
-                        router.push('/Contactus');
+                        router.push('/contact-us');
                     }}
                 >
                     Contact us
