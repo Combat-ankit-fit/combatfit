@@ -22,7 +22,7 @@ const WhiteLink = styled.a`
     color: white;
 `;
 
-const Header = () => {
+const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
     const isMobileView = useBreakpointValue({ base: true, md: false });
     const router = useRouter();
     return (
@@ -33,12 +33,14 @@ const Header = () => {
             position={'fixed'}
             maxH="60px"
             zIndex={'modal'}
+            px="0"
         >
             <Flex
                 flexDirection={'row'}
                 justifyContent="space-between"
                 h="full"
                 alignItems={'center'}
+                px="4"
             >
                 <Box
                     onClick={() => {
@@ -83,6 +85,33 @@ const Header = () => {
                     </InputGroup>
                 </Flex>
             </Flex>
+            {breadCrumbsRequired && (
+                <Box
+                    id="part"
+                    height={'40px'}
+                    bgColor="orange"
+                    w="full"
+                    display={'flex'}
+                    px="4"
+                    alignItems={'center'}
+                >
+                    <Text
+                        color="white"
+                        onClick={() => {
+                            router.push('/');
+                        }}
+                        sx={{
+                            _hover: {
+                                textDecoration: 'underline',
+                                cursor: 'pointer',
+                            },
+                        }}
+                    >
+                        Home
+                    </Text>
+                    <Text color="white">&gt; {breadCrumbsPath}</Text>
+                </Box>
+            )}
         </Container>
     );
 };

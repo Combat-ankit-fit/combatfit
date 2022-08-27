@@ -20,6 +20,7 @@ import ItemCard from '../components/ItemCard';
 import HomepageGridImages from '../components/HomepageGridImages';
 import Footer1 from './Footer1';
 import router, { useRouter } from 'next/router';
+import MobileDrawer from './MobileDrawer';
 
 const Layout = ({
     children,
@@ -32,13 +33,24 @@ const Layout = ({
     souvenirs = false,
     mugs = false,
     homepage = false,
+    maxW = '4xl',
+    breadCrumbsRequired = false,
+    breadCrumbsPath = '',
 }) => {
     const router = useRouter();
 
     const isMobileView = useBreakpointValue({ base: true, md: false });
     return (
         <Box id="layout" display={'flex'} minH={homepage ? '300vh' : '100vh'}>
-            {!isMobileView && <Header />}
+            {!isMobileView && (
+                <Header
+                    breadCrumbsRequired={breadCrumbsRequired}
+                    breadCrumbsPath={breadCrumbsPath}
+                />
+            )}
+            {isMobileView && router.pathname !== '/' && (
+                <MobileDrawer breadCrumbsPath={breadCrumbsPath} />
+            )}
 
             {sidebarRequired && <Sidebar />}
 
@@ -644,8 +656,14 @@ const Layout = ({
                 )}
                 {souvenirs && (
                     <SimpleGrid columns={{ base: 1, md: 2 }} w="full" id="grid">
-                        <Box>
-                            <Box position="relative" overflow={'hidden'}>
+                        <Box cursor={'pointer'}>
+                            <Box
+                                position="relative"
+                                overflow={'hidden'}
+                                onClick={() => {
+                                    router.push('/items/beer');
+                                }}
+                            >
                                 <NextImage
                                     src="/banner05.jpg"
                                     width={1200}
@@ -746,7 +764,14 @@ const Layout = ({
                                 />
                             </Box>
 
-                            <Box position="relative" overflow={'hidden'}>
+                            <Box
+                                position="relative"
+                                overflow={'hidden'}
+                                cursor="pointer"
+                                onClick={() => {
+                                    router.push('/items/beer');
+                                }}
+                            >
                                 <NextImage
                                     src="/banner08.jpg"
                                     width={1200}
@@ -776,6 +801,9 @@ const Layout = ({
                                     '&>span': {
                                         border: '2px solid white !important',
                                     },
+                                }}
+                                onClick={() => {
+                                    router.push('/items/beer');
                                 }}
                             >
                                 <NextImage
@@ -815,12 +843,12 @@ const Layout = ({
 
                 <Container
                     pos={'relative'}
-                    maxW="4xl"
+                    maxW={maxW}
                     px="0"
                     flex="1"
                     id="main__container"
                     {...(!homepage && {
-                        mt: 12,
+                        mt: 24,
                         p: 6,
                     })}
                 >

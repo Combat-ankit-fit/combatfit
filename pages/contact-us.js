@@ -46,12 +46,12 @@ const ContactUs = () => {
         'Customized clothings',
     ];
     const souvenirs = [
-        'Coffee Mugs',
-        'Beer Mugs',
-        'Whisky Glasses',
-        'Posters',
-        'Keyrings',
-        'Notepad',
+        { item: 'Coffee Mugs', path: '/' },
+        { item: 'Beer Mugs', path: '/beer' },
+        { item: 'Whisky Glasses', path: '/' },
+        { item: 'Posters', path: '/' },
+        { item: 'Keyrings', path: '/' },
+        { item: 'Notepad', path: '/' },
     ];
 
     const submitHandler = async (values) => {
@@ -154,13 +154,19 @@ const ContactUs = () => {
                                         return (
                                             <ListItem
                                                 color={'white'}
-                                                key={souvenir}
+                                                key={souvenir?.item}
+                                                onClick={() => {
+                                                    onClose();
+                                                    router.push(
+                                                        `/items/${souvenir?.path}`
+                                                    );
+                                                }}
                                             >
                                                 <ListIcon
                                                     as={ChevronRightIcon}
                                                     color="white"
                                                 />
-                                                {souvenir}
+                                                {souvenir.item}
                                             </ListItem>
                                         );
                                     })}
