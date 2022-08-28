@@ -25,12 +25,12 @@ import router, { useRouter } from 'next/router';
 const MobileDrawer = ({ breadCrumbsPath }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const clothingItems = [
-        'Tshirts',
-        'Shirts',
-        'Sweatshirts',
-        'Trousers',
-        'Shorts',
-        'Customized clothings',
+        { item: 'Tshirts', path: '/' },
+        { item: 'Shirts', path: '/' },
+        { item: 'Sweatshirts', path: '/' },
+        { item: 'Trousers', path: '/trousers' },
+        { item: 'Shorts', path: '/' },
+        { item: 'Customized clothings', path: '/' },
     ];
     const souvenirs = [
         { item: 'Coffee Mugs', path: '/coffee-mugs' },
@@ -115,12 +115,18 @@ const MobileDrawer = ({ breadCrumbsPath }) => {
                                         <ListItem
                                             color={'white'}
                                             key={clothingItem}
+                                            onClick={() => {
+                                                onClose();
+                                                router.push(
+                                                    `/items/${clothingItem?.path}`
+                                                );
+                                            }}
                                         >
                                             <ListIcon
                                                 as={ChevronRightIcon}
                                                 color="white"
                                             />
-                                            {clothingItem}
+                                            {clothingItem?.item}
                                         </ListItem>
                                     );
                                 })}

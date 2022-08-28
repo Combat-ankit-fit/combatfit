@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { beerMugs } from '../../utils/beer';
 import { coffeeMugs } from '../../utils/mugs';
+import { trousers } from '../../utils/trousers';
 
 const Item = () => {
     const isMobileView = useBreakpointValue({ base: true, md: false });
@@ -26,6 +27,10 @@ const Item = () => {
 
     if (queryParam === 'coffee-mugs') {
         data = [...coffeeMugs];
+    }
+
+    if (queryParam === 'trousers') {
+        data = [...trousers];
     }
 
     const itemName =

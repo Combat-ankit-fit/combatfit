@@ -458,7 +458,14 @@ const Layout = ({
                                     height={700}
                                 />
                             </Box>
-                            <Box position="relative" overflow={'hidden'}>
+                            <Box
+                                position="relative"
+                                overflow={'hidden'}
+                                onClick={() => {
+                                    router.push('/items/trousers');
+                                }}
+                                cursor="pointer"
+                            >
                                 <NextImage
                                     src="/banner04.jpg"
                                     width={1200}
@@ -641,7 +648,13 @@ const Layout = ({
                                     Go Beyond
                                 </Text>
 
-                                <Button colorScheme="primary" color="black">
+                                <Button
+                                    colorScheme="primary"
+                                    color="black"
+                                    onClick={() => {
+                                        router.push('/items/trousers');
+                                    }}
+                                >
                                     Explore Now
                                 </Button>
                             </Flex>

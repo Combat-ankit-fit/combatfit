@@ -18,6 +18,11 @@ const ItemCard = (props) => {
                         router.push('/items/coffee-mugs');
                     },
                 })}
+                {...(itemName === 2 && {
+                    onClick: () => {
+                        router.push('/items/trousers');
+                    },
+                })}
                 {...props}
             >
                 <NextImage src={`/${itemName}.${extension}`} layout="fill" />
