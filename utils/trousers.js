@@ -5,6 +5,7 @@ export const trousers = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        color: 'Olive Green',
     },
     {
         name: 'CF-TAC-CT02-01',
@@ -12,5 +13,6 @@ export const trousers = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        color: 'Grey',
     },
 ];

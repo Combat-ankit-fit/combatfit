@@ -35,6 +35,10 @@ const Layout = ({
     homepage = false,
     maxW = '4xl',
     breadCrumbsRequired = false,
+    presentItem = '',
+    getItemsOnFitBasis,
+    getItemsOnSizeBasis,
+    getItemsOnColorBasis,
     breadCrumbsPath = '',
 }) => {
     const router = useRouter();
@@ -52,7 +56,14 @@ const Layout = ({
                 <MobileDrawer breadCrumbsPath={breadCrumbsPath} />
             )}
 
-            {sidebarRequired && <Sidebar />}
+            {sidebarRequired && (
+                <Sidebar
+                    presentItem={presentItem}
+                    getItemsOnFitBasis={getItemsOnFitBasis}
+                    getItemsOnSizeBasis={getItemsOnSizeBasis}
+                    getItemsOnColorBasis={getItemsOnColorBasis}
+                />
+            )}
 
             {router.pathname === '/' && (
                 <Box w="full" height={'full'} position="absolute">

@@ -3,7 +3,6 @@ import {
     Flex,
     List,
     Text,
-    Slider,
     Divider,
     MenuList,
     MenuItem,
@@ -12,12 +11,26 @@ import {
     Radio,
     RadioGroup,
     Stack,
+    FormControl,
+    FormLabel,
+    Slider,
+    SliderTrack,
+    SliderFilledTrack,
+    SliderMark,
+    SliderThumb,
 } from '@chakra-ui/react';
+
 import SliderControl from './SliderControl';
 import React from 'react';
 import { ArrowDownIcon } from '@chakra-ui/icon';
+import { trousers } from '../utils/trousers';
 
-const DesktopDrawer = () => {
+const DesktopDrawer = ({
+    presentItem,
+    getItemsOnFitBasis,
+    getItemsOnSizeBasis,
+    getItemsOnColorBasis,
+}) => {
     const sizeItems = ['small', 'Medium', 'Large', 'XL', 'XXL'];
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const [selectSize, setSelectedSize] = React.useState('');
@@ -37,6 +50,7 @@ const DesktopDrawer = () => {
     const [selectSleeves, setSelectSleeves] = React.useState(false);
     const [selectNeck, setselectNeck] = React.useState(false);
     const [selectAvailability, setSelectAvailability] = React.useState(false);
+    const [sliderAmout, setSliderAmount] = React.useState(50);
     const items = [...Array(40)];
 
     return (
@@ -65,6 +79,9 @@ const DesktopDrawer = () => {
                     <RadioGroup
                         onChange={(size) => {
                             setSelectedSize(size);
+                            setSelectedFit('');
+                            setSelectedColor('');
+                            getItemsOnSizeBasis(size);
                         }}
                         value={selectSize}
                     >
@@ -90,8 +107,11 @@ const DesktopDrawer = () => {
                         Fit
                     </Text>
                     <RadioGroup
-                        onChange={(size) => {
-                            setSelectedFit(size);
+                        onChange={(fit) => {
+                            setSelectedFit(fit);
+                            setSelectedColor('');
+                            setSelectedSize('');
+                            getItemsOnFitBasis(fit);
                         }}
                         value={selectedFit}
                     >
@@ -117,8 +137,11 @@ const DesktopDrawer = () => {
                         Color
                     </Text>
                     <RadioGroup
-                        onChange={(size) => {
-                            setSelectedColor(size);
+                        onChange={(color) => {
+                            setSelectedColor(color);
+                            setSelectedFit('');
+                            setSelectedSize('');
+                            getItemsOnColorBasis(color);
                         }}
                         value={selectColor}
                     >
