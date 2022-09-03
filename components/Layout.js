@@ -21,6 +21,8 @@ import HomepageGridImages from '../components/HomepageGridImages';
 import Footer1 from './Footer1';
 import router, { useRouter } from 'next/router';
 import MobileDrawer from './MobileDrawer';
+import { ItemContext } from '../context/ItemProvider';
+import GenericItemCard from '../components/GenericItemCard';
 
 const Layout = ({
     children,
@@ -36,12 +38,13 @@ const Layout = ({
     maxW = '4xl',
     breadCrumbsRequired = false,
     presentItem = '',
-    getItemsOnFitBasis,
-    getItemsOnSizeBasis,
-    getItemsOnColorBasis,
+
+    recurringItems = false,
     breadCrumbsPath = '',
 }) => {
     const router = useRouter();
+    const ItemsFuncContext = React.useContext(ItemContext);
+    const { name = '', selectedItems = [] } = ItemsFuncContext;
 
     const isMobileView = useBreakpointValue({ base: true, md: false });
     return (
@@ -56,14 +59,7 @@ const Layout = ({
                 <MobileDrawer breadCrumbsPath={breadCrumbsPath} />
             )}
 
-            {sidebarRequired && (
-                <Sidebar
-                    presentItem={presentItem}
-                    getItemsOnFitBasis={getItemsOnFitBasis}
-                    getItemsOnSizeBasis={getItemsOnSizeBasis}
-                    getItemsOnColorBasis={getItemsOnColorBasis}
-                />
-            )}
+            {sidebarRequired && <Sidebar presentItem={presentItem} />}
 
             {router.pathname === '/' && (
                 <Box w="full" height={'full'} position="absolute">
@@ -894,6 +890,31 @@ const Layout = ({
                 >
                     {homepage && (
                         <NextImage src="/banner-souviners.png" layout="fill" />
+                    )}
+                    {recurringItems && (
+                        <Grid
+                            templateColumns={
+                                isMobileView
+                                    ? 'repeat(3, 1fr)'
+                                    : 'repeat(4, 1fr)'
+                            }
+                            gap={3}
+                            mb="16"
+                            w="full"
+                        >
+                            {selectedItems?.map((item, i) => {
+                                return (
+                                    <GenericItemCard
+                                        key={i}
+                                        height={
+                                            isMobileView ? '125px' : '320px'
+                                        }
+                                        info={item}
+                                        extension="jpg"
+                                    />
+                                );
+                            })}
+                        </Grid>
                     )}
                     {children}
                 </Container>
