@@ -68,14 +68,6 @@ const ItemProvider = ({ children }) => {
         }
     };
 
-    const contextValue = {
-        getItemsOnFitBasis: getItemsOnFitBasis,
-        getItemsOnSizeBasis: getItemsOnSizeBasis,
-        getItemsOnColorBasis: getItemsOnColorBasis,
-        selectedItems: selectedItems,
-        itemName: itemName,
-    };
-
     return (
         <ItemContext.Provider
             value={{
