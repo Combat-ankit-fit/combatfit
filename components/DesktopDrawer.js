@@ -24,13 +24,9 @@ import SliderControl from './SliderControl';
 import React from 'react';
 import { ArrowDownIcon } from '@chakra-ui/icon';
 import { trousers } from '../utils/trousers';
+import { ItemContext } from '../context/ItemProvider';
 
-const DesktopDrawer = ({
-    presentItem,
-    getItemsOnFitBasis,
-    getItemsOnSizeBasis,
-    getItemsOnColorBasis,
-}) => {
+const DesktopDrawer = ({ presentItem }) => {
     const sizeItems = ['small', 'Medium', 'Large', 'XL', 'XXL'];
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const [selectSize, setSelectedSize] = React.useState('');
@@ -52,6 +48,15 @@ const DesktopDrawer = ({
     const [selectAvailability, setSelectAvailability] = React.useState(false);
     const [sliderAmout, setSliderAmount] = React.useState(50);
     const items = [...Array(40)];
+
+    const ItemsFuncContext = React.useContext(ItemContext);
+    const {
+        name = '',
+        selectedItems = [],
+        getItemsOnFitBasis,
+        getItemsOnSizeBasis,
+        getItemsOnColorBasis,
+    } = ItemsFuncContext;
 
     return (
         <Box
