@@ -189,7 +189,14 @@ const ContactUs = () => {
                             <Text color="white">Vision</Text>
                         </Box>
                         <Box pb="4" display={'flex'}>
-                            <Text color="white">ContactUs</Text>
+                            <Text
+                                color="white"
+                                onClick={() => {
+                                    isOpen ? onClose() : onOpen();
+                                }}
+                            >
+                                ContactUs
+                            </Text>
                         </Box>
                     </Box>
                 )}

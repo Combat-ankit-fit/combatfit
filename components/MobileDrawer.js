@@ -170,7 +170,14 @@ const MobileDrawer = ({ breadCrumbsPath }) => {
                         <Text color="white">Vision</Text>
                     </Box>
                     <Box pb="4" display={'flex'}>
-                        <Text color="white">ContactUs</Text>
+                        <Text
+                            color="white"
+                            onClick={() => {
+                                router.push('/contact-us');
+                            }}
+                        >
+                            ContactUs
+                        </Text>
                     </Box>
                 </Box>
             )}
