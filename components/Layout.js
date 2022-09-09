@@ -132,6 +132,9 @@ const Layout = ({
                                         color="black"
                                         width={'xs'}
                                         mb="4"
+                                        onClick={() => {
+                                            router.push('/items/tshirts');
+                                        }}
                                     >
                                         Explore Now
                                     </Button>

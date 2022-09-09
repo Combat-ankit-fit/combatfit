@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { trousers } from '../utils/trousers';
 import { beerMugs } from '../utils/beer';
 import { coffeeMugs } from '../utils/mugs';
+import { tshirts } from '../utils/tshirts';
 
 export const ItemContext = React.createContext({
     getItemsOnFitBasis: () => {},
@@ -33,6 +34,9 @@ const ItemProvider = ({ children }) => {
         if (queryParam === 'trousers') {
             setSelectedItems([...trousers]);
         }
+        if (queryParam === 'tshirts') {
+            setSelectedItems([...tshirts]);
+        }
     }, [queryParam]);
 
     const getItemsOnFitBasis = (fitType) => {
@@ -44,11 +48,27 @@ const ItemProvider = ({ children }) => {
             setSelectedItems([...particularFitItems]);
             return;
         }
+        if (queryParam === 'tshirts') {
+            const allItems = [...tshirts];
+            const particularFitItems = allItems?.filter(
+                (val) => val?.fit === fitType.toLowerCase()
+            );
+            setSelectedItems([...particularFitItems]);
+            return;
+        }
     };
 
     const getItemsOnSizeBasis = (size) => {
         if (queryParam === 'trousers') {
             const allItems = [...trousers];
+            const particularSizeItems = allItems?.filter(
+                (val) => val?.size === size
+            );
+
+            setSelectedItems([...particularSizeItems]);
+        }
+        if (queryParam === 'tshirts') {
+            const allItems = [...tshirts];
             const particularSizeItems = allItems?.filter(
                 (val) => val?.size === size
             );
