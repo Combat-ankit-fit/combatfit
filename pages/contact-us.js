@@ -44,6 +44,7 @@ const ContactUs = () => {
         { item: 'Trousers', path: '/trousers' },
         { item: 'Shorts', path: '/' },
         { item: 'Customized clothings', path: '/' },
+        { item: 'Casual Tshirts', path: '/casual-tshirts' },
     ];
     const souvenirs = [
         { item: 'Coffee Mugs', path: '/coffee-mugs' },
