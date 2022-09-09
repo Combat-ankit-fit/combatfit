@@ -25,7 +25,7 @@ import router, { useRouter } from 'next/router';
 const MobileDrawer = ({ breadCrumbsPath }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const clothingItems = [
-        { item: 'Tshirts', path: '/' },
+        { item: 'Tshirts', path: '/tshirts' },
         { item: 'Shirts', path: '/' },
         { item: 'Sweatshirts', path: '/' },
         { item: 'Trousers', path: '/trousers' },

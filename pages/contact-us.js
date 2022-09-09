@@ -38,7 +38,7 @@ const ContactUs = () => {
     const isMobileView = useBreakpointValue({ base: true, md: false });
     const { isOpen, onOpen, onClose } = useDisclosure();
     const clothingItems = [
-        { item: 'Tshirts', path: '/' },
+        { item: 'Tshirts', path: '/tshirts' },
         { item: 'Shirts', path: '/' },
         { item: 'Sweatshirts', path: '/' },
         { item: 'Trousers', path: '/trousers' },

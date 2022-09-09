@@ -25,7 +25,7 @@ const ItemCard = (props) => {
                 })}
                 {...(itemName === 1 && {
                     onClick: () => {
-                        router.push('/items/tshirts');
+                        router.push('/items/casual-tshirts');
                     },
                 })}
                 {...props}

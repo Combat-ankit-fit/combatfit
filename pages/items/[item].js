@@ -24,6 +24,7 @@ const Item = () => {
     const isSideBarRequired = () => {
         if (queryParam === 'trousers') return true;
         if (queryParam === 'tshirts') return true;
+        if (queryParam === 'casual-tshirts') return true;
         if (queryParam === 'beer') return false;
         if (queryParam === 'coffee-mugs') return false;
     };

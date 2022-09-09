@@ -197,6 +197,9 @@ const Layout = ({
                                         colorScheme="primary"
                                         color="black"
                                         maxW={'min-content'}
+                                        onClick={() => {
+                                            router.push('/items/tshirts');
+                                        }}
                                     >
                                         Explore Now
                                     </Button>
