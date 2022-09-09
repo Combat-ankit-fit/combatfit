@@ -17,6 +17,7 @@ import {
     ListIcon,
     OrderedList,
     UnorderedList,
+    VStack,
 } from '@chakra-ui/react';
 import Layout from '../components/Layout';
 import ItemCard from '../components/ItemCard';
@@ -31,6 +32,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import router, { useRouter } from 'next/router';
 import { HamburgerIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { Image } from '@chakra-ui/react';
 
 const ContactUs = () => {
     const router = useRouter();
@@ -186,20 +188,14 @@ const ContactUs = () => {
                             <Text color="white">Military Stories</Text>
                         </Box>
                         <Box pb="4" display={'flex'}>
-                            <Text
-                                color="white"
-                                onClick={() => {
-                                    router.push('/vision');
-                                }}
-                            >
-                                Vision
-                            </Text>
+                            <Text color="white">Vision</Text>
                         </Box>
                         <Box pb="4" display={'flex'}>
                             <Text
                                 color="white"
                                 onClick={() => {
                                     isOpen ? onClose() : onOpen();
+                                    router.push('/contact-us');
                                 }}
                             >
                                 ContactUs
@@ -227,188 +223,150 @@ const ContactUs = () => {
                             fontWeight={'bold'}
                             fontSize={{ base: '2xl', md: '7xl' }}
                         >
-                            COMBATFIT
+                            VISION
                         </Text>
-                        <Text color="white" fontSize="lg">
-                            Just a call away
-                        </Text>
-                        <Button colorScheme="primary">Reach out</Button>
-                    </Flex>
-                    <Box
-                        bgColor={'orange'}
-                        w="full"
-                        height="12"
-                        display={'flex'}
-                        alignItems="center"
-                        px="4"
-                    >
                         <Text
                             color="white"
-                            cursor={'pointer'}
-                            onClick={() => router.push('/home')}
+                            fontSize={{ base: '2xl', md: '5xl' }}
                         >
-                            &lt;Back
+                            COMBATFIT
                         </Text>
-                    </Box>
+                        <Text
+                            color="white"
+                            fontSize={{ base: '2xl', md: '5xl' }}
+                        >
+                            Fitness for life
+                        </Text>
+                    </Flex>
                 </Box>
-                <NextImage
-                    src="/contact.png"
-                    objectFit="cover"
-                    height={isMobileView ? 1000 : 500}
-                    width={1600}
-                    layout="responsive"
-                />
+                <Box id="hello">
+                    <NextImage
+                        src="/vision-banner.jpg"
+                        objectFit="cover"
+                        height={isMobileView ? 1000 : 1000}
+                        width={1600}
+                        layout="responsive"
+                    />
+                </Box>
             </Box>
 
-            <Container maxW="4xl">
+            <Container maxW="4xl" mt="5">
                 <Flex
                     id="first"
                     justifyContent={'center'}
-                    alignItems="center"
                     {...(!isMobileView && {
                         h: '100vh',
                     })}
-                    flexDirection={{ base: 'column', md: 'row' }}
+                    {...(isMobileView && {
+                        h: '150vh',
+                    })}
                     mt={{ base: '20px', md: 0 }}
                 >
-                    <Flex
-                        flexDirection={'row'}
-                        w={{ base: 'full', md: '40%' }}
-                        {...(isRequestSubmitted && {
-                            alignItems: 'center',
-                        })}
-                    >
-                        <Formik
-                            initialValues={{
-                                firstname: '',
-                                lastname: '',
-                                phonenumber: '',
-                                email: '',
-                                description: '',
-                            }}
-                            validationSchema={Yup.object().shape({
-                                firstname: Yup.string().required(
-                                    'This field is required'
-                                ),
-                                lastname: Yup.string().required(
-                                    'This field is required'
-                                ),
-                                phonenumber: Yup.string().required(
-                                    'This field is required'
-                                ),
-                                email: Yup.string()
-                                    .email('Invalid email')
-                                    .required('Required'),
-                                description: Yup.string().required(
-                                    'This field is required'
-                                ),
-                            })}
-                            onSubmit={submitHandler}
-                            enableReinitialize
-                        >
-                            {(formikProps) => {
-                                return !isRequestSubmitted ? (
-                                    <Form style={{ width: '100%' }}>
-                                        <Flex
-                                            flexDirection={'column'}
-                                            gridRowGap="8"
-                                        >
-                                            <Flex
-                                                gridColumnGap={'4'}
-                                                flexDirection={{
-                                                    base: 'column',
-                                                    md: 'row',
-                                                }}
-                                            >
-                                                <InputControl
-                                                    name="firstname"
-                                                    label="First Name"
-                                                />
-
-                                                <InputControl
-                                                    name="lastname"
-                                                    label="Last Name"
-                                                />
-                                            </Flex>
-                                            <Flex
-                                                gridColumnGap={'4'}
-                                                flexDirection={{
-                                                    base: 'column',
-                                                    md: 'row',
-                                                }}
-                                            >
-                                                <InputControl
-                                                    name="phonenumber"
-                                                    label="Phone Number"
-                                                />
-                                                <InputControl
-                                                    name="email"
-                                                    label="Email"
-                                                />
-                                            </Flex>
-
-                                            <TextAreaControl
-                                                name="description"
-                                                label="Tell us about your requirement"
-                                            />
-
-                                            <Button
-                                                type="submit"
-                                                width="40%"
-                                                colorScheme="primary"
-                                                margin="8px auto"
-                                            >
-                                                Submit
-                                            </Button>
-                                        </Flex>
-                                    </Form>
-                                ) : (
-                                    <Text textAlign={'center'}>
-                                        Your request has submitted
-                                    </Text>
-                                );
-                            }}
-                        </Formik>
-                    </Flex>
-
-                    {!isMobileView && <Spacer />}
-
-                    <Flex
-                        w={isMobileView ? '100%' : '40%'}
+                    <Box
+                        id="box1"
+                        width="full"
+                        display="flex"
                         flexDirection={'column'}
-                        bgColor="#696969"
-                        p="4"
-                        borderRadius={12}
-                        {...(isMobileView && {
-                            mb: '100px',
-                        })}
+                        gridRowGap="4"
                     >
-                        <Flex flexDirection={'column'} gridRowGap={'4'}>
-                            <Text color="white">For customer Support</Text>
-                            <Divider />
-                            <Text
-                                color="white"
-                                textDecoration={'underline'}
-                                cursor="pointer"
-                            >
-                                combatfitwears@gmail.com
-                            </Text>
-                            <Text color="white">+91 9719493210</Text>
+                        <Flex
+                            border="2px solid black"
+                            borderRadius={'md'}
+                            p="4"
+                            gridColumnGap={2}
+                        >
+                            <Image
+                                boxSize="100px"
+                                objectFit="cover"
+                                src="/quality.png"
+                                alt="Dan Abramov"
+                            />
+                            <VStack>
+                                <Text
+                                    width="full"
+                                    textAlign={'start'}
+                                    fontWeight="bold"
+                                >
+                                    Quality
+                                </Text>
+                                <Text>
+                                    Everytime we source the raw material for any
+                                    bulk manufacturing, we are offered with
+                                    choices of cheaper materials which sounds
+                                    lucrative in terms of cheaper end products,
+                                    but we firmly believe that it will not
+                                    provide the user experience and satisfaction
+                                    which we strive for. Hence we invest into
+                                    products which ensure an everlasting user
+                                    satisfaction.{' '}
+                                </Text>
+                            </VStack>
                         </Flex>
-                        <Flex flexDirection={'column'} gridRowGap={'4'}>
-                            <Text color="white">Address</Text>
-                            <Divider />
-                            <Text color="white">Faridabad</Text>
-                            <Text
-                                color="white"
-                                textDecoration={'underline'}
-                                cursor="pointer"
-                            >
-                                combatfitwears@gmail.com
-                            </Text>
-                            <Text color="white">combatfitwears.com</Text>
+                        <Flex
+                            border="2px solid black"
+                            borderRadius={'md'}
+                            p="4"
+                            gridColumnGap={2}
+                        >
+                            <Image
+                                boxSize="100px"
+                                objectFit="cover"
+                                src="/transparency.png"
+                                alt="Dan Abramov"
+                            />
+                            <VStack>
+                                <Text
+                                    width="full"
+                                    textAlign={'start'}
+                                    fontWeight="bold"
+                                >
+                                    Quality
+                                </Text>
+                                <Text>
+                                    Though it may sound detrimental to any
+                                    business, but we believe that client has the
+                                    fair right to know how a particular product
+                                    is priced with all the costs that have gone
+                                    into it. This not only ensures in enabling
+                                    the end user to make a more informed
+                                    decision with respect to a particular
+                                    purchase but also set in realistic
+                                    expectation with the product.
+                                </Text>
+                            </VStack>
                         </Flex>
-                    </Flex>
+                        <Flex
+                            border="2px solid black"
+                            borderRadius={'md'}
+                            p="4"
+                            gridColumnGap={2}
+                        >
+                            <Image
+                                boxSize="100px"
+                                objectFit="cover"
+                                src="/valuetoclient.png"
+                                alt="Dan Abramov"
+                            />
+                            <VStack>
+                                <Text
+                                    width="full"
+                                    textAlign={'start'}
+                                    fontWeight="bold"
+                                >
+                                    Value to Clients
+                                </Text>
+                                <Text>
+                                    The whole idea behind bringing CombatFit to
+                                    life is to make sure that we thoroughly
+                                    understand the requirements and needs of the
+                                    clients and then give our best to deliver
+                                    onto that expectation. The aim is to provide
+                                    the products at the convenience of doorstep
+                                    and at a price which is unbeatable.
+                                </Text>
+                            </VStack>
+                        </Flex>
+                    </Box>
                 </Flex>
             </Container>
             <Footer />

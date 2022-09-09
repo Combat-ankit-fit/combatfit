@@ -167,7 +167,14 @@ const MobileDrawer = ({ breadCrumbsPath }) => {
                         <Text color="white">Military Stories</Text>
                     </Box>
                     <Box pb="4" display={'flex'}>
-                        <Text color="white">Vision</Text>
+                        <Text
+                            color="white"
+                            onClick={() => {
+                                router.push('/vision');
+                            }}
+                        >
+                            Vision
+                        </Text>
                     </Box>
                     <Box pb="4" display={'flex'}>
                         <Text
