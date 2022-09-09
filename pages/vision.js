@@ -258,7 +258,7 @@ const ContactUs = () => {
                         h: '100vh',
                     })}
                     {...(isMobileView && {
-                        h: '150vh',
+                        h: '200vh',
                     })}
                     mt={{ base: '20px', md: 0 }}
                 >
