@@ -246,7 +246,7 @@ const ContactUs = () => {
                         <Text
                             color="white"
                             cursor={'pointer'}
-                            onClick={() => router.push('/home')}
+                            onClick={() => router.push('/')}
                         >
                             &lt;Back
                         </Text>
