@@ -350,7 +350,15 @@ const Layout = ({
                                     <Text color="white" mb="2">
                                         Young
                                     </Text>
-                                    <Button colorScheme="primary" color="black">
+                                    <Button
+                                        colorScheme="primary"
+                                        color="black"
+                                        onClick={() => {
+                                            router.push(
+                                                '/items/millitary-clothing'
+                                            );
+                                        }}
+                                    >
                                         Explore Now
                                     </Button>
                                 </Flex>
@@ -393,7 +401,15 @@ const Layout = ({
                                     <Text color="white" fontSize="4xl">
                                         Young
                                     </Text>
-                                    <Button colorScheme="primary" color="black">
+                                    <Button
+                                        colorScheme="primary"
+                                        color="black"
+                                        onClick={() => {
+                                            router.push(
+                                                '/items/millitary-clothing'
+                                            );
+                                        }}
+                                    >
                                         Explore Now
                                     </Button>
                                 </Flex>
@@ -779,6 +795,11 @@ const Layout = ({
                                         colorScheme="primary"
                                         color="black"
                                         width={'xs'}
+                                        onClick={() => {
+                                            router.push(
+                                                '/items/millitary-clothing'
+                                            );
+                                        }}
                                     >
                                         Explore Now
                                     </Button>
