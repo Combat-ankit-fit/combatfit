@@ -489,7 +489,14 @@ const Layout = ({
                                     </Button>
                                 </Flex>
                             </Box>
-                            <Box position="relative" overflow={'hidden'}>
+                            <Box
+                                position="relative"
+                                overflow={'hidden'}
+                                cursor="pointer"
+                                onClick={() => {
+                                    router.push('/items/shorts');
+                                }}
+                            >
                                 <NextImage
                                     src="/banner03.jpg"
                                     width={1200}
@@ -627,7 +634,13 @@ const Layout = ({
                                 <Text color="white" fontSize="2xl" mb="2">
                                     Regular
                                 </Text>
-                                <Button colorScheme="primary" color="black">
+                                <Button
+                                    colorScheme="primary"
+                                    color="black"
+                                    onClick={() => {
+                                        router.push('/items/shorts');
+                                    }}
+                                >
                                     Explore Now
                                 </Button>
                             </Flex>
