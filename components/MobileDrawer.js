@@ -22,7 +22,12 @@ import React from 'react';
 import { HamburgerIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import router, { useRouter } from 'next/router';
 
-const MobileDrawer = ({ breadCrumbsPath }) => {
+const MobileDrawer = ({
+    breadCrumbsPath,
+    position = 'fixed',
+    bgColor = 'black',
+    isBreadCrumRequired = true,
+}) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const clothingItems = [
         { item: 'Tshirts', path: '/tshirts' },
@@ -47,11 +52,11 @@ const MobileDrawer = ({ breadCrumbsPath }) => {
         <Box>
             <Box
                 p="4"
-                position={'fixed'}
+                position={position}
                 id="icon"
                 zIndex={'modal'}
                 w="full"
-                bgColor={'black'}
+                bgColor={bgColor}
             >
                 {!isOpen && (
                     <HamburgerIcon
@@ -64,27 +69,29 @@ const MobileDrawer = ({ breadCrumbsPath }) => {
                 )}
             </Box>
 
-            <Box
-                w="full"
-                bgColor="orange"
-                height={'30px'}
-                position="fixed"
-                top="58px"
-                display={!isOpen ? 'flex' : 'none'}
-                px="4"
-                alignItems={'center'}
-                zIndex="modal"
-            >
-                <Text
-                    color="white"
-                    onClick={() => {
-                        router.push('/');
-                    }}
+            {isBreadCrumRequired && (
+                <Box
+                    w="full"
+                    bgColor="orange"
+                    height={'30px'}
+                    position="fixed"
+                    top="58px"
+                    display={!isOpen ? 'flex' : 'none'}
+                    px="4"
+                    alignItems={'center'}
+                    zIndex="modal"
                 >
-                    Home
-                </Text>
-                <Text color="white">&gt; {breadCrumbsPath}</Text>
-            </Box>
+                    <Text
+                        color="white"
+                        onClick={() => {
+                            router.push('/');
+                        }}
+                    >
+                        Home
+                    </Text>
+                    <Text color="white">&gt; {breadCrumbsPath}</Text>
+                </Box>
+            )}
 
             {isOpen && (
                 <Box

@@ -59,6 +59,15 @@ const Layout = ({
                 <MobileDrawer breadCrumbsPath={breadCrumbsPath} />
             )}
 
+            {isMobileView && router.pathname === '/' && (
+                <MobileDrawer
+                    breadCrumbsPath={false}
+                    position="absolute"
+                    bgColor="none"
+                    isBreadCrumRequired={false}
+                />
+            )}
+
             {sidebarRequired && <Sidebar presentItem={presentItem} />}
 
             {router.pathname === '/' && (
