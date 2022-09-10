@@ -484,7 +484,13 @@ const Layout = ({
                                     >
                                         Regular
                                     </Text>
-                                    <Button colorScheme="primary" color="black">
+                                    <Button
+                                        colorScheme="primary"
+                                        color="black"
+                                        onClick={() => {
+                                            router.push('/items/shorts');
+                                        }}
+                                    >
                                         Explore Now
                                     </Button>
                                 </Flex>
@@ -582,7 +588,13 @@ const Layout = ({
                                     >
                                         To go Beyond
                                     </Text>
-                                    <Button colorScheme="primary" color="black">
+                                    <Button
+                                        colorScheme="primary"
+                                        color="black"
+                                        onClick={() => {
+                                            router.push('/items/trousers');
+                                        }}
+                                    >
                                         Explore Now
                                     </Button>
                                 </Flex>
