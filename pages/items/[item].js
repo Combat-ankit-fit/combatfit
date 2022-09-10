@@ -28,6 +28,7 @@ const Item = () => {
         if (queryParam === 'beer') return false;
         if (queryParam === 'coffee-mugs') return false;
         if (queryParam === 'posters') return false;
+        if (queryParam === 'customized-clothing') return false;
     };
 
     return (
