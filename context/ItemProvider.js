@@ -5,6 +5,7 @@ import { beerMugs } from '../utils/beer';
 import { coffeeMugs } from '../utils/mugs';
 import { tshirts } from '../utils/tshirts';
 import { casualTshirts } from '../utils/casual-tshirts';
+import { posters } from '../utils/posters';
 
 export const ItemContext = React.createContext({
     getItemsOnFitBasis: () => {},
@@ -40,6 +41,9 @@ const ItemProvider = ({ children }) => {
         }
         if (queryParam === 'casual-tshirts') {
             setSelectedItems([...casualTshirts]);
+        }
+        if (queryParam === 'posters') {
+            setSelectedItems([...posters]);
         }
     }, [queryParam]);
 

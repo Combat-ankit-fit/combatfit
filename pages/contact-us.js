@@ -50,7 +50,7 @@ const ContactUs = () => {
         { item: 'Coffee Mugs', path: '/coffee-mugs' },
         { item: 'Beer Mugs', path: '/beer' },
         { item: 'Whisky Glasses', path: '/' },
-        { item: 'Posters', path: '/' },
+        { item: 'Posters', path: '/posters' },
         { item: 'Keyrings', path: '/' },
         { item: 'Notepad', path: '/' },
     ];
