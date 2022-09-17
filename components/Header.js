@@ -48,7 +48,7 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                     }}
                     cursor="pointer"
                 >
-                    <NextImage src="/logo.png" height="40px" width="90px" />
+                    <NextImage src="/logo.png" height="30px" width="110px" />
                 </Box>
 
                 <Flex
