@@ -112,6 +112,7 @@ const Layout = ({
                                             fontSize={'3xl'}
                                             maxW="xs"
                                             textAlign={'center'}
+                                            fontWeight={'bold'}
                                         >
                                             Wear your
                                         </Text>
@@ -122,7 +123,7 @@ const Layout = ({
                                             maxW="xs"
                                             textAlign={'center'}
                                         >
-                                            Values to be change
+                                            Values to be the change
                                         </Text>
                                     </Box>
                                     <Button
@@ -431,14 +432,6 @@ const Layout = ({
                                             orientation="horizontal"
                                             borderColor={'orange'}
                                         />
-                                        <Text
-                                            color="white"
-                                            zIndex="overlay"
-                                            fontWeight={'bold'}
-                                            fontSize="3xl"
-                                        >
-                                            Beyond Regular
-                                        </Text>
                                     </Box>
 
                                     <Button
@@ -526,15 +519,6 @@ const Layout = ({
                                         />
                                     </Box>
 
-                                    <Text
-                                        zIndex="overlay"
-                                        fontWeight={'bold'}
-                                        color="white"
-                                        fontSize={'3xl'}
-                                    >
-                                        New Way To go Beyond
-                                    </Text>
-
                                     <Button
                                         colorScheme="primary"
                                         color="black"
@@ -565,7 +549,7 @@ const Layout = ({
                                 alignItems={'center'}
                                 justifyContent="center"
                             >
-                                <Box>
+                                <Box mb="4">
                                     <Divider
                                         orientation="horizontal"
                                         borderColor={'orange'}
@@ -583,16 +567,6 @@ const Layout = ({
                                     />
                                 </Box>
 
-                                <Text
-                                    color="white"
-                                    fontSize="4xl"
-                                    fontWeight={'bold'}
-                                >
-                                    Beyond
-                                </Text>
-                                <Text color="white" fontSize="2xl" mb="2">
-                                    Regular
-                                </Text>
                                 <Button
                                     colorScheme="primary"
                                     color="black"
@@ -616,11 +590,11 @@ const Layout = ({
                     <Box position={'relative'}>
                         <Box
                             position={'absolute'}
-                            id="new"
+                            id="new123"
                             zIndex={'overlay'}
                             h="full"
                             mt="5"
-                            right="10%"
+                            right="7%"
                         >
                             <Flex
                                 flexDirection={'column'}
@@ -633,6 +607,7 @@ const Layout = ({
                                     flexDirection="column"
                                     alignItems={'center'}
                                     justifyContent="center"
+                                    mb="3"
                                 >
                                     <Divider
                                         orientation="horizontal"
@@ -650,13 +625,6 @@ const Layout = ({
                                         borderColor={'orange'}
                                     />
                                 </Box>
-
-                                <Text color="white" fontWeight={'bold'}>
-                                    New way to
-                                </Text>
-                                <Text color="white" mb="2">
-                                    Go Beyond
-                                </Text>
 
                                 <Button
                                     colorScheme="primary"
