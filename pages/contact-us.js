@@ -383,29 +383,22 @@ const ContactUs = () => {
                         })}
                     >
                         <Flex flexDirection={'column'} gridRowGap={'4'}>
-                            <Text color="white">For customer Support</Text>
+                            <Text color="white" textAlign={'center'}>
+                                For customer Support
+                            </Text>
                             <Divider />
-                            <Text
-                                color="white"
-                                textDecoration={'underline'}
-                                cursor="pointer"
-                            >
+                            <Text color="white" cursor="pointer">
                                 combatfitwears@gmail.com
                             </Text>
-                            <Text color="white">+91 9719493210</Text>
+                            <Text color="white" mb="2">
+                                +91 9719493210
+                            </Text>
                         </Flex>
-                        <Flex flexDirection={'column'} gridRowGap={'4'}>
-                            <Text color="white">Address</Text>
-                            <Divider />
-                            <Text color="white">Faridabad</Text>
-                            <Text
-                                color="white"
-                                textDecoration={'underline'}
-                                cursor="pointer"
-                            >
-                                combatfitwears@gmail.com
+                        <Flex flexDirection={'column'} gridRowGap={'2'}>
+                            <Text color="white">
+                                Address : L1/23 SF BPTP , Sector-84, Faridabad,
+                                Haryana, 121007
                             </Text>
-                            <Text color="white">combatfitwears.com</Text>
                         </Flex>
                     </Flex>
                 </Flex>
