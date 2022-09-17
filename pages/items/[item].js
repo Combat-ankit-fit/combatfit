@@ -31,6 +31,7 @@ const Item = () => {
         if (queryParam === 'customized-clothing') return false;
         if (queryParam === 'millitary-clothing') return false;
         if (queryParam === 'notepads') return false;
+        if (queryParam === 'keyrings') return false;
     };
 
     return (

@@ -11,6 +11,7 @@ import { millitaryClothing } from '../utils/millitary-clothing';
 import { shorts } from '../utils/shorts';
 import { sweatShirts } from '../utils/sweatshirts';
 import { notepad } from '../utils/notepad';
+import { keyrings } from '../utils/keyrings';
 
 export const ItemContext = React.createContext({
     getItemsOnFitBasis: () => {},
@@ -64,6 +65,9 @@ const ItemProvider = ({ children }) => {
         }
         if (queryParam === 'notepads') {
             setSelectedItems([...notepad]);
+        }
+        if (queryParam === 'keyrings') {
+            setSelectedItems([...keyrings]);
         }
     }, [queryParam]);
 

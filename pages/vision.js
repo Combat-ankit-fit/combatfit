@@ -51,7 +51,7 @@ const ContactUs = () => {
         { item: 'Beer Mugs', path: '/beer' },
         { item: 'Whisky Glasses', path: '/' },
         { item: 'Posters', path: '/posters' },
-        { item: 'Keyrings', path: '/' },
+        { item: 'Keyrings', path: '/keyrings' },
         { item: 'Notepad', path: '/notepads' },
     ];
 
