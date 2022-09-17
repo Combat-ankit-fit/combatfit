@@ -124,17 +124,6 @@ const Layout = ({
                                         >
                                             Values to be change
                                         </Text>
-                                        <Text
-                                            color="white"
-                                            fontWeight={'bold'}
-                                            maxW="xs"
-                                            textAlign={'center'}
-                                            fontSize="3xl"
-                                            bgColor="orange"
-                                            mb="4"
-                                        >
-                                            CHANGE
-                                        </Text>
                                     </Box>
                                     <Button
                                         colorScheme="primary"
@@ -172,12 +161,15 @@ const Layout = ({
                                 <Flex
                                     flexDirection={'column'}
                                     alignItems="center"
+                                    ms="8"
+                                    mt="4"
                                 >
                                     <Text
                                         color="white"
-                                        fontSize={'xl'}
+                                        fontSize="2xl"
                                         maxW="xs"
                                         textAlign={'center'}
+                                        fontWeight={'bold'}
                                     >
                                         Wear your
                                     </Text>
@@ -188,20 +180,19 @@ const Layout = ({
                                         maxW="xs"
                                         textAlign={'center'}
                                     >
-                                        Values to be change
+                                        Values to be
                                     </Text>
                                     <Text
-                                        color="black"
+                                        color="white"
                                         fontWeight={'bold'}
-                                        maxW={'min-content'}
-                                        textAlign={'center'}
                                         fontSize="2xl"
-                                        bgColor="orange"
-                                        mb="4"
-                                        p="2"
+                                        maxW="xs"
+                                        textAlign={'center'}
+                                        mb="8"
                                     >
-                                        CHANGE
+                                        change
                                     </Text>
+
                                     <Button
                                         colorScheme="primary"
                                         color="black"
@@ -236,10 +227,10 @@ const Layout = ({
                             return (
                                 <HomepageGridImages
                                     key={item}
-                                    height="300px"
+                                    height="230px"
                                     name={item}
                                     extension="png"
-                                    bgColor="brown"
+                                    bgColor="#2D2D2D"
                                 />
                             );
                         })}
@@ -305,23 +296,20 @@ const Layout = ({
                             >
                                 <Divider
                                     orientation="horizontal"
-                                    {...(isMobileView && {
-                                        borderColor: 'orange',
-                                    })}
+                                    borderColor={'orange'}
                                 />
                                 <Text
                                     color="white"
                                     fontWeight={'bold'}
-                                    fontSize={{ base: 'xl', md: '6xl' }}
+                                    fontSize={{ base: 'xl', md: '5xl' }}
                                 >
-                                    Millitary Inspired clothing
+                                    Military Inspired Clothing
                                 </Text>
-                                {isMobileView && (
-                                    <Divider
-                                        orientation="horizontal"
-                                        borderColor={'orange'}
-                                    />
-                                )}
+
+                                <Divider
+                                    orientation="horizontal"
+                                    borderColor={'orange'}
+                                />
                             </Flex>
                         </Box>
 
@@ -340,16 +328,6 @@ const Layout = ({
                                     alignItems={'center'}
                                     justifyContent="center"
                                 >
-                                    <Text color="white" fontWeight={'bold'}>
-                                        Stay
-                                    </Text>
-                                    <Text color="white">Active</Text>
-                                    <Text color="white" fontWeight={'bold'}>
-                                        Stay
-                                    </Text>
-                                    <Text color="white" mb="2">
-                                        Young
-                                    </Text>
                                     <Button
                                         colorScheme="primary"
                                         color="black"
@@ -381,29 +359,10 @@ const Layout = ({
                                     alignItems={'center'}
                                     justifyContent="center"
                                 >
-                                    <Text
-                                        color="white"
-                                        fontWeight={'bold'}
-                                        fontSize="5xl"
-                                    >
-                                        Stay
-                                    </Text>
-                                    <Text color="white" fontSize="4xl">
-                                        Active
-                                    </Text>
-                                    <Text
-                                        color="white"
-                                        fontWeight={'bold'}
-                                        fontSize="5xl"
-                                    >
-                                        Stay
-                                    </Text>
-                                    <Text color="white" fontSize="4xl">
-                                        Young
-                                    </Text>
                                     <Button
                                         colorScheme="primary"
                                         color="black"
+                                        width={'xs'}
                                         onClick={() => {
                                             router.push(
                                                 '/items/millitary-clothing'
@@ -449,9 +408,9 @@ const Layout = ({
                                 >
                                     <Box
                                         zIndex="overlay"
-                                        width={'md'}
+                                        width={'xs'}
                                         display="flex"
-                                        justifyContent={'center'}
+                                        justifyContent={'space-around'}
                                         alignItems="center"
                                         flexDirection={'column'}
                                         gridRowGap="3"
@@ -461,29 +420,27 @@ const Layout = ({
                                             borderColor={'orange'}
                                         />
                                         <Text
-                                            color="white"
                                             zIndex="overlay"
+                                            color="white"
                                             fontWeight={'bold'}
+                                            fontSize="3xl"
                                         >
                                             Regular Clothing
                                         </Text>
+                                        <Divider
+                                            orientation="horizontal"
+                                            borderColor={'orange'}
+                                        />
+                                        <Text
+                                            color="white"
+                                            zIndex="overlay"
+                                            fontWeight={'bold'}
+                                            fontSize="3xl"
+                                        >
+                                            Beyond Regular
+                                        </Text>
                                     </Box>
 
-                                    <Text
-                                        zIndex="overlay"
-                                        color="white"
-                                        fontWeight={'bold'}
-                                        fontSize="5xl"
-                                    >
-                                        Beyond
-                                    </Text>
-                                    <Text
-                                        zIndex="overlay"
-                                        color="white"
-                                        fontSize="3xl"
-                                    >
-                                        Regular
-                                    </Text>
                                     <Button
                                         colorScheme="primary"
                                         color="black"
@@ -561,33 +518,23 @@ const Layout = ({
                                             color="white"
                                             fontSize={'3xl'}
                                         >
-                                            Outdoor and
+                                            Outdoor and Functional Wear
                                         </Text>
-                                        <Text
-                                            zIndex="overlay"
-                                            fontWeight={'bold'}
-                                            color="white"
-                                            fontSize={'3xl'}
-                                        >
-                                            Functional Wear
-                                        </Text>
+                                        <Divider
+                                            orientation="horizontal"
+                                            borderColor={'orange'}
+                                        />
                                     </Box>
 
                                     <Text
                                         zIndex="overlay"
                                         fontWeight={'bold'}
                                         color="white"
-                                        fontSize={'5xl'}
-                                    >
-                                        New Way
-                                    </Text>
-                                    <Text
-                                        zIndex="overlay"
                                         fontSize={'3xl'}
-                                        color="white"
                                     >
-                                        To go Beyond
+                                        New Way To go Beyond
                                     </Text>
+
                                     <Button
                                         colorScheme="primary"
                                         color="black"
@@ -774,29 +721,30 @@ const Layout = ({
                                     />
                                 </Box>
                                 <Flex
-                                    w="full"
                                     h="full"
                                     justifyContent={'center'}
-                                    alignItems="Center"
+                                    alignItems="center"
                                     flexDirection={'column'}
                                     gridRowGap="5"
+                                    w="full"
                                 >
+                                    <Divider
+                                        orientation="horizontal"
+                                        borderColor={'orange'}
+                                    />
                                     <Text
                                         color="white"
                                         zIndex="overlay"
                                         fontWeight={'bold'}
                                         fontSize="4xl"
                                     >
-                                        Lifestyle
+                                        Lifestyle Products
                                     </Text>
-                                    <Text
-                                        color="white"
-                                        zIndex="overlay"
-                                        fontWeight={'bold'}
-                                        fontSize="5xl"
-                                    >
-                                        Products
-                                    </Text>
+                                    <Divider
+                                        orientation="horizontal"
+                                        borderColor={'orange'}
+                                    />
+
                                     <Box
                                         zIndex={'overlay'}
                                         display="flex"
@@ -809,17 +757,15 @@ const Layout = ({
                                             color="white"
                                             zIndex="overlay"
                                             fontWeight={'bold'}
-                                            fontSize="5xl"
+                                            fontSize="4xl"
                                         >
                                             The Military way
                                         </Text>
-                                        <Divider borderColor={'white'} />
                                     </Box>
 
                                     <Button
                                         colorScheme="primary"
                                         color="black"
-                                        width={'xs'}
                                         onClick={() => {
                                             router.push(
                                                 '/items/millitary-clothing'
