@@ -42,7 +42,7 @@ const MobileDrawer = ({
         { item: 'Whisky Glasses', path: '/' },
         { item: 'Posters', path: '/posters' },
         { item: 'Keyrings', path: '/' },
-        { item: 'Notepad', path: '/' },
+        { item: 'Notepad', path: '/notepads' },
     ];
     const router = useRouter();
 

@@ -10,6 +10,7 @@ import { customizedClothing } from '../utils/customized-clothing';
 import { millitaryClothing } from '../utils/millitary-clothing';
 import { shorts } from '../utils/shorts';
 import { sweatShirts } from '../utils/sweatshirts';
+import { notepad } from '../utils/notepad';
 
 export const ItemContext = React.createContext({
     getItemsOnFitBasis: () => {},
@@ -60,6 +61,9 @@ const ItemProvider = ({ children }) => {
         }
         if (queryParam === 'sweatshirts') {
             setSelectedItems([...sweatShirts]);
+        }
+        if (queryParam === 'notepads') {
+            setSelectedItems([...notepad]);
         }
     }, [queryParam]);
 

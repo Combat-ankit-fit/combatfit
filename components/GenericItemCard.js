@@ -23,7 +23,7 @@ const GenericItemCard = (props) => {
                     {info.alt}
                 </Text>
                 <Button colorScheme="primary" maxW="sm">
-                    Rs. 500
+                    Rs. {props?.info?.price}
                 </Button>
             </Flex>
         </Box>
