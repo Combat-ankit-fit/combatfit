@@ -31,12 +31,10 @@ const MobileDrawer = ({
     const { isOpen, onOpen, onClose } = useDisclosure();
     const clothingItems = [
         { item: 'Tshirts', path: '/tshirts' },
-        { item: 'Shirts', path: '/' },
         { item: 'Sweatshirts', path: '/' },
         { item: 'Trousers', path: '/trousers' },
         { item: 'Shorts', path: '/shorts' },
         { item: 'Customized clothings', path: '/customized-clothing' },
-        { item: 'Casual Tshirts', path: '/casual-tshirts' },
         { item: 'Millitary Clothing', path: '/millitary-clothing' },
     ];
     const souvenirs = [

@@ -76,7 +76,6 @@ const DesktopDrawer = ({ presentItem }) => {
             >
                 <Divider orientation="horizontal" mb="8" />
                 <Text color={'white'}>Filter your search</Text>
-                <SliderControl label="Price" />
                 <Flex flexDirection={'column'}>
                     <Text color="white" mb="4">
                         Size
