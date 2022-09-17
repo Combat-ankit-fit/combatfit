@@ -224,15 +224,12 @@ const ContactUs = () => {
                         >
                             VISION
                         </Text>
+
                         <Text
+                            fontWeight={'bold'}
                             color="white"
-                            fontSize={{ base: '2xl', md: '5xl' }}
-                        >
-                            COMBATFIT
-                        </Text>
-                        <Text
-                            color="white"
-                            fontSize={{ base: '2xl', md: '5xl' }}
+                            fontSize={{ base: '2xl', md: '6xl' }}
+                            fontStyle="italic"
                         >
                             Fitness for life
                         </Text>
@@ -273,13 +270,32 @@ const ContactUs = () => {
                             borderRadius={'md'}
                             p="4"
                             gridColumnGap={2}
+                            flexDirection={{ base: 'column', md: 'row' }}
                         >
-                            <Image
-                                boxSize="100px"
-                                objectFit="cover"
-                                src="/quality.png"
-                                alt="Dan Abramov"
-                            />
+                            {isMobileView && (
+                                <Box
+                                    width="full"
+                                    display={'flex'}
+                                    justifyContent="center"
+                                >
+                                    <Image
+                                        boxSize="100px"
+                                        objectFit="cover"
+                                        src="/quality.png"
+                                        alt="Dan Abramov"
+                                    />
+                                </Box>
+                            )}
+
+                            {!isMobileView && (
+                                <Image
+                                    boxSize="100px"
+                                    objectFit="cover"
+                                    src="/quality.png"
+                                    alt="Dan Abramov"
+                                />
+                            )}
+
                             <VStack>
                                 <Text
                                     width="full"
@@ -288,7 +304,11 @@ const ContactUs = () => {
                                 >
                                     Quality
                                 </Text>
-                                <Text>
+                                <Text
+                                    {...(isMobileView && {
+                                        textAlign: 'justify',
+                                    })}
+                                >
                                     Everytime we source the raw material for any
                                     bulk manufacturing, we are offered with
                                     choices of cheaper materials which sounds
@@ -306,13 +326,32 @@ const ContactUs = () => {
                             borderRadius={'md'}
                             p="4"
                             gridColumnGap={2}
+                            flexDirection={{ base: 'column', md: 'row' }}
                         >
-                            <Image
-                                boxSize="100px"
-                                objectFit="cover"
-                                src="/transparency.png"
-                                alt="Dan Abramov"
-                            />
+                            {isMobileView && (
+                                <Box
+                                    width="full"
+                                    display={'flex'}
+                                    justifyContent="center"
+                                >
+                                    <Image
+                                        boxSize="100px"
+                                        objectFit="cover"
+                                        src="/transparency.png"
+                                        alt="Dan Abramov"
+                                    />
+                                </Box>
+                            )}
+
+                            {!isMobileView && (
+                                <Image
+                                    boxSize="100px"
+                                    objectFit="cover"
+                                    src="/transparency.png"
+                                    alt="Dan Abramov"
+                                />
+                            )}
+
                             <VStack>
                                 <Text
                                     width="full"
@@ -321,7 +360,11 @@ const ContactUs = () => {
                                 >
                                     Quality
                                 </Text>
-                                <Text>
+                                <Text
+                                    {...(isMobileView && {
+                                        textAlign: 'justify',
+                                    })}
+                                >
                                     Though it may sound detrimental to any
                                     business, but we believe that client has the
                                     fair right to know how a particular product
@@ -339,13 +382,32 @@ const ContactUs = () => {
                             borderRadius={'md'}
                             p="4"
                             gridColumnGap={2}
+                            flexDirection={{ base: 'column', md: 'row' }}
                         >
-                            <Image
-                                boxSize="100px"
-                                objectFit="cover"
-                                src="/valuetoclient.png"
-                                alt="Dan Abramov"
-                            />
+                            {isMobileView && (
+                                <Box
+                                    width="full"
+                                    display={'flex'}
+                                    justifyContent="center"
+                                >
+                                    <Image
+                                        boxSize="100px"
+                                        objectFit="cover"
+                                        src="/valuetoclient.png"
+                                        alt="Dan Abramov"
+                                    />
+                                </Box>
+                            )}
+
+                            {!isMobileView && (
+                                <Image
+                                    boxSize="100px"
+                                    objectFit="cover"
+                                    src="/valuetoclient.png"
+                                    alt="Dan Abramov"
+                                />
+                            )}
+
                             <VStack>
                                 <Text
                                     width="full"
@@ -354,7 +416,11 @@ const ContactUs = () => {
                                 >
                                     Value to Clients
                                 </Text>
-                                <Text>
+                                <Text
+                                    {...(isMobileView && {
+                                        textAlign: 'justify',
+                                    })}
+                                >
                                     The whole idea behind bringing CombatFit to
                                     life is to make sure that we thoroughly
                                     understand the requirements and needs of the
