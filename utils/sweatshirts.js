@@ -1,4 +1,4 @@
-export const millitaryClothing = [
+export const sweatShirts = [
     {
         name: 'CF-INSP-SS01-01',
         alt: 'Round Neck Sweatshirt Olive Green',

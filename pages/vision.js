@@ -41,7 +41,7 @@ const ContactUs = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const clothingItems = [
         { item: 'Tshirts', path: '/' },
-        { item: 'Sweatshirts', path: '/' },
+        { item: 'Sweatshirts', path: '/sweatshirts' },
         { item: 'Trousers', path: '/trousers' },
         { item: 'Shorts', path: '/shorts' },
         { item: 'Customized clothings', path: '/customized-clothing' },
