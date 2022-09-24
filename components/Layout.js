@@ -870,7 +870,7 @@ const Layout = ({
                         <Grid
                             templateColumns={
                                 isMobileView
-                                    ? 'repeat(3, 1fr)'
+                                    ? 'repeat(1, 1fr)'
                                     : 'repeat(4, 1fr)'
                             }
                             gap={3}
@@ -882,7 +882,7 @@ const Layout = ({
                                     <GenericItemCard
                                         key={i}
                                         height={
-                                            isMobileView ? '125px' : '320px'
+                                            isMobileView ? '250px' : '320px'
                                         }
                                         info={item}
                                         extension="jpg"
