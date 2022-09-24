@@ -53,6 +53,7 @@ const ItemDetail = () => {
                         {synonumousImages?.map((item) => {
                             return (
                                 <NextImage
+                                    key={item}
                                     src={`/${item}.jpg`}
                                     height={250}
                                     width={250}
