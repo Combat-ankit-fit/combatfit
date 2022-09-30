@@ -12,6 +12,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import Layout from '../../components/Layout';
 import { coffeeMugs } from '../../utils/mugs';
+import { posters } from '../../utils/posters';
 import NextImage from 'next/image';
 
 const ItemDetail = () => {
@@ -19,16 +20,22 @@ const ItemDetail = () => {
 
     const itemCategory = router?.query?.name;
     const itemId = router?.query?.id;
-    console.log('Info coming is:-', itemCategory, itemId);
-    const [allItems, setAllItems] = React.useState([]);
     const [synonumousImages, setSynonymousImages] = React.useState([]);
     const [centralImage, setCentralImage] = React.useState(itemId);
     const [imageInfo, setImageInfo] = React.useState({});
-    console.log('Central image is:-', centralImage);
 
     React.useEffect(() => {
         if (itemCategory === 'coffee-mugs') {
             const specificItem = coffeeMugs?.filter(
+                (item) => item?.name === itemId
+            )[0];
+
+            setSynonymousImages([...specificItem?.extraImages]);
+            setImageInfo({ ...specificItem });
+        }
+
+        if (itemCategory === 'posters') {
+            const specificItem = posters?.filter(
                 (item) => item?.name === itemId
             )[0];
 
@@ -52,17 +59,19 @@ const ItemDetail = () => {
                     <Flex flexDir={'column'} me="4">
                         {synonumousImages?.map((item) => {
                             return (
-                                <NextImage
-                                    key={item}
-                                    src={`/${item}.jpg`}
-                                    height={250}
-                                    width={250}
-                                    objectFit="cover"
-                                    onClick={() => {
-                                        console.log('fired');
-                                        setCentralImage(item);
-                                    }}
-                                />
+                                <Box mb="4" cursor={'pointer'}>
+                                    <NextImage
+                                        key={item}
+                                        src={`/${item}.jpg`}
+                                        height={250}
+                                        width={250}
+                                        objectFit="cover"
+                                        onClick={() => {
+                                            console.log('fired');
+                                            setCentralImage(item);
+                                        }}
+                                    />
+                                </Box>
                             );
                         })}
                     </Flex>
