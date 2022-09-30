@@ -13,6 +13,7 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import { coffeeMugs } from '../../utils/mugs';
 import { posters } from '../../utils/posters';
+import { trousers } from '../../utils/trousers';
 import NextImage from 'next/image';
 
 const ItemDetail = () => {
@@ -36,6 +37,14 @@ const ItemDetail = () => {
 
         if (itemCategory === 'posters') {
             const specificItem = posters?.filter(
+                (item) => item?.name === itemId
+            )[0];
+
+            setSynonymousImages([...specificItem?.extraImages]);
+            setImageInfo({ ...specificItem });
+        }
+        if (itemCategory === 'trousers') {
+            const specificItem = trousers?.filter(
                 (item) => item?.name === itemId
             )[0];
 
