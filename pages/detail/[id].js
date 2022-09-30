@@ -72,18 +72,11 @@ const ItemDetail = () => {
                             );
                         })}
                     </Flex>
-                    <Box
-                        id="image__container"
-                        border={'1px solid black'}
-                        height={801}
-                        width={750}
-                        me="3"
-                    >
+                    <Box id="image__container" height={700} width={700} me="3">
                         <NextImage
                             src={`/${centralImage}.jpg`}
-                            height={795}
-                            width={750}
-                            objectFit="contain"
+                            height={700}
+                            width={700}
                             layout="fixed"
                         />
                     </Box>
