@@ -14,6 +14,7 @@ import Layout from '../../components/Layout';
 import { coffeeMugs } from '../../utils/mugs';
 import { posters } from '../../utils/posters';
 import { trousers } from '../../utils/trousers';
+import { sweatShirts } from '../../utils/sweatshirts';
 import NextImage from 'next/image';
 
 const ItemDetail = () => {
@@ -45,6 +46,14 @@ const ItemDetail = () => {
         }
         if (itemCategory === 'trousers') {
             const specificItem = trousers?.filter(
+                (item) => item?.name === itemId
+            )[0];
+
+            setSynonymousImages([...specificItem?.extraImages]);
+            setImageInfo({ ...specificItem });
+        }
+        if (itemCategory === 'sweatshirts') {
+            const specificItem = sweatShirts?.filter(
                 (item) => item?.name === itemId
             )[0];
 

@@ -5,6 +5,7 @@ export const sweatShirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-SS01-01', 'CF-INSP-SS01-02'],
     },
     {
         name: 'CF-INSP-SS02-01',
@@ -12,6 +13,7 @@ export const sweatShirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-SS02-01', 'CF-INSP-SS02-02'],
     },
     {
         name: 'CF-INSP-SS03-01',
@@ -19,6 +21,7 @@ export const sweatShirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-SS03-01', 'CF-INSP-SS03-02'],
     },
     {
         name: 'CF-INSP-SS05-01',
@@ -26,6 +29,7 @@ export const sweatShirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-SS05-01', 'CF-INSP-SS05-02'],
     },
     {
         name: 'CF-INSP-SS06-01',
@@ -33,6 +37,7 @@ export const sweatShirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-SS06-01', 'CF-INSP-SS06-02'],
     },
     {
         name: 'CF-INSP-SS07-01',
@@ -40,6 +45,7 @@ export const sweatShirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-SS07-01', 'CF-INSP-SS07-02'],
     },
     {
         name: 'CF-INSP-SS08-01',
@@ -47,6 +53,7 @@ export const sweatShirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-SS08-01', 'CF-INSP-SS08-02'],
     },
     {
         name: 'CF-INSP-SS09-01',
@@ -54,5 +61,6 @@ export const sweatShirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-SS09-01', 'CF-INSP-SS09-02'],
     },
 ];
