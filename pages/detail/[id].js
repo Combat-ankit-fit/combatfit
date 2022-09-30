@@ -41,8 +41,6 @@ const ItemDetail = () => {
 
             setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
-        } else {
-            router.push('/');
         }
     }, []);
 
