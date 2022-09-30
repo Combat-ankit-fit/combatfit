@@ -15,6 +15,7 @@ import { coffeeMugs } from '../../utils/mugs';
 import { posters } from '../../utils/posters';
 import { trousers } from '../../utils/trousers';
 import { sweatShirts } from '../../utils/sweatshirts';
+import { casualTshirts } from '../../utils/casual-tshirts';
 import NextImage from 'next/image';
 
 const ItemDetail = () => {
@@ -60,6 +61,14 @@ const ItemDetail = () => {
             setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
         }
+        if (itemCategory === 'casual-tshirts') {
+            const specificItem = casualTshirts?.filter(
+                (item) => item?.name === itemId
+            )[0];
+
+            setSynonymousImages([...specificItem?.extraImages]);
+            setImageInfo({ ...specificItem });
+        }
     }, []);
 
     return (
@@ -80,9 +89,8 @@ const ItemDetail = () => {
                                         src={`/${item}.jpg`}
                                         height={250}
                                         width={250}
-                                        objectFit="cover"
+                                        objectFit="contain"
                                         onClick={() => {
-                                            console.log('fired');
                                             setCentralImage(item);
                                         }}
                                     />

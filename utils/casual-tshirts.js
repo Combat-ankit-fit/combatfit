@@ -5,6 +5,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-TS01-02', 'CF-INSP-TS01-03'],
     },
     {
         name: 'CF-INSP-TS02-01',
@@ -12,6 +13,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-TS02-02', 'CF-INSP-TS02-03'],
     },
     {
         name: 'CF-INSP-TS03-01',
@@ -19,6 +21,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-TS03-03', 'CF-INSP-TS03-02'],
     },
     {
         name: 'CF-INSP-TS04-01',
@@ -26,6 +29,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-TS04-03', 'CF-INSP-TS04-02'],
     },
     {
         name: 'CF-INSP-TS05-01',
@@ -33,6 +37,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-TS05-03', 'CF-INSP-TS05-02'],
     },
     {
         name: 'CF-INSP-TS06-01',
@@ -40,6 +45,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-TS06-03', 'CF-INSP-TS06-02'],
     },
     {
         name: 'CF-INSP-TS07-01',
@@ -47,6 +53,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-TS07-03', 'CF-INSP-TS07-02'],
     },
     {
         name: 'CF-INSP-TS08-01',
@@ -54,6 +61,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-TS08-03', 'CF-INSP-TS08-02'],
     },
     {
         name: 'CF-INSP-TS09-01',
@@ -61,6 +69,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-TS09-03', 'CF-INSP-TS09-02'],
     },
     {
         name: 'CF-INSP-TS10-01',
@@ -68,6 +77,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-TS10-02', 'CF-INSP-TS10-03'],
     },
     {
         name: 'CF-INSP-TS11-01',
@@ -75,6 +85,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-TS11-02', 'CF-INSP-TS11-01'],
     },
     {
         name: 'CF-INSP-TS12-01',
@@ -82,6 +93,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-INSP-TS12-02', 'CF-INSP-TS12-01'],
     },
 
     {
@@ -90,6 +102,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-REG-TS01-02', 'CF-REG-TS01-01'],
     },
     {
         name: 'CF-REG-TS02-01',
@@ -97,6 +110,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-REG-TS02-01', 'CF-REG-TS01-01'],
     },
     {
         name: 'CF-REG-TS03-01',
@@ -104,6 +118,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-REG-TS03-02', 'CF-REG-TS03-01'],
     },
     {
         name: 'CF-REG-TS04-01',
@@ -111,6 +126,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-REG-TS04-01'],
     },
     {
         name: 'CF-REG-TS05-01',
@@ -118,6 +134,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-REG-TS05-02', 'CF-REG-TS05-01'],
     },
     {
         name: 'CF-REG-TS06-01',
@@ -125,6 +142,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-REG-TS06-02', 'CF-REG-TS06-01'],
     },
     {
         name: 'CF-REG-TS07-01',
@@ -132,6 +150,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-REG-TS07-02', 'CF-REG-TS07-01'],
     },
     {
         name: 'CF-REG-TS08-01',
@@ -139,6 +158,7 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-REG-TS08-03', 'CF-REG-TS08-02'],
     },
     {
         name: 'CF-REG-TS09-01',
@@ -146,5 +166,6 @@ export const casualTshirts = [
         price: '500',
         size: 'XL',
         fit: 'regular',
+        extraImages: ['CF-REG-TS09-03', 'CF-REG-TS09-02'],
     },
 ];
