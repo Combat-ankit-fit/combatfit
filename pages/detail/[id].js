@@ -57,11 +57,10 @@ const ItemDetail = () => {
             <Container maxW="7xl">
                 <Flex w="full">
                     <Flex flexDir={'column'} me="4">
-                        {synonumousImages?.map((item) => {
+                        {synonumousImages?.map((item, index) => {
                             return (
-                                <Box mb="4" cursor={'pointer'}>
+                                <Box mb="4" cursor={'pointer'} key={index}>
                                     <NextImage
-                                        key={item}
                                         src={`/${item}.jpg`}
                                         height={250}
                                         width={250}
