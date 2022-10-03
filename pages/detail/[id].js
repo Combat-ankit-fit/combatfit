@@ -26,6 +26,7 @@ const ItemDetail = () => {
     const [synonumousImages, setSynonymousImages] = React.useState([]);
     const [centralImage, setCentralImage] = React.useState(itemId);
     const [imageInfo, setImageInfo] = React.useState({});
+    console.log('hello');
 
     React.useEffect(() => {
         if (itemCategory === 'coffee-mugs') {
