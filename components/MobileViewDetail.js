@@ -132,6 +132,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                         return (
                             <NextImage
                                 id={index}
+                                key={index}
                                 src={`/${image}.jpg`}
                                 height={350}
                                 width={250}
