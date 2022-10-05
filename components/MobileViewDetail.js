@@ -36,11 +36,8 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
 
             setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
-
             const arr = [...specificItem?.extraImages, centralImage];
-
             setAllImages([...arr]);
-            // setAllImages([centralImage, ...specificItem?.extraImages]);
         }
 
         if (itemCategory === 'posters') {
@@ -50,12 +47,8 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
 
             setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
-
             const arr = [...specificItem?.extraImages, centralImage];
-
             setAllImages([...arr]);
-
-            // setAllImages([centralImage, ...specificItem?.extraImages]);
         }
         if (itemCategory === 'trousers') {
             const specificItem = trousers?.filter(
@@ -64,9 +57,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
 
             setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
-
             const arr = [...specificItem?.extraImages, centralImage];
-
             setAllImages([...arr]);
         }
         if (itemCategory === 'sweatshirts') {
@@ -76,11 +67,8 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
 
             setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
-
             const arr = [...specificItem?.extraImages, centralImage];
-
             setAllImages([...arr]);
-            // setAllImages([centralImage, ...specificItem?.extraImages]);
         }
         if (itemCategory === 'casual-tshirts') {
             const specificItem = casualTshirts?.filter(
@@ -89,11 +77,8 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
 
             setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
-
             const arr = [...specificItem?.extraImages, centralImage];
-
             setAllImages([...arr]);
-            // setAllImages([centralImage, ...specificItem?.extraImages]);
         }
     }, []);
 
@@ -101,6 +86,35 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
         if (itemCategory === 'trousers') {
             return 'Military Trousers';
         }
+    };
+
+    const getFeatures = () => {
+        return [
+            {
+                title: 'Stretch',
+                description:
+                    'The elastane in the fabric gives you total freedom of movement.',
+            },
+            {
+                title: 'Softness',
+                description:
+                    'Cotton fibre offers natural comfort and softness.',
+            },
+            {
+                title: 'Moisture Management',
+                description:
+                    'Cotton promotes ventilation to help keep you dry.',
+            },
+        ];
+    };
+
+    const mugsFeatures = () => {
+        return [
+            'Dishwasher safe',
+            'Regrigerator safe',
+            'Made from high quality leadless frosted glass',
+            'Shiny lead free durable',
+        ];
     };
 
     return (
@@ -143,7 +157,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                 </Carousel>
             </Box>
             <Text mt="4">{imageInfo?.alt}</Text>
-            <Text>Rs. {imageInfo?.price}/-(inclusive of all taxes)</Text>
+            <Text mb="2">Rs. {imageInfo?.price}/-(inclusive of all taxes)</Text>
             <Button
                 colorScheme={'primary'}
                 bgColor="orange"
@@ -152,9 +166,35 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             >
                 Add to Cart
             </Button>
-            <Button colorScheme={'primary'} bgColor="orange" width={'full'}>
+            <Button
+                colorScheme={'primary'}
+                bgColor="orange"
+                width={'full'}
+                mb="4"
+            >
                 Buy now
             </Button>
+
+            {(itemCategory === 'trousers' ||
+                itemCategory === 'casual-tshirts' ||
+                itemCategory === 'sweatshirts') &&
+                getFeatures()?.map((feature) => {
+                    return (
+                        <Box border="1px solid black" p="4" mb="2">
+                            <Text fontWeight={'bold'}>{feature?.title}</Text>
+                            <Text>{feature?.description}</Text>
+                        </Box>
+                    );
+                })}
+
+            {itemCategory === 'coffee-mugs' &&
+                mugsFeatures()?.map((feature) => {
+                    return (
+                        <Box border="1px solid black" p="4" mb="2">
+                            <Text fontWeight={'bold'}>{feature}</Text>
+                        </Box>
+                    );
+                })}
         </Layout>
     );
 };
