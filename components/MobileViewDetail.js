@@ -128,9 +128,10 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                 }}
             >
                 <Carousel showThumbs={false}>
-                    {allImages?.map((image) => {
+                    {allImages?.map((image, index) => {
                         return (
                             <NextImage
+                                id={index}
                                 src={`/${image}.jpg`}
                                 height={350}
                                 width={250}
