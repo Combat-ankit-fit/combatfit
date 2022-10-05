@@ -18,17 +18,15 @@ const GenericItemCard = (props) => {
     return (
         <Box
             border="2px solid black"
-            {...(isDesktopView && {
-                cursor: 'pointer',
-                onClick: () => {
-                    router.push({
-                        pathname: `/detail/${props?.info?.name}`,
-                        query: {
-                            name: router?.query?.item,
-                        },
-                    });
-                },
-            })}
+            cursor="pointer"
+            onClick={() => {
+                router.push({
+                    pathname: `/detail/${props?.info?.name}`,
+                    query: {
+                        name: router?.query?.item,
+                    },
+                });
+            }}
         >
             <Box position="relative" overflow={'hidden'} {...props}>
                 <NextImage src={`/${info.name}.${extension}`} layout="fill" />

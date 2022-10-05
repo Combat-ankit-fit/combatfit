@@ -11,6 +11,7 @@ import {
 import { useRouter } from 'next/router';
 import React from 'react';
 import Layout from '../../components/Layout';
+import MobileViewDetail from '../../components/MobileViewDetail';
 import { coffeeMugs } from '../../utils/mugs';
 import { posters } from '../../utils/posters';
 import { trousers } from '../../utils/trousers';
@@ -20,13 +21,17 @@ import NextImage from 'next/image';
 
 const ItemDetail = () => {
     const router = useRouter();
+    const isMobileView = useBreakpointValue({
+        base: true,
+        md: false,
+        lg: false,
+    });
 
     const itemCategory = router?.query?.name;
     const itemId = router?.query?.id;
     const [synonumousImages, setSynonymousImages] = React.useState([]);
     const [centralImage, setCentralImage] = React.useState(itemId);
     const [imageInfo, setImageInfo] = React.useState({});
-    console.log('hello');
 
     React.useEffect(() => {
         if (itemCategory === 'coffee-mugs') {
@@ -71,6 +76,10 @@ const ItemDetail = () => {
             setImageInfo({ ...specificItem });
         }
     }, []);
+
+    if (isMobileView) {
+        return <MobileViewDetail itemCategory={itemCategory} itemId={itemId} />;
+    }
 
     return (
         <Layout
