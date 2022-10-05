@@ -178,9 +178,9 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             {(itemCategory === 'trousers' ||
                 itemCategory === 'casual-tshirts' ||
                 itemCategory === 'sweatshirts') &&
-                getFeatures()?.map((feature) => {
+                getFeatures()?.map((feature, index) => {
                     return (
-                        <Box border="1px solid black" p="4" mb="2">
+                        <Box border="1px solid black" p="4" mb="2" key={index}>
                             <Text fontWeight={'bold'}>{feature?.title}</Text>
                             <Text>{feature?.description}</Text>
                         </Box>
@@ -188,9 +188,9 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                 })}
 
             {itemCategory === 'coffee-mugs' &&
-                mugsFeatures()?.map((feature) => {
+                mugsFeatures()?.map((feature, index) => {
                     return (
-                        <Box border="1px solid black" p="4" mb="2">
+                        <Box border="1px solid black" p="4" mb="2" key={index}>
                             <Text fontWeight={'bold'}>{feature}</Text>
                         </Box>
                     );
