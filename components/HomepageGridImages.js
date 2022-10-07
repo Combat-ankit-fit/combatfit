@@ -10,6 +10,8 @@ const ItemCard = (props) => {
     return (
         <Box border="2px solid black">
             <Box
+                display={'flex'}
+                justifyContent="center"
                 position="relative"
                 overflow={'hidden'}
                 cursor="pointer"
@@ -40,7 +42,12 @@ const ItemCard = (props) => {
                 })}
                 {...props}
             >
-                <NextImage src={`/${itemName}.${extension}`} layout="fill" />
+                <NextImage
+                    src={`/${itemName}.${extension}`}
+                    objectFit="contain"
+                    height={'200px'}
+                    width="200px"
+                />
             </Box>
             <Flex
                 flexDirection={'column'}

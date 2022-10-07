@@ -53,9 +53,9 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
 
                 <Flex
                     justifyContent={'space-around'}
-                    w="md"
+                    w="2xl"
                     gridColumnGap={6}
-                    alignItems="baseline"
+                    alignItems="center"
                 >
                     <Text
                         color="white"
@@ -67,9 +67,45 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                         Home
                     </Text>
 
-                    <Text color={'white'} flexShrink={0}>
-                        Find Outlet
+                    <Text
+                        color="white"
+                        cursor={'pointer'}
+                        onClick={() => {
+                            router.push('/items/coffee-mugs');
+                        }}
+                    >
+                        Souvenirs
                     </Text>
+                    <Text
+                        color="white"
+                        cursor={'pointer'}
+                        onClick={() => {
+                            router.push('/items/customized-clothing');
+                        }}
+                    >
+                        Customized
+                    </Text>
+
+                    <Text
+                        color="white"
+                        cursor={'pointer'}
+                        onClick={() => {
+                            router.push('/vision');
+                        }}
+                    >
+                        Vision
+                    </Text>
+                    <Text
+                        color="white"
+                        cursor={'pointer'}
+                        onClick={() => {
+                            router.push('/contact-us');
+                        }}
+                        whiteSpace="pre"
+                    >
+                        Contact Us
+                    </Text>
+
                     <InputGroup>
                         <Input
                             placeholder="Search Product"
@@ -79,7 +115,7 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                                 color: 'black',
                             }}
                             sx={{
-                                borderRadius: '0px',
+                                borderRadius: '4px',
                             }}
                         />
                     </InputGroup>

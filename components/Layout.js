@@ -137,13 +137,6 @@ const Layout = ({
                                     >
                                         Explore Now
                                     </Button>
-                                    <Button
-                                        colorScheme="primary"
-                                        color="black"
-                                        maxW="xs"
-                                    >
-                                        Go To Products
-                                    </Button>
                                 </Flex>
                             </Box>
                         )}
@@ -228,7 +221,7 @@ const Layout = ({
                             return (
                                 <HomepageGridImages
                                     key={item}
-                                    height="230px"
+                                    height="200px"
                                     name={item}
                                     extension="png"
                                     bgColor="#2D2D2D"
@@ -365,9 +358,7 @@ const Layout = ({
                                         color="black"
                                         width={'xs'}
                                         onClick={() => {
-                                            router.push(
-                                                '/items/millitary-clothing'
-                                            );
+                                            router.push('/items/all-products');
                                         }}
                                     >
                                         Explore Now
@@ -727,7 +718,7 @@ const Layout = ({
                                             fontWeight={'bold'}
                                             fontSize="4xl"
                                         >
-                                            The Military way
+                                            The MILITARY WAY
                                         </Text>
                                     </Box>
 
@@ -735,9 +726,7 @@ const Layout = ({
                                         colorScheme="primary"
                                         color="black"
                                         onClick={() => {
-                                            router.push(
-                                                '/items/millitary-clothing'
-                                            );
+                                            router.push('/items/coffee-mugs');
                                         }}
                                     >
                                         Explore Now
