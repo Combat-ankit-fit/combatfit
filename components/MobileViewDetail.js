@@ -28,7 +28,9 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const [centralImage, setCentralImage] = React.useState(itemId);
     const [imageInfo, setImageInfo] = React.useState({});
     const [allImages, setAllImages] = React.useState([]);
+
     React.useEffect(() => {
+        setCentralImage(itemId);
         if (itemCategory === 'coffee-mugs') {
             const specificItem = coffeeMugs?.filter(
                 (item) => item?.name === itemId
@@ -80,7 +82,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             const arr = [...specificItem?.extraImages, centralImage];
             setAllImages([...arr]);
         }
-    }, []);
+    }, [itemCategory, itemId]);
 
     const getHeaderInfo = () => {
         if (itemCategory === 'trousers') {

@@ -29,12 +29,14 @@ const ItemDetail = () => {
     });
 
     const itemCategory = router?.query?.name;
+
     const itemId = router?.query?.id;
     const [synonumousImages, setSynonymousImages] = React.useState([]);
-    const [centralImage, setCentralImage] = React.useState(itemId);
+    const [centralImage, setCentralImage] = React.useState();
     const [imageInfo, setImageInfo] = React.useState({});
 
     React.useEffect(() => {
+        setCentralImage(itemId);
         if (itemCategory === 'coffee-mugs') {
             const specificItem = coffeeMugs?.filter(
                 (item) => item?.name === itemId
@@ -76,7 +78,7 @@ const ItemDetail = () => {
             setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
         }
-    }, []);
+    }, [itemCategory, itemId]);
 
     if (isMobileView) {
         return <MobileViewDetail itemCategory={itemCategory} itemId={itemId} />;
