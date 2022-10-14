@@ -6,6 +6,7 @@ import {
     useBreakpointValue,
     Container,
     Flex,
+    Button,
 } from '@chakra-ui/react';
 
 import { useRouter } from 'next/router';
@@ -116,12 +117,24 @@ const ItemDetail = () => {
                             layout="fixed"
                         />
                     </Box>
-                    <Flex flexDir={'column'} gridRowGap={3}>
+                    <Flex flexDir={'column'} gridRowGap={8}>
                         <Text fontWeight={'bold'}>{imageInfo?.alt}</Text>
                         <Text>I guard the nation what is your super power</Text>
                         <Text>MRP:{imageInfo?.price}</Text>
+                        <Button colorScheme={'primary'} bgColor="orange">
+                            Add to Cart
+                        </Button>
+                        <Button colorScheme={'primary'} bgColor="orange">
+                            Buy Online
+                        </Button>
                     </Flex>
                 </Flex>
+                <Text fontWeight={'bold'}>Product Description</Text>
+                <Text>
+                    Our team has designed this basic, aka The centrepiee of any
+                    outfit, for you to wear bith forexercise and for everyday
+                    life. A must-have fitness basic for dressing up or down.
+                </Text>
             </Container>
         </Layout>
     );
