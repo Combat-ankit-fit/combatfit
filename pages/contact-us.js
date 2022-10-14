@@ -28,7 +28,7 @@ import React from 'react';
 
 import axios from 'axios';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Footer1 from '../components/Footer1';
 import router, { useRouter } from 'next/router';
 import { HamburgerIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons';
 
@@ -403,7 +403,7 @@ const ContactUs = () => {
                     </Flex>
                 </Flex>
             </Container>
-            <Footer />
+            <Footer1 />
         </Flex>
     );
 };
