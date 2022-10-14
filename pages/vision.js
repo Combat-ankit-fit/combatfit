@@ -30,6 +30,7 @@ import React from 'react';
 import axios from 'axios';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Footer1 from '../components/Footer1';
 import router, { useRouter } from 'next/router';
 import { HamburgerIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { Image } from '@chakra-ui/react';
@@ -251,10 +252,7 @@ const ContactUs = () => {
                     id="first"
                     justifyContent={'center'}
                     {...(!isMobileView && {
-                        h: '100vh',
-                    })}
-                    {...(isMobileView && {
-                        h: '200vh',
+                        h: '70vh',
                     })}
                     mt={{ base: '20px', md: 0 }}
                 >
@@ -434,7 +432,7 @@ const ContactUs = () => {
                     </Box>
                 </Flex>
             </Container>
-            <Footer />
+            <Footer1 />
         </Flex>
     );
 };
