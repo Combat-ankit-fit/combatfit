@@ -46,7 +46,7 @@ const Footer = ({ homepage = false }) => {
                 </Flex>
             )}
             {isMobileView && (
-                <>
+                <React.Fragment>
                     <Flex
                         as="footer"
                         bgColor={'black'}
@@ -164,18 +164,34 @@ const Footer = ({ homepage = false }) => {
                         <Grid templateColumns="repeat(2, 1fr)" gap={2} mt="4">
                             <Flex flexDirection={'column'}>
                                 <Text color={'orange'}>SERVICES</Text>
-                                <Text color={'white'}>
+                                <Text
+                                    color={'white'}
+                                    onClick={() => {
+                                        router.push(
+                                            '/items/customized-clothing'
+                                        );
+                                    }}
+                                >
                                     Product Customization
                                 </Text>
-                                <Text color={'white'}>Digital Design Aid</Text>
-                                <Text color={'white'}>
+                                <Text
+                                    color={'white'}
+                                    onClick={() => {
+                                        router.push(
+                                            '/items/customized-clothing'
+                                        );
+                                    }}
+                                >
+                                    Digital Design Aid
+                                </Text>
+                                <Text
+                                    color={'white'}
+                                    onClick={() => {
+                                        router.push('/contact-us');
+                                    }}
+                                >
                                     Procurement services
                                 </Text>
-                            </Flex>
-                            <Flex flexDirection={'column'} alignItems="center">
-                                <Text color={'orange'}>STORIES</Text>
-                                <Text color={'white'}>Discover</Text>
-                                <Text color={'white'}>Contribute</Text>
                             </Flex>
                         </Grid>
                         <Text color={'white'} mt="4" textAlign={'justify'}>
@@ -188,7 +204,7 @@ const Footer = ({ homepage = false }) => {
                         <Flex
                             justifyContent={'space-between'}
                             w="full"
-                            alignItems={'baseline'}
+                            alignItems={'center'}
                             mt="8"
                             mb="4"
                         >
@@ -208,7 +224,7 @@ const Footer = ({ homepage = false }) => {
                             </Button>
                         </Flex>
                     </Flex>
-                </>
+                </React.Fragment>
             )}
         </React.Fragment>
     );
