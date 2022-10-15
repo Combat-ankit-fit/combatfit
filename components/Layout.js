@@ -202,7 +202,7 @@ const Layout = ({
                         )}
 
                         <NextImage
-                            src="/banner01.jpg"
+                            src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner01.jpg?alt=media&token=0a8f99d5-9b9b-459d-a7cb-accf316994d1"
                             objectFit="cover"
                             height={isMobileView ? 1000 : 900}
                             width={1600}
@@ -368,7 +368,7 @@ const Layout = ({
                         )}
 
                         <NextImage
-                            src="/banner02.jpg"
+                            src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner02.jpg?alt=media&token=7adf5dc5-e918-4d3a-a25f-387b8ce6cf68"
                             objectFit="cover"
                             height={isMobileView ? 800 : 600}
                             width={1200}
@@ -445,7 +445,7 @@ const Layout = ({
                                 }}
                             >
                                 <NextImage
-                                    src="/banner03.jpg"
+                                    src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner03.jpg?alt=media&token=2412613a-f846-46d3-8548-24efe2a3e555"
                                     width={1200}
                                     height={700}
                                 />
@@ -570,7 +570,7 @@ const Layout = ({
                             </Flex>
                         </Box>
                         <NextImage
-                            src="/banner03.jpg"
+                            src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner03.jpg?alt=media&token=2412613a-f846-46d3-8548-24efe2a3e555"
                             objectFit="cover"
                             width={900}
                             height={700}
