@@ -484,7 +484,7 @@ const Layout = ({
                                 cursor="pointer"
                             >
                                 <NextImage
-                                    src="/banner04.jpg"
+                                    src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner04.jpg?alt=media&token=c0e5af5f-25cb-49fa-9570-a37b2521f2b2"
                                     width={1200}
                                     height={700}
                                 />
@@ -654,7 +654,7 @@ const Layout = ({
                             </Flex>
                         </Box>
                         <NextImage
-                            src="/banner04.jpg"
+                            src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner04.jpg?alt=media&token=c0e5af5f-25cb-49fa-9570-a37b2521f2b2"
                             objectFit="cover"
                             width={900}
                             height={700}
