@@ -393,7 +393,7 @@ const Layout = ({
                         )}
 
                         <NextImage
-                            src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner04.jpg?alt=media&token=c0e5af5f-25cb-49fa-9570-a37b2521f2b2"
+                            src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner02.jpg?alt=media&token=7adf5dc5-e918-4d3a-a25f-387b8ce6cf68"
                             objectFit="cover"
                             height={isMobileView ? 800 : 600}
                             width={1200}
