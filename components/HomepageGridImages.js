@@ -45,8 +45,8 @@ const ItemCard = (props) => {
                 <NextImage
                     src={`/${itemName}.${extension}`}
                     objectFit="contain"
-                    height={'200px'}
-                    width="200px"
+                    height={'150px'}
+                    width="150px"
                 />
             </Box>
             <Flex
