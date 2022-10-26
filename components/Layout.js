@@ -255,6 +255,7 @@ const Layout = ({
                             {[1, 2, 3, 4, 5].map((item, index) => {
                                 return (
                                     <Box
+                                        key={index}
                                         onClick={() => {
                                             if (item === 1) {
                                                 router.push(
