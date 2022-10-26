@@ -238,6 +238,7 @@ const Layout = ({
                     <Box
                         w="full"
                         id="main__box"
+                        bgColor={'black'}
                         border="1px solid black"
                         sx={{
                             '.carousel-status': {
