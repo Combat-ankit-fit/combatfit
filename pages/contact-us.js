@@ -50,7 +50,7 @@ const ContactUs = () => {
         { item: 'Whisky Glasses', path: '/' },
         { item: 'Posters', path: '/posters' },
         { item: 'Keyrings', path: '/keyrings' },
-        { item: 'Notepad', path: '/notepads' },
+        { item: 'Notepads', path: '/notepads' },
     ];
 
     const submitHandler = async (values) => {

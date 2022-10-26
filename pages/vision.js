@@ -53,7 +53,7 @@ const ContactUs = () => {
         { item: 'Whisky Glasses', path: '/' },
         { item: 'Posters', path: '/posters' },
         { item: 'Keyrings', path: '/keyrings' },
-        { item: 'Notepad', path: '/notepads' },
+        { item: 'Notepads', path: '/notepads' },
     ];
 
     const submitHandler = async (values) => {
@@ -181,12 +181,7 @@ const ContactUs = () => {
                                 </Box>
                             </List>
                         </Box>
-                        <Box pb="4" display={'flex'}>
-                            <Text color="white">Services</Text>
-                        </Box>
-                        <Box pb="4" display={'flex'}>
-                            <Text color="white">Military Stories</Text>
-                        </Box>
+
                         <Box pb="4" display={'flex'}>
                             <Text color="white">Vision</Text>
                         </Box>

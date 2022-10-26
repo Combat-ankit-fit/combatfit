@@ -297,7 +297,7 @@ const Layout = ({
                                     fontWeight={'bold'}
                                     fontSize={{ base: 'xl', md: '5xl' }}
                                 >
-                                    Military Inspired Clothing
+                                    Stay Inspired
                                 </Text>
 
                                 <Divider
@@ -417,7 +417,7 @@ const Layout = ({
                                             fontWeight={'bold'}
                                             fontSize="3xl"
                                         >
-                                            Regular Clothing
+                                            Beyond Regulars
                                         </Text>
                                         <Divider
                                             orientation="horizontal"
@@ -550,7 +550,7 @@ const Layout = ({
                                         fontWeight={'bold'}
                                         fontSize="2xl"
                                     >
-                                        Regular Clothing
+                                        Beyond Regulars
                                     </Text>
                                     <Divider
                                         orientation="horizontal"

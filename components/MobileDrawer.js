@@ -42,7 +42,7 @@ const MobileDrawer = ({
         { item: 'Whisky Glasses', path: '/' },
         { item: 'Posters', path: '/posters' },
         { item: 'Keyrings', path: '/keyrings' },
-        { item: 'Notepad', path: '/notepads' },
+        { item: 'Notepads', path: '/notepads' },
     ];
     const router = useRouter();
 
@@ -113,6 +113,15 @@ const MobileDrawer = ({
                     />
 
                     <Box py="4" display={'flex'} flexDirection="column">
+                        <Text
+                            color="white"
+                            onClick={() => {
+                                router.push('/');
+                            }}
+                            mb="4"
+                        >
+                            Home
+                        </Text>
                         <Text color="white">Clothing</Text>
                         <List spacing={3}>
                             <Box p="2" px="4">
@@ -166,12 +175,7 @@ const MobileDrawer = ({
                             </Box>
                         </List>
                     </Box>
-                    <Box pb="4" display={'flex'}>
-                        <Text color="white">Services</Text>
-                    </Box>
-                    <Box pb="4" display={'flex'}>
-                        <Text color="white">Military Stories</Text>
-                    </Box>
+
                     <Box pb="4" display={'flex'}>
                         <Text
                             color="white"

@@ -6,6 +6,7 @@ import {
     useBreakpointValue,
     Grid,
     Divider,
+    Box,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -72,7 +73,7 @@ const Footer = ({ homepage = false }) => {
                             </Flex>
                         </Grid>
                         <Grid templateColumns="repeat(2, 1fr)" gap={2}>
-                            <Flex flexDirection={'column'} ps="4">
+                            <Flex flexDirection={'column'}>
                                 <Text
                                     color={'white'}
                                     onClick={() => {
@@ -161,6 +162,7 @@ const Footer = ({ homepage = false }) => {
                                 </Text>
                             </Flex>
                         </Grid>
+                        <Divider borderColor={'darkgrey'} my="8" />
                         <Grid templateColumns="repeat(2, 1fr)" gap={2} mt="4">
                             <Flex flexDirection={'column'}>
                                 <Text color={'orange'}>SERVICES</Text>
@@ -194,13 +196,16 @@ const Footer = ({ homepage = false }) => {
                                 </Text>
                             </Flex>
                         </Grid>
-                        <Text color={'white'} mt="4" textAlign={'justify'}>
-                            At CombatFit, we are driven by three main principles
-                            quality, transparency and value to the clients.
-                            CombatFit aims to provide premium quality clothing,
-                            gear and accessories which are truly unique and at a
-                            price which is unbeatable.
-                        </Text>
+                        <Box border="1px solid darkgrey" my="4" py="4" px="2">
+                            <Text color={'white'} textAlign={'justify'}>
+                                At CombatFit, we are driven by three main
+                                principles quality, transparency and value to
+                                the clients. CombatFit aims to provide premium
+                                quality clothing, gear and accessories which are
+                                truly unique and at a price which is unbeatable.
+                            </Text>
+                        </Box>
+
                         <Flex
                             justifyContent={'space-between'}
                             w="full"
