@@ -21,6 +21,7 @@ import {
 import React from 'react';
 import { HamburgerIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import router, { useRouter } from 'next/router';
+import NextImage from 'next/image';
 
 const MobileDrawer = ({
     breadCrumbsPath,
@@ -45,6 +46,10 @@ const MobileDrawer = ({
         { item: 'Notepads', path: '/notepads' },
     ];
     const router = useRouter();
+    const displayLogo =
+        router?.pathname !== '/' &&
+        router?.pathname !== '/vision' &&
+        router?.pathname !== '/contact-us';
 
     return (
         <Box>
@@ -57,13 +62,28 @@ const MobileDrawer = ({
                 bgColor={bgColor}
             >
                 {!isOpen && (
-                    <HamburgerIcon
-                        color={'white'}
-                        boxSize={6}
-                        onClick={() => {
-                            isOpen ? onClose() : onOpen();
-                        }}
-                    />
+                    <Box display={'flex'}>
+                        <HamburgerIcon
+                            color={'white'}
+                            boxSize={6}
+                            onClick={() => {
+                                isOpen ? onClose() : onOpen();
+                            }}
+                        />
+                        {displayLogo && (
+                            <Box
+                                display={'flex'}
+                                flex="1"
+                                justifyContent={'center'}
+                            >
+                                <NextImage
+                                    src="/logo.png"
+                                    width={'80px'}
+                                    height="30px"
+                                />
+                            </Box>
+                        )}
+                    </Box>
                 )}
             </Box>
 

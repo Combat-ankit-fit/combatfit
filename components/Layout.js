@@ -1,3 +1,5 @@
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
 import {
     Box,
     Flex,
@@ -23,6 +25,7 @@ import router, { useRouter } from 'next/router';
 import MobileDrawer from './MobileDrawer';
 import { ItemContext } from '../context/ItemProvider';
 import GenericItemCard from '../components/GenericItemCard';
+import { Carousel } from 'react-responsive-carousel';
 
 const Layout = ({
     children,
@@ -230,47 +233,67 @@ const Layout = ({
                         })}
                     </Grid>
                 )}
+
                 {streamImages && isMobileView && (
-                    <Grid
-                        templateColumns="repeat(3, 1fr)"
-                        gap={1}
-                        mb="2"
+                    <Box
                         w="full"
-                        mt="1"
+                        id="main__box"
+                        border="1px solid black"
+                        sx={{
+                            '.carousel-status': {
+                                display: 'none',
+                            },
+                            '.control-dots': {
+                                marginTop: '24px',
+                            },
+                            '.carousel-slider > button': {
+                                display: 'none',
+                            },
+                        }}
                     >
-                        {[1, 2, 3].map((item, i) => {
-                            return (
-                                <HomepageGridImages
-                                    key={item}
-                                    height="150px"
-                                    name={item}
-                                    extension="png"
-                                    bgColor="#2D2D2D"
-                                />
-                            );
-                        })}
-                    </Grid>
+                        <Carousel showThumbs={false}>
+                            {[1, 2, 3, 4, 5].map((item, index) => {
+                                return (
+                                    <Box
+                                        onClick={() => {
+                                            if (item === 1) {
+                                                router.push(
+                                                    '/items/casual-tshirts'
+                                                );
+                                            }
+                                            if (item === 2) {
+                                                router.push('/items/trousers');
+                                            }
+                                            if (item === 3) {
+                                                router.push(
+                                                    '/items/coffee-mugs'
+                                                );
+                                            }
+                                            if (item === 4) {
+                                                router.push('/items/posters');
+                                            }
+                                            if (item === 5) {
+                                                router.push(
+                                                    '/items/customized-clothing'
+                                                );
+                                            }
+                                        }}
+                                    >
+                                        <NextImage
+                                            id={index}
+                                            key={index}
+                                            src={`/${item}.png`}
+                                            height={350}
+                                            width={250}
+                                            objectFit="contain"
+                                        />
+                                    </Box>
+                                );
+                            })}
+                        </Carousel>
+                    </Box>
                 )}
-                {streamImages && isMobileView && (
-                    <Grid
-                        templateColumns="repeat(2, 1fr)"
-                        gap={1}
-                        mb="2"
-                        w="full"
-                    >
-                        {[4, 5].map((item, i) => {
-                            return (
-                                <HomepageGridImages
-                                    key={item}
-                                    height="150px"
-                                    name={item}
-                                    extension="png"
-                                    bgColor="#2D2D2D"
-                                />
-                            );
-                        })}
-                    </Grid>
-                )}
+
                 {secondImage && (
                     <Box w="full" id="firstimage" position={'relative'}>
                         <Box

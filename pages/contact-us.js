@@ -178,12 +178,7 @@ const ContactUs = () => {
                                 </Box>
                             </List>
                         </Box>
-                        <Box pb="4" display={'flex'}>
-                            <Text color="white">Services</Text>
-                        </Box>
-                        <Box pb="4" display={'flex'}>
-                            <Text color="white">Military Stories</Text>
-                        </Box>
+
                         <Box pb="4" display={'flex'}>
                             <Text
                                 color="white"
