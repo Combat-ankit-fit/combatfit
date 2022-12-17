@@ -179,48 +179,7 @@ const Footer = ({ homepage = false }) => {
                             </Flex>
                         </Grid>
                         <Divider borderColor={'darkgrey'} mt="8" mb="4" />
-                        <Grid templateColumns="repeat(2, 1fr)" gap={2} mt="0">
-                            <Flex flexDirection={'column'} mt="0">
-                                <Text
-                                    color={'orange'}
-                                    fontWeight="bold"
-                                    fontSize={'xl'}
-                                >
-                                    SERVICES
-                                </Text>
-                                <Text
-                                    color={'white'}
-                                    onClick={() => {
-                                        router.push(
-                                            '/items/customized-clothing'
-                                        );
-                                    }}
-                                    ms="4"
-                                >
-                                    Product Customization
-                                </Text>
-                                <Text
-                                    ms="4"
-                                    color={'white'}
-                                    onClick={() => {
-                                        router.push(
-                                            '/items/customized-clothing'
-                                        );
-                                    }}
-                                >
-                                    Digital Design Aid
-                                </Text>
-                                <Text
-                                    ms="4"
-                                    color={'white'}
-                                    onClick={() => {
-                                        router.push('/contact-us');
-                                    }}
-                                >
-                                    Procurement services
-                                </Text>
-                            </Flex>
-                        </Grid>
+
                         <Box
                             border="1px solid darkgrey"
                             my="4"
