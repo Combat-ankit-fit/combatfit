@@ -61,19 +61,19 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                         color="white"
                         cursor={'pointer'}
                         onClick={() => {
-                            router.push('/clothing');
+                            router.push('/');
                         }}
                     >
-                        Clothing
+                        Home
                     </Text>
                     <Text
                         color="white"
                         cursor={'pointer'}
                         onClick={() => {
-                            router.push('/');
+                            router.push('/clothing');
                         }}
                     >
-                        Home
+                        Clothing
                     </Text>
 
                     <Text

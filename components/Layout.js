@@ -66,8 +66,8 @@ const Layout = ({
                 <MobileDrawer
                     breadCrumbsPath={false}
                     position="absolute"
-                    bgColor="none"
                     isBreadCrumRequired={false}
+                    bgColor="black"
                 />
             )}
 
@@ -95,7 +95,7 @@ const Layout = ({
                     <Box
                         w="full"
                         id="firstimage"
-                        mt={{ base: 0, md: 8 }}
+                        mt={{ base: 10, md: 8 }}
                         position={'relative'}
                     >
                         {!isMobileView && (
@@ -126,7 +126,7 @@ const Layout = ({
                                             maxW="xs"
                                             textAlign={'center'}
                                         >
-                                            Values to be the change
+                                            values to be the change
                                         </Text>
                                     </Box>
                                     <Button
@@ -147,7 +147,7 @@ const Layout = ({
                         {isMobileView && (
                             <Box
                                 position={'absolute'}
-                                top="0"
+                                top="0px"
                                 left="0"
                                 h="full"
                                 id="hello"
@@ -177,7 +177,7 @@ const Layout = ({
                                         maxW="xs"
                                         textAlign={'center'}
                                     >
-                                        Values to be
+                                        values to be the
                                     </Text>
                                     <Text
                                         color="white"

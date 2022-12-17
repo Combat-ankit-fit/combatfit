@@ -47,9 +47,7 @@ const MobileDrawer = ({
     ];
     const router = useRouter();
     const displayLogo =
-        router?.pathname !== '/' &&
-        router?.pathname !== '/vision' &&
-        router?.pathname !== '/contact-us';
+        router?.pathname !== '/vision' && router?.pathname !== '/contact-us';
 
     return (
         <Box>
