@@ -240,7 +240,7 @@ const Layout = ({
                         id="main__box"
                         bgColor={'black'}
                         border="1px solid black"
-                        height={'200px'}
+                        height={'220px'}
                         sx={{
                             '.carousel-status': {
                                 display: 'none',
@@ -297,6 +297,48 @@ const Layout = ({
                                             width={120}
                                             objectFit="fill"
                                         />
+
+                                        {item === 1 && (
+                                            <Text
+                                                color="white"
+                                                fontWeight={'bold'}
+                                            >
+                                                Upper Wear
+                                            </Text>
+                                        )}
+                                        {item === 2 && (
+                                            <Text
+                                                color="white"
+                                                fontWeight={'bold'}
+                                            >
+                                                Bottom Wear
+                                            </Text>
+                                        )}
+                                        {item === 3 && (
+                                            <Text
+                                                color="white"
+                                                fontWeight={'bold'}
+                                                me="32px"
+                                            >
+                                                Souvenirs
+                                            </Text>
+                                        )}
+                                        {item === 4 && (
+                                            <Text
+                                                color="white"
+                                                fontWeight={'bold'}
+                                            >
+                                                Posters
+                                            </Text>
+                                        )}
+                                        {item === 5 && (
+                                            <Text
+                                                color="white"
+                                                fontWeight={'bold'}
+                                            >
+                                                Customized
+                                            </Text>
+                                        )}
                                     </Box>
                                 );
                             })}
