@@ -351,6 +351,7 @@ const ContactUs = () => {
                                                 width="40%"
                                                 colorScheme="primary"
                                                 margin="8px auto"
+                                                mb="20px"
                                             >
                                                 Submit
                                             </Button>
@@ -387,12 +388,6 @@ const ContactUs = () => {
                             </Text>
                             <Text color="white" mb="2">
                                 +91 9719493210
-                            </Text>
-                        </Flex>
-                        <Flex flexDirection={'column'} gridRowGap={'2'}>
-                            <Text color="white">
-                                Address : L1/23 SF BPTP , Sector-84, Faridabad,
-                                Haryana, 121007
                             </Text>
                         </Flex>
                     </Flex>

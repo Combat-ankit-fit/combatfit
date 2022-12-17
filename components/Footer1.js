@@ -60,14 +60,30 @@ const Footer = ({ homepage = false }) => {
                         flexDir="column"
                     >
                         <Divider borderColor={'darkgrey'} my="8" />
-                        <Text color="orange">PRODUCTS</Text>
+                        <Text color="orange" fontWeight="bold" fontSize={'xl'}>
+                            PRODUCTS
+                        </Text>
 
                         <Grid templateColumns="repeat(2, 1fr)" gap={2} mb="2">
                             <Flex flexDirection={'column'}>
-                                <Text color={'white'}>Clothing</Text>
+                                <Text
+                                    color={'white'}
+                                    fontWeight="bold"
+                                    fontSize={'lg'}
+                                >
+                                    Clothing
+                                </Text>
                             </Flex>
-                            <Flex flexDirection={'column'}>
-                                <Text color={'white'} textAlign="center">
+                            <Flex
+                                flexDirection={'column'}
+                                alignItems="baseline"
+                            >
+                                <Text
+                                    color={'white'}
+                                    textAlign="center"
+                                    fontWeight="bold"
+                                    fontSize={'lg'}
+                                >
                                     Souvenirs
                                 </Text>
                             </Flex>
@@ -110,7 +126,7 @@ const Footer = ({ homepage = false }) => {
                             <Flex
                                 flexDirection={'column'}
                                 ps="4"
-                                alignItems="center"
+                                alignItems="baseline"
                             >
                                 <Text
                                     color={'white'}
@@ -162,10 +178,16 @@ const Footer = ({ homepage = false }) => {
                                 </Text>
                             </Flex>
                         </Grid>
-                        <Divider borderColor={'darkgrey'} my="8" />
-                        <Grid templateColumns="repeat(2, 1fr)" gap={2} mt="4">
-                            <Flex flexDirection={'column'}>
-                                <Text color={'orange'}>SERVICES</Text>
+                        <Divider borderColor={'darkgrey'} mt="8" mb="4" />
+                        <Grid templateColumns="repeat(2, 1fr)" gap={2} mt="0">
+                            <Flex flexDirection={'column'} mt="0">
+                                <Text
+                                    color={'orange'}
+                                    fontWeight="bold"
+                                    fontSize={'xl'}
+                                >
+                                    SERVICES
+                                </Text>
                                 <Text
                                     color={'white'}
                                     onClick={() => {
@@ -196,7 +218,13 @@ const Footer = ({ homepage = false }) => {
                                 </Text>
                             </Flex>
                         </Grid>
-                        <Box border="1px solid darkgrey" my="4" py="4" px="2">
+                        <Box
+                            border="1px solid darkgrey"
+                            my="4"
+                            py="4"
+                            px="2"
+                            borderRadius={'md'}
+                        >
                             <Text color={'white'} textAlign={'justify'}>
                                 At CombatFit, we are driven by three main
                                 principles quality, transparency and value to
