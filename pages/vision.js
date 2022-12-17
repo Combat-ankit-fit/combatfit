@@ -104,7 +104,7 @@ const ContactUs = () => {
                         overflow="hidden"
                         zIndex={'modal'}
                         bgColor="black"
-                        h={isOpen ? '60%' : '0px'}
+                        h={isOpen ? '80%' : '0px'}
                         p="4"
                         display={'flex'}
                         flexDirection="column"
