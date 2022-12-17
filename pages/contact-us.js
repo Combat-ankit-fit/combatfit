@@ -42,7 +42,7 @@ const ContactUs = () => {
         { item: 'Sweatshirts', path: '/sweatshirts' },
         { item: 'Trousers', path: '/trousers' },
         { item: 'Shorts', path: '/shorts' },
-        { item: 'Customized clothings', path: '/customized-clothing' },
+        { item: 'Customized Clothing', path: '/customized-clothing' },
     ];
     const souvenirs = [
         { item: 'Coffee Mugs', path: '/coffee-mugs' },
@@ -196,7 +196,7 @@ const ContactUs = () => {
                                     isOpen ? onClose() : onOpen();
                                 }}
                             >
-                                ContactUs
+                                Contact Us
                             </Text>
                         </Box>
                     </Box>
