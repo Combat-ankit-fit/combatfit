@@ -240,22 +240,30 @@ const Layout = ({
                         id="main__box"
                         bgColor={'black'}
                         border="1px solid black"
+                        height={'200px'}
                         sx={{
                             '.carousel-status': {
                                 display: 'none',
                             },
                             '.control-dots': {
-                                marginTop: '24px',
+                                position: 'absolute',
                             },
                             '.carousel-slider > button': {
                                 display: 'none',
                             },
+                            '.carousel-root': {
+                                height: '100%',
+                            },
+                            '.carousel-slider': {
+                                height: '100%',
+                            },
                         }}
                     >
-                        <Carousel showThumbs={false}>
+                        <Carousel showThumbs={false} autoPlay>
                             {[1, 2, 3, 4, 5].map((item, index) => {
                                 return (
                                     <Box
+                                        marginTop={'30px'}
                                         key={index}
                                         onClick={() => {
                                             if (item === 1) {
@@ -285,9 +293,9 @@ const Layout = ({
                                             id={index}
                                             key={index}
                                             src={`/${item}.png`}
-                                            height={350}
-                                            width={250}
-                                            objectFit="contain"
+                                            height={120}
+                                            width={120}
+                                            objectFit="fill"
                                         />
                                     </Box>
                                 );
