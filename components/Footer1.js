@@ -89,7 +89,7 @@ const Footer = ({ homepage = false }) => {
                             </Flex>
                         </Grid>
                         <Grid templateColumns="repeat(2, 1fr)" gap={2}>
-                            <Flex flexDirection={'column'}>
+                            <Flex flexDirection={'column'} ms="4">
                                 <Text
                                     color={'white'}
                                     onClick={() => {
@@ -195,10 +195,12 @@ const Footer = ({ homepage = false }) => {
                                             '/items/customized-clothing'
                                         );
                                     }}
+                                    ms="4"
                                 >
                                     Product Customization
                                 </Text>
                                 <Text
+                                    ms="4"
                                     color={'white'}
                                     onClick={() => {
                                         router.push(
@@ -209,6 +211,7 @@ const Footer = ({ homepage = false }) => {
                                     Digital Design Aid
                                 </Text>
                                 <Text
+                                    ms="4"
                                     color={'white'}
                                     onClick={() => {
                                         router.push('/contact-us');
