@@ -259,7 +259,7 @@ const Layout = ({
                             },
                         }}
                     >
-                        <Carousel showThumbs={false} autoPlay>
+                        <Carousel showThumbs={false} autoPlay infiniteLoop>
                             {[1, 2, 3, 4, 5].map((item, index) => {
                                 return (
                                     <Box
