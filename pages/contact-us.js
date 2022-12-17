@@ -100,8 +100,8 @@ const ContactUs = () => {
                         position={'fixed'}
                         overflow="hidden"
                         zIndex={'modal'}
-                        bgColor="#343434"
-                        h={isOpen ? 'full' : '0px'}
+                        bgColor="black"
+                        h={isOpen ? '60%' : '0px'}
                         p="4"
                         display={'flex'}
                         flexDirection="column"
