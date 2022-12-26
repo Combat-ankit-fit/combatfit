@@ -31,11 +31,11 @@ const MobileDrawer = ({
 }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const clothingItems = [
-        { item: 'Tshirts', path: '/tshirts' },
-        { item: 'Sweatshirts', path: '/sweatshirts' },
-        { item: 'Trousers', path: '/trousers' },
-        { item: 'Shorts', path: '/shorts' },
-        { item: 'Customized Clothing', path: '/customized-clothing' },
+        // { item: 'Tshirts', path: '/all-items' },
+        // { item: 'Sweatshirts', path: '/all-items' },
+        // { item: 'Trousers', path: '/all-items' },
+        // { item: 'Shorts', path: '/all-items' },
+        // { item: 'Customized Clothing', path: '/customized-clothing' },
         { item: 'All Items', path: '/all-items' },
     ];
     const souvenirs = [

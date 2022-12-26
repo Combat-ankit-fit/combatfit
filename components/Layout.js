@@ -135,7 +135,7 @@ const Layout = ({
                                         width={'xs'}
                                         mb="4"
                                         onClick={() => {
-                                            router.push('/items/tshirts');
+                                            router.push('/items/all-items');
                                         }}
                                     >
                                         Explore Now
@@ -195,7 +195,7 @@ const Layout = ({
                                         color="black"
                                         maxW={'min-content'}
                                         onClick={() => {
-                                            router.push('/items/tshirts');
+                                            router.push('/items/all-items');
                                         }}
                                     >
                                         Explore Now
@@ -267,12 +267,10 @@ const Layout = ({
                                         key={index}
                                         onClick={() => {
                                             if (item === 1) {
-                                                router.push(
-                                                    '/items/casual-tshirts'
-                                                );
+                                                router.push('/items/all-items');
                                             }
                                             if (item === 2) {
-                                                router.push('/items/trousers');
+                                                router.push('/items/all-items');
                                             }
                                             if (item === 3) {
                                                 router.push(
@@ -283,9 +281,7 @@ const Layout = ({
                                                 router.push('/items/posters');
                                             }
                                             if (item === 5) {
-                                                router.push(
-                                                    '/items/customized-clothing'
-                                                );
+                                                router.push('/items/all-items');
                                             }
                                         }}
                                     >
@@ -401,9 +397,7 @@ const Layout = ({
                                         colorScheme="primary"
                                         color="black"
                                         onClick={() => {
-                                            router.push(
-                                                '/items/millitary-clothing'
-                                            );
+                                            router.push('/items/all-items');
                                         }}
                                     >
                                         Explore Now
@@ -433,7 +427,7 @@ const Layout = ({
                                         color="black"
                                         width={'xs'}
                                         onClick={() => {
-                                            router.push('/items/all-products');
+                                            router.push('/items/all-items');
                                         }}
                                     >
                                         Explore Now
@@ -504,7 +498,7 @@ const Layout = ({
                                         colorScheme="primary"
                                         color="black"
                                         onClick={() => {
-                                            router.push('/items/shorts');
+                                            router.push('/items/all-items');
                                         }}
                                     >
                                         Explore Now
@@ -516,7 +510,7 @@ const Layout = ({
                                 overflow={'hidden'}
                                 cursor="pointer"
                                 onClick={() => {
-                                    router.push('/items/shorts');
+                                    router.push('/items/all-items');
                                 }}
                             >
                                 <NextImage
@@ -529,7 +523,7 @@ const Layout = ({
                                 position="relative"
                                 overflow={'hidden'}
                                 onClick={() => {
-                                    router.push('/items/trousers');
+                                    router.push('/items/all-items');
                                 }}
                                 cursor="pointer"
                             >
@@ -589,7 +583,7 @@ const Layout = ({
                                         colorScheme="primary"
                                         color="black"
                                         onClick={() => {
-                                            router.push('/items/trousers');
+                                            router.push('/items/all-items');
                                         }}
                                     >
                                         Explore Now
@@ -637,7 +631,7 @@ const Layout = ({
                                     colorScheme="primary"
                                     color="black"
                                     onClick={() => {
-                                        router.push('/items/shorts');
+                                        router.push('/items/all-items');
                                     }}
                                 >
                                     Explore Now
@@ -696,7 +690,7 @@ const Layout = ({
                                     colorScheme="primary"
                                     color="black"
                                     onClick={() => {
-                                        router.push('/items/trousers');
+                                        router.push('/items/all-items');
                                     }}
                                 >
                                     Explore Now

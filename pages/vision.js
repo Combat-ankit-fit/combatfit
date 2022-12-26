@@ -41,11 +41,11 @@ const ContactUs = () => {
     const isMobileView = useBreakpointValue({ base: true, md: false });
     const { isOpen, onOpen, onClose } = useDisclosure();
     const clothingItems = [
-        { item: 'Tshirts', path: '/' },
-        { item: 'Sweatshirts', path: '/sweatshirts' },
-        { item: 'Trousers', path: '/trousers' },
-        { item: 'Shorts', path: '/shorts' },
-        { item: 'Customized Clothing', path: '/customized-clothing' },
+        // { item: 'Tshirts', path: '/' },
+        // { item: 'Sweatshirts', path: '/sweatshirts' },
+        // { item: 'Trousers', path: '/trousers' },
+        // { item: 'Shorts', path: '/shorts' },
+        // { item: 'Customized Clothing', path: '/customized-clothing' },
         { item: 'All Items', path: '/all-items' },
     ];
     const souvenirs = [

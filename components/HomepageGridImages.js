@@ -22,12 +22,12 @@ const ItemCard = (props) => {
                 })}
                 {...(itemName === 2 && {
                     onClick: () => {
-                        router.push('/items/trousers');
+                        router.push('/items/all-items');
                     },
                 })}
                 {...(itemName === 1 && {
                     onClick: () => {
-                        router.push('/items/casual-tshirts');
+                        router.push('/items/all-items');
                     },
                 })}
                 {...(itemName === 4 && {
@@ -37,7 +37,7 @@ const ItemCard = (props) => {
                 })}
                 {...(itemName === 5 && {
                     onClick: () => {
-                        router.push('/items/customized-clothing');
+                        router.push('/items/all-items');
                     },
                 })}
                 {...props}

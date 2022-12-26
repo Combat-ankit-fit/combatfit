@@ -85,15 +85,6 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                     >
                         Souvenirs
                     </Text>
-                    <Text
-                        color="white"
-                        cursor={'pointer'}
-                        onClick={() => {
-                            router.push('/items/customized-clothing');
-                        }}
-                    >
-                        Customized
-                    </Text>
 
                     <Text
                         color="white"

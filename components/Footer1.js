@@ -93,14 +93,14 @@ const Footer = ({ homepage = false }) => {
                                 <Text
                                     color={'white'}
                                     onClick={() => {
-                                        router.push('/items/tshirts');
+                                        router.push('/items/all-items');
                                     }}
                                 >
                                     Tshirts
                                 </Text>
                                 <Text
                                     onClick={() => {
-                                        router.push('/items/sweatshirts');
+                                        router.push('/items/all-items');
                                     }}
                                     color={'white'}
                                 >
@@ -109,7 +109,7 @@ const Footer = ({ homepage = false }) => {
                                 <Text
                                     color={'white'}
                                     onClick={() => {
-                                        router.push('/items/trousers');
+                                        router.push('/items/all-items');
                                     }}
                                 >
                                     Trousers
@@ -117,7 +117,7 @@ const Footer = ({ homepage = false }) => {
                                 <Text
                                     color={'white'}
                                     onClick={() => {
-                                        router.push('/items/shorts');
+                                        router.push('/items/all-items');
                                     }}
                                 >
                                     Shorts
