@@ -18,6 +18,7 @@ import { posters } from '../../utils/posters';
 import { trousers } from '../../utils/trousers';
 import { sweatShirts } from '../../utils/sweatshirts';
 import { casualTshirts } from '../../utils/casual-tshirts';
+import { allClothings } from '../../utils/all-items';
 import NextImage from 'next/image';
 
 const ItemDetail = () => {
@@ -72,6 +73,14 @@ const ItemDetail = () => {
         }
         if (itemCategory === 'casual-tshirts') {
             const specificItem = casualTshirts?.filter(
+                (item) => item?.name === itemId
+            )[0];
+
+            setSynonymousImages([...specificItem?.extraImages]);
+            setImageInfo({ ...specificItem });
+        }
+        if (itemCategory === 'all-items') {
+            const specificItem = allClothings?.filter(
                 (item) => item?.name === itemId
             )[0];
 

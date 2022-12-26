@@ -21,6 +21,7 @@ import { posters } from '../utils/posters';
 import { trousers } from '../utils/trousers';
 import { sweatShirts } from '../utils/sweatshirts';
 import { casualTshirts } from '../utils/casual-tshirts';
+import { allClothings } from '../utils/all-items';
 import NextImage from 'next/image';
 
 const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
@@ -74,6 +75,16 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
         }
         if (itemCategory === 'casual-tshirts') {
             const specificItem = casualTshirts?.filter(
+                (item) => item?.name === itemId
+            )[0];
+
+            setSynonymousImages([...specificItem?.extraImages]);
+            setImageInfo({ ...specificItem });
+            const arr = [...specificItem?.extraImages, centralImage];
+            setAllImages([...arr]);
+        }
+        if (itemCategory === 'all-items') {
+            const specificItem = allClothings?.filter(
                 (item) => item?.name === itemId
             )[0];
 
