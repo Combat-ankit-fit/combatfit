@@ -29,7 +29,12 @@ const GenericItemCard = (props) => {
             }}
         >
             <Box position="relative" overflow={'hidden'} {...props}>
-                <NextImage src={`/${info.name}.${extension}`} layout="fill" />
+                <NextImage
+                    src={`/${info.name}.${extension}`}
+                    objectFit="contain"
+                    width="450px"
+                    height="450px"
+                />
             </Box>
             <Flex
                 flexDirection={'column'}

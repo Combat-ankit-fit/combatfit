@@ -12,6 +12,7 @@ import { shorts } from '../utils/shorts';
 import { sweatShirts } from '../utils/sweatshirts';
 import { notepad } from '../utils/notepad';
 import { keyrings } from '../utils/keyrings';
+import { allClothings } from '../utils/all-items';
 
 export const ItemContext = React.createContext({
     getItemsOnFitBasis: () => {},
@@ -69,6 +70,9 @@ const ItemProvider = ({ children }) => {
         if (queryParam === 'keyrings') {
             setSelectedItems([...keyrings]);
         }
+        if (queryParam === 'all-items') {
+            setSelectedItems([...allClothings]);
+        }
     }, [queryParam]);
 
     const getItemsOnFitBasis = (fitType) => {
@@ -106,6 +110,14 @@ const ItemProvider = ({ children }) => {
         }
         if (queryParam === 'sweatshirts') {
             const allItems = [...sweatShirts];
+            const particularFitItems = allItems?.filter(
+                (val) => val?.fit === fitType.toLowerCase()
+            );
+            setSelectedItems([...particularFitItems]);
+            return;
+        }
+        if (queryParam === 'all-items') {
+            const allItems = [...allClothings];
             const particularFitItems = allItems?.filter(
                 (val) => val?.fit === fitType.toLowerCase()
             );
@@ -155,6 +167,14 @@ const ItemProvider = ({ children }) => {
 
             setSelectedItems([...particularSizeItems]);
         }
+        if (queryParam === 'all-items') {
+            const allItems = [...allClothings];
+            const particularSizeItems = allItems?.filter(
+                (val) => val?.size === size
+            );
+
+            setSelectedItems([...particularSizeItems]);
+        }
     };
 
     const getItemsOnColorBasis = (color) => {
@@ -192,6 +212,14 @@ const ItemProvider = ({ children }) => {
         }
         if (queryParam === 'sweatshirts') {
             const allItems = [...sweatShirts];
+            const particularColorItems = allItems?.filter(
+                (val) => val?.color === color
+            );
+
+            setSelectedItems([...particularColorItems]);
+        }
+        if (queryParam === 'all-items') {
+            const allItems = [...allClothings];
             const particularColorItems = allItems?.filter(
                 (val) => val?.color === color
             );

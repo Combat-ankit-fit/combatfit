@@ -70,7 +70,7 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                         color="white"
                         cursor={'pointer'}
                         onClick={() => {
-                            router.push('/clothing');
+                            router.push('/items/all-items');
                         }}
                     >
                         Clothing
