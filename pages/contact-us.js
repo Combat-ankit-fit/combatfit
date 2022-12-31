@@ -57,10 +57,18 @@ const ContactUs = () => {
     const submitHandler = async (values) => {
         setRequestSubmitted(true);
 
-        await axios.post(
-            'https://clothing-app-b7613-default-rtdb.firebaseio.com/queries.json',
-            values
-        );
+        var data = {
+            service_id: 'service_vsz0t4k',
+            template_id: 'template_286a45o',
+            user_id: 'JUe4OFuHUYs_q0D7J',
+            template_params: {
+                from_name: values?.firstname,
+                message: values?.description,
+                phonenumber: values?.phonenumber,
+            },
+        };
+
+        await axios.post('https://api.emailjs.com/api/v1.0/email/send', data);
     };
 
     const validate = Yup.object({
