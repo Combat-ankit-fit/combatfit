@@ -41,7 +41,9 @@ const Item = () => {
                 sidebarRequired={isSideBarRequired()}
                 maxW="9xl"
                 breadCrumbsRequired={true}
-                breadCrumbsPath={itemName}
+                breadCrumbsPath={
+                    itemName !== 'All-items' ? itemName : 'Clothing'
+                }
                 presentItem={queryParam}
                 recurringItems={true}
             ></Layout>
