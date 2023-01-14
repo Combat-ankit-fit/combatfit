@@ -12,6 +12,7 @@ import {
     Button,
     useBreakpointValue,
     Divider,
+    Spinner,
 } from '@chakra-ui/react';
 import Sidebar from './Sidebar';
 import Header from './Header';
@@ -55,6 +56,83 @@ const Layout = ({
     console.log('selectedItems in layout is:-', selectedItems);
 
     const isMobileView = useBreakpointValue({ base: true, md: false });
+
+    const loaderFn = () => {
+        if (
+            recurringItems &&
+            selectedItems?.length > 0 &&
+            breadCrumbsPath === 'Clothing'
+        ) {
+            return (
+                <Grid
+                    templateColumns={
+                        isMobileView ? 'repeat(1, 1fr)' : 'repeat(4, 1fr)'
+                    }
+                    gap={3}
+                    mb="16"
+                    w="full"
+                >
+                    {breadCrumbsPath === 'Clothing' &&
+                        selectedItems?.map((item, i) => {
+                            return (
+                                <GenericItemCard
+                                    key={i}
+                                    height={isMobileView ? '250px' : '320px'}
+                                    info={item}
+                                    extension="jpg"
+                                />
+                            );
+                        })}
+                </Grid>
+            );
+        }
+
+        if (
+            recurringItems &&
+            selectedItems?.length > 0 &&
+            breadCrumbsPath !== 'Clothing'
+        ) {
+            return (
+                <Grid
+                    templateColumns={
+                        isMobileView ? 'repeat(1, 1fr)' : 'repeat(4, 1fr)'
+                    }
+                    gap={3}
+                    mb="16"
+                    w="full"
+                >
+                    {breadCrumbsPath !== 'Clothing' &&
+                        selectedItems?.map((item, i) => {
+                            return (
+                                <GenericItemNonClothingCard
+                                    key={i}
+                                    height={isMobileView ? '250px' : '320px'}
+                                    info={item}
+                                    extension="jpg"
+                                />
+                            );
+                        })}
+                </Grid>
+            );
+        }
+
+        if (
+            recurringItems &&
+            selectedItems?.length === 0 &&
+            breadCrumbsPath === 'Clothing'
+        ) {
+            return (
+                <Flex
+                    justifyContent={'center'}
+                    alignItems="center"
+                    height={'50vh'}
+                >
+                    <Spinner size="xl" color="orange" />
+                </Flex>
+            );
+        }
+    };
+
     return (
         <Box id="layout" display={'flex'} minH={homepage ? '300vh' : '100vh'}>
             {!isMobileView && (
@@ -929,45 +1007,7 @@ const Layout = ({
                     {homepage && (
                         <NextImage src="/banner-souviners.png" layout="fill" />
                     )}
-                    {recurringItems && (
-                        <Grid
-                            templateColumns={
-                                isMobileView
-                                    ? 'repeat(1, 1fr)'
-                                    : 'repeat(4, 1fr)'
-                            }
-                            gap={3}
-                            mb="16"
-                            w="full"
-                        >
-                            {breadCrumbsPath === 'Clothing' &&
-                                selectedItems?.map((item, i) => {
-                                    return (
-                                        <GenericItemCard
-                                            key={i}
-                                            height={
-                                                isMobileView ? '250px' : '320px'
-                                            }
-                                            info={item}
-                                            extension="jpg"
-                                        />
-                                    );
-                                })}
-                            {breadCrumbsPath !== 'Clothing' &&
-                                selectedItems?.map((item, i) => {
-                                    return (
-                                        <GenericItemNonClothingCard
-                                            key={i}
-                                            height={
-                                                isMobileView ? '250px' : '320px'
-                                            }
-                                            info={item}
-                                            extension="jpg"
-                                        />
-                                    );
-                                })}
-                        </Grid>
-                    )}
+                    {loaderFn()}
                     {children}
                 </Container>
                 <Footer1 homepage={homepage} />
