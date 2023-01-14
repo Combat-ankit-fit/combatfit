@@ -24,7 +24,9 @@ import Footer1 from './Footer1';
 import router, { useRouter } from 'next/router';
 import MobileDrawer from './MobileDrawer';
 import { ItemContext } from '../context/ItemProvider';
+import { ItemContext as ItemNonClothingContext } from '../context/ItemProviderNonClothing';
 import GenericItemCard from '../components/GenericItemCard';
+import GenericItemNonClothingCard from '../components/GenericItemNonClothingCard';
 import { Carousel } from 'react-responsive-carousel';
 
 const Layout = ({
@@ -46,8 +48,11 @@ const Layout = ({
     breadCrumbsPath = '',
 }) => {
     const router = useRouter();
-    const ItemsFuncContext = React.useContext(ItemContext);
+    const ItemsFuncContext = React.useContext(
+        breadCrumbsPath === 'Clothing' ? ItemContext : ItemNonClothingContext
+    );
     const { name = '', selectedItems = [] } = ItemsFuncContext;
+    console.log('selectedItems in layout is:-', selectedItems);
 
     const isMobileView = useBreakpointValue({ base: true, md: false });
     return (
@@ -935,18 +940,32 @@ const Layout = ({
                             mb="16"
                             w="full"
                         >
-                            {selectedItems?.map((item, i) => {
-                                return (
-                                    <GenericItemCard
-                                        key={i}
-                                        height={
-                                            isMobileView ? '250px' : '320px'
-                                        }
-                                        info={item}
-                                        extension="jpg"
-                                    />
-                                );
-                            })}
+                            {breadCrumbsPath === 'Clothing' &&
+                                selectedItems?.map((item, i) => {
+                                    return (
+                                        <GenericItemCard
+                                            key={i}
+                                            height={
+                                                isMobileView ? '250px' : '320px'
+                                            }
+                                            info={item}
+                                            extension="jpg"
+                                        />
+                                    );
+                                })}
+                            {breadCrumbsPath !== 'Clothing' &&
+                                selectedItems?.map((item, i) => {
+                                    return (
+                                        <GenericItemNonClothingCard
+                                            key={i}
+                                            height={
+                                                isMobileView ? '250px' : '320px'
+                                            }
+                                            info={item}
+                                            extension="jpg"
+                                        />
+                                    );
+                                })}
                         </Grid>
                     )}
                     {children}

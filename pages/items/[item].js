@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 
 import ItemProvider from '../../context/ItemProvider';
+import ItemProviderNonClothing from '../../context/ItemProviderNonClothing';
 
 const Item = () => {
     const isMobileView = useBreakpointValue({ base: true, md: false });
@@ -36,18 +37,36 @@ const Item = () => {
     };
 
     return (
-        <ItemProvider>
-            <Layout
-                sidebarRequired={isSideBarRequired()}
-                maxW="9xl"
-                breadCrumbsRequired={true}
-                breadCrumbsPath={
-                    itemName !== 'All-items' ? itemName : 'Clothing'
-                }
-                presentItem={queryParam}
-                recurringItems={true}
-            ></Layout>
-        </ItemProvider>
+        <React.Fragment>
+            {queryParam === 'all-items' && (
+                <ItemProvider>
+                    <Layout
+                        sidebarRequired={isSideBarRequired()}
+                        maxW="9xl"
+                        breadCrumbsRequired={true}
+                        breadCrumbsPath={
+                            itemName !== 'All-items' ? itemName : 'Clothing'
+                        }
+                        presentItem={queryParam}
+                        recurringItems={true}
+                    ></Layout>
+                </ItemProvider>
+            )}
+            {queryParam !== 'all-items' && (
+                <ItemProviderNonClothing>
+                    <Layout
+                        sidebarRequired={isSideBarRequired()}
+                        maxW="9xl"
+                        breadCrumbsRequired={true}
+                        breadCrumbsPath={
+                            itemName !== 'All-items' ? itemName : 'Clothing'
+                        }
+                        presentItem={queryParam}
+                        recurringItems={true}
+                    ></Layout>
+                </ItemProviderNonClothing>
+            )}
+        </React.Fragment>
     );
 };
 

@@ -22,6 +22,8 @@ import { trousers } from '../utils/trousers';
 import { sweatShirts } from '../utils/sweatshirts';
 import { casualTshirts } from '../utils/casual-tshirts';
 import { allClothings } from '../utils/all-items';
+import { beerMugs } from '../utils/beer';
+import { notepad } from '../utils/notepad';
 import NextImage from 'next/image';
 
 const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
@@ -29,6 +31,8 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const [centralImage, setCentralImage] = React.useState(itemId);
     const [imageInfo, setImageInfo] = React.useState({});
     const [allImages, setAllImages] = React.useState([]);
+
+    console.log('itemCategory is:-', itemCategory);
 
     React.useEffect(() => {
         setCentralImage(itemId);
@@ -40,6 +44,30 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
             const arr = [...specificItem?.extraImages, centralImage];
+            setAllImages([...arr]);
+        }
+
+        if (itemCategory === 'beer') {
+            const specificItem = beerMugs?.filter(
+                (item) => item?.name === itemId
+            )[0];
+
+            setSynonymousImages([...specificItem?.extraImages]);
+            setImageInfo({ ...specificItem });
+            const arr = [...specificItem?.extraImages, centralImage];
+
+            setAllImages([...arr]);
+        }
+
+        if (itemCategory === 'notepads') {
+            const specificItem = notepad?.filter(
+                (item) => item?.name === itemId
+            )[0];
+
+            setSynonymousImages([...specificItem?.extraImages]);
+            setImageInfo({ ...specificItem });
+            const arr = [...specificItem?.extraImages, centralImage];
+
             setAllImages([...arr]);
         }
 

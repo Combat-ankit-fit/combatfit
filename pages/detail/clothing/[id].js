@@ -11,15 +11,17 @@ import {
 
 import { useRouter } from 'next/router';
 import React from 'react';
-import Layout from '../../components/Layout';
-import MobileViewDetail from '../../components/MobileViewDetail';
-import { coffeeMugs } from '../../utils/mugs';
-import { posters } from '../../utils/posters';
-import { trousers } from '../../utils/trousers';
-import { sweatShirts } from '../../utils/sweatshirts';
-import { casualTshirts } from '../../utils/casual-tshirts';
-import { allClothings } from '../../utils/all-items';
+import Layout from '../../../components/Layout';
+import MobileViewDetail from '../../../components/MobileViewDetail';
+import { coffeeMugs } from '../../../utils/mugs';
+import { posters } from '../../../utils/posters';
+import { trousers } from '../../../utils/trousers';
+import { sweatShirts } from '../../../utils/sweatshirts';
+import { casualTshirts } from '../../../utils/casual-tshirts';
+import { allClothings } from '../../../utils/all-items';
 import NextImage from 'next/image';
+import { db } from '../../../firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 const ItemDetail = () => {
     const router = useRouter();
@@ -30,65 +32,32 @@ const ItemDetail = () => {
     });
 
     const itemCategory = router?.query?.name;
+    console.log('Everything is:-', itemCategory);
 
     const itemId = router?.query?.id;
     const [synonumousImages, setSynonymousImages] = React.useState([]);
     const [centralImage, setCentralImage] = React.useState();
     const [imageInfo, setImageInfo] = React.useState({});
 
-    console.log('synonumousImages are:-', synonumousImages);
+    const fetchPost = async () => {
+        await getDocs(collection(db, 'items')).then((querySnapshot) => {
+            const newData = querySnapshot.docs.map((doc) => ({
+                ...doc.data(),
+                id: doc.id,
+            }));
+
+            const specificItem =
+                newData?.filter((item) => item?.identifier === itemId)[0] || [];
+            console.log('Specific item is:-', specificItem);
+            setCentralImage(specificItem?.name);
+
+            setSynonymousImages([...(specificItem?.extraImages || [])]);
+            setImageInfo({ ...specificItem });
+        });
+    };
 
     React.useEffect(() => {
-        setCentralImage(itemId);
-        if (itemCategory === 'coffee-mugs') {
-            const specificItem = coffeeMugs?.filter(
-                (item) => item?.name === itemId
-            )[0];
-
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
-        }
-
-        if (itemCategory === 'posters') {
-            const specificItem = posters?.filter(
-                (item) => item?.name === itemId
-            )[0];
-
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
-        }
-        if (itemCategory === 'trousers') {
-            const specificItem = trousers?.filter(
-                (item) => item?.name === itemId
-            )[0];
-
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
-        }
-        if (itemCategory === 'sweatshirts') {
-            const specificItem = sweatShirts?.filter(
-                (item) => item?.name === itemId
-            )[0];
-
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
-        }
-        if (itemCategory === 'casual-tshirts') {
-            const specificItem = casualTshirts?.filter(
-                (item) => item?.name === itemId
-            )[0];
-
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
-        }
-        if (itemCategory === 'all-items') {
-            const specificItem = allClothings?.filter(
-                (item) => item?.name === itemId
-            )[0];
-
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
-        }
+        fetchPost();
     }, [itemCategory, itemId]);
 
     if (isMobileView) {
@@ -110,7 +79,7 @@ const ItemDetail = () => {
                             return (
                                 <Box mb="4" cursor={'pointer'} key={index}>
                                     <NextImage
-                                        src={`/${item}.jpg`}
+                                        src={item}
                                         height={250}
                                         width={250}
                                         objectFit="contain"
@@ -124,7 +93,7 @@ const ItemDetail = () => {
                     </Flex>
                     <Box id="image__container" height={700} width={700} me="3">
                         <NextImage
-                            src={`/${centralImage}.jpg`}
+                            src={centralImage}
                             height={700}
                             width={700}
                             layout="fixed"

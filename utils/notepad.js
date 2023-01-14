@@ -4,23 +4,27 @@ export const notepad = [
         alt: '',
         price: '200',
         size: 'regular',
+        extraImages: [],
     },
     {
         name: 'CF-SVNR-NP03',
         alt: '',
         price: '200',
         size: 'regular',
+        extraImages: [],
     },
     {
         name: 'CF-SVNR-NP02',
         alt: '',
         price: '200',
         size: 'regular',
+        extraImages: [],
     },
     {
         name: 'CF-SVNR-NP01',
         alt: '',
         price: '200',
         size: 'regular',
+        extraImages: [],
     },
 ];
