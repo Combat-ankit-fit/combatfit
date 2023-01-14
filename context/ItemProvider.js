@@ -29,6 +29,8 @@ export const ItemContext = React.createContext({
 const ItemProvider = ({ children }) => {
     const [selectedItems, setSelectedItems] = React.useState([]);
     const [refinedItems, setRefinedItems] = React.useState([]);
+    const [size, setSize] = React.useState('Medium');
+    const [fit, setFit] = React.useState();
 
     const router = useRouter();
 
@@ -53,6 +55,8 @@ const ItemProvider = ({ children }) => {
 
     const getItemsOnFitBasis = (fitType) => {
         const allItems = [...selectedItems];
+        setFit(fitType.toLowerCase());
+        setSize(null);
 
         const particularFitItems = allItems?.filter(
             (val) => val?.fit === fitType.toLowerCase()
@@ -64,7 +68,8 @@ const ItemProvider = ({ children }) => {
 
     const getItemsOnSizeBasis = (size) => {
         const allItems = [...selectedItems];
-
+        setSize(size);
+        setFit(null);
         const particularSizeItems = allItems?.filter(
             (val) => val?.size === size
         );
@@ -91,6 +96,8 @@ const ItemProvider = ({ children }) => {
                 selectedItems: refinedItems,
                 itemName: itemName,
                 name: 'Vaibhav',
+                size,
+                fit,
             }}
         >
             {children}

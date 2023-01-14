@@ -228,8 +228,6 @@ const ItemProvider = ({ children }) => {
         }
     };
 
-    console.log('selectedItems are:-', selectedItems);
-
     return (
         <ItemContext.Provider
             value={{

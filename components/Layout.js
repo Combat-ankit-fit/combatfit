@@ -52,8 +52,7 @@ const Layout = ({
     const ItemsFuncContext = React.useContext(
         breadCrumbsPath === 'Clothing' ? ItemContext : ItemNonClothingContext
     );
-    const { name = '', selectedItems = [] } = ItemsFuncContext;
-    console.log('selectedItems in layout is:-', selectedItems);
+    const { name = '', selectedItems = [], size, fit } = ItemsFuncContext;
 
     const isMobileView = useBreakpointValue({ base: true, md: false });
 
@@ -119,7 +118,8 @@ const Layout = ({
         if (
             recurringItems &&
             selectedItems?.length === 0 &&
-            breadCrumbsPath === 'Clothing'
+            breadCrumbsPath === 'Clothing' &&
+            (size === 'Medium' || fit === 'regular')
         ) {
             return (
                 <Flex
@@ -131,6 +131,18 @@ const Layout = ({
                 </Flex>
             );
         }
+
+        return (
+            !isMobileView && (
+                <Flex
+                    justifyContent={'center'}
+                    alignItems="center"
+                    height={'50vh'}
+                >
+                    <Text>We will be available shortly!</Text>
+                </Flex>
+            )
+        );
     };
 
     return (

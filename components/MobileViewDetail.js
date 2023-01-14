@@ -32,8 +32,6 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const [imageInfo, setImageInfo] = React.useState({});
     const [allImages, setAllImages] = React.useState([]);
 
-    console.log('itemCategory is:-', itemCategory);
-
     React.useEffect(() => {
         setCentralImage(itemId);
         if (itemCategory === 'coffee-mugs') {

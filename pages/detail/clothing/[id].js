@@ -32,7 +32,6 @@ const ItemDetail = () => {
     });
 
     const itemCategory = router?.query?.name;
-    console.log('Everything is:-', itemCategory);
 
     const itemId = router?.query?.id;
     const [synonumousImages, setSynonymousImages] = React.useState([]);
@@ -48,7 +47,6 @@ const ItemDetail = () => {
 
             const specificItem =
                 newData?.filter((item) => item?.identifier === itemId)[0] || [];
-            console.log('Specific item is:-', specificItem);
             setCentralImage(specificItem?.name);
 
             setSynonymousImages([...(specificItem?.extraImages || [])]);

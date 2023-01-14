@@ -1,29 +1,14 @@
 import {
     Box,
     Flex,
-    List,
     Text,
     Divider,
-    MenuList,
-    MenuItem,
-    Menu,
-    MenuButton,
     Radio,
     RadioGroup,
     Stack,
-    FormControl,
-    FormLabel,
-    Slider,
-    SliderTrack,
-    SliderFilledTrack,
-    SliderMark,
-    SliderThumb,
 } from '@chakra-ui/react';
 
-import SliderControl from './SliderControl';
 import React from 'react';
-import { ArrowDownIcon } from '@chakra-ui/icon';
-import { trousers } from '../utils/trousers';
 import { ItemContext } from '../context/ItemProvider';
 
 const DesktopDrawer = ({ presentItem }) => {
