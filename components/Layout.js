@@ -133,7 +133,8 @@ const Layout = ({
         }
 
         return (
-            !isMobileView && (
+            !isMobileView &&
+            router?.pathname === '/items/[item]' && (
                 <Flex
                     justifyContent={'center'}
                     alignItems="center"
