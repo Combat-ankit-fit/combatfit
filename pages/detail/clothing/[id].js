@@ -32,7 +32,7 @@ const ItemDetail = () => {
     const [imageInfo, setImageInfo] = React.useState({});
 
     const getSpecificClothingItem = async () => {
-        const clothingItems = await axios.get('/api/get-items');
+        const clothingItems = await axios.get('/api/get-items?id=clothing');
         const specificItem =
             clothingItems?.data?.filter(
                 (item) => item?.identifier === itemId

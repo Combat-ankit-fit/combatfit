@@ -13,6 +13,7 @@ import { sweatShirts } from '../utils/sweatshirts';
 import { notepad } from '../utils/notepad';
 import { keyrings } from '../utils/keyrings';
 import { allClothings } from '../utils/all-items';
+import axios from 'axios';
 
 export const ItemContext = React.createContext({
     getItemsOnFitBasis: () => {},
@@ -32,6 +33,12 @@ const ItemProvider = ({ children }) => {
         router?.query?.item?.charAt(0).toUpperCase() +
         router?.query?.item?.slice(1);
 
+    const getPosters = async () => {
+        const posters = await axios.get('/api/get-items?id=posters');
+        console.log('Posters from the api are:-', posters?.data);
+        setSelectedItems([...posters?.data]);
+    };
+
     React.useEffect(() => {
         if (queryParam === 'beer') {
             setSelectedItems([...beerMugs]);
@@ -50,7 +57,7 @@ const ItemProvider = ({ children }) => {
             setSelectedItems([...casualTshirts]);
         }
         if (queryParam === 'posters') {
-            setSelectedItems([...posters]);
+            getPosters();
         }
         if (queryParam === 'customized-clothing') {
             setSelectedItems([...customizedClothing]);

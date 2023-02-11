@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
 const Clother = require('../../models/clothing');
+const Posters = require('../../models/posters');
 
 const app = express();
 
@@ -41,13 +42,25 @@ app.use((req, res, next) => {
 
 export default async function handler(req, res) {
     if (req.method === 'GET') {
-        try {
-            const clothingItems = await Clother.find().then((documents) => {
-                return documents;
-            });
-            return res.json(clothingItems);
-        } catch (e) {
-            console.log('Error is:-', e);
+        if (req?.query?.id === 'clothing') {
+            try {
+                const clothingItems = await Clother.find().then((documents) => {
+                    return documents;
+                });
+                return res.json(clothingItems);
+            } catch (e) {
+                console.log('Error is:-', e);
+            }
+        }
+        if (req?.query?.id === 'posters') {
+            try {
+                const posterItems = await Posters.find().then((documents) => {
+                    return documents;
+                });
+                return res.json(posterItems);
+            } catch (e) {
+                console.log('Error is:-', e);
+            }
         }
     }
 }

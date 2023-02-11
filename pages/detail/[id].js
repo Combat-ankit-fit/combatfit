@@ -20,6 +20,7 @@ import { sweatShirts } from '../../utils/sweatshirts';
 import { casualTshirts } from '../../utils/casual-tshirts';
 import { allClothings } from '../../utils/all-items';
 import NextImage from 'next/image';
+import axios from 'axios';
 
 const ItemDetail = () => {
     const router = useRouter();
@@ -36,8 +37,21 @@ const ItemDetail = () => {
     const [centralImage, setCentralImage] = React.useState();
     const [imageInfo, setImageInfo] = React.useState({});
 
+    const getPosters = async () => {
+        const posters = await axios.get('/api/get-items?id=posters');
+        const specificItem =
+            posters?.data?.filter((item) => item?.identifier === itemId)[0] ||
+            {};
+        console.log('Specific ites are:-', specificItem);
+        setSynonymousImages([...specificItem?.extraImages]);
+        setImageInfo({ ...specificItem });
+        setCentralImage(specificItem?.name);
+    };
+
     React.useEffect(() => {
-        setCentralImage(itemId);
+        if (itemCategory !== 'posters') {
+            setCentralImage(itemId);
+        }
         if (itemCategory === 'coffee-mugs') {
             const specificItem = coffeeMugs?.filter(
                 (item) => item?.name === itemId
@@ -48,12 +62,7 @@ const ItemDetail = () => {
         }
 
         if (itemCategory === 'posters') {
-            const specificItem = posters?.filter(
-                (item) => item?.name === itemId
-            )[0];
-
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
+            getPosters();
         }
         if (itemCategory === 'trousers') {
             const specificItem = trousers?.filter(
@@ -108,7 +117,11 @@ const ItemDetail = () => {
                             return (
                                 <Box mb="4" cursor={'pointer'} key={index}>
                                     <NextImage
-                                        src={`/${item}.jpg`}
+                                        src={
+                                            router?.query?.name !== 'posters'
+                                                ? `/${item}.jpg`
+                                                : item
+                                        }
                                         height={250}
                                         width={250}
                                         objectFit="contain"
@@ -122,7 +135,11 @@ const ItemDetail = () => {
                     </Flex>
                     <Box id="image__container" height={700} width={700} me="3">
                         <NextImage
-                            src={`/${centralImage}.jpg`}
+                            src={
+                                router?.query?.name !== 'posters'
+                                    ? `/${centralImage}.jpg`
+                                    : centralImage
+                            }
                             height={700}
                             width={700}
                             layout="fixed"
@@ -130,7 +147,6 @@ const ItemDetail = () => {
                     </Box>
                     <Flex flexDir={'column'} gridRowGap={8}>
                         <Text fontWeight={'bold'}>{imageInfo?.alt}</Text>
-                        <Text>I guard the nation what is your super power</Text>
                         <Text>MRP:{imageInfo?.price}</Text>
                         <Button colorScheme={'primary'} bgColor="orange">
                             Add to Cart

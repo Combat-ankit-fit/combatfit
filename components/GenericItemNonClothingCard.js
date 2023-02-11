@@ -21,7 +21,10 @@ const GenericItemCard = (props) => {
             cursor="pointer"
             onClick={() => {
                 router.push({
-                    pathname: `/detail/${props?.info?.name}`,
+                    pathname:
+                        router?.query?.item !== 'posters'
+                            ? `/detail/${props?.info?.name}`
+                            : `/detail/${props?.info?.identifier}`,
                     query: {
                         name: router?.query?.item,
                     },
@@ -30,7 +33,11 @@ const GenericItemCard = (props) => {
         >
             <Box position="relative" overflow={'hidden'} {...props}>
                 <NextImage
-                    src={`/${info.name}.${extension}`}
+                    src={
+                        router?.query?.item !== 'posters'
+                            ? `/${info.name}.${extension}`
+                            : props?.info?.name
+                    }
                     objectFit="contain"
                     width="450px"
                     height="450px"

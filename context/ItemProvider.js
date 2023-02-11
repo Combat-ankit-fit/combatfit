@@ -21,7 +21,7 @@ const ItemProvider = ({ children }) => {
     const router = useRouter();
 
     const getClothingItems = async () => {
-        const clothingItems = await axios.get('/api/get-items');
+        const clothingItems = await axios.get('/api/get-items?id=clothing');
 
         setSelectedItems([...clothingItems?.data]);
         setRefinedItems([...clothingItems?.data]);
