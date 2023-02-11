@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import axios from 'axios';
+import useSWRImmutable from 'swr/immutable';
 
 export const ItemContext = React.createContext({
     getItemsOnFitBasis: () => {},
@@ -20,16 +21,14 @@ const ItemProvider = ({ children }) => {
 
     const router = useRouter();
 
-    const getClothingItems = async () => {
-        const clothingItems = await axios.get('/api/get-items?id=clothing');
-
-        setSelectedItems([...clothingItems?.data]);
-        setRefinedItems([...clothingItems?.data]);
-    };
+    const { data: clothingData } = useSWRImmutable(
+        '/api/get-items?id=clothing'
+    );
 
     React.useEffect(() => {
-        getClothingItems();
-    }, []);
+        setSelectedItems(clothingData);
+        setRefinedItems(clothingData);
+    }, [clothingData]);
 
     const itemName =
         router?.query?.item?.charAt(0).toUpperCase() +

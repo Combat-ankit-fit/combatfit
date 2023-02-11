@@ -47,7 +47,7 @@ export default async function handler(req, res) {
                 const clothingItems = await Clother.find().then((documents) => {
                     return documents;
                 });
-                return res.json(clothingItems);
+                res.status(200).json(clothingItems);
             } catch (e) {
                 console.log('Error is:-', e);
             }

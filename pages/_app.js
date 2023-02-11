@@ -1,12 +1,27 @@
 import '../styles/globals.css';
 import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '../styles/theme';
+import { SWRConfig } from 'swr';
 
 function MyApp({ Component, pageProps }) {
+    const fetcher = async (url, queryParams) => {
+        let urlWithParams = url;
+        if (queryParams) {
+            urlWithParams = url + queryParams;
+        }
+        const res = await fetch(urlWithParams);
+
+        const newResponse = await res.json();
+
+        return newResponse;
+    };
+
     return (
-        <ChakraProvider theme={theme}>
-            <Component {...pageProps} />
-        </ChakraProvider>
+        <SWRConfig value={{ fetcher }}>
+            <ChakraProvider theme={theme}>
+                <Component {...pageProps} />
+            </ChakraProvider>
+        </SWRConfig>
     );
 }
 

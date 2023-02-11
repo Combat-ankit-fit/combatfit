@@ -15,6 +15,7 @@ import Layout from '../../../components/Layout';
 import MobileViewDetail from '../../../components/MobileViewDetail';
 import axios from 'axios';
 import NextImage from 'next/image';
+import useSWRImmutable from 'swr/immutable';
 
 const ItemDetail = () => {
     const router = useRouter();
@@ -31,21 +32,19 @@ const ItemDetail = () => {
     const [centralImage, setCentralImage] = React.useState();
     const [imageInfo, setImageInfo] = React.useState({});
 
-    const getSpecificClothingItem = async () => {
-        const clothingItems = await axios.get('/api/get-items?id=clothing');
-        const specificItem =
-            clothingItems?.data?.filter(
-                (item) => item?.identifier === itemId
-            )[0] || [];
-        setCentralImage(specificItem?.name);
-
-        setSynonymousImages([...(specificItem?.extraImages || [])]);
-        setImageInfo({ ...specificItem });
-    };
+    const { data: clothingData } = useSWRImmutable(
+        '/api/get-items?id=clothing'
+    );
 
     React.useEffect(() => {
-        getSpecificClothingItem();
-    }, [itemCategory, itemId]);
+        const specificItem =
+            clothingData?.filter((item) => item?.identifier === itemId)[0] ||
+            {};
+
+        setCentralImage(specificItem?.name);
+        setSynonymousImages([...(specificItem?.extraImages || [])]);
+        setImageInfo({ ...specificItem });
+    }, [clothingData, itemCategory, itemId]);
 
     if (isMobileView) {
         return <MobileViewDetail itemCategory={itemCategory} itemId={itemId} />;

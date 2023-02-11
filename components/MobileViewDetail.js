@@ -17,7 +17,6 @@ import {
 import { Carousel } from 'react-responsive-carousel';
 import Layout from '../components/Layout';
 import { coffeeMugs } from '../utils/mugs';
-import { posters } from '../utils/posters';
 import { trousers } from '../utils/trousers';
 import { sweatShirts } from '../utils/sweatshirts';
 import { casualTshirts } from '../utils/casual-tshirts';
@@ -25,6 +24,7 @@ import { allClothings } from '../utils/all-items';
 import { beerMugs } from '../utils/beer';
 import { notepad } from '../utils/notepad';
 import NextImage from 'next/image';
+import axios from 'axios';
 
 const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const [synonumousImages, setSynonymousImages] = React.useState([]);
@@ -32,8 +32,21 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const [imageInfo, setImageInfo] = React.useState({});
     const [allImages, setAllImages] = React.useState([]);
 
+    const getPosters = async () => {
+        const posters = await axios.get('/api/get-items?id=posters');
+        const specificItem =
+            posters?.data?.filter((item) => item?.identifier === itemId)[0] ||
+            {};
+        setSynonymousImages([...specificItem?.extraImages]);
+        setImageInfo({ ...specificItem });
+        const arr = [...specificItem?.extraImages];
+        setAllImages([...arr]);
+    };
+
     React.useEffect(() => {
-        setCentralImage(itemId);
+        if (itemCategory !== 'posters') {
+            setCentralImage(itemId);
+        }
         if (itemCategory === 'coffee-mugs') {
             const specificItem = coffeeMugs?.filter(
                 (item) => item?.name === itemId
@@ -70,14 +83,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
         }
 
         if (itemCategory === 'posters') {
-            const specificItem = posters?.filter(
-                (item) => item?.name === itemId
-            )[0];
-
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
-            const arr = [...specificItem?.extraImages, centralImage];
-            setAllImages([...arr]);
+            getPosters();
         }
         if (itemCategory === 'trousers') {
             const specificItem = trousers?.filter(
@@ -182,11 +188,16 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             >
                 <Carousel showThumbs={false}>
                     {allImages?.map((image, index) => {
+                        console.log('All images are:-', image);
                         return (
                             <NextImage
                                 id={index}
                                 key={index}
-                                src={`/${image}.jpg`}
+                                src={
+                                    itemCategory !== 'posters'
+                                        ? `/${image}.jpg`
+                                        : image
+                                }
                                 height={350}
                                 width={250}
                                 objectFit="contain"
