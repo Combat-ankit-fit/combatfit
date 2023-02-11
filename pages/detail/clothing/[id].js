@@ -13,15 +13,8 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import Layout from '../../../components/Layout';
 import MobileViewDetail from '../../../components/MobileViewDetail';
-import { coffeeMugs } from '../../../utils/mugs';
-import { posters } from '../../../utils/posters';
-import { trousers } from '../../../utils/trousers';
-import { sweatShirts } from '../../../utils/sweatshirts';
-import { casualTshirts } from '../../../utils/casual-tshirts';
-import { allClothings } from '../../../utils/all-items';
+import axios from 'axios';
 import NextImage from 'next/image';
-import { db } from '../../../firebase';
-import { collection, getDocs } from 'firebase/firestore';
 
 const ItemDetail = () => {
     const router = useRouter();
@@ -38,24 +31,20 @@ const ItemDetail = () => {
     const [centralImage, setCentralImage] = React.useState();
     const [imageInfo, setImageInfo] = React.useState({});
 
-    const fetchPost = async () => {
-        await getDocs(collection(db, 'items')).then((querySnapshot) => {
-            const newData = querySnapshot.docs.map((doc) => ({
-                ...doc.data(),
-                id: doc.id,
-            }));
+    const getSpecificClothingItem = async () => {
+        const clothingItems = await axios.get('/api/get-items');
+        const specificItem =
+            clothingItems?.data?.filter(
+                (item) => item?.identifier === itemId
+            )[0] || [];
+        setCentralImage(specificItem?.name);
 
-            const specificItem =
-                newData?.filter((item) => item?.identifier === itemId)[0] || [];
-            setCentralImage(specificItem?.name);
-
-            setSynonymousImages([...(specificItem?.extraImages || [])]);
-            setImageInfo({ ...specificItem });
-        });
+        setSynonymousImages([...(specificItem?.extraImages || [])]);
+        setImageInfo({ ...specificItem });
     };
 
     React.useEffect(() => {
-        fetchPost();
+        getSpecificClothingItem();
     }, [itemCategory, itemId]);
 
     if (isMobileView) {

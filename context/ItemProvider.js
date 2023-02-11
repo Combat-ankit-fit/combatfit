@@ -1,21 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { trousers } from '../utils/trousers';
-import { beerMugs } from '../utils/beer';
-import { coffeeMugs } from '../utils/mugs';
-import { tshirts } from '../utils/tshirts';
-import { casualTshirts } from '../utils/casual-tshirts';
-import { posters } from '../utils/posters';
-import { customizedClothing } from '../utils/customized-clothing';
-import { millitaryClothing } from '../utils/millitary-clothing';
-import { shorts } from '../utils/shorts';
-import { sweatShirts } from '../utils/sweatshirts';
-import { notepad } from '../utils/notepad';
-import { keyrings } from '../utils/keyrings';
-import { allClothings } from '../utils/all-items';
+
 import axios from 'axios';
-import { db } from '../firebase';
-import { collection, getDocs } from 'firebase/firestore';
 
 export const ItemContext = React.createContext({
     getItemsOnFitBasis: () => {},
@@ -34,19 +20,15 @@ const ItemProvider = ({ children }) => {
 
     const router = useRouter();
 
-    const fetchPost = async () => {
-        await getDocs(collection(db, 'items')).then((querySnapshot) => {
-            const newData = querySnapshot.docs.map((doc) => ({
-                ...doc.data(),
-                id: doc.id,
-            }));
-            setSelectedItems([...newData]);
-            setRefinedItems([...newData]);
-        });
+    const getClothingItems = async () => {
+        const clothingItems = await axios.get('/api/get-items');
+
+        setSelectedItems([...clothingItems?.data]);
+        setRefinedItems([...clothingItems?.data]);
     };
 
     React.useEffect(() => {
-        fetchPost();
+        getClothingItems();
     }, []);
 
     const itemName =
