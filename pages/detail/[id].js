@@ -42,14 +42,24 @@ const ItemDetail = () => {
         const specificItem =
             posters?.data?.filter((item) => item?.identifier === itemId)[0] ||
             {};
-        console.log('Specific ites are:-', specificItem);
+        setSynonymousImages([...specificItem?.extraImages]);
+        setImageInfo({ ...specificItem });
+        setCentralImage(specificItem?.name);
+    };
+
+    const getBeerMugs = async () => {
+        const beerMugs = await axios.get('/api/get-items?id=beer');
+        const specificItem =
+            beerMugs?.data?.filter((item) => item?.identifier === itemId)[0] ||
+            {};
+
         setSynonymousImages([...specificItem?.extraImages]);
         setImageInfo({ ...specificItem });
         setCentralImage(specificItem?.name);
     };
 
     React.useEffect(() => {
-        if (itemCategory !== 'posters') {
+        if (itemCategory !== 'posters' && itemCategory !== 'beer') {
             setCentralImage(itemId);
         }
         if (itemCategory === 'coffee-mugs') {
@@ -59,10 +69,17 @@ const ItemDetail = () => {
 
             setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
+            return;
         }
 
         if (itemCategory === 'posters') {
             getPosters();
+            return;
+        }
+
+        if (itemCategory === 'beer') {
+            getBeerMugs();
+            return;
         }
         if (itemCategory === 'trousers') {
             const specificItem = trousers?.filter(
@@ -71,6 +88,7 @@ const ItemDetail = () => {
 
             setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
+            return;
         }
         if (itemCategory === 'sweatshirts') {
             const specificItem = sweatShirts?.filter(
@@ -113,30 +131,36 @@ const ItemDetail = () => {
             <Container maxW="7xl">
                 <Flex w="full">
                     <Flex flexDir={'column'} me="4">
-                        {synonumousImages?.map((item, index) => {
-                            return (
-                                <Box mb="4" cursor={'pointer'} key={index}>
-                                    <NextImage
-                                        src={
-                                            router?.query?.name !== 'posters'
-                                                ? `/${item}.jpg`
-                                                : item
-                                        }
-                                        height={250}
-                                        width={250}
-                                        objectFit="contain"
-                                        onClick={() => {
-                                            setCentralImage(item);
-                                        }}
-                                    />
-                                </Box>
-                            );
-                        })}
+                        {synonumousImages?.length > 0 &&
+                            synonumousImages?.map((item, index) => {
+                                return (
+                                    <Box mb="4" cursor={'pointer'} key={index}>
+                                        <NextImage
+                                            src={
+                                                router?.query?.name !==
+                                                'posters'
+                                                    ? `/${item}.jpg`
+                                                    : item
+                                            }
+                                            height={250}
+                                            width={250}
+                                            objectFit="contain"
+                                            {...(synonumousImages?.length >
+                                                0 && {
+                                                onClick: () => {
+                                                    setCentralImage(item);
+                                                },
+                                            })}
+                                        />
+                                    </Box>
+                                );
+                            })}
                     </Flex>
                     <Box id="image__container" height={700} width={700} me="3">
                         <NextImage
                             src={
-                                router?.query?.name !== 'posters'
+                                router?.query?.name !== 'posters' &&
+                                router?.query?.name !== 'beer'
                                     ? `/${centralImage}.jpg`
                                     : centralImage
                             }

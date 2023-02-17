@@ -14,6 +14,7 @@ import { notepad } from '../utils/notepad';
 import { keyrings } from '../utils/keyrings';
 import { allClothings } from '../utils/all-items';
 import axios from 'axios';
+import useSWRImmutable from 'swr/immutable';
 
 export const ItemContext = React.createContext({
     getItemsOnFitBasis: () => {},
@@ -35,13 +36,17 @@ const ItemProvider = ({ children }) => {
 
     const getPosters = async () => {
         const posters = await axios.get('/api/get-items?id=posters');
-        console.log('Posters from the api are:-', posters?.data);
         setSelectedItems([...posters?.data]);
+    };
+
+    const getBeer = async () => {
+        const beers = await axios.get('/api/get-items?id=beer');
+        setSelectedItems([...beers?.data]);
     };
 
     React.useEffect(() => {
         if (queryParam === 'beer') {
-            setSelectedItems([...beerMugs]);
+            getBeer();
         }
 
         if (queryParam === 'coffee-mugs') {

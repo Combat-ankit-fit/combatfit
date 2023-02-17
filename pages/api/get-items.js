@@ -6,6 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const Clother = require('../../models/clothing');
 const Posters = require('../../models/posters');
+const Beer = require('../../models/beer');
 
 const app = express();
 
@@ -58,6 +59,16 @@ export default async function handler(req, res) {
                     return documents;
                 });
                 return res.json(posterItems);
+            } catch (e) {
+                console.log('Error is:-', e);
+            }
+        }
+        if (req?.query?.id === 'beer') {
+            try {
+                const beerItems = await Beer.find().then((documents) => {
+                    return documents;
+                });
+                return res.json(beerItems);
             } catch (e) {
                 console.log('Error is:-', e);
             }

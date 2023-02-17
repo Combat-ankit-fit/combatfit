@@ -43,8 +43,21 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
         setAllImages([...arr]);
     };
 
+    const getBeerMugs = async () => {
+        const beerMugs = await axios.get('/api/get-items?id=beer');
+        const specificItem =
+            beerMugs?.data?.filter((item) => item?.identifier === itemId)[0] ||
+            {};
+
+        setSynonymousImages([...specificItem?.extraImages]);
+        setImageInfo({ ...specificItem });
+        const arr = [...specificItem?.extraImages];
+
+        setAllImages([...arr]);
+    };
+
     React.useEffect(() => {
-        if (itemCategory !== 'posters') {
+        if (itemCategory !== 'posters' && itemCategory !== 'beer') {
             setCentralImage(itemId);
         }
         if (itemCategory === 'coffee-mugs') {
@@ -59,15 +72,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
         }
 
         if (itemCategory === 'beer') {
-            const specificItem = beerMugs?.filter(
-                (item) => item?.name === itemId
-            )[0];
-
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
-            const arr = [...specificItem?.extraImages, centralImage];
-
-            setAllImages([...arr]);
+            getBeerMugs();
         }
 
         if (itemCategory === 'notepads') {
@@ -187,24 +192,32 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                 }}
             >
                 <Carousel showThumbs={false}>
-                    {allImages?.map((image, index) => {
-                        console.log('All images are:-', image);
-                        return (
-                            <NextImage
-                                id={index}
-                                key={index}
-                                src={
-                                    itemCategory !== 'posters'
-                                        ? `/${image}.jpg`
-                                        : image
-                                }
-                                height={350}
-                                width={250}
-                                objectFit="contain"
-                            />
-                        );
-                    })}
+                    {itemCategory !== 'beer' &&
+                        allImages?.map((image, index) => {
+                            return (
+                                <NextImage
+                                    id={index}
+                                    key={index}
+                                    src={
+                                        itemCategory !== 'posters'
+                                            ? `/${image}.jpg`
+                                            : image
+                                    }
+                                    height={400}
+                                    width={400}
+                                    objectFit="contain"
+                                />
+                            );
+                        })}
                 </Carousel>
+                {itemCategory === 'beer' && (
+                    <NextImage
+                        src={imageInfo?.name}
+                        height={350}
+                        width={350}
+                        objectFit="cover"
+                    />
+                )}
             </Box>
             <Text mt="4">{imageInfo?.alt}</Text>
             <Text mb="2">Rs. {imageInfo?.price}/-(inclusive of all taxes)</Text>
