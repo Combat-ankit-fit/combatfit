@@ -21,6 +21,7 @@ import { casualTshirts } from '../../utils/casual-tshirts';
 import { allClothings } from '../../utils/all-items';
 import NextImage from 'next/image';
 import axios from 'axios';
+import useSWRImmutable from 'swr/immutable';
 
 const ItemDetail = () => {
     const router = useRouter();
@@ -47,16 +48,7 @@ const ItemDetail = () => {
         setCentralImage(specificItem?.name);
     };
 
-    const getBeerMugs = async () => {
-        const beerMugs = await axios.get('/api/get-items?id=beer');
-        const specificItem =
-            beerMugs?.data?.filter((item) => item?.identifier === itemId)[0] ||
-            {};
-
-        setSynonymousImages([...specificItem?.extraImages]);
-        setImageInfo({ ...specificItem });
-        setCentralImage(specificItem?.name);
-    };
+    const { data: beerData } = useSWRImmutable('/api/get-items?id=beer');
 
     React.useEffect(() => {
         if (itemCategory !== 'posters' && itemCategory !== 'beer') {
@@ -78,7 +70,13 @@ const ItemDetail = () => {
         }
 
         if (itemCategory === 'beer') {
-            getBeerMugs();
+            const specificItem =
+                beerData?.filter((item) => item?.identifier === itemId)[0] ||
+                {};
+
+            setSynonymousImages([...specificItem?.extraImages]);
+            setImageInfo({ ...specificItem });
+            setCentralImage(specificItem?.name);
             return;
         }
         if (itemCategory === 'trousers') {

@@ -25,6 +25,7 @@ import { beerMugs } from '../utils/beer';
 import { notepad } from '../utils/notepad';
 import NextImage from 'next/image';
 import axios from 'axios';
+import useSWRImmutable from 'swr/immutable';
 
 const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const [synonumousImages, setSynonymousImages] = React.useState([]);
@@ -43,18 +44,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
         setAllImages([...arr]);
     };
 
-    const getBeerMugs = async () => {
-        const beerMugs = await axios.get('/api/get-items?id=beer');
-        const specificItem =
-            beerMugs?.data?.filter((item) => item?.identifier === itemId)[0] ||
-            {};
-
-        setSynonymousImages([...specificItem?.extraImages]);
-        setImageInfo({ ...specificItem });
-        const arr = [...specificItem?.extraImages];
-
-        setAllImages([...arr]);
-    };
+    const { data: beerData } = useSWRImmutable('/api/get-items?id=beer');
 
     React.useEffect(() => {
         if (itemCategory !== 'posters' && itemCategory !== 'beer') {
@@ -71,8 +61,16 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             setAllImages([...arr]);
         }
 
-        if (itemCategory === 'beer') {
-            getBeerMugs();
+        if (itemCategory === 'beer' && beerData) {
+            const specificItem =
+                beerData?.filter((item) => item?.identifier === itemId)[0] ||
+                {};
+
+            setSynonymousImages([...specificItem?.extraImages]);
+            setImageInfo({ ...specificItem });
+            const arr = [...specificItem?.extraImages];
+
+            setAllImages([...arr]);
         }
 
         if (itemCategory === 'notepads') {

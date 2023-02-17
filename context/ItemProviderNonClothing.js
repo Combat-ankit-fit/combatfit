@@ -39,14 +39,11 @@ const ItemProvider = ({ children }) => {
         setSelectedItems([...posters?.data]);
     };
 
-    const getBeer = async () => {
-        const beers = await axios.get('/api/get-items?id=beer');
-        setSelectedItems([...beers?.data]);
-    };
+    const { data: beerData } = useSWRImmutable('/api/get-items?id=beer');
 
     React.useEffect(() => {
-        if (queryParam === 'beer') {
-            getBeer();
+        if (queryParam === 'beer' && beerData) {
+            setSelectedItems([...beerData]);
         }
 
         if (queryParam === 'coffee-mugs') {
