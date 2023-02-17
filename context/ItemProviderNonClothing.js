@@ -34,13 +34,9 @@ const ItemProvider = ({ children }) => {
         router?.query?.item?.charAt(0).toUpperCase() +
         router?.query?.item?.slice(1);
 
-    const getPosters = async () => {
-        const posters = await axios.get('/api/get-items?id=posters');
-        setSelectedItems([...posters?.data]);
-    };
-
     const { data: beerData } = useSWRImmutable('/api/get-items?id=beer');
     const { data: postersData } = useSWRImmutable('/api/get-items?id=posters');
+    const { data: notespadData } = useSWRImmutable('/api/get-items?id=notepad');
 
     React.useEffect(() => {
         if (queryParam === 'beer' && beerData) {
@@ -75,7 +71,7 @@ const ItemProvider = ({ children }) => {
             setSelectedItems([...sweatShirts]);
         }
         if (queryParam === 'notepads') {
-            setSelectedItems([...notepad]);
+            setSelectedItems([...notespadData]);
         }
         if (queryParam === 'keyrings') {
             setSelectedItems([...keyrings]);

@@ -6,6 +6,7 @@ import useSWRImmutable from 'swr/immutable';
 const Home = () => {
     useSWRImmutable('/api/get-items?id=beer');
     useSWRImmutable('/api/get-items?id=posters');
+    useSWRImmutable('/api/get-items?id=notepad');
     return (
         <Layout
             sidebarRequired={false}

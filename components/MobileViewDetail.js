@@ -21,9 +21,14 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
 
     const { data: beerData } = useSWRImmutable('/api/get-items?id=beer');
     const { data: postersData } = useSWRImmutable('/api/get-items?id=posters');
+    const { data: notespadData } = useSWRImmutable('/api/get-items?id=notepad');
 
     React.useEffect(() => {
-        if (itemCategory !== 'posters' && itemCategory !== 'beer') {
+        if (
+            itemCategory !== 'posters' &&
+            itemCategory !== 'beer' &&
+            itemCategory !== 'notepads'
+        ) {
             setCentralImage(itemId);
         }
         if (itemCategory === 'coffee-mugs') {
@@ -49,14 +54,15 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             setAllImages([...arr]);
         }
 
-        if (itemCategory === 'notepads') {
-            const specificItem = notepad?.filter(
-                (item) => item?.name === itemId
-            )[0];
+        if (itemCategory === 'notepads' && notespadData) {
+            const specificItem =
+                notespadData?.filter(
+                    (item) => item?.identifier === itemId
+                )[0] || {};
 
             setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
-            const arr = [...specificItem?.extraImages, centralImage];
+            const arr = [...specificItem?.extraImages];
 
             setAllImages([...arr]);
         }
@@ -175,6 +181,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             >
                 <Carousel showThumbs={false}>
                     {itemCategory !== 'beer' &&
+                        itemCategory !== 'notepads' &&
                         allImages?.map((image, index) => {
                             return (
                                 <NextImage
@@ -192,7 +199,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                             );
                         })}
                 </Carousel>
-                {itemCategory === 'beer' && (
+                {(itemCategory === 'beer' || itemCategory === 'notepads') && (
                     <NextImage
                         src={imageInfo?.name}
                         height={350}

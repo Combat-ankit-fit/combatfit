@@ -23,7 +23,8 @@ const GenericItemCard = (props) => {
                 router.push({
                     pathname:
                         router?.query?.item !== 'posters' &&
-                        router?.query?.item !== 'beer'
+                        router?.query?.item !== 'beer' &&
+                        router?.query?.item !== 'notepads'
                             ? `/detail/${props?.info?.name}`
                             : `/detail/${props?.info?.identifier}`,
                     query: {
@@ -36,7 +37,8 @@ const GenericItemCard = (props) => {
                 <NextImage
                     src={
                         router?.query?.item !== 'posters' &&
-                        router?.query?.item !== 'beer'
+                        router?.query?.item !== 'beer' &&
+                        router?.query?.item !== 'notepads'
                             ? `/${info.name}.${extension}`
                             : props?.info?.name
                     }
