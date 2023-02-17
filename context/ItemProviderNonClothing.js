@@ -40,6 +40,7 @@ const ItemProvider = ({ children }) => {
     };
 
     const { data: beerData } = useSWRImmutable('/api/get-items?id=beer');
+    const { data: postersData } = useSWRImmutable('/api/get-items?id=posters');
 
     React.useEffect(() => {
         if (queryParam === 'beer' && beerData) {
@@ -58,8 +59,8 @@ const ItemProvider = ({ children }) => {
         if (queryParam === 'casual-tshirts') {
             setSelectedItems([...casualTshirts]);
         }
-        if (queryParam === 'posters') {
-            getPosters();
+        if (queryParam === 'posters' && postersData) {
+            setSelectedItems([...postersData]);
         }
         if (queryParam === 'customized-clothing') {
             setSelectedItems([...customizedClothing]);

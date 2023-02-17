@@ -1,19 +1,7 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import React from 'react';
-import {
-    Box,
-    Flex,
-    useBreakpoint,
-    useDisclosure,
-    Text,
-    Container,
-    Grid,
-    SimpleGrid,
-    Button,
-    useBreakpointValue,
-    Divider,
-} from '@chakra-ui/react';
+import { Box, Text, Button } from '@chakra-ui/react';
 import { Carousel } from 'react-responsive-carousel';
 import Layout from '../components/Layout';
 import { coffeeMugs } from '../utils/mugs';
@@ -21,10 +9,8 @@ import { trousers } from '../utils/trousers';
 import { sweatShirts } from '../utils/sweatshirts';
 import { casualTshirts } from '../utils/casual-tshirts';
 import { allClothings } from '../utils/all-items';
-import { beerMugs } from '../utils/beer';
 import { notepad } from '../utils/notepad';
 import NextImage from 'next/image';
-import axios from 'axios';
 import useSWRImmutable from 'swr/immutable';
 
 const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
@@ -33,18 +19,8 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const [imageInfo, setImageInfo] = React.useState({});
     const [allImages, setAllImages] = React.useState([]);
 
-    const getPosters = async () => {
-        const posters = await axios.get('/api/get-items?id=posters');
-        const specificItem =
-            posters?.data?.filter((item) => item?.identifier === itemId)[0] ||
-            {};
-        setSynonymousImages([...specificItem?.extraImages]);
-        setImageInfo({ ...specificItem });
-        const arr = [...specificItem?.extraImages];
-        setAllImages([...arr]);
-    };
-
     const { data: beerData } = useSWRImmutable('/api/get-items?id=beer');
+    const { data: postersData } = useSWRImmutable('/api/get-items?id=posters');
 
     React.useEffect(() => {
         if (itemCategory !== 'posters' && itemCategory !== 'beer') {
@@ -86,7 +62,15 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
         }
 
         if (itemCategory === 'posters') {
-            getPosters();
+            const specificItem =
+                postersData?.filter((item) => item?.identifier === itemId)[0] ||
+                {};
+
+            setSynonymousImages([...specificItem?.extraImages]);
+            setImageInfo({ ...specificItem });
+            const arr = [...specificItem?.extraImages];
+
+            setAllImages([...arr]);
         }
         if (itemCategory === 'trousers') {
             const specificItem = trousers?.filter(

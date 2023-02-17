@@ -38,17 +38,8 @@ const ItemDetail = () => {
     const [centralImage, setCentralImage] = React.useState();
     const [imageInfo, setImageInfo] = React.useState({});
 
-    const getPosters = async () => {
-        const posters = await axios.get('/api/get-items?id=posters');
-        const specificItem =
-            posters?.data?.filter((item) => item?.identifier === itemId)[0] ||
-            {};
-        setSynonymousImages([...specificItem?.extraImages]);
-        setImageInfo({ ...specificItem });
-        setCentralImage(specificItem?.name);
-    };
-
     const { data: beerData } = useSWRImmutable('/api/get-items?id=beer');
+    const { data: postersData } = useSWRImmutable('/api/get-items?id=posters');
 
     React.useEffect(() => {
         if (itemCategory !== 'posters' && itemCategory !== 'beer') {
@@ -65,7 +56,13 @@ const ItemDetail = () => {
         }
 
         if (itemCategory === 'posters') {
-            getPosters();
+            const specificItem =
+                postersData?.filter((item) => item?.identifier === itemId)[0] ||
+                {};
+
+            setSynonymousImages([...specificItem?.extraImages]);
+            setImageInfo({ ...specificItem });
+            setCentralImage(specificItem?.name);
             return;
         }
 
