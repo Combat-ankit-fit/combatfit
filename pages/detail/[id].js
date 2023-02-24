@@ -40,6 +40,7 @@ const ItemDetail = () => {
 
     const { data: beerData } = useSWRImmutable('/api/get-items?id=beer');
     const { data: postersData } = useSWRImmutable('/api/get-items?id=posters');
+    const { data: notespadData } = useSWRImmutable('/api/get-items?id=notepad');
 
     React.useEffect(() => {
         if (itemCategory !== 'posters' && itemCategory !== 'beer') {
@@ -76,6 +77,19 @@ const ItemDetail = () => {
             setCentralImage(specificItem?.name);
             return;
         }
+
+        if (itemCategory === 'notepads') {
+            const specificItem =
+                notespadData?.filter(
+                    (item) => item?.identifier === itemId
+                )[0] || {};
+
+            setSynonymousImages([...specificItem?.extraImages]);
+            setImageInfo({ ...specificItem });
+            setCentralImage(specificItem?.name);
+            return;
+        }
+
         if (itemCategory === 'trousers') {
             const specificItem = trousers?.filter(
                 (item) => item?.name === itemId
@@ -155,7 +169,8 @@ const ItemDetail = () => {
                         <NextImage
                             src={
                                 router?.query?.name !== 'posters' &&
-                                router?.query?.name !== 'beer'
+                                router?.query?.name !== 'beer' &&
+                                router?.query?.name !== 'notepads'
                                     ? `/${centralImage}.jpg`
                                     : centralImage
                             }
