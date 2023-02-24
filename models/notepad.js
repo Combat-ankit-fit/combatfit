@@ -19,6 +19,9 @@ const notepadSchema = mongoose.Schema({
     size: {
         type: String,
     },
+    stripeId: {
+        type: String,
+    },
 });
 
 module.exports =

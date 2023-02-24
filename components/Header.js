@@ -80,7 +80,7 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                         color="white"
                         cursor={'pointer'}
                         onClick={() => {
-                            router.push('/items/coffee-mugs');
+                            router.push('/items/notepads');
                         }}
                     >
                         Souvenirs

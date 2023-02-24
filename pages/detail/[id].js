@@ -22,6 +22,14 @@ import { allClothings } from '../../utils/all-items';
 import NextImage from 'next/image';
 import axios from 'axios';
 import useSWRImmutable from 'swr/immutable';
+import getStripe from '../../getStripe';
+import {
+    NumberInput,
+    NumberInputField,
+    NumberInputStepper,
+    NumberIncrementStepper,
+    NumberDecrementStepper,
+} from '@chakra-ui/react';
 
 const ItemDetail = () => {
     const router = useRouter();
@@ -35,6 +43,7 @@ const ItemDetail = () => {
 
     const itemId = router?.query?.id;
     const [synonumousImages, setSynonymousImages] = React.useState([]);
+    const [itemQuantity, setItemQuantity] = React.useState(5);
     const [centralImage, setCentralImage] = React.useState();
     const [imageInfo, setImageInfo] = React.useState({});
 
@@ -129,6 +138,24 @@ const ItemDetail = () => {
         return <MobileViewDetail itemCategory={itemCategory} itemId={itemId} />;
     }
 
+    const redirectToCheckout = async () => {
+        const {
+            data: { id },
+        } = await axios.post('/api/checkout-sessions', {
+            items: [
+                {
+                    price: imageInfo?.stripeId,
+                    quantity: itemQuantity,
+                },
+            ],
+        });
+
+        const stripe = await getStripe();
+        await stripe.redirectToCheckout({
+            sessionId: id,
+        });
+    };
+
     return (
         <Layout
             sidebarRequired={false}
@@ -182,10 +209,28 @@ const ItemDetail = () => {
                     <Flex flexDir={'column'} gridRowGap={8}>
                         <Text fontWeight={'bold'}>{imageInfo?.alt}</Text>
                         <Text>MRP:{imageInfo?.price}</Text>
-                        <Button colorScheme={'primary'} bgColor="orange">
-                            Add to Cart
-                        </Button>
-                        <Button colorScheme={'primary'} bgColor="orange">
+                        <NumberInput
+                            defaultValue={5}
+                            min={5}
+                            max={20}
+                            onChange={(valueString) =>
+                                setItemQuantity(valueString)
+                            }
+                        >
+                            <NumberInputField />
+                            <NumberInputStepper>
+                                <NumberIncrementStepper />
+                                <NumberDecrementStepper />
+                            </NumberInputStepper>
+                        </NumberInput>
+                        <Button
+                            colorScheme={'primary'}
+                            bgColor="orange"
+                            onClick={() => {
+                                if (router?.query?.name === 'notepads')
+                                    redirectToCheckout();
+                            }}
+                        >
                             Buy Online
                         </Button>
                     </Flex>
