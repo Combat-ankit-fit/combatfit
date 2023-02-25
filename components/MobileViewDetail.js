@@ -12,16 +12,29 @@ import { allClothings } from '../utils/all-items';
 import { notepad } from '../utils/notepad';
 import NextImage from 'next/image';
 import useSWRImmutable from 'swr/immutable';
+import {
+    NumberInput,
+    NumberInputField,
+    NumberInputStepper,
+    NumberIncrementStepper,
+    NumberDecrementStepper,
+} from '@chakra-ui/react';
+
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import getStripe from '../getStripe';
 
 const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const [synonumousImages, setSynonymousImages] = React.useState([]);
     const [centralImage, setCentralImage] = React.useState(itemId);
     const [imageInfo, setImageInfo] = React.useState({});
     const [allImages, setAllImages] = React.useState([]);
+    const router = useRouter();
 
     const { data: beerData } = useSWRImmutable('/api/get-items?id=beer');
     const { data: postersData } = useSWRImmutable('/api/get-items?id=posters');
     const { data: notespadData } = useSWRImmutable('/api/get-items?id=notepad');
+    const [itemQuantity, setItemQuantity] = React.useState(5);
 
     React.useEffect(() => {
         if (
@@ -126,6 +139,24 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
         }
     };
 
+    const redirectToCheckout = async () => {
+        const {
+            data: { id },
+        } = await axios.post('/api/checkout-sessions', {
+            items: [
+                {
+                    price: imageInfo?.stripeId,
+                    quantity: itemQuantity,
+                },
+            ],
+        });
+
+        const stripe = await getStripe();
+        await stripe.redirectToCheckout({
+            sessionId: id,
+        });
+    };
+
     const getFeatures = () => {
         return [
             {
@@ -210,19 +241,30 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             </Box>
             <Text mt="4">{imageInfo?.alt}</Text>
             <Text mb="2">Rs. {imageInfo?.price}/-(inclusive of all taxes)</Text>
-            <Button
-                colorScheme={'primary'}
-                bgColor="orange"
-                width={'full'}
-                mb="4"
+
+            <NumberInput
+                defaultValue={5}
+                min={5}
+                max={20}
+                onChange={(valueString) => setItemQuantity(valueString)}
             >
-                Add to Cart
-            </Button>
+                <NumberInputField />
+                <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                </NumberInputStepper>
+            </NumberInput>
+
             <Button
                 colorScheme={'primary'}
                 bgColor="orange"
                 width={'full'}
                 mb="4"
+                mt="4"
+                onClick={() => {
+                    if (router?.query?.name === 'notepads')
+                        redirectToCheckout();
+                }}
             >
                 Buy now
             </Button>
