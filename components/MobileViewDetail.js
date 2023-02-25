@@ -262,7 +262,10 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                 mb="4"
                 mt="4"
                 onClick={() => {
-                    if (router?.query?.name === 'notepads')
+                    if (
+                        router?.query?.name === 'notepads' ||
+                        router?.query?.name === 'posters'
+                    )
                         redirectToCheckout();
                 }}
             >

@@ -227,7 +227,10 @@ const ItemDetail = () => {
                             colorScheme={'primary'}
                             bgColor="orange"
                             onClick={() => {
-                                if (router?.query?.name === 'notepads')
+                                if (
+                                    router?.query?.name === 'notepads' ||
+                                    router?.query?.name === 'posters'
+                                )
                                     redirectToCheckout();
                             }}
                         >
