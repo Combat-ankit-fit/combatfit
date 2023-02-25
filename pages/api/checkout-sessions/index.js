@@ -1,8 +1,6 @@
 import Stripe from 'stripe';
 
-const stripe = new Stripe(
-    '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'
-);
+const stripe = new Stripe(process.env.NEXT_PUBLIC_SECRET_KEY);
 export default async function handler(req, res) {
     if (req.method === 'POST') {
         try {
