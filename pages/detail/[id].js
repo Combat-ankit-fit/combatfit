@@ -229,7 +229,8 @@ const ItemDetail = () => {
                             onClick={() => {
                                 if (
                                     router?.query?.name === 'notepads' ||
-                                    router?.query?.name === 'posters'
+                                    router?.query?.name === 'posters' ||
+                                    router?.query?.name === 'beer'
                                 )
                                     redirectToCheckout();
                             }}
