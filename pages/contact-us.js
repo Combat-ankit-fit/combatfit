@@ -396,7 +396,7 @@ const ContactUs = () => {
                                 combatfitwears@gmail.com
                             </Text>
                             <Text color="white" mb="2">
-                                +91 9719493210
+                                +91 8826552468
                             </Text>
                         </Flex>
                     </Flex>
