@@ -16,6 +16,14 @@ import MobileViewDetail from '../../../components/MobileViewDetail';
 import axios from 'axios';
 import NextImage from 'next/image';
 import useSWRImmutable from 'swr/immutable';
+import getStripe from '../../../getStripe';
+import {
+    NumberInput,
+    NumberInputField,
+    NumberInputStepper,
+    NumberIncrementStepper,
+    NumberDecrementStepper,
+} from '@chakra-ui/react';
 
 const ItemDetail = () => {
     const router = useRouter();
@@ -31,6 +39,7 @@ const ItemDetail = () => {
     const [synonumousImages, setSynonymousImages] = React.useState([]);
     const [centralImage, setCentralImage] = React.useState();
     const [imageInfo, setImageInfo] = React.useState({});
+    const [itemQuantity, setItemQuantity] = React.useState(5);
 
     const { data: clothingData } = useSWRImmutable(
         '/api/get-items?id=clothing'
@@ -49,6 +58,24 @@ const ItemDetail = () => {
     if (isMobileView) {
         return <MobileViewDetail itemCategory={itemCategory} itemId={itemId} />;
     }
+
+    const redirectToCheckout = async () => {
+        const {
+            data: { id },
+        } = await axios.post('/api/checkout-sessions', {
+            items: [
+                {
+                    price: imageInfo?.stripeId,
+                    quantity: itemQuantity,
+                },
+            ],
+        });
+
+        const stripe = await getStripe();
+        await stripe.redirectToCheckout({
+            sessionId: id,
+        });
+    };
 
     return (
         <Layout
@@ -89,10 +116,29 @@ const ItemDetail = () => {
                         <Text fontWeight={'bold'}>{imageInfo?.alt}</Text>
                         <Text>I guard the nation what is your super power</Text>
                         <Text>MRP:{imageInfo?.price}</Text>
-                        <Button colorScheme={'primary'} bgColor="orange">
-                            Add to Cart
-                        </Button>
-                        <Button colorScheme={'primary'} bgColor="orange">
+
+                        <NumberInput
+                            defaultValue={5}
+                            min={5}
+                            max={1000}
+                            onChange={(valueString) =>
+                                setItemQuantity(valueString)
+                            }
+                        >
+                            <NumberInputField />
+                            <NumberInputStepper>
+                                <NumberIncrementStepper />
+                                <NumberDecrementStepper />
+                            </NumberInputStepper>
+                        </NumberInput>
+
+                        <Button
+                            colorScheme={'primary'}
+                            bgColor="orange"
+                            onClick={() => {
+                                redirectToCheckout();
+                            }}
+                        >
                             Buy Online
                         </Button>
                     </Flex>

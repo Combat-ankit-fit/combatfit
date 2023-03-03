@@ -34,13 +34,17 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const { data: beerData } = useSWRImmutable('/api/get-items?id=beer');
     const { data: postersData } = useSWRImmutable('/api/get-items?id=posters');
     const { data: notespadData } = useSWRImmutable('/api/get-items?id=notepad');
+    const { data: clothingData } = useSWRImmutable(
+        '/api/get-items?id=clothing'
+    );
     const [itemQuantity, setItemQuantity] = React.useState(5);
 
     React.useEffect(() => {
         if (
             itemCategory !== 'posters' &&
             itemCategory !== 'beer' &&
-            itemCategory !== 'notepads'
+            itemCategory !== 'notepads' &&
+            itemCategory !== 'all-items'
         ) {
             setCentralImage(itemId);
         }
@@ -121,14 +125,14 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             const arr = [...specificItem?.extraImages, centralImage];
             setAllImages([...arr]);
         }
-        if (itemCategory === 'all-items') {
-            const specificItem = allClothings?.filter(
-                (item) => item?.name === itemId
+        if (itemCategory === 'all-items' && clothingData) {
+            const specificItem = clothingData?.filter(
+                (item) => item?.identifier === itemId
             )[0];
 
             setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
-            const arr = [...specificItem?.extraImages, centralImage];
+            const arr = [...specificItem?.extraImages];
             setAllImages([...arr]);
         }
     }, [itemCategory, itemId]);
@@ -219,7 +223,8 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                                     id={index}
                                     key={index}
                                     src={
-                                        itemCategory !== 'posters'
+                                        itemCategory !== 'posters' &&
+                                        itemCategory !== 'all-items'
                                             ? `/${image}.jpg`
                                             : image
                                     }
@@ -265,7 +270,8 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                     if (
                         router?.query?.name === 'notepads' ||
                         router?.query?.name === 'posters' ||
-                        router?.query?.name === 'beer'
+                        router?.query?.name === 'beer' ||
+                        router?.query?.name === 'all-items'
                     )
                         redirectToCheckout();
                 }}
