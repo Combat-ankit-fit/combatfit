@@ -36,9 +36,7 @@ const ItemProvider = ({ children }) => {
 
     const { data: beerData } = useSWRImmutable('/api/get-items?id=beer');
     const { data: postersData } = useSWRImmutable('/api/get-items?id=posters');
-    const { data: notespadData } = useSWRImmutable(
-        '/api/get-items?id=notepad546456'
-    );
+    const { data: notespadData } = useSWRImmutable('/api/get-items?id=notepad');
 
     React.useEffect(() => {
         if (queryParam === 'beer' && beerData) {
