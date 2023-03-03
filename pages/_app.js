@@ -2,6 +2,7 @@ import '../styles/globals.css';
 import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '../styles/theme';
 import { SWRConfig } from 'swr';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 function MyApp({ Component, pageProps }) {
     const fetcher = async (url, queryParams) => {
@@ -19,7 +20,9 @@ function MyApp({ Component, pageProps }) {
     return (
         <SWRConfig value={{ fetcher }}>
             <ChakraProvider theme={theme}>
-                <Component {...pageProps} />
+                <ErrorBoundary>
+                    <Component {...pageProps} />
+                </ErrorBoundary>
             </ChakraProvider>
         </SWRConfig>
     );
