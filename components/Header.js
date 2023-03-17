@@ -11,12 +11,12 @@ import {
     Input,
     color,
 } from '@chakra-ui/react';
-import Link from 'next/link';
+import { useShoppingCart } from '../context/CartProvider';
 import styled from 'styled-components';
 import router, { useRouter } from 'next/router';
 import NextImage from 'next/image';
-import { InputControl, FormControl, TextAreaControl } from '../exporter';
-import { SearchIcon } from '@chakra-ui/icons';
+import { CalendarIcon } from '@chakra-ui/icons';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 const WhiteLink = styled.a`
     color: white;
@@ -25,6 +25,7 @@ const WhiteLink = styled.a`
 const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
     const isMobileView = useBreakpointValue({ base: true, md: false });
     const router = useRouter();
+    const { cartCount = 0 } = useShoppingCart();
     return (
         <Container
             maxW={'full'}
@@ -106,19 +107,26 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                         Contact Us
                     </Text>
 
-                    <InputGroup>
-                        <Input
-                            placeholder="Search Product"
-                            name="search"
-                            bgColor={'orange'}
-                            _placeholder={{
-                                color: 'black',
-                            }}
-                            sx={{
-                                borderRadius: '4px',
+                    <Box
+                        position={'relative'}
+                        display="flex"
+                        cursor={'pointer'}
+                    >
+                        <Text
+                            position={'absolute'}
+                            color="white"
+                            marginLeft={4}
+                            fontSize="sm"
+                        >
+                            {cartCount}
+                        </Text>
+                        <AiOutlineShoppingCart
+                            color="white"
+                            onClick={() => {
+                                router.push('/cart');
                             }}
                         />
-                    </InputGroup>
+                    </Box>
                 </Flex>
             </Flex>
             {breadCrumbsRequired && (
