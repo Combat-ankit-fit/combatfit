@@ -301,10 +301,14 @@ const Layout = ({
                         )}
 
                         <NextImage
-                            src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner01.jpg?alt=media&token=0a8f99d5-9b9b-459d-a7cb-accf316994d1"
+                            src={
+                                isMobileView
+                                    ? 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner01.jpg?alt=media&token=0a8f99d5-9b9b-459d-a7cb-accf316994d1'
+                                    : 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/New_Banner02.jpg?alt=media&token=05674af2-2639-494d-a96d-4eb03cf1f4d2'
+                            }
                             objectFit="cover"
                             height={isMobileView ? 1000 : 900}
-                            width={1600}
+                            width={isMobileView ? 1600 : 2000}
                             layout="responsive"
                         />
                     </Box>
