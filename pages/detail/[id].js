@@ -43,7 +43,7 @@ const ItemDetail = () => {
 
     const itemId = router?.query?.id;
     const [synonumousImages, setSynonymousImages] = React.useState([]);
-    const [itemQuantity, setItemQuantity] = React.useState(5);
+    const [itemQuantity, setItemQuantity] = React.useState(1);
     const [centralImage, setCentralImage] = React.useState();
     const [imageInfo, setImageInfo] = React.useState({});
 
@@ -210,8 +210,8 @@ const ItemDetail = () => {
                         <Text fontWeight={'bold'}>{imageInfo?.alt}</Text>
                         <Text>MRP:{imageInfo?.price}</Text>
                         <NumberInput
-                            defaultValue={5}
-                            min={5}
+                            defaultValue={1}
+                            min={1}
                             max={20}
                             onChange={(valueString) =>
                                 setItemQuantity(valueString)

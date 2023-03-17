@@ -39,7 +39,7 @@ const ItemDetail = () => {
     const [synonumousImages, setSynonymousImages] = React.useState([]);
     const [centralImage, setCentralImage] = React.useState();
     const [imageInfo, setImageInfo] = React.useState({});
-    const [itemQuantity, setItemQuantity] = React.useState(5);
+    const [itemQuantity, setItemQuantity] = React.useState(1);
 
     const { data: clothingData } = useSWRImmutable(
         '/api/get-items?id=clothing'
@@ -118,8 +118,8 @@ const ItemDetail = () => {
                         <Text>MRP:{imageInfo?.price}</Text>
 
                         <NumberInput
-                            defaultValue={5}
-                            min={5}
+                            defaultValue={1}
+                            min={1}
                             max={1000}
                             onChange={(valueString) =>
                                 setItemQuantity(valueString)

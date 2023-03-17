@@ -37,7 +37,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const { data: clothingData } = useSWRImmutable(
         '/api/get-items?id=clothing'
     );
-    const [itemQuantity, setItemQuantity] = React.useState(5);
+    const [itemQuantity, setItemQuantity] = React.useState(1);
 
     React.useEffect(() => {
         if (
