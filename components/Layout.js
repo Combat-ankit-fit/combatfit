@@ -834,23 +834,6 @@ const Layout = ({
                                     width={1200}
                                     height={700}
                                 />
-                                {!isMobileView && (
-                                    <Button
-                                        colorScheme="primary"
-                                        id="new_button"
-                                        position={'absolute'}
-                                        width={'xs'}
-                                        bottom="10px"
-                                        mb="4"
-                                        left="20%"
-                                        transform="translate(-40%,0)"
-                                        onClick={() => {
-                                            router.push('/items/coffee-mugs');
-                                        }}
-                                    >
-                                        Explore Now
-                                    </Button>
-                                )}
                             </Box>
                         </Box>
                         {!isMobileView && (
@@ -868,24 +851,6 @@ const Layout = ({
                                         width={1200}
                                         height={700}
                                     />
-                                    {!isMobileView && (
-                                        <Button
-                                            colorScheme="primary"
-                                            id="new_button"
-                                            position={'absolute'}
-                                            width={'xs'}
-                                            bottom="2px"
-                                            mb="4"
-                                            left="50%"
-                                            transform="translate(-50%,0)"
-                                            right="350px"
-                                            onClick={() => {
-                                                router.push('/items/beer');
-                                            }}
-                                        >
-                                            Explore Now
-                                        </Button>
-                                    )}
                                 </Box>
                                 <Box
                                     position="relative"
