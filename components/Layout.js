@@ -827,6 +827,7 @@ const Layout = ({
                                 onClick={() => {
                                     router.push('/items/coffee-mugs');
                                 }}
+                                display="flex"
                             >
                                 <NextImage
                                     src="/banner06.jpg"
@@ -839,9 +840,10 @@ const Layout = ({
                                         id="new_button"
                                         position={'absolute'}
                                         width={'xs'}
-                                        bottom="100px"
+                                        bottom="10px"
                                         mb="4"
-                                        left="100px"
+                                        left="20%"
+                                        transform="translate(-40%,0)"
                                         onClick={() => {
                                             router.push('/items/coffee-mugs');
                                         }}
