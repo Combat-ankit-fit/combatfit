@@ -10,6 +10,17 @@ import {
     InputRightElement,
     Input,
     color,
+    Button,
+} from '@chakra-ui/react';
+import {
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    MenuItemOption,
+    MenuGroup,
+    MenuOptionGroup,
+    MenuDivider,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -75,16 +86,40 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                     >
                         Clothing
                     </Text>
-
-                    <Text
-                        color="white"
-                        cursor={'pointer'}
-                        onClick={() => {
-                            router.push('/items/notepads');
-                        }}
-                    >
-                        Souvenirs
-                    </Text>
+                    <Box width="20%" bgColor={'black'}>
+                        <Menu>
+                            <MenuButton
+                                as={Button}
+                                backgroundColor="black !important"
+                                color="white"
+                            >
+                                Souvenirs
+                            </MenuButton>
+                            <MenuList>
+                                <MenuItem
+                                    onClick={() => {
+                                        router?.push('/items/coffee-mugs');
+                                    }}
+                                >
+                                    Coffee Mugs
+                                </MenuItem>
+                                <MenuItem
+                                    onClick={() => {
+                                        router?.push('/items/beer');
+                                    }}
+                                >
+                                    Beeg Mugs
+                                </MenuItem>
+                                <MenuItem
+                                    onClick={() => {
+                                        router?.push('/items/posters');
+                                    }}
+                                >
+                                    Posters
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                    </Box>
 
                     <Text
                         color="white"
@@ -116,6 +151,9 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                             }}
                             sx={{
                                 borderRadius: '4px',
+                                _placeholder: {
+                                    textAlign: 'center',
+                                },
                             }}
                         />
                     </InputGroup>

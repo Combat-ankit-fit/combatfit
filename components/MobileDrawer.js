@@ -43,8 +43,6 @@ const MobileDrawer = ({
         { item: 'Beer Mugs', path: '/beer' },
         { item: 'Whisky Glasses', path: '/' },
         { item: 'Posters', path: '/posters' },
-        { item: 'Keyrings', path: '/keyrings' },
-        { item: 'Notepads', path: '/notepads' },
     ];
     const router = useRouter();
     const displayLogo =
