@@ -537,9 +537,13 @@ const Layout = ({
                         )}
 
                         <NextImage
-                            src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner02.jpg?alt=media&token=7adf5dc5-e918-4d3a-a25f-387b8ce6cf68"
+                            src={
+                                isMobileView
+                                    ? 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner02.jpg?alt=media&token=7adf5dc5-e918-4d3a-a25f-387b8ce6cf68'
+                                    : 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/Second_banner.jpg?alt=media&token=47e0ae0a-5abd-4f8e-b8b3-df61161d3a41'
+                            }
                             objectFit="cover"
-                            height={isMobileView ? 800 : 600}
+                            height={isMobileView ? 800 : 500}
                             width={1200}
                             layout="responsive"
                         />
