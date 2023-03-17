@@ -859,6 +859,7 @@ const Layout = ({
                                     onClick={() => {
                                         router.push('/items/beer');
                                     }}
+                                    display="flex"
                                 >
                                     <NextImage
                                         src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/Generic_Beer.jpg?alt=media&token=02ed0046-4d5c-40e6-af7a-3155bf94e891"
@@ -871,8 +872,10 @@ const Layout = ({
                                             id="new_button"
                                             position={'absolute'}
                                             width={'xs'}
-                                            bottom="10px"
+                                            bottom="2px"
                                             mb="4"
+                                            left="50%"
+                                            transform="translate(-50%,0)"
                                             right="350px"
                                             onClick={() => {
                                                 router.push('/items/beer');
