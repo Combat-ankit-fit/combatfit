@@ -93,8 +93,8 @@ const ItemDetail = () => {
                                 <Box mb="4" cursor={'pointer'} key={index}>
                                     <NextImage
                                         src={item}
-                                        height={250}
-                                        width={250}
+                                        height={200}
+                                        width={200}
                                         objectFit="contain"
                                         onClick={() => {
                                             setCentralImage(item);
@@ -107,15 +107,16 @@ const ItemDetail = () => {
                     <Box id="image__container" height={700} width={700} me="3">
                         <NextImage
                             src={centralImage}
-                            height={700}
-                            width={700}
+                            height={600}
+                            width={600}
                             layout="fixed"
                         />
                     </Box>
-                    <Flex flexDir={'column'} gridRowGap={8}>
+                    <Flex flexDir={'column'} gridRowGap={2}>
                         <Text fontWeight={'bold'}>{imageInfo?.alt}</Text>
                         <Text>I guard the nation what is your super power</Text>
                         <Text>MRP:{imageInfo?.price}</Text>
+                        <Text>Quantity</Text>
 
                         <NumberInput
                             defaultValue={1}

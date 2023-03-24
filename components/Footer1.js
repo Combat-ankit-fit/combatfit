@@ -39,7 +39,7 @@ const Footer = ({ homepage = false }) => {
                             <Text
                                 color={'white'}
                                 fontWeight="bold"
-                                fontSize={'lg'}
+                                fontSize={'xl'}
                             >
                                 Clothing
                             </Text>
@@ -49,7 +49,7 @@ const Footer = ({ homepage = false }) => {
                                 color={'white'}
                                 textAlign="center"
                                 fontWeight="bold"
-                                fontSize={'lg'}
+                                fontSize={'xl'}
                             >
                                 Souvenirs
                             </Text>
@@ -62,7 +62,7 @@ const Footer = ({ homepage = false }) => {
                                 onClick={() => {
                                     router.push('/items/all-items');
                                 }}
-                                fontSize={{ base: '18px', md: '24px' }}
+                                fontSize="lg"
                             >
                                 Tshirts
                             </Text>
@@ -71,7 +71,7 @@ const Footer = ({ homepage = false }) => {
                                     router.push('/items/all-items');
                                 }}
                                 color={'white'}
-                                fontSize={{ base: '18px', md: '24px' }}
+                                fontSize="lg"
                             >
                                 Sweatshirts
                             </Text>
@@ -80,7 +80,7 @@ const Footer = ({ homepage = false }) => {
                                 onClick={() => {
                                     router.push('/items/all-items');
                                 }}
-                                fontSize={{ base: '18px', md: '24px' }}
+                                fontSize="lg"
                             >
                                 Trousers
                             </Text>
@@ -89,7 +89,7 @@ const Footer = ({ homepage = false }) => {
                                 onClick={() => {
                                     router.push('/items/all-items');
                                 }}
-                                fontSize={{ base: '18px', md: '24px' }}
+                                fontSize="lg"
                             >
                                 Shorts
                             </Text>
@@ -104,7 +104,7 @@ const Footer = ({ homepage = false }) => {
                                 onClick={() => {
                                     router.push('/items/coffee-mugs');
                                 }}
-                                fontSize={{ base: '18px', md: '24px' }}
+                                fontSize="lg"
                             >
                                 Coffee Mugs
                             </Text>
@@ -113,7 +113,7 @@ const Footer = ({ homepage = false }) => {
                                 onClick={() => {
                                     router.push('/items/beer');
                                 }}
-                                fontSize={{ base: '18px', md: '24px' }}
+                                fontSize="lg"
                             >
                                 Beer Mugs
                             </Text>
@@ -122,7 +122,7 @@ const Footer = ({ homepage = false }) => {
                                 onClick={() => {
                                     router.push('/');
                                 }}
-                                fontSize={{ base: '18px', md: '24px' }}
+                                fontSize="lg"
                             >
                                 Whisky Glasses
                             </Text>
@@ -131,7 +131,7 @@ const Footer = ({ homepage = false }) => {
                                 onClick={() => {
                                     router.push('/items/posters');
                                 }}
-                                fontSize={{ base: '18px', md: '24px' }}
+                                fontSize="lg"
                             >
                                 Posters
                             </Text>
@@ -149,7 +149,7 @@ const Footer = ({ homepage = false }) => {
                         <Text
                             color={'white'}
                             textAlign={'justify'}
-                            fontSize={{ base: '18px', md: '24px' }}
+                            fontSize="lg"
                         >
                             At CombatFit, we are driven by three main principles
                             quality, transparency and value to the clients.

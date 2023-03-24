@@ -33,7 +33,7 @@ const GenericItemCard = (props) => {
                     src={info?.name}
                     objectFit="contain"
                     width="450px"
-                    height="450px"
+                    height="500px"
                 />
             </Box>
             <Flex
