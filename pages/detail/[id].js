@@ -42,7 +42,7 @@ const ItemDetail = () => {
     });
 
     const itemCategory = router?.query?.name;
-    const { cartCount = 0, addItem } = useShoppingCart();
+    const { addItem } = useShoppingCart();
 
     const itemId = router?.query?.id;
     const [synonumousImages, setSynonymousImages] = React.useState([]);
@@ -68,7 +68,7 @@ const ItemDetail = () => {
             return;
         }
 
-        if (itemCategory === 'posters') {
+        if (itemCategory === 'posters' && postersData) {
             const specificItem =
                 postersData?.filter((item) => item?.identifier === itemId)[0] ||
                 {};
@@ -79,7 +79,7 @@ const ItemDetail = () => {
             return;
         }
 
-        if (itemCategory === 'beer') {
+        if (itemCategory === 'beer' && beerData) {
             const specificItem =
                 beerData?.filter((item) => item?.identifier === itemId)[0] ||
                 {};
@@ -90,7 +90,7 @@ const ItemDetail = () => {
             return;
         }
 
-        if (itemCategory === 'notepads') {
+        if (itemCategory === 'notepads' && notespadData) {
             const specificItem =
                 notespadData?.filter(
                     (item) => item?.identifier === itemId
@@ -101,41 +101,7 @@ const ItemDetail = () => {
             setCentralImage(specificItem?.name);
             return;
         }
-
-        if (itemCategory === 'trousers') {
-            const specificItem = trousers?.filter(
-                (item) => item?.name === itemId
-            )[0];
-
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
-            return;
-        }
-        if (itemCategory === 'sweatshirts') {
-            const specificItem = sweatShirts?.filter(
-                (item) => item?.name === itemId
-            )[0];
-
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
-        }
-        if (itemCategory === 'casual-tshirts') {
-            const specificItem = casualTshirts?.filter(
-                (item) => item?.name === itemId
-            )[0];
-
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
-        }
-        if (itemCategory === 'all-items') {
-            const specificItem = allClothings?.filter(
-                (item) => item?.name === itemId
-            )[0];
-
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
-        }
-    }, [itemCategory, itemId]);
+    }, [itemCategory, itemId, beerData, postersData, notespadData]);
 
     if (isMobileView) {
         return <MobileViewDetail itemCategory={itemCategory} itemId={itemId} />;
@@ -231,27 +197,31 @@ const ItemDetail = () => {
                                 <NumberDecrementStepper />
                             </NumberInputStepper>
                         </NumberInput>
-                        <Button
-                            colorScheme={'primary'}
-                            bgColor="orange"
-                            onClick={handleOnAddToCart}
-                        >
-                            Add to cart
-                        </Button>
-                        <Button
-                            colorScheme={'primary'}
-                            bgColor="orange"
-                            onClick={() => {
-                                if (
-                                    router?.query?.name === 'notepads' ||
-                                    router?.query?.name === 'posters' ||
-                                    router?.query?.name === 'beer'
-                                )
-                                    redirectToCheckout();
-                            }}
-                        >
-                            Buy Online
-                        </Button>
+                        {itemCategory !== 'coffee-mugs' && (
+                            <Button
+                                colorScheme={'primary'}
+                                bgColor="orange"
+                                onClick={handleOnAddToCart}
+                            >
+                                Add to cart
+                            </Button>
+                        )}
+                        {itemCategory !== 'coffee-mugs' && (
+                            <Button
+                                colorScheme={'primary'}
+                                bgColor="orange"
+                                onClick={() => {
+                                    if (
+                                        router?.query?.name === 'notepads' ||
+                                        router?.query?.name === 'posters' ||
+                                        router?.query?.name === 'beer'
+                                    )
+                                        redirectToCheckout();
+                                }}
+                            >
+                                Buy Online
+                            </Button>
+                        )}
                     </Flex>
                 </Flex>
                 <Text fontWeight={'bold'}>Product Description</Text>

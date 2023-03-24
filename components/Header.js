@@ -142,22 +142,26 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                         Contact Us
                     </Text>
 
-                    <InputGroup>
-                        <Input
-                            placeholder="Search Product"
-                            name="search"
-                            bgColor={'orange'}
-                            _placeholder={{
-                                color: 'black',
-                            }}
-                            sx={{
-                                borderRadius: '4px',
-                                _placeholder: {
-                                    textAlign: 'center',
-                                },
+                    <Box
+                        position={'relative'}
+                        display="flex"
+                        cursor={'pointer'}
+                    >
+                        <Text
+                            position={'absolute'}
+                            color="white"
+                            marginLeft={4}
+                            fontSize="sm"
+                        >
+                            {cartCount}
+                        </Text>
+                        <AiOutlineShoppingCart
+                            color="white"
+                            onClick={() => {
+                                router.push('/cart');
                             }}
                         />
-                    </InputGroup>
+                    </Box>
                 </Flex>
             </Flex>
             {breadCrumbsRequired && (

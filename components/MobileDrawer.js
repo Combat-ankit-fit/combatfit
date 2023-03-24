@@ -22,6 +22,8 @@ import React from 'react';
 import { HamburgerIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import router, { useRouter } from 'next/router';
 import NextImage from 'next/image';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { useShoppingCart } from '../context/CartProvider';
 
 const MobileDrawer = ({
     breadCrumbsPath,
@@ -47,6 +49,8 @@ const MobileDrawer = ({
     const router = useRouter();
     const displayLogo =
         router?.pathname !== '/vision' && router?.pathname !== '/contact-us';
+
+    const { cartCount = 0 } = useShoppingCart();
 
     return (
         <Box>
@@ -80,6 +84,26 @@ const MobileDrawer = ({
                                 />
                             </Box>
                         )}
+                        <Box
+                            position={'relative'}
+                            display="flex"
+                            cursor={'pointer'}
+                        >
+                            <Text
+                                position={'absolute'}
+                                color="white"
+                                marginLeft={4}
+                                fontSize="sm"
+                            >
+                                {cartCount}
+                            </Text>
+                            <AiOutlineShoppingCart
+                                color="white"
+                                onClick={() => {
+                                    router.push('/cart');
+                                }}
+                            />
+                        </Box>
                     </Box>
                 )}
             </Box>

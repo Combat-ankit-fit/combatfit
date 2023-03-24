@@ -23,6 +23,7 @@ import {
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import getStripe from '../getStripe';
+import { useShoppingCart } from '../context/CartProvider';
 
 const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const [synonumousImages, setSynonymousImages] = React.useState([]);
@@ -30,6 +31,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const [imageInfo, setImageInfo] = React.useState({});
     const [allImages, setAllImages] = React.useState([]);
     const router = useRouter();
+    const { addItem } = useShoppingCart();
 
     const { data: beerData } = useSWRImmutable('/api/get-items?id=beer');
     const { data: postersData } = useSWRImmutable('/api/get-items?id=posters');
@@ -38,6 +40,10 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
         '/api/get-items?id=clothing'
     );
     const [itemQuantity, setItemQuantity] = React.useState(1);
+
+    const handleOnAddToCart = () => {
+        addItem(imageInfo, itemQuantity);
+    };
 
     React.useEffect(() => {
         if (
@@ -53,7 +59,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                 (item) => item?.name === itemId
             )[0];
 
-            setSynonymousImages([...specificItem?.extraImages]);
+            // setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
             const arr = [...specificItem?.extraImages, centralImage];
             setAllImages([...arr]);
@@ -64,7 +70,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                 beerData?.filter((item) => item?.identifier === itemId)[0] ||
                 {};
 
-            setSynonymousImages([...specificItem?.extraImages]);
+            // setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
             const arr = [...specificItem?.extraImages];
 
@@ -77,65 +83,46 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                     (item) => item?.identifier === itemId
                 )[0] || {};
 
-            setSynonymousImages([...specificItem?.extraImages]);
+            // setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
             const arr = [...specificItem?.extraImages];
 
             setAllImages([...arr]);
         }
 
-        if (itemCategory === 'posters') {
+        if (itemCategory === 'posters' && postersData) {
             const specificItem =
                 postersData?.filter((item) => item?.identifier === itemId)[0] ||
                 {};
 
-            setSynonymousImages([...specificItem?.extraImages]);
+            console.log('Specific item in mobile is:-', specificItem);
+
+            // setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
             const arr = [...specificItem?.extraImages];
 
             setAllImages([...arr]);
         }
-        if (itemCategory === 'trousers') {
-            const specificItem = trousers?.filter(
-                (item) => item?.name === itemId
-            )[0];
 
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
-            const arr = [...specificItem?.extraImages, centralImage];
-            setAllImages([...arr]);
-        }
-        if (itemCategory === 'sweatshirts') {
-            const specificItem = sweatShirts?.filter(
-                (item) => item?.name === itemId
-            )[0];
-
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
-            const arr = [...specificItem?.extraImages, centralImage];
-            setAllImages([...arr]);
-        }
-        if (itemCategory === 'casual-tshirts') {
-            const specificItem = casualTshirts?.filter(
-                (item) => item?.name === itemId
-            )[0];
-
-            setSynonymousImages([...specificItem?.extraImages]);
-            setImageInfo({ ...specificItem });
-            const arr = [...specificItem?.extraImages, centralImage];
-            setAllImages([...arr]);
-        }
         if (itemCategory === 'all-items' && clothingData) {
             const specificItem = clothingData?.filter(
                 (item) => item?.identifier === itemId
             )[0];
 
-            setSynonymousImages([...specificItem?.extraImages]);
+            // setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
             const arr = [...specificItem?.extraImages];
             setAllImages([...arr]);
         }
-    }, [itemCategory, itemId]);
+    }, [
+        itemCategory,
+        itemId,
+        clothingData,
+        postersData,
+        notespadData,
+        beerData,
+        coffeeMugs,
+    ]);
 
     const getHeaderInfo = () => {
         if (itemCategory === 'trousers') {
@@ -248,8 +235,8 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             <Text mb="2">Rs. {imageInfo?.price}/-(inclusive of all taxes)</Text>
             <Text>Quantity</Text>
             <NumberInput
-                defaultValue={5}
-                min={5}
+                defaultValue={1}
+                min={1}
                 max={20}
                 onChange={(valueString) => setItemQuantity(valueString)}
             >
@@ -259,6 +246,19 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                     <NumberDecrementStepper />
                 </NumberInputStepper>
             </NumberInput>
+
+            {itemCategory !== 'coffee-mugs' && (
+                <Button
+                    colorScheme={'primary'}
+                    bgColor="orange"
+                    width={'full'}
+                    onClick={handleOnAddToCart}
+                    mb="4"
+                    mt="4"
+                >
+                    Add to cart
+                </Button>
+            )}
 
             <Button
                 colorScheme={'primary'}

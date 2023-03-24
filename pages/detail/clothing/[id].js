@@ -24,6 +24,7 @@ import {
     NumberIncrementStepper,
     NumberDecrementStepper,
 } from '@chakra-ui/react';
+import { useShoppingCart } from '../../../context/CartProvider';
 
 const ItemDetail = () => {
     const router = useRouter();
@@ -33,6 +34,7 @@ const ItemDetail = () => {
         lg: false,
     });
 
+    const { addItem } = useShoppingCart();
     const itemCategory = router?.query?.name;
 
     const itemId = router?.query?.id;
@@ -75,6 +77,10 @@ const ItemDetail = () => {
         await stripe.redirectToCheckout({
             sessionId: id,
         });
+    };
+
+    const handleOnAddToCart = () => {
+        addItem(imageInfo, itemQuantity);
     };
 
     return (
@@ -132,6 +138,13 @@ const ItemDetail = () => {
                                 <NumberDecrementStepper />
                             </NumberInputStepper>
                         </NumberInput>
+                        <Button
+                            colorScheme={'primary'}
+                            bgColor="orange"
+                            onClick={handleOnAddToCart}
+                        >
+                            Add to cart
+                        </Button>
 
                         <Button
                             colorScheme={'primary'}
