@@ -17,7 +17,7 @@ const GenericItemCard = (props) => {
 
     return (
         <Box
-            border="2px solid black"
+            border="2px solid lightgray"
             cursor="pointer"
             onClick={() => {
                 router.push({

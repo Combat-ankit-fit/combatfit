@@ -17,7 +17,7 @@ const GenericItemCard = (props) => {
 
     return (
         <Box
-            border="2px solid black"
+            border="2px solid lightgray"
             cursor="pointer"
             onClick={() => {
                 router.push({
@@ -33,7 +33,7 @@ const GenericItemCard = (props) => {
                     src={info?.name}
                     objectFit="contain"
                     width="450px"
-                    height="450px"
+                    height="500px"
                 />
             </Box>
             <Flex

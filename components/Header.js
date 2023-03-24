@@ -10,6 +10,17 @@ import {
     InputRightElement,
     Input,
     color,
+    Button,
+} from '@chakra-ui/react';
+import {
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    MenuItemOption,
+    MenuGroup,
+    MenuOptionGroup,
+    MenuDivider,
 } from '@chakra-ui/react';
 import { useShoppingCart } from '../context/CartProvider';
 import styled from 'styled-components';
@@ -76,16 +87,40 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                     >
                         Clothing
                     </Text>
-
-                    <Text
-                        color="white"
-                        cursor={'pointer'}
-                        onClick={() => {
-                            router.push('/items/notepads');
-                        }}
-                    >
-                        Souvenirs
-                    </Text>
+                    <Box width="20%" bgColor={'black'}>
+                        <Menu>
+                            <MenuButton
+                                as={Button}
+                                backgroundColor="black !important"
+                                color="white"
+                            >
+                                Souvenirs
+                            </MenuButton>
+                            <MenuList>
+                                <MenuItem
+                                    onClick={() => {
+                                        router?.push('/items/coffee-mugs');
+                                    }}
+                                >
+                                    Coffee Mugs
+                                </MenuItem>
+                                <MenuItem
+                                    onClick={() => {
+                                        router?.push('/items/beer');
+                                    }}
+                                >
+                                    Beer Mugs
+                                </MenuItem>
+                                <MenuItem
+                                    onClick={() => {
+                                        router?.push('/items/posters');
+                                    }}
+                                >
+                                    Posters
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                    </Box>
 
                     <Text
                         color="white"
@@ -107,26 +142,22 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                         Contact Us
                     </Text>
 
-                    <Box
-                        position={'relative'}
-                        display="flex"
-                        cursor={'pointer'}
-                    >
-                        <Text
-                            position={'absolute'}
-                            color="white"
-                            marginLeft={4}
-                            fontSize="sm"
-                        >
-                            {cartCount}
-                        </Text>
-                        <AiOutlineShoppingCart
-                            color="white"
-                            onClick={() => {
-                                router.push('/cart');
+                    <InputGroup>
+                        <Input
+                            placeholder="Search Product"
+                            name="search"
+                            bgColor={'orange'}
+                            _placeholder={{
+                                color: 'black',
+                            }}
+                            sx={{
+                                borderRadius: '4px',
+                                _placeholder: {
+                                    textAlign: 'center',
+                                },
                             }}
                         />
-                    </Box>
+                    </InputGroup>
                 </Flex>
             </Flex>
             {breadCrumbsRequired && (

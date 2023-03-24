@@ -301,10 +301,14 @@ const Layout = ({
                         )}
 
                         <NextImage
-                            src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner01.jpg?alt=media&token=0a8f99d5-9b9b-459d-a7cb-accf316994d1"
+                            src={
+                                isMobileView
+                                    ? 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner01.jpg?alt=media&token=0a8f99d5-9b9b-459d-a7cb-accf316994d1'
+                                    : 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/New_Banner02.jpg?alt=media&token=05674af2-2639-494d-a96d-4eb03cf1f4d2'
+                            }
                             objectFit="cover"
                             height={isMobileView ? 1000 : 900}
-                            width={1600}
+                            width={isMobileView ? 1600 : 2000}
                             layout="responsive"
                         />
                     </Box>
@@ -533,9 +537,13 @@ const Layout = ({
                         )}
 
                         <NextImage
-                            src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner02.jpg?alt=media&token=7adf5dc5-e918-4d3a-a25f-387b8ce6cf68"
+                            src={
+                                isMobileView
+                                    ? 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner02.jpg?alt=media&token=7adf5dc5-e918-4d3a-a25f-387b8ce6cf68'
+                                    : 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/Second_banner.jpg?alt=media&token=47e0ae0a-5abd-4f8e-b8b3-df61161d3a41'
+                            }
                             objectFit="cover"
-                            height={isMobileView ? 800 : 600}
+                            height={isMobileView ? 800 : 500}
                             width={1200}
                             layout="responsive"
                         />
@@ -610,7 +618,7 @@ const Layout = ({
                                 }}
                             >
                                 <NextImage
-                                    src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner03.jpg?alt=media&token=2412613a-f846-46d3-8548-24efe2a3e555"
+                                    src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/mountains.jpg?alt=media&token=a2920710-071a-4ded-8bd6-4c421b4cdfa7"
                                     width={1200}
                                     height={700}
                                 />
@@ -624,7 +632,7 @@ const Layout = ({
                                 cursor="pointer"
                             >
                                 <NextImage
-                                    src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner04.jpg?alt=media&token=c0e5af5f-25cb-49fa-9570-a37b2521f2b2"
+                                    src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/cargo.jpg?alt=media&token=92e42c1a-ac8b-46e7-879e-00175af86895"
                                     width={1200}
                                     height={700}
                                 />
@@ -803,7 +811,7 @@ const Layout = ({
                 )}
                 {souvenirs && (
                     <SimpleGrid columns={{ base: 1, md: 2 }} w="full" id="grid">
-                        <Box cursor={'pointer'}>
+                        <Box cursor={'pointer'} position="relative">
                             <Box
                                 position="relative"
                                 overflow={'hidden'}
@@ -823,6 +831,7 @@ const Layout = ({
                                 onClick={() => {
                                     router.push('/items/coffee-mugs');
                                 }}
+                                display="flex"
                             >
                                 <NextImage
                                     src="/banner06.jpg"
@@ -832,122 +841,42 @@ const Layout = ({
                             </Box>
                         </Box>
                         {!isMobileView && (
-                            <Box position={'relative'}>
+                            <Box position={'relative'} cursor={'pointer'}>
                                 <Box
-                                    w="full"
-                                    height={'full'}
-                                    position="absolute"
+                                    position="relative"
+                                    overflow={'hidden'}
+                                    onClick={() => {
+                                        router.push('/items/beer');
+                                    }}
+                                    display="flex"
                                 >
                                     <NextImage
-                                        src="/banner-souviners.png"
-                                        objectFit="cover"
-                                        layout="fill"
+                                        src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/Generic_Beer.jpg?alt=media&token=02ed0046-4d5c-40e6-af7a-3155bf94e891"
+                                        width={1200}
+                                        height={700}
                                     />
                                 </Box>
-                                <Flex
-                                    h="full"
-                                    justifyContent={'center'}
-                                    alignItems="center"
-                                    flexDirection={'column'}
-                                    gridRowGap="5"
-                                    w="full"
+                                <Box
+                                    position="relative"
+                                    overflow={'hidden'}
+                                    onClick={() => {
+                                        router.push('/items/posters');
+                                    }}
                                 >
-                                    <Divider
-                                        orientation="horizontal"
-                                        borderColor={'orange'}
+                                    <NextImage
+                                        src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/Generic_Poster.jpg?alt=media&token=554a5afe-6655-43d8-be00-d7295f3b2b58"
+                                        width={1200}
+                                        height={700}
                                     />
-                                    <Text
-                                        color="white"
-                                        zIndex="overlay"
-                                        fontWeight={'bold'}
-                                        fontSize="4xl"
-                                    >
-                                        Lifestyle Products
-                                    </Text>
-                                    <Divider
-                                        orientation="horizontal"
-                                        borderColor={'orange'}
-                                    />
-
-                                    <Box
-                                        zIndex={'overlay'}
-                                        display="flex"
-                                        flexDirection={'column'}
-                                        maxW="md"
-                                        justifyContent={'center'}
-                                        alignContent="center"
-                                    >
-                                        <Text
-                                            color="white"
-                                            zIndex="overlay"
-                                            fontWeight={'bold'}
-                                            fontSize="4xl"
-                                        >
-                                            The MILITARY WAY
-                                        </Text>
-                                    </Box>
-
-                                    <Button
-                                        colorScheme="primary"
-                                        color="black"
-                                        onClick={() => {
-                                            router.push('/items/coffee-mugs');
-                                        }}
-                                    >
-                                        Explore Now
-                                    </Button>
-                                </Flex>
+                                </Box>
                             </Box>
                         )}
                     </SimpleGrid>
                 )}
-                {mugs && !isMobileView && (
-                    <Box position={'relative'}>
-                        <SimpleGrid
-                            columns={2}
-                            w="full"
-                            {...(isMobileView && {
-                                position: 'absolute',
-                            })}
-                            mb="4"
-                        >
-                            <Box
-                                position="relative"
-                                overflow={'hidden'}
-                                cursor="pointer"
-                                onClick={() => {
-                                    router.push('/items/coffee-mugs');
-                                }}
-                            >
-                                <NextImage
-                                    src="/banner07.jpg"
-                                    width={1200}
-                                    height={800}
-                                />
-                            </Box>
-
-                            <Box
-                                position="relative"
-                                overflow={'hidden'}
-                                cursor="pointer"
-                                onClick={() => {
-                                    router.push('/items/beer');
-                                }}
-                            >
-                                <NextImage
-                                    src="/banner08.jpg"
-                                    width={1200}
-                                    height={800}
-                                />
-                            </Box>
-                        </SimpleGrid>
-                    </Box>
-                )}
-
                 {mugs && isMobileView && (
                     <Box position={'relative'}>
                         <SimpleGrid
-                            columns={2}
+                            columns={1}
                             w="full"
                             position={'absolute'}
                             h="full"
@@ -955,10 +884,8 @@ const Layout = ({
                             <Box
                                 zIndex={'overlay'}
                                 p="4"
-                                position={'relative'}
                                 display="flex"
                                 alignItems={'center'}
-                                id="new_box"
                                 sx={{
                                     '&>span': {
                                         border: '2px solid white !important',
@@ -967,14 +894,25 @@ const Layout = ({
                                 onClick={() => {
                                     router.push('/items/beer');
                                 }}
-                            >
-                                <NextImage
-                                    width="150px"
-                                    height="200px"
-                                    src="/banner08.jpg"
-                                />
-                            </Box>
-
+                            ></Box>
+                        </SimpleGrid>
+                        <NextImage
+                            src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/Generic_Beer.jpg?alt=media&token=02ed0046-4d5c-40e6-af7a-3155bf94e891"
+                            objectFit="cover"
+                            height={isMobileView ? 1000 : 900}
+                            width={1600}
+                            layout="responsive"
+                        />
+                    </Box>
+                )}
+                {mugs && isMobileView && (
+                    <Box position={'relative'}>
+                        <SimpleGrid
+                            columns={1}
+                            w="full"
+                            position={'absolute'}
+                            h="full"
+                        >
                             <Box
                                 zIndex={'overlay'}
                                 p="4"
@@ -986,18 +924,12 @@ const Layout = ({
                                     },
                                 }}
                                 onClick={() => {
-                                    router.push('/items/coffee-mugs');
+                                    router.push('/items/posters');
                                 }}
-                            >
-                                <NextImage
-                                    width="150px"
-                                    height="200px"
-                                    src="/banner07.jpg"
-                                />
-                            </Box>
+                            ></Box>
                         </SimpleGrid>
                         <NextImage
-                            src="/banner-souviners.png"
+                            src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/Generic_Poster.jpg?alt=media&token=554a5afe-6655-43d8-be00-d7295f3b2b58"
                             objectFit="cover"
                             height={isMobileView ? 1000 : 900}
                             width={1600}

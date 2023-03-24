@@ -37,7 +37,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const { data: clothingData } = useSWRImmutable(
         '/api/get-items?id=clothing'
     );
-    const [itemQuantity, setItemQuantity] = React.useState(5);
+    const [itemQuantity, setItemQuantity] = React.useState(1);
 
     React.useEffect(() => {
         if (
@@ -204,7 +204,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             <Box
                 w="full"
                 id="main__box"
-                border="1px solid black"
+                border="1px solid lightgray"
                 sx={{
                     '.carousel-status': {
                         display: 'none',
@@ -246,7 +246,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             </Box>
             <Text mt="4">{imageInfo?.alt}</Text>
             <Text mb="2">Rs. {imageInfo?.price}/-(inclusive of all taxes)</Text>
-
+            <Text>Quantity</Text>
             <NumberInput
                 defaultValue={5}
                 min={5}

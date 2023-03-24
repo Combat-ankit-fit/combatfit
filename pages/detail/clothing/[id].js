@@ -39,7 +39,7 @@ const ItemDetail = () => {
     const [synonumousImages, setSynonymousImages] = React.useState([]);
     const [centralImage, setCentralImage] = React.useState();
     const [imageInfo, setImageInfo] = React.useState({});
-    const [itemQuantity, setItemQuantity] = React.useState(5);
+    const [itemQuantity, setItemQuantity] = React.useState(1);
 
     const { data: clothingData } = useSWRImmutable(
         '/api/get-items?id=clothing'
@@ -93,8 +93,8 @@ const ItemDetail = () => {
                                 <Box mb="4" cursor={'pointer'} key={index}>
                                     <NextImage
                                         src={item}
-                                        height={250}
-                                        width={250}
+                                        height={200}
+                                        width={200}
                                         objectFit="contain"
                                         onClick={() => {
                                             setCentralImage(item);
@@ -107,19 +107,20 @@ const ItemDetail = () => {
                     <Box id="image__container" height={700} width={700} me="3">
                         <NextImage
                             src={centralImage}
-                            height={700}
-                            width={700}
+                            height={600}
+                            width={600}
                             layout="fixed"
                         />
                     </Box>
-                    <Flex flexDir={'column'} gridRowGap={8}>
+                    <Flex flexDir={'column'} gridRowGap={2}>
                         <Text fontWeight={'bold'}>{imageInfo?.alt}</Text>
                         <Text>I guard the nation what is your super power</Text>
                         <Text>MRP:{imageInfo?.price}</Text>
+                        <Text>Quantity</Text>
 
                         <NumberInput
-                            defaultValue={5}
-                            min={5}
+                            defaultValue={1}
+                            min={1}
                             max={1000}
                             onChange={(valueString) =>
                                 setItemQuantity(valueString)

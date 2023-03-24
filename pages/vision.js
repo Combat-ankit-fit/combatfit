@@ -234,10 +234,14 @@ const ContactUs = () => {
                 </Box>
                 <Box id="hello">
                     <NextImage
-                        src="/vision-banner.jpg"
+                        src={
+                            isMobileView
+                                ? '/vision-banner.jpg'
+                                : 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/New_Vision.jpg?alt=media&token=505167b0-bde8-4536-9355-c04278ca53b3'
+                        }
                         objectFit="cover"
-                        height={isMobileView ? 1000 : 1000}
-                        width={1600}
+                        height={isMobileView ? 1000 : 500}
+                        width={isMobileView ? 1600 : 1200}
                         layout="responsive"
                     />
                 </Box>
