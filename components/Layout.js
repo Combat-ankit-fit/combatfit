@@ -618,7 +618,7 @@ const Layout = ({
                                 }}
                             >
                                 <NextImage
-                                    src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner03.jpg?alt=media&token=2412613a-f846-46d3-8548-24efe2a3e555"
+                                    src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/mountains.jpg?alt=media&token=a2920710-071a-4ded-8bd6-4c421b4cdfa7"
                                     width={1200}
                                     height={700}
                                 />
@@ -632,7 +632,7 @@ const Layout = ({
                                 cursor="pointer"
                             >
                                 <NextImage
-                                    src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner04.jpg?alt=media&token=c0e5af5f-25cb-49fa-9570-a37b2521f2b2"
+                                    src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/cargo.jpg?alt=media&token=92e42c1a-ac8b-46e7-879e-00175af86895"
                                     width={1200}
                                     height={700}
                                 />

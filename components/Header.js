@@ -108,7 +108,7 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                                         router?.push('/items/beer');
                                     }}
                                 >
-                                    Beeg Mugs
+                                    Beer Mugs
                                 </MenuItem>
                                 <MenuItem
                                     onClick={() => {
