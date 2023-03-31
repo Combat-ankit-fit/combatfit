@@ -316,9 +316,10 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                     </Text>
                     <VStack width="full">
                         {' '}
-                        {imageInfo?.features?.map((feature) => {
+                        {imageInfo?.features?.map((feature, index) => {
                             return (
                                 <HStack
+                                    key={index}
                                     width={'full'}
                                     justifyContent="flex-start"
                                 >
@@ -349,9 +350,10 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                     </Text>
                     <VStack width="full">
                         {' '}
-                        {imageInfo?.specification?.map((feature) => {
+                        {imageInfo?.specification?.map((feature, index) => {
                             return (
                                 <HStack
+                                    key={index}
                                     width={'full'}
                                     justifyContent="flex-start"
                                 >

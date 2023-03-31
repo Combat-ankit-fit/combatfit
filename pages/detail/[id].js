@@ -236,9 +236,9 @@ const ItemDetail = () => {
                         <Text fontWeight="bold" fontSize={'xl'} mb={10}>
                             Product Features
                         </Text>
-                        {imageInfo?.features?.map((feature) => {
+                        {imageInfo?.features?.map((feature, index) => {
                             return (
-                                <HStack>
+                                <HStack key={index}>
                                     <NextImage
                                         src="/breathability.jpg"
                                         objectFit="contain"
@@ -260,21 +260,23 @@ const ItemDetail = () => {
                             >
                                 Product Specifications:
                             </Text>
-                            {imageInfo?.specification?.map((specification) => {
-                                return (
-                                    <HStack>
-                                        <NextImage
-                                            src="/specification.jpg"
-                                            objectFit="contain"
-                                            width={'20px'}
-                                            height="20px"
-                                        />
-                                        <Text fontSize={'lg'}>
-                                            {specification}
-                                        </Text>
-                                    </HStack>
-                                );
-                            })}
+                            {imageInfo?.specification?.map(
+                                (specification, index) => {
+                                    return (
+                                        <HStack key={index}>
+                                            <NextImage
+                                                src="/specification.jpg"
+                                                objectFit="contain"
+                                                width={'20px'}
+                                                height="20px"
+                                            />
+                                            <Text fontSize={'lg'}>
+                                                {specification}
+                                            </Text>
+                                        </HStack>
+                                    );
+                                }
+                            )}
                         </Flex>
                     )}
                 </Grid>
