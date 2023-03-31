@@ -99,8 +99,8 @@ const ItemDetail = () => {
                                 <Box mb="4" cursor={'pointer'} key={index}>
                                     <NextImage
                                         src={item}
-                                        height={200}
-                                        width={200}
+                                        height={150}
+                                        width={150}
                                         objectFit="contain"
                                         onClick={() => {
                                             setCentralImage(item);
@@ -113,8 +113,8 @@ const ItemDetail = () => {
                     <Box id="image__container" height={700} width={700} me="3">
                         <NextImage
                             src={centralImage}
-                            height={600}
-                            width={600}
+                            height={500}
+                            width={400}
                             layout="fixed"
                         />
                     </Box>
