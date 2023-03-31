@@ -41,7 +41,7 @@ const Item = () => {
             {queryParam === 'all-items' && (
                 <ItemProvider>
                     <Layout
-                        sidebarRequired={isSideBarRequired()}
+                        sidebarRequired={false}
                         maxW="9xl"
                         breadCrumbsRequired={true}
                         breadCrumbsPath={
