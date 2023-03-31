@@ -7,6 +7,7 @@ import {
     Container,
     Flex,
     Button,
+    HStack,
 } from '@chakra-ui/react';
 
 import { useRouter } from 'next/router';
@@ -224,12 +225,59 @@ const ItemDetail = () => {
                         )}
                     </Flex>
                 </Flex>
-                <Text fontWeight={'bold'}>Product Description</Text>
-                <Text>
-                    Our team has designed this basic, aka The centrepiee of any
-                    outfit, for you to wear bith forexercise and for everyday
-                    life. A must-have fitness basic for dressing up or down.
-                </Text>
+
+                <Text fontWeight={'bold'}>Made For</Text>
+                {imageInfo?.description && (
+                    <Text mb={20}>{imageInfo?.description}</Text>
+                )}
+
+                <Grid templateColumns="repeat(2, 1fr)" gap={2} mb="2">
+                    <Flex flexDirection={'column'}>
+                        <Text fontWeight="bold" fontSize={'xl'} mb={10}>
+                            Product Features
+                        </Text>
+                        {imageInfo?.features?.map((feature) => {
+                            return (
+                                <HStack>
+                                    <NextImage
+                                        src="/breathability.jpg"
+                                        objectFit="contain"
+                                        width={'20px'}
+                                        height="20px"
+                                    />
+                                    <Text fontSize={'lg'}>{feature}</Text>
+                                </HStack>
+                            );
+                        })}
+                    </Flex>
+                    {imageInfo?.specification?.length > 0 && (
+                        <Flex flexDirection={'column'} alignItems="baseline">
+                            <Text
+                                textAlign="center"
+                                fontWeight="bold"
+                                fontSize={'xl'}
+                                mb={10}
+                            >
+                                Product Specifications:
+                            </Text>
+                            {imageInfo?.specification?.map((specification) => {
+                                return (
+                                    <HStack>
+                                        <NextImage
+                                            src="/specification.jpg"
+                                            objectFit="contain"
+                                            width={'20px'}
+                                            height="20px"
+                                        />
+                                        <Text fontSize={'lg'}>
+                                            {specification}
+                                        </Text>
+                                    </HStack>
+                                );
+                            })}
+                        </Flex>
+                    )}
+                </Grid>
             </Container>
         </Layout>
     );

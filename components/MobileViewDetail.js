@@ -1,7 +1,7 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import React from 'react';
-import { Box, Text, Button } from '@chakra-ui/react';
+import { Box, Text, Button, VStack, HStack } from '@chakra-ui/react';
 import { Carousel } from 'react-responsive-carousel';
 import Layout from '../components/Layout';
 import { coffeeMugs } from '../utils/mugs';
@@ -299,6 +299,75 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                         </Box>
                     );
                 })}
+
+            <Text fontWeight={'bold'}>Made For</Text>
+            <Text>{imageInfo?.description}</Text>
+
+            {imageInfo?.features?.length > 0 && (
+                <VStack>
+                    <Text
+                        fontWeight="bold"
+                        fontSize={'xl'}
+                        width="full"
+                        textAlign="start"
+                    >
+                        {' '}
+                        Product Features
+                    </Text>
+                    <VStack width="full">
+                        {' '}
+                        {imageInfo?.features?.map((feature) => {
+                            return (
+                                <HStack
+                                    width={'full'}
+                                    justifyContent="flex-start"
+                                >
+                                    <NextImage
+                                        src="/breathability.jpg"
+                                        objectFit="contain"
+                                        width={'20px'}
+                                        height="20px"
+                                    />
+                                    <Text fontSize={'lg'}>{feature}</Text>
+                                </HStack>
+                            );
+                        })}
+                    </VStack>
+                </VStack>
+            )}
+
+            {imageInfo?.specification?.length > 0 && (
+                <VStack mt="8">
+                    <Text
+                        fontWeight="bold"
+                        fontSize={'xl'}
+                        width="full"
+                        textAlign="start"
+                    >
+                        {' '}
+                        Product Specifications
+                    </Text>
+                    <VStack width="full">
+                        {' '}
+                        {imageInfo?.specification?.map((feature) => {
+                            return (
+                                <HStack
+                                    width={'full'}
+                                    justifyContent="flex-start"
+                                >
+                                    <NextImage
+                                        src="/specification.jpg"
+                                        objectFit="contain"
+                                        width={'20px'}
+                                        height="20px"
+                                    />
+                                    <Text fontSize={'lg'}>{feature}</Text>
+                                </HStack>
+                            );
+                        })}
+                    </VStack>
+                </VStack>
+            )}
         </Layout>
     );
 };
