@@ -140,6 +140,7 @@ const ItemDetail = () => {
                                 return (
                                     <Box
                                         me={2}
+                                        key={index}
                                         p={2}
                                         width="60px"
                                         border="1px solid black"
