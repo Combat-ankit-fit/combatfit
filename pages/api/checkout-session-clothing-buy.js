@@ -2,22 +2,20 @@ import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_SECRET_KEY);
 export default async function handler(req, res) {
-    const clothingItemMetadata = req?.body?.metadata;
-    console.log('Clothing data is:-', clothingItemMetadata);
+    const itemMetadata = req?.body?.metadata;
+    const itemName = itemMetadata?.itemName;
+    const itemSize = itemMetadata?.size;
 
     if (req.method === 'POST') {
         try {
             const session = await stripe.checkout.sessions.create({
                 mode: 'payment',
-                ...(clothingItemMetadata &&
-                    Object.keys(clothingItemMetadata)?.length > 0 && {
-                        payment_intent_data: {
-                            metadata: {
-                                ...clothingItemMetadata,
-                            },
-                        },
-                    }),
                 shipping_address_collection: { allowed_countries: ['IN'] },
+                payment_intent_data: {
+                    metadata: {
+                        [itemName]: itemSize,
+                    },
+                },
                 shipping_options: [
                     {
                         shipping_rate_data: {
@@ -38,6 +36,7 @@ export default async function handler(req, res) {
             });
             res.status(200).json(session);
         } catch (err) {
+            console.log('Error is:-', err);
             res.status(500).json({
                 statusCode: 500,
                 message: err.messages,

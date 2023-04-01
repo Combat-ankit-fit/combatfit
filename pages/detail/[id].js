@@ -109,6 +109,8 @@ const ItemDetail = () => {
     }
 
     const redirectToCheckout = async () => {
+        console.log('List is:-', imageInfo);
+
         const {
             data: { id },
         } = await axios.post('/api/checkout-sessions', {

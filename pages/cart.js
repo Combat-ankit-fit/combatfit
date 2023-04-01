@@ -18,7 +18,7 @@ import {
     Container,
 } from '@chakra-ui/react';
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
-import { Map } from 'immutable';
+import Immutable, { fromJS, Map } from 'immutable';
 
 const Cart = () => {
     const { cartDetails, cartCount, addItem, removeItem, clearCart } =
@@ -38,6 +38,26 @@ const Cart = () => {
             };
         });
 
+        const metadataClothingVariants = Map(cartDetails)?.filter(
+            (val) => val?.type === 'clothing'
+        );
+
+        const finalMetaData = metadataClothingVariants?.map((val) => {
+            return {
+                [val?.identifier]: val?.selectedSize,
+            };
+        });
+
+        const valueMetadata = Object?.values(finalMetaData?.toJS())?.map(
+            (val) => val
+        );
+
+        var finalObject = {};
+
+        valueMetadata?.map((val) => {
+            finalObject = { ...finalObject, ...val };
+        });
+
         const items = Object.keys(vaibh?.toJS())?.map((val) => {
             return {
                 price: vaibh?.toJS()[val]?.price,
@@ -49,6 +69,9 @@ const Cart = () => {
             data: { id },
         } = await axios.post('/api/checkout-sessions', {
             items: items,
+            metadata: {
+                ...finalObject,
+            },
         });
         const stripe = await getStripe();
         await stripe.redirectToCheckout({

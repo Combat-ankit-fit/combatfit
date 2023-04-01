@@ -9,28 +9,100 @@ const initialCartValues = {
     totalPrice: 0,
 };
 
-const addItem = (state = {}, product = null, quantity = 1) => {
+const addItem = (state = {}, product = null, quantity = 1, size = null) => {
     if (quantity <= 0 || !product) return state;
 
     const identifier = product?.identifier;
 
     let entry = state?.cartDetails?.[identifier];
 
-    entry = {
-        [identifier]: {
-            ...product,
-            quantity: (entry?.quantity || 0) + Number(quantity),
-        },
-    };
+    // adding a clothing product first time
+    if (product?.type === 'clothing' && !entry) {
+        entry = {
+            [identifier]: {
+                ...product,
+                quantity: (entry?.quantity || 0) + Number(quantity),
+                selectedSize: size,
+            },
+        };
 
-    return {
-        ...state,
-        cartDetails: {
-            ...state.cartDetails,
-            [identifier]: entry[identifier],
-        },
-        cartCount: Math.max(0, state.cartCount + Number(quantity)),
-    };
+        return {
+            ...state,
+            cartDetails: {
+                ...state.cartDetails,
+                [identifier]: entry[identifier],
+            },
+            cartCount: Math.max(0, state.cartCount + Number(quantity)),
+        };
+    }
+
+    // clothingproduct already exists and size is being changed
+    if (product?.type === 'clothing' && entry && size) {
+        if (entry?.selectedSize !== size) {
+            const existingItemQuantity = entry?.quantity;
+
+            // remove the existing entry and then add the product altogether newly
+            const immutableCartDetails = Map(state?.cartDetails);
+
+            const newMap = immutableCartDetails?.delete(identifier);
+            entry = {
+                [identifier]: {
+                    ...product,
+                    quantity: Number(quantity),
+                    selectedSize: size,
+                },
+            };
+            return {
+                ...state,
+                cartDetails: {
+                    ...newMap?.toJS(),
+                    [identifier]: entry[identifier],
+                },
+                cartCount: Math.max(
+                    0,
+                    state.cartCount + Number(quantity) - existingItemQuantity
+                ),
+            };
+        }
+
+        if (entry?.selectedSize === size) {
+            entry = {
+                [identifier]: {
+                    ...product,
+                    quantity: (entry?.quantity || 0) + Number(quantity),
+                    selectedSize: size,
+                },
+            };
+
+            return {
+                ...state,
+                cartDetails: {
+                    ...state.cartDetails,
+                    [identifier]: entry[identifier],
+                },
+                cartCount: Math.max(0, state.cartCount + Number(quantity)),
+            };
+        }
+    }
+
+    // This is for all non-clothing items
+    if (product?.type !== 'clothing') {
+        entry = {
+            [identifier]: {
+                ...product,
+                quantity: (entry?.quantity || 0) + Number(quantity),
+            },
+        };
+
+        return {
+            ...state,
+            cartDetails: {
+                ...state.cartDetails,
+                [identifier]: entry[identifier],
+            },
+            cartCount: Math.max(0, state.cartCount + Number(quantity)),
+        };
+    }
 };
 
 const removeItem = (state = {}, product = null, quantity = 0) => {
@@ -72,7 +144,7 @@ const clearCart = () => {
 const cartReducer = (state = {}, action) => {
     switch (action.type) {
         case 'ADD_ITEM':
-            return addItem(state, action.product, action.quantity);
+            return addItem(state, action.product, action.quantity, action.size);
         case 'REMOVE_ITEM':
             return removeItem(state, action.product, action.quantity);
         case 'CLEAR_CART':
@@ -114,8 +186,8 @@ export const CartProvider = ({ currency = 'USD', children = null }) => {
 export const useShoppingCart = () => {
     const [cart, dispatch] = useContext(CartContext);
 
-    const addItem = (product, quantity = 1) =>
-        dispatch({ type: 'ADD_ITEM', product, quantity });
+    const addItem = (product, quantity = 1, size = null) =>
+        dispatch({ type: 'ADD_ITEM', product, quantity, size });
 
     const removeItem = (product, quantity = 1) =>
         dispatch({ type: 'REMOVE_ITEM', product, quantity });

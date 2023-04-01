@@ -8,12 +8,15 @@ import {
     Flex,
     Button,
     HStack,
+    Input,
+    UnorderedList,
+    ListItem,
 } from '@chakra-ui/react';
 
 import { useRouter } from 'next/router';
 import React from 'react';
 import Layout from '../../../components/Layout';
-import MobileViewDetail from '../../../components/MobileViewDetail';
+import MobileViewDetail from '../../../components/MobileViewClothingDetail';
 import axios from 'axios';
 import NextImage from 'next/image';
 import useSWRImmutable from 'swr/immutable';
@@ -43,6 +46,10 @@ const ItemDetail = () => {
     const [centralImage, setCentralImage] = React.useState();
     const [imageInfo, setImageInfo] = React.useState({});
     const [itemQuantity, setItemQuantity] = React.useState(1);
+    const [selectedSize, setSelectedSize] = React.useState(null);
+    const [selectedSizeIndex, setSelectedSizeIndex] = React.useState(null);
+
+    const sizeArr = ['M', 'L', 'XL', 'XXL'];
 
     const { data: clothingData } = useSWRImmutable(
         '/api/get-items?id=clothing'
@@ -65,13 +72,17 @@ const ItemDetail = () => {
     const redirectToCheckout = async () => {
         const {
             data: { id },
-        } = await axios.post('/api/checkout-sessions', {
+        } = await axios.post('/api/checkout-session-clothing-buy', {
             items: [
                 {
                     price: imageInfo?.stripeId,
                     quantity: itemQuantity,
                 },
             ],
+            metadata: {
+                size: selectedSize,
+                itemName: itemId,
+            },
         });
 
         const stripe = await getStripe();
@@ -81,7 +92,7 @@ const ItemDetail = () => {
     };
 
     const handleOnAddToCart = () => {
-        addItem(imageInfo, itemQuantity);
+        addItem(imageInfo, itemQuantity, selectedSize);
     };
 
     return (
@@ -119,10 +130,33 @@ const ItemDetail = () => {
                             layout="fixed"
                         />
                     </Box>
-                    <Flex flexDir={'column'} gridRowGap={2}>
+                    <Flex flexDir={'column'} gridRowGap={6}>
                         <Text fontWeight={'bold'}>{imageInfo?.alt}</Text>
                         <Text>I guard the nation what is your super power</Text>
                         <Text>MRP:{imageInfo?.price}</Text>
+                        <Flex alignItems={'baseline'} gridColumnGap={2}>
+                            <Text>Size:</Text>
+                            {sizeArr?.map((size, index) => {
+                                return (
+                                    <Box
+                                        me={2}
+                                        p={2}
+                                        width="60px"
+                                        border="1px solid black"
+                                        cursor={'pointer'}
+                                        onClick={() => {
+                                            setSelectedSize(size);
+                                            setSelectedSizeIndex(index);
+                                        }}
+                                        {...(index === selectedSizeIndex && {
+                                            bgColor: 'orange',
+                                        })}
+                                    >
+                                        {size}
+                                    </Box>
+                                );
+                            })}
+                        </Flex>
                         <Text>Quantity</Text>
 
                         <NumberInput
@@ -143,6 +177,7 @@ const ItemDetail = () => {
                             colorScheme={'primary'}
                             bgColor="orange"
                             onClick={handleOnAddToCart}
+                            disabled={selectedSize === null}
                         >
                             Add to cart
                         </Button>
@@ -153,6 +188,7 @@ const ItemDetail = () => {
                             onClick={() => {
                                 redirectToCheckout();
                             }}
+                            disabled={selectedSize === null}
                         >
                             Buy Online
                         </Button>
