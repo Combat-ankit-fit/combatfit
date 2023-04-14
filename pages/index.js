@@ -7,6 +7,7 @@ const Home = () => {
     useSWRImmutable('/api/get-items?id=beer');
     useSWRImmutable('/api/get-items?id=posters');
     useSWRImmutable('/api/get-items?id=notepad');
+    useSWRImmutable('/api/get-items?id=coffee-mugs');
     return (
         <Layout
             sidebarRequired={false}

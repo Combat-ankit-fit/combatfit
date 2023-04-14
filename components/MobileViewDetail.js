@@ -4,12 +4,7 @@ import React from 'react';
 import { Box, Text, Button, VStack, HStack } from '@chakra-ui/react';
 import { Carousel } from 'react-responsive-carousel';
 import Layout from '../components/Layout';
-import { coffeeMugs } from '../utils/mugs';
-import { trousers } from '../utils/trousers';
-import { sweatShirts } from '../utils/sweatshirts';
-import { casualTshirts } from '../utils/casual-tshirts';
-import { allClothings } from '../utils/all-items';
-import { notepad } from '../utils/notepad';
+
 import NextImage from 'next/image';
 import useSWRImmutable from 'swr/immutable';
 import {
@@ -39,6 +34,11 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const { data: clothingData } = useSWRImmutable(
         '/api/get-items?id=clothing'
     );
+
+    const { data: coffeeVaibhav } = useSWRImmutable(
+        '/api/get-items?id=coffee-mugs'
+    );
+
     const [itemQuantity, setItemQuantity] = React.useState(1);
 
     const handleOnAddToCart = () => {
@@ -50,18 +50,22 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             itemCategory !== 'posters' &&
             itemCategory !== 'beer' &&
             itemCategory !== 'notepads' &&
-            itemCategory !== 'all-items'
+            itemCategory !== 'all-items' &&
+            itemCategory !== 'coffee-mugs'
         ) {
             setCentralImage(itemId);
         }
-        if (itemCategory === 'coffee-mugs') {
-            const specificItem = coffeeMugs?.filter(
-                (item) => item?.name === itemId
-            )[0];
+        if (itemCategory === 'coffee-mugs' && coffeeVaibhav) {
+            const specificItem =
+                coffeeVaibhav?.filter(
+                    (item) => item?.identifier === itemId
+                )[0] || {};
+
+            console.log('Specific item now on mobile is:-', specificItem);
 
             // setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
-            const arr = [...specificItem?.extraImages, centralImage];
+            const arr = [...specificItem?.extraImages];
             setAllImages([...arr]);
         }
 
@@ -121,7 +125,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
         postersData,
         notespadData,
         beerData,
-        coffeeMugs,
+        coffeeVaibhav,
     ]);
 
     const getHeaderInfo = () => {
@@ -201,28 +205,32 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                     },
                 }}
             >
-                <Carousel showThumbs={false}>
-                    {itemCategory !== 'beer' &&
-                        itemCategory !== 'notepads' &&
-                        allImages?.map((image, index) => {
-                            return (
-                                <NextImage
-                                    id={index}
-                                    key={index}
-                                    src={
-                                        itemCategory !== 'posters' &&
-                                        itemCategory !== 'all-items'
-                                            ? `/${image}.jpg`
-                                            : image
-                                    }
-                                    height={400}
-                                    width={400}
-                                    objectFit="contain"
-                                />
-                            );
-                        })}
-                </Carousel>
-                {(itemCategory === 'beer' || itemCategory === 'notepads') && (
+                {itemCategory !== 'beer' &&
+                    itemCategory !== 'coffee-mugs' &&
+                    itemCategory !== 'notepads' && (
+                        <Carousel showThumbs={false}>
+                            {allImages?.map((image, index) => {
+                                return (
+                                    <NextImage
+                                        id={index}
+                                        key={index}
+                                        src={
+                                            itemCategory !== 'posters' &&
+                                            itemCategory !== 'all-items'
+                                                ? `/${image}.jpg`
+                                                : image
+                                        }
+                                        height={400}
+                                        width={400}
+                                        objectFit="contain"
+                                    />
+                                );
+                            })}
+                        </Carousel>
+                    )}
+                {(itemCategory === 'beer' ||
+                    itemCategory === 'notepads' ||
+                    itemCategory === 'coffee-mugs') && (
                     <NextImage
                         src={imageInfo?.name}
                         height={350}
@@ -247,18 +255,16 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                 </NumberInputStepper>
             </NumberInput>
 
-            {itemCategory !== 'coffee-mugs' && (
-                <Button
-                    colorScheme={'primary'}
-                    bgColor="orange"
-                    width={'full'}
-                    onClick={handleOnAddToCart}
-                    mb="4"
-                    mt="4"
-                >
-                    Add to cart
-                </Button>
-            )}
+            <Button
+                colorScheme={'primary'}
+                bgColor="orange"
+                width={'full'}
+                onClick={handleOnAddToCart}
+                mb="4"
+                mt="4"
+            >
+                Add to cart
+            </Button>
 
             <Button
                 colorScheme={'primary'}
@@ -271,7 +277,8 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                         router?.query?.name === 'notepads' ||
                         router?.query?.name === 'posters' ||
                         router?.query?.name === 'beer' ||
-                        router?.query?.name === 'all-items'
+                        router?.query?.name === 'all-items' ||
+                        router?.query?.name === 'coffee-mugs'
                     )
                         redirectToCheckout();
                 }}
@@ -300,7 +307,9 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                     );
                 })}
 
-            <Text fontWeight={'bold'}>Made For</Text>
+            {itemCategory !== 'coffee-mugs' && (
+                <Text fontWeight={'bold'}>Made For</Text>
+            )}
             <Text>{imageInfo?.description}</Text>
 
             {imageInfo?.features?.length > 0 && (

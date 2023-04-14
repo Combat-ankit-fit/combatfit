@@ -24,7 +24,8 @@ const GenericItemCard = (props) => {
                     pathname:
                         router?.query?.item !== 'posters' &&
                         router?.query?.item !== 'beer' &&
-                        router?.query?.item !== 'notepads'
+                        router?.query?.item !== 'notepads' &&
+                        router?.query?.item !== 'coffee-mugs'
                             ? `/detail/${props?.info?.name}`
                             : `/detail/${props?.info?.identifier}`,
                     query: {
@@ -38,7 +39,8 @@ const GenericItemCard = (props) => {
                     src={
                         router?.query?.item !== 'posters' &&
                         router?.query?.item !== 'beer' &&
-                        router?.query?.item !== 'notepads'
+                        router?.query?.item !== 'notepads' &&
+                        router?.query?.item !== 'coffee-mugs'
                             ? `/${info.name}.${extension}`
                             : props?.info?.name
                     }

@@ -55,16 +55,21 @@ const ItemDetail = () => {
     const { data: postersData } = useSWRImmutable('/api/get-items?id=posters');
     const { data: notespadData } = useSWRImmutable('/api/get-items?id=notepad');
 
+    const { data: coffeeVaibhav } = useSWRImmutable(
+        '/api/get-items?id=coffee-mugs'
+    );
+
     React.useEffect(() => {
         if (itemCategory !== 'posters' && itemCategory !== 'beer') {
             setCentralImage(itemId);
         }
-        if (itemCategory === 'coffee-mugs') {
-            const specificItem = coffeeMugs?.filter(
-                (item) => item?.name === itemId
+        if (itemCategory === 'coffee-mugs' && coffeeVaibhav) {
+            const specificItem = coffeeVaibhav?.filter(
+                (item) => item?.identifier === itemId
             )[0];
 
-            setSynonymousImages([...specificItem?.extraImages]);
+            setCentralImage(specificItem?.name);
+
             setImageInfo({ ...specificItem });
             return;
         }
@@ -102,7 +107,14 @@ const ItemDetail = () => {
             setCentralImage(specificItem?.name);
             return;
         }
-    }, [itemCategory, itemId, beerData, postersData, notespadData]);
+    }, [
+        itemCategory,
+        itemId,
+        beerData,
+        postersData,
+        notespadData,
+        coffeeVaibhav,
+    ]);
 
     if (isMobileView) {
         return <MobileViewDetail itemCategory={itemCategory} itemId={itemId} />;
@@ -173,7 +185,8 @@ const ItemDetail = () => {
                             src={
                                 router?.query?.name !== 'posters' &&
                                 router?.query?.name !== 'beer' &&
-                                router?.query?.name !== 'notepads'
+                                router?.query?.name !== 'notepads' &&
+                                router?.query?.name !== 'coffee-mugs'
                                     ? `/${centralImage}.jpg`
                                     : centralImage
                             }
@@ -200,31 +213,28 @@ const ItemDetail = () => {
                                 <NumberDecrementStepper />
                             </NumberInputStepper>
                         </NumberInput>
-                        {itemCategory !== 'coffee-mugs' && (
-                            <Button
-                                colorScheme={'primary'}
-                                bgColor="orange"
-                                onClick={handleOnAddToCart}
-                            >
-                                Add to cart
-                            </Button>
-                        )}
-                        {itemCategory !== 'coffee-mugs' && (
-                            <Button
-                                colorScheme={'primary'}
-                                bgColor="orange"
-                                onClick={() => {
-                                    if (
-                                        router?.query?.name === 'notepads' ||
-                                        router?.query?.name === 'posters' ||
-                                        router?.query?.name === 'beer'
-                                    )
-                                        redirectToCheckout();
-                                }}
-                            >
-                                Buy Online
-                            </Button>
-                        )}
+                        <Button
+                            colorScheme={'primary'}
+                            bgColor="orange"
+                            onClick={handleOnAddToCart}
+                        >
+                            Add to cart
+                        </Button>
+                        <Button
+                            colorScheme={'primary'}
+                            bgColor="orange"
+                            onClick={() => {
+                                if (
+                                    router?.query?.name === 'notepads' ||
+                                    router?.query?.name === 'posters' ||
+                                    router?.query?.name === 'beer' ||
+                                    router?.query?.name === 'coffee-mugs'
+                                )
+                                    redirectToCheckout();
+                            }}
+                        >
+                            Buy Online
+                        </Button>
                     </Flex>
                 </Flex>
 

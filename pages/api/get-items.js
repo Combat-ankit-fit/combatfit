@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const Clother = require('../../models/clothing');
 const Posters = require('../../models/posters');
 const Beer = require('../../models/beer');
-const Notepad = require('../../models/notepad');
+const Coffee = require('../../models/coffee');
 
 const app = express();
 
@@ -80,6 +80,17 @@ export default async function handler(req, res) {
                     return documents;
                 });
                 return res.json(notepadItems);
+            } catch (e) {
+                console.log('Error is:-', e);
+            }
+        }
+        if (req?.query?.id === 'coffee-mugs') {
+            try {
+                const coffeeItems = await Coffee.find().then((documents) => {
+                    return documents;
+                });
+
+                return res.json(coffeeItems);
             } catch (e) {
                 console.log('Error is:-', e);
             }

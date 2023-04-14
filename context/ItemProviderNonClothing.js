@@ -37,6 +37,9 @@ const ItemProvider = ({ children }) => {
     const { data: beerData } = useSWRImmutable('/api/get-items?id=beer');
     const { data: postersData } = useSWRImmutable('/api/get-items?id=posters');
     const { data: notespadData } = useSWRImmutable('/api/get-items?id=notepad');
+    const { data: coffeeVaibhav } = useSWRImmutable(
+        '/api/get-items?id=coffee-mugs'
+    );
 
     React.useEffect(() => {
         if (queryParam === 'beer' && beerData) {
@@ -44,7 +47,7 @@ const ItemProvider = ({ children }) => {
         }
 
         if (queryParam === 'coffee-mugs') {
-            setSelectedItems([...coffeeMugs]);
+            setSelectedItems([...coffeeVaibhav]);
         }
         if (queryParam === 'trousers') {
             setSelectedItems([...trousers]);
