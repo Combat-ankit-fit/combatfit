@@ -1,4 +1,11 @@
-import { Box, Button, Flex, Text, useBreakpointValue } from '@chakra-ui/react';
+import {
+    Box,
+    Button,
+    Flex,
+    HStack,
+    Text,
+    useBreakpointValue,
+} from '@chakra-ui/react';
 import NextImage from 'next/image';
 import { useRouter } from 'next/router';
 
@@ -18,8 +25,13 @@ const GenericItemCard = (props) => {
     return (
         <Box
             border="2px solid lightgray"
+            position={'relative'}
             cursor="pointer"
             onClick={() => {
+                if (info?.availability === 'no') {
+                    return;
+                }
+
                 router.push({
                     pathname: `/detail/clothing/${info?.identifier}`,
                     query: {
@@ -28,6 +40,20 @@ const GenericItemCard = (props) => {
                 });
             }}
         >
+            {info?.availability === 'no' && (
+                <HStack
+                    position={'absolute'}
+                    right="0px"
+                    zIndex={'modal'}
+                    bgColor={'gray'}
+                    p="0.5"
+                >
+                    <Text top="10px" fontWeight={'bold'}>
+                        Out of stock
+                    </Text>
+                </HStack>
+            )}
+
             <Box position="relative" overflow={'hidden'} {...props}>
                 <NextImage
                     src={info?.name}
@@ -46,7 +72,11 @@ const GenericItemCard = (props) => {
                 <Text textAlign={'center'} fontWeight="bold">
                     {info.alt}
                 </Text>
-                <Button colorScheme="primary" maxW="sm">
+                <Button
+                    colorScheme="primary"
+                    maxW="sm"
+                    disabled={info?.availability === 'no'}
+                >
                     Rs. {props?.info?.price}
                 </Button>
             </Flex>
