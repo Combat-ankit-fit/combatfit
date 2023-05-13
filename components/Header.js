@@ -78,15 +78,79 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                     >
                         Home
                     </Text>
-                    <Text
-                        color="white"
-                        cursor={'pointer'}
-                        onClick={() => {
-                            router.push('/items/all-items');
-                        }}
-                    >
-                        Clothing
-                    </Text>
+                    <Box width="20%" bgColor={'black'}>
+                        <Menu>
+                            <MenuButton
+                                as={Button}
+                                backgroundColor="black !important"
+                                color="white"
+                            >
+                                Clothing
+                            </MenuButton>
+                            <MenuList>
+                                <MenuItem
+                                    onClick={() => {
+                                        router?.push({
+                                            pathname: '/clothing-category',
+                                            query: {
+                                                item: 'active',
+                                            },
+                                        });
+                                    }}
+                                >
+                                    Active
+                                </MenuItem>
+                                <MenuItem
+                                    onClick={() => {
+                                        router?.push({
+                                            pathname: '/clothing-category',
+                                            query: {
+                                                item: 'tactical',
+                                            },
+                                        });
+                                    }}
+                                >
+                                    Tactical
+                                </MenuItem>
+                                <MenuItem
+                                    onClick={() => {
+                                        router?.push({
+                                            pathname: '/clothing-category',
+                                            query: {
+                                                item: 'inspire',
+                                            },
+                                        });
+                                    }}
+                                >
+                                    Inspire
+                                </MenuItem>
+                                <MenuItem
+                                    onClick={() => {
+                                        router?.push({
+                                            pathname: '/clothing-category',
+                                            query: {
+                                                item: 'winter',
+                                            },
+                                        });
+                                    }}
+                                >
+                                    Winter
+                                </MenuItem>
+                                <MenuItem
+                                    onClick={() => {
+                                        router?.push({
+                                            pathname: '/clothing-category',
+                                            query: {
+                                                item: 'customized',
+                                            },
+                                        });
+                                    }}
+                                >
+                                    Customized
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                    </Box>
                     <Box width="20%" bgColor={'black'}>
                         <Menu>
                             <MenuButton

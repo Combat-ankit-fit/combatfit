@@ -33,12 +33,12 @@ const MobileDrawer = ({
 }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const clothingItems = [
-        // { item: 'Tshirts', path: '/all-items' },
-        // { item: 'Sweatshirts', path: '/all-items' },
-        // { item: 'Trousers', path: '/all-items' },
-        // { item: 'Shorts', path: '/all-items' },
-        // { item: 'Customized Clothing', path: '/customized-clothing' },
         { item: 'All Items', path: '/all-items' },
+        { item: 'Active', path: '/all-items' },
+        { item: 'Tactical', path: '/all-items' },
+        { item: 'Inspire', path: '/all-items' },
+        { item: 'Winter', path: '/all-items' },
+        { item: 'Customized', path: '/all-items' },
     ];
     const souvenirs = [
         { item: 'Coffee Mugs', path: '/coffee-mugs' },
@@ -173,9 +173,77 @@ const MobileDrawer = ({
                                             key={clothingItem}
                                             onClick={() => {
                                                 onClose();
-                                                router.push(
-                                                    `/items/${clothingItem?.path}`
-                                                );
+
+                                                if (
+                                                    clothingItem?.item ===
+                                                    'All Items'
+                                                ) {
+                                                    router.push(
+                                                        `/items/${clothingItem?.path}`
+                                                    );
+                                                }
+
+                                                if (
+                                                    clothingItem?.item ===
+                                                    'Active'
+                                                ) {
+                                                    router?.push({
+                                                        pathname:
+                                                            '/clothing-category',
+                                                        query: {
+                                                            item: 'active',
+                                                        },
+                                                    });
+                                                }
+                                                if (
+                                                    clothingItem?.item ===
+                                                    'Tactical'
+                                                ) {
+                                                    console.log('Clicked this');
+                                                    router?.push({
+                                                        pathname:
+                                                            '/clothing-category',
+                                                        query: {
+                                                            item: 'tactical',
+                                                        },
+                                                    });
+                                                }
+                                                if (
+                                                    clothingItem?.item ===
+                                                    'Inspire'
+                                                ) {
+                                                    router?.push({
+                                                        pathname:
+                                                            '/clothing-category',
+                                                        query: {
+                                                            item: 'inspire',
+                                                        },
+                                                    });
+                                                }
+                                                if (
+                                                    clothingItem?.item ===
+                                                    'Winter'
+                                                ) {
+                                                    router?.push({
+                                                        pathname:
+                                                            '/clothing-category',
+                                                        query: {
+                                                            item: 'winter',
+                                                        },
+                                                    });
+                                                }
+                                                if (
+                                                    clothingItem?.item ===
+                                                    'Customized'
+                                                ) {
+                                                    router?.push({
+                                                        pathname:
+                                                            '/clothing-category',
+                                                        query: {
+                                                            item: 'customized',
+                                                        },
+                                                    });
+                                                }
                                             }}
                                         >
                                             <ListIcon
