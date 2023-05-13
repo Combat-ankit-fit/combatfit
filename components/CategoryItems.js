@@ -23,9 +23,7 @@ const CategoryItems = (props) => {
     return (
         <Box id="layout" display={'flex'} minH="100vh" flexDirection="column">
             {!isMobileView && <Header breadCrumbsRequired={false} />}
-            {isMobileView && router?.pathname !== '/' && (
-                <MobileDrawer breadCrumbsPath="Category" />
-            )}
+            {isMobileView && <MobileDrawer breadCrumbsPath="Category" />}
             <Container
                 pos={'relative'}
                 maxW="9xl"
