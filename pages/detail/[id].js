@@ -69,7 +69,7 @@ const ItemDetail = () => {
             )[0];
 
             setCentralImage(specificItem?.name);
-
+            setSynonymousImages([...specificItem?.extraImages]);
             setImageInfo({ ...specificItem });
             return;
         }
@@ -121,8 +121,6 @@ const ItemDetail = () => {
     }
 
     const redirectToCheckout = async () => {
-        console.log('List is:-', imageInfo);
-
         const {
             data: { id },
         } = await axios.post('/api/checkout-sessions', {
@@ -162,7 +160,9 @@ const ItemDetail = () => {
                                         <NextImage
                                             src={
                                                 router?.query?.name !==
-                                                'posters'
+                                                    'posters' &&
+                                                router?.query?.name !==
+                                                    'coffee-mugs'
                                                     ? `/${item}.jpg`
                                                     : item
                                             }
