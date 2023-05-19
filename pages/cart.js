@@ -16,13 +16,19 @@ import {
     Flex,
     HStack,
     Container,
+    useBreakpointValue,
 } from '@chakra-ui/react';
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import Immutable, { fromJS, Map } from 'immutable';
+import Header from '../components/Header';
+import router, { useRouter } from 'next/router';
+import MobileDrawer from '../components/MobileDrawer';
 
 const Cart = () => {
     const { cartDetails, cartCount, addItem, removeItem, clearCart } =
         useShoppingCart();
+    const isMobileView = useBreakpointValue({ base: true, md: false });
+    const router = useRouter();
 
     const [initialCart, setInitialCart] = React.useState();
 
@@ -80,80 +86,92 @@ const Cart = () => {
     };
 
     return (
-        <Container maxW={'7xl'}>
-            <Head>
-                <title>My Shopping Cart</title>
-            </Head>
-            <Flex flexDirection={'column'}>
-                {initialCart > 0 ? (
-                    <>
-                        <Heading mb="20">Your shopping cart</Heading>
-                        <Text fontWeight={'bold'} fontSize="lg" mb="10">
-                            {initialCart} items{' '}
-                        </Text>
-                    </>
-                ) : (
-                    <>
-                        <Heading mb="20">Your shopping cart is empty.</Heading>
-                    </>
-                )}
+        <>
+            {!isMobileView && <Header />}
+            {isMobileView && <MobileDrawer isBreadCrumRequired={false} />}
+            <Container maxW={'7xl'}>
+                <Head>
+                    <title>My Shopping Cart</title>
+                </Head>
+                <Flex flexDirection={'column'}>
+                    {initialCart > 0 ? (
+                        <>
+                            <Heading mb="20">Your shopping cart</Heading>
+                            <Text fontWeight={'bold'} fontSize="lg" mb="10">
+                                {initialCart} items{' '}
+                            </Text>
+                        </>
+                    ) : (
+                        <>
+                            <Heading mb="20" mt={'120px'}>
+                                Your shopping cart is empty.
+                            </Heading>
+                        </>
+                    )}
 
-                {initialCart > 0 && (
-                    <Flex flexDir={'column'}>
-                        {Object.entries(cartDetails).map(([key, product]) => (
-                            <Flex key={key} mb="12" justify={'space-between'}>
-                                <Flex
-                                    flexDirection={'row'}
-                                    gridColumnGap={2}
-                                    alignItems="center"
+                    {initialCart > 0 && (
+                        <Flex flexDir={'column'}>
+                            {Object.entries(cartDetails).map(
+                                ([key, product]) => (
+                                    <Flex
+                                        key={key}
+                                        mb="12"
+                                        justify={'space-between'}
+                                    >
+                                        <Flex
+                                            flexDirection={'row'}
+                                            gridColumnGap={2}
+                                            alignItems="center"
+                                        >
+                                            <NextImage
+                                                src={product?.name}
+                                                height="150px"
+                                                width="150px"
+                                                objectFit="contain"
+                                            />
+                                            <Text>{product?.alt}</Text>
+                                        </Flex>
+
+                                        <HStack spacing={4}>
+                                            <AddIcon
+                                                cursor={'pointer'}
+                                                onClick={() => {
+                                                    addItem(
+                                                        product,
+                                                        '1',
+                                                        product?.selectedSize
+                                                    );
+                                                }}
+                                            />
+                                            <Text fontWeight={'bold'}>
+                                                {product.quantity}
+                                            </Text>
+                                            <MinusIcon
+                                                cursor={'pointer'}
+                                                onClick={() => {
+                                                    removeItem(product);
+                                                }}
+                                            />
+                                        </HStack>
+                                    </Flex>
+                                )
+                            )}
+
+                            <Flex justifyContent={'end'}>
+                                <Button
+                                    colorScheme="primary"
+                                    onClick={() => {
+                                        redirectToCheckout();
+                                    }}
                                 >
-                                    <NextImage
-                                        src={product?.name}
-                                        height="150px"
-                                        width="150px"
-                                        objectFit="contain"
-                                    />
-                                    <Text>{product?.alt}</Text>
-                                </Flex>
-
-                                <HStack spacing={4}>
-                                    <AddIcon
-                                        cursor={'pointer'}
-                                        onClick={() => {
-                                            addItem(
-                                                product,
-                                                '1',
-                                                product?.selectedSize
-                                            );
-                                        }}
-                                    />
-                                    <Text fontWeight={'bold'}>
-                                        {product.quantity}
-                                    </Text>
-                                    <MinusIcon
-                                        cursor={'pointer'}
-                                        onClick={() => {
-                                            removeItem(product);
-                                        }}
-                                    />
-                                </HStack>
+                                    Go to Checkout
+                                </Button>
                             </Flex>
-                        ))}
-
-                        <Flex justifyContent={'end'}>
-                            <Button
-                                colorScheme="primary"
-                                onClick={() => {
-                                    redirectToCheckout();
-                                }}
-                            >
-                                Go to Checkout
-                            </Button>
                         </Flex>
-                    </Flex>
-                )}
-            </Flex>
-        </Container>
+                    )}
+                </Flex>
+            </Container>
+        </>
     );
 };
 
