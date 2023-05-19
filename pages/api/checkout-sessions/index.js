@@ -3,7 +3,6 @@ import Stripe from 'stripe';
 const stripe = new Stripe(process.env.NEXT_PUBLIC_SECRET_KEY);
 export default async function handler(req, res) {
     const clothingItemMetadata = req?.body?.metadata;
-    console.log('Clothing data is:-', clothingItemMetadata);
 
     if (req.method === 'POST') {
         try {
@@ -33,7 +32,7 @@ export default async function handler(req, res) {
                 ],
                 payment_method_types: ['card'],
                 line_items: req.body?.items,
-                success_url: `${req.headers.origin}`,
+                success_url: `${req.headers.origin}/checkout/success?sessionId={CHECKOUT_SESSION_ID}`,
                 cancel_url: `${req.headers.origin}`,
             });
             res.status(200).json(session);
