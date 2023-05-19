@@ -191,7 +191,7 @@ const ItemDetail = () => {
                                     : centralImage
                             }
                             height={600}
-                            width={600}
+                            width={450}
                             layout="fixed"
                         />
                     </Box>

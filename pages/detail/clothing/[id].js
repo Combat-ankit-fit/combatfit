@@ -132,7 +132,7 @@ const ItemDetail = () => {
                     </Box>
                     <Flex flexDir={'column'} gridRowGap={6}>
                         <Text fontWeight={'bold'}>{imageInfo?.alt}</Text>
-                        <Text>I guard the nation what is your super power</Text>
+
                         <Text>MRP:{imageInfo?.price}</Text>
                         <Flex alignItems={'baseline'} gridColumnGap={2}>
                             <Text>Size:</Text>

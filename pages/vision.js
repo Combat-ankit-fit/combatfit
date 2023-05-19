@@ -381,6 +381,7 @@ const ContactUs = () => {
                             p="4"
                             gridColumnGap={2}
                             flexDirection={{ base: 'column', md: 'row' }}
+                            mb={6}
                         >
                             {isMobileView && (
                                 <Box
