@@ -120,7 +120,11 @@ const Cart = () => {
                                     <AddIcon
                                         cursor={'pointer'}
                                         onClick={() => {
-                                            addItem(product, '1');
+                                            addItem(
+                                                product,
+                                                '1',
+                                                product?.selectedSize
+                                            );
                                         }}
                                     />
                                     <Text fontWeight={'bold'}>
