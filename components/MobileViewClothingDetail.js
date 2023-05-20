@@ -35,6 +35,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const sizeArr = ['M', 'L', 'XL', 'XXL'];
     const [selectedSize, setSelectedSize] = React.useState(null);
     const [selectedSizeIndex, setSelectedSizeIndex] = React.useState(null);
+    const [sizeAvailable, setSizeAvailable] = React.useState([]);
 
     const { data: beerData } = useSWRImmutable('/api/get-items?id=beer');
     const { data: postersData } = useSWRImmutable('/api/get-items?id=posters');
@@ -113,6 +114,8 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             )[0];
 
             // setSynonymousImages([...specificItem?.extraImages]);
+            setSizeAvailable(specificItem?.sizeVariant);
+
             setImageInfo({ ...specificItem });
             const arr = [...specificItem?.extraImages];
             setAllImages([...arr]);
@@ -242,7 +245,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             <Text mb="2">Rs. {imageInfo?.price}/-(inclusive of all taxes)</Text>
             <Flex alignItems={'baseline'} gridColumnGap={2}>
                 <Text>Size:</Text>
-                {sizeArr?.map((size, index) => {
+                {sizeAvailable?.map((size, index) => {
                     return (
                         <Box
                             me={2}

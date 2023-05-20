@@ -48,6 +48,7 @@ const ItemDetail = () => {
     const [itemQuantity, setItemQuantity] = React.useState(1);
     const [selectedSize, setSelectedSize] = React.useState(null);
     const [selectedSizeIndex, setSelectedSizeIndex] = React.useState(null);
+    const [sizeAvailable, setSizeAvailable] = React.useState([]);
 
     const sizeArr = ['M', 'L', 'XL', 'XXL'];
 
@@ -62,6 +63,7 @@ const ItemDetail = () => {
 
         setCentralImage(specificItem?.name);
         setSynonymousImages([...(specificItem?.extraImages || [])]);
+        setSizeAvailable(specificItem?.sizeVariant);
         setImageInfo({ ...specificItem });
     }, [clothingData, itemCategory, itemId]);
 
@@ -141,7 +143,7 @@ const ItemDetail = () => {
                         )}
                         <Flex alignItems={'baseline'} gridColumnGap={2}>
                             <Text>Size:</Text>
-                            {sizeArr?.map((size, index) => {
+                            {sizeAvailable?.map((size, index) => {
                                 return (
                                     <Box
                                         me={2}
