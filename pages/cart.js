@@ -17,6 +17,8 @@ import {
     HStack,
     Container,
     useBreakpointValue,
+    Divider,
+    Grid,
 } from '@chakra-ui/react';
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import Immutable, { fromJS, Map } from 'immutable';
@@ -29,8 +31,14 @@ const Cart = () => {
         useShoppingCart();
     const isMobileView = useBreakpointValue({ base: true, md: false });
     const router = useRouter();
+    let date = new Date();
 
     const [initialCart, setInitialCart] = React.useState();
+    const totalPrice = Object?.keys(cartDetails)?.reduce((acc, item) => {
+        return (
+            acc + Number(cartDetails[item]?.price) * cartDetails[item]?.quantity
+        );
+    }, 0);
 
     React.useEffect(() => {
         setInitialCart(cartCount);
@@ -113,59 +121,246 @@ const Cart = () => {
                         <Flex flexDir={'column'}>
                             {Object.entries(cartDetails).map(
                                 ([key, product]) => (
-                                    <Flex
+                                    <Grid
+                                        templateColumns={
+                                            !isMobileView
+                                                ? 'repeat(3, 1fr)'
+                                                : 'repeat(1, 1fr)'
+                                        }
+                                        gap={2}
+                                        mb="2"
                                         key={key}
-                                        mb="12"
-                                        justify={'space-between'}
                                     >
                                         <Flex
                                             flexDirection={'row'}
                                             gridColumnGap={2}
                                             alignItems="center"
+                                            mb={16}
                                         >
                                             <NextImage
                                                 src={product?.name}
-                                                height="150px"
+                                                height={'150px'}
                                                 width="150px"
                                                 objectFit="contain"
                                             />
-                                            <Text>{product?.alt}</Text>
+                                            <Flex
+                                                flexDirection={'column'}
+                                                gridRowGap={{ base: 1, md: 4 }}
+                                            >
+                                                <Text fontWeight={'bold'}>
+                                                    {product?.alt}
+                                                </Text>
+                                                <Text fontWeight={600}>
+                                                    Offer Price: Rs.{' '}
+                                                    {product?.price}
+                                                </Text>
+                                                {product?.original && (
+                                                    <Text>
+                                                        MRP: Rs.{' '}
+                                                        <chakra.span
+                                                            textDecoration={
+                                                                'line-through'
+                                                            }
+                                                        >
+                                                            {product?.original}
+                                                        </chakra.span>
+                                                    </Text>
+                                                )}
+                                                {isMobileView && (
+                                                    <HStack spacing={4}>
+                                                        <Flex
+                                                            bgColor={'gray'}
+                                                            alignItems={
+                                                                'center'
+                                                            }
+                                                            gridColumnGap={2}
+                                                        >
+                                                            <AddIcon
+                                                                cursor={
+                                                                    'pointer'
+                                                                }
+                                                                onClick={() => {
+                                                                    addItem(
+                                                                        product,
+                                                                        '1',
+                                                                        product?.selectedSize
+                                                                    );
+                                                                }}
+                                                                ps={2}
+                                                            />
+                                                            <Text
+                                                                fontWeight={
+                                                                    'bold'
+                                                                }
+                                                                px={6}
+                                                            >
+                                                                {
+                                                                    product.quantity
+                                                                }
+                                                            </Text>
+                                                            <MinusIcon
+                                                                cursor={
+                                                                    'pointer'
+                                                                }
+                                                                onClick={() => {
+                                                                    removeItem(
+                                                                        product
+                                                                    );
+                                                                }}
+                                                                pe={2}
+                                                            />
+                                                        </Flex>
+                                                    </HStack>
+                                                )}
+                                            </Flex>
                                         </Flex>
 
-                                        <HStack spacing={4}>
-                                            <AddIcon
-                                                cursor={'pointer'}
-                                                onClick={() => {
-                                                    addItem(
-                                                        product,
-                                                        '1',
-                                                        product?.selectedSize
-                                                    );
-                                                }}
-                                            />
-                                            <Text fontWeight={'bold'}>
-                                                {product.quantity}
-                                            </Text>
-                                            <MinusIcon
-                                                cursor={'pointer'}
-                                                onClick={() => {
-                                                    removeItem(product);
-                                                }}
-                                            />
-                                        </HStack>
-                                    </Flex>
+                                        {!isMobileView && (
+                                            <Flex
+                                                justifyContent={'center'}
+                                                mb={16}
+                                            >
+                                                {' '}
+                                                <Divider
+                                                    orientation="vertical"
+                                                    borderColor="gray"
+                                                    height={'100px'}
+                                                />
+                                            </Flex>
+                                        )}
+
+                                        {!isMobileView && (
+                                            <Flex
+                                                flexDirection={'column'}
+                                                alignItems={'center'}
+                                                mb={16}
+                                            >
+                                                {product?.selectedSize && (
+                                                    <Text mb={2}>Size:</Text>
+                                                )}
+                                                {product?.selectedSize && (
+                                                    <Text mb={2}>
+                                                        {product?.selectedSize}
+                                                    </Text>
+                                                )}
+
+                                                <Text mb={4}>QTY:</Text>
+
+                                                <HStack spacing={4}>
+                                                    <Flex
+                                                        bgColor={'gray'}
+                                                        alignItems={'center'}
+                                                        gridColumnGap={2}
+                                                    >
+                                                        <AddIcon
+                                                            cursor={'pointer'}
+                                                            onClick={() => {
+                                                                addItem(
+                                                                    product,
+                                                                    '1',
+                                                                    product?.selectedSize
+                                                                );
+                                                            }}
+                                                            ps={2}
+                                                        />
+                                                        <Text
+                                                            fontWeight={'bold'}
+                                                            px={6}
+                                                        >
+                                                            {product.quantity}
+                                                        </Text>
+                                                        <MinusIcon
+                                                            cursor={'pointer'}
+                                                            onClick={() => {
+                                                                removeItem(
+                                                                    product
+                                                                );
+                                                            }}
+                                                            pe={2}
+                                                        />
+                                                    </Flex>
+                                                </HStack>
+                                            </Flex>
+                                        )}
+                                    </Grid>
                                 )
                             )}
 
-                            <Flex justifyContent={'end'}>
-                                <Button
-                                    colorScheme="primary"
-                                    onClick={() => {
-                                        redirectToCheckout();
-                                    }}
+                            <Flex
+                                flexDirection={'column'}
+                                gridRowGap={4}
+                                bgColor={'lightgray'}
+                                p={4}
+                                mb={10}
+                            >
+                                <Text
+                                    textAlign={'center'}
+                                    fontWeight={'bold'}
+                                    fontSize={'2xl'}
                                 >
-                                    Go to Checkout
-                                </Button>
+                                    ORDER SUMMARY
+                                </Text>
+                                <Flex justifyContent={'space-between'}>
+                                    <Text fontWeight={'bold'}>
+                                        Total Products (Inc GST)
+                                    </Text>
+                                    <Text>Rs. {totalPrice}</Text>
+                                </Flex>
+                                <Flex justifyContent={'space-between'}>
+                                    <Text fontWeight={'bold'}>
+                                        Delivery Charges
+                                    </Text>
+                                    <Text>Rs. 0</Text>
+                                </Flex>
+
+                                <Divider
+                                    orientation="horizontal"
+                                    borderColor="black"
+                                    my={8}
+                                />
+                                <Flex justifyContent={'space-between'}>
+                                    <Text fontWeight={'bold'}>TOTAL</Text>
+                                    <Text>Rs. {totalPrice}</Text>
+                                </Flex>
+                                <Text fontWeight={'bold'}>
+                                    Estimated Delivery On or Before:{' '}
+                                    {new Date(date.setDate(date.getDate() + 6))
+                                        .toUTCString()
+                                        ?.split(' ')
+                                        .slice(0, 4)
+                                        .join(' ')}
+                                </Text>
+                                <Divider
+                                    orientation="horizontal"
+                                    borderColor="black"
+                                    my={8}
+                                />
+                                <Text fontSize={'sm'}>
+                                    All standard WHO guidelines and relevant
+                                    precautionary measures are in place, to
+                                    ensure a safe and secure shopping experience
+                                    for you.
+                                </Text>
+                                <Flex justifyContent={'end'}>
+                                    <Button
+                                        colorScheme="primary"
+                                        onClick={() => {
+                                            redirectToCheckout();
+                                        }}
+                                    >
+                                        Go to Checkout
+                                    </Button>
+                                </Flex>
+                                <Flex justifyContent={'end'}>
+                                    <Button
+                                        colorScheme="primary"
+                                        onClick={() => {
+                                            router?.push('/');
+                                        }}
+                                    >
+                                        Shop More
+                                    </Button>
+                                </Flex>
                             </Flex>
                         </Flex>
                     )}
