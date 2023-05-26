@@ -8,6 +8,7 @@ const Clother = require('../../models/clothing');
 const Posters = require('../../models/posters');
 const Beer = require('../../models/beer');
 const Coffee = require('../../models/coffee');
+const Whiskeys = require('../../models/whisky');
 
 const app = express();
 
@@ -91,6 +92,19 @@ export default async function handler(req, res) {
                 });
 
                 return res.json(coffeeItems);
+            } catch (e) {
+                console.log('Error is:-', e);
+            }
+        }
+        if (req?.query?.id === 'whiskey') {
+            try {
+                const WhiskeysItems = await Whiskeys.find().then(
+                    (documents) => {
+                        return documents;
+                    }
+                );
+
+                return res.json(WhiskeysItems);
             } catch (e) {
                 console.log('Error is:-', e);
             }

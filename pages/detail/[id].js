@@ -59,6 +59,8 @@ const ItemDetail = () => {
         '/api/get-items?id=coffee-mugs'
     );
 
+    const { data: whiskeyItems } = useSWRImmutable('/api/get-items?id=whiskey');
+
     React.useEffect(() => {
         if (itemCategory !== 'posters' && itemCategory !== 'beer') {
             setCentralImage(itemId);
@@ -107,6 +109,18 @@ const ItemDetail = () => {
             setCentralImage(specificItem?.name);
             return;
         }
+
+        if (itemCategory === 'whiskey' && whiskeyItems) {
+            const specificItem =
+                whiskeyItems?.filter(
+                    (item) => item?.identifier === itemId
+                )[0] || {};
+
+            setSynonymousImages([...specificItem?.extraImages]);
+            setImageInfo({ ...specificItem });
+            setCentralImage(specificItem?.name);
+            return;
+        }
     }, [
         itemCategory,
         itemId,
@@ -114,6 +128,7 @@ const ItemDetail = () => {
         postersData,
         notespadData,
         coffeeVaibhav,
+        whiskeyItems,
     ]);
 
     if (isMobileView) {
@@ -186,7 +201,8 @@ const ItemDetail = () => {
                                 router?.query?.name !== 'posters' &&
                                 router?.query?.name !== 'beer' &&
                                 router?.query?.name !== 'notepads' &&
-                                router?.query?.name !== 'coffee-mugs'
+                                router?.query?.name !== 'coffee-mugs' &&
+                                router?.query?.name !== 'whiskey'
                                     ? `/${centralImage}.jpg`
                                     : centralImage
                             }
@@ -228,7 +244,8 @@ const ItemDetail = () => {
                                     router?.query?.name === 'notepads' ||
                                     router?.query?.name === 'posters' ||
                                     router?.query?.name === 'beer' ||
-                                    router?.query?.name === 'coffee-mugs'
+                                    router?.query?.name === 'coffee-mugs' ||
+                                    router?.query?.name === 'whiskey'
                                 )
                                     redirectToCheckout();
                             }}

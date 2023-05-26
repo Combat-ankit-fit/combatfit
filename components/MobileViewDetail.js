@@ -39,6 +39,8 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
         '/api/get-items?id=coffee-mugs'
     );
 
+    const { data: whiskeyItems } = useSWRImmutable('/api/get-items?id=whiskey');
+
     const [itemQuantity, setItemQuantity] = React.useState(1);
 
     const handleOnAddToCart = () => {
@@ -118,6 +120,20 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             const arr = [...specificItem?.extraImages];
             setAllImages([...arr]);
         }
+        if (itemCategory === 'whiskey' && whiskeyItems) {
+            const specificItem =
+                whiskeyItems?.filter(
+                    (item) => item?.identifier === itemId
+                )[0] || {};
+
+            console.log('Specific item in mobile is:-', specificItem);
+
+            // setSynonymousImages([...specificItem?.extraImages]);
+            setImageInfo({ ...specificItem });
+            const arr = [...specificItem?.extraImages];
+
+            setAllImages([...arr]);
+        }
     }, [
         itemCategory,
         itemId,
@@ -126,6 +142,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
         notespadData,
         beerData,
         coffeeVaibhav,
+        whiskeyItems,
     ]);
 
     const getHeaderInfo = () => {
@@ -216,7 +233,8 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                                         key={index}
                                         src={
                                             itemCategory !== 'posters' &&
-                                            itemCategory !== 'all-items'
+                                            itemCategory !== 'all-items' &&
+                                            itemCategory !== 'whiskey'
                                                 ? `/${image}.jpg`
                                                 : image
                                         }
@@ -278,7 +296,8 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                         router?.query?.name === 'posters' ||
                         router?.query?.name === 'beer' ||
                         router?.query?.name === 'all-items' ||
-                        router?.query?.name === 'coffee-mugs'
+                        router?.query?.name === 'coffee-mugs' ||
+                        router?.query?.name === 'whiskey'
                     )
                         redirectToCheckout();
                 }}

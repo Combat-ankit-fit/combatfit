@@ -34,6 +34,7 @@ const Item = () => {
         if (queryParam === 'notepads') return false;
         if (queryParam === 'keyrings') return false;
         if (queryParam === 'all-items') return true;
+        if (queryParam === 'whiskey') return false;
     };
 
     return (

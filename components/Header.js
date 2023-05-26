@@ -182,6 +182,13 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                                 >
                                     Posters
                                 </MenuItem>
+                                <MenuItem
+                                    onClick={() => {
+                                        router?.push('/items/whiskey');
+                                    }}
+                                >
+                                    Whisky Glasses
+                                </MenuItem>
                             </MenuList>
                         </Menu>
                     </Box>

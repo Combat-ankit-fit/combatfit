@@ -41,6 +41,8 @@ const ItemProvider = ({ children }) => {
         '/api/get-items?id=coffee-mugs'
     );
 
+    const { data: whiskeyItems } = useSWRImmutable('/api/get-items?id=whiskey');
+
     React.useEffect(() => {
         if (queryParam === 'beer' && beerData) {
             setSelectedItems([...beerData]);
@@ -81,6 +83,9 @@ const ItemProvider = ({ children }) => {
         }
         if (queryParam === 'all-items') {
             setSelectedItems([...allClothings]);
+        }
+        if (queryParam === 'whiskey') {
+            setSelectedItems([...whiskeyItems]);
         }
     }, [queryParam]);
 

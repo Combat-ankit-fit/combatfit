@@ -135,10 +135,10 @@ const ItemDetail = () => {
                     <Flex flexDir={'column'} gridRowGap={6}>
                         <Text fontWeight={'bold'}>{imageInfo?.alt}</Text>
 
-                        <Text>MRP: Rs. {imageInfo?.price}</Text>
+                        <Text>Price: Rs. {imageInfo?.price}</Text>
                         {imageInfo?.original && (
                             <Text textDecoration={'line-through'}>
-                                Price: Rs. {imageInfo?.original}
+                                MRP: Rs. {imageInfo?.original}
                             </Text>
                         )}
                         <Flex alignItems={'baseline'} gridColumnGap={2}>
