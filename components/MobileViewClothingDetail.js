@@ -31,7 +31,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const [imageInfo, setImageInfo] = React.useState({});
     const [allImages, setAllImages] = React.useState([]);
     const router = useRouter();
-    const { addItem } = useShoppingCart();
+    const { addItem, cartDetails } = useShoppingCart();
     const sizeArr = ['M', 'L', 'XL', 'XXL'];
     const [selectedSize, setSelectedSize] = React.useState(null);
     const [selectedSizeIndex, setSelectedSizeIndex] = React.useState(null);
@@ -54,6 +54,17 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
         if (size === 'L') return imageInfo?.LargeA || 10;
         if (size === 'XL') return imageInfo?.XLA || 10;
         if (size === 'XXL') return imageInfo?.XXLA || 10;
+    };
+
+    const isMaxLimitAchieved = (userSelectedSize) => {
+        const item = cartDetails[itemId];
+        if (
+            item?.quantity + Number(itemQuantity) >=
+                getMaximumQuantityForSize(userSelectedSize) &&
+            userSelectedSize === item?.selectedSize
+        )
+            return true;
+        else return false;
     };
 
     React.useEffect(() => {
@@ -298,7 +309,11 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                     onClick={handleOnAddToCart}
                     mb="4"
                     mt="4"
-                    disabled={selectedSize === null || itemQuantity === 0}
+                    disabled={
+                        selectedSize === null ||
+                        itemQuantity === 0 ||
+                        isMaxLimitAchieved(selectedSize)
+                    }
                 >
                     Add to cart
                 </Button>

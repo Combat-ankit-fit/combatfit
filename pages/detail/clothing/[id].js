@@ -38,7 +38,8 @@ const ItemDetail = () => {
         lg: false,
     });
 
-    const { addItem } = useShoppingCart();
+    const { addItem, cartDetails } = useShoppingCart();
+
     const itemCategory = router?.query?.name;
 
     const itemId = router?.query?.id;
@@ -102,6 +103,17 @@ const ItemDetail = () => {
         if (size === 'L') return imageInfo?.LargeA || 10;
         if (size === 'XL') return imageInfo?.XLA || 10;
         if (size === 'XXL') return imageInfo?.XXLA || 10;
+    };
+
+    const isMaxLimitAchieved = (userSelectedSize) => {
+        const item = cartDetails[itemId];
+        if (
+            item?.quantity + Number(itemQuantity) >=
+                getMaximumQuantityForSize(userSelectedSize) &&
+            userSelectedSize === item?.selectedSize
+        )
+            return true;
+        else return false;
     };
 
     return (
@@ -195,7 +207,9 @@ const ItemDetail = () => {
                             bgColor="orange"
                             onClick={handleOnAddToCart}
                             disabled={
-                                selectedSize === null || itemQuantity === 0
+                                selectedSize === null ||
+                                itemQuantity === 0 ||
+                                isMaxLimitAchieved(selectedSize)
                             }
                         >
                             Add to cart
