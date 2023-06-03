@@ -97,6 +97,13 @@ const ItemDetail = () => {
         addItem(imageInfo, itemQuantity, selectedSize);
     };
 
+    const getMaximumQuantityForSize = (size) => {
+        if (size === 'M') return imageInfo?.MediumA || 10;
+        if (size === 'L') return imageInfo?.LargeA || 10;
+        if (size === 'XL') return imageInfo?.XLA || 10;
+        if (size === 'XXL') return imageInfo?.XXLA || 10;
+    };
+
     return (
         <Layout
             sidebarRequired={false}
@@ -155,6 +162,7 @@ const ItemDetail = () => {
                                         onClick={() => {
                                             setSelectedSize(size);
                                             setSelectedSizeIndex(index);
+                                            setItemQuantity(0);
                                         }}
                                         {...(index === selectedSizeIndex && {
                                             bgColor: 'orange',
@@ -170,10 +178,11 @@ const ItemDetail = () => {
                         <NumberInput
                             defaultValue={1}
                             min={1}
-                            max={1000}
-                            onChange={(valueString) =>
-                                setItemQuantity(valueString)
-                            }
+                            max={getMaximumQuantityForSize(selectedSize)}
+                            value={itemQuantity}
+                            onChange={(valueString) => {
+                                setItemQuantity(valueString);
+                            }}
                         >
                             <NumberInputField />
                             <NumberInputStepper>
@@ -185,7 +194,9 @@ const ItemDetail = () => {
                             colorScheme={'primary'}
                             bgColor="orange"
                             onClick={handleOnAddToCart}
-                            disabled={selectedSize === null}
+                            disabled={
+                                selectedSize === null || itemQuantity === 0
+                            }
                         >
                             Add to cart
                         </Button>
@@ -196,7 +207,9 @@ const ItemDetail = () => {
                             onClick={() => {
                                 redirectToCheckout();
                             }}
-                            disabled={selectedSize === null}
+                            disabled={
+                                selectedSize === null || itemQuantity === 0
+                            }
                         >
                             Buy Online
                         </Button>

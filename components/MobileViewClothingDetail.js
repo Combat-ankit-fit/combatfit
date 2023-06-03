@@ -49,6 +49,13 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
         addItem(imageInfo, itemQuantity, selectedSize);
     };
 
+    const getMaximumQuantityForSize = (size) => {
+        if (size === 'M') return imageInfo?.MediumA || 10;
+        if (size === 'L') return imageInfo?.LargeA || 10;
+        if (size === 'XL') return imageInfo?.XLA || 10;
+        if (size === 'XXL') return imageInfo?.XXLA || 10;
+    };
+
     React.useEffect(() => {
         if (
             itemCategory !== 'posters' &&
@@ -257,6 +264,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                             onClick={() => {
                                 setSelectedSize(size);
                                 setSelectedSizeIndex(index);
+                                setItemQuantity(0);
                             }}
                             {...(index === selectedSizeIndex && {
                                 bgColor: 'orange',
@@ -271,7 +279,8 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             <NumberInput
                 defaultValue={1}
                 min={1}
-                max={20}
+                max={getMaximumQuantityForSize(selectedSize)}
+                value={itemQuantity}
                 onChange={(valueString) => setItemQuantity(valueString)}
             >
                 <NumberInputField />
@@ -289,7 +298,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                     onClick={handleOnAddToCart}
                     mb="4"
                     mt="4"
-                    disabled={selectedSize === null}
+                    disabled={selectedSize === null || itemQuantity === 0}
                 >
                     Add to cart
                 </Button>
@@ -301,7 +310,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                 width={'full'}
                 mb="4"
                 mt="4"
-                disabled={selectedSize === null}
+                disabled={selectedSize === null || itemQuantity === 0}
                 onClick={() => {
                     if (
                         router?.query?.name === 'notepads' ||
