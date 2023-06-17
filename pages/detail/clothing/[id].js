@@ -190,7 +190,7 @@ const ItemDetail = () => {
                         <NumberInput
                             defaultValue={1}
                             min={1}
-                            max={getMaximumQuantityForSize(selectedSize)}
+                            max={20}
                             value={itemQuantity}
                             onChange={(valueString) => {
                                 setItemQuantity(valueString);
@@ -207,9 +207,7 @@ const ItemDetail = () => {
                             bgColor="orange"
                             onClick={handleOnAddToCart}
                             disabled={
-                                selectedSize === null ||
-                                itemQuantity === 0 ||
-                                isMaxLimitAchieved(selectedSize)
+                                selectedSize === null || itemQuantity === 0
                             }
                         >
                             Add to cart

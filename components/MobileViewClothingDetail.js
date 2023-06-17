@@ -290,7 +290,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             <NumberInput
                 defaultValue={1}
                 min={1}
-                max={getMaximumQuantityForSize(selectedSize)}
+                max={20}
                 value={itemQuantity}
                 onChange={(valueString) => setItemQuantity(valueString)}
             >
@@ -309,11 +309,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                     onClick={handleOnAddToCart}
                     mb="4"
                     mt="4"
-                    disabled={
-                        selectedSize === null ||
-                        itemQuantity === 0 ||
-                        isMaxLimitAchieved(selectedSize)
-                    }
+                    disabled={selectedSize === null || itemQuantity === 0}
                 >
                     Add to cart
                 </Button>

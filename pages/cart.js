@@ -175,6 +175,30 @@ const Cart = () => {
                                                             }
                                                             gridColumnGap={2}
                                                         >
+                                                            <AddIcon
+                                                                cursor={
+                                                                    'pointer'
+                                                                }
+                                                                onClick={() => {
+                                                                    addItem(
+                                                                        product,
+                                                                        '1',
+                                                                        product?.selectedSize
+                                                                    );
+                                                                }}
+                                                                ps={2}
+                                                            />
+                                                            <MinusIcon
+                                                                cursor={
+                                                                    'pointer'
+                                                                }
+                                                                onClick={() => {
+                                                                    removeItem(
+                                                                        product
+                                                                    );
+                                                                }}
+                                                                pe={2}
+                                                            />
                                                             <Text
                                                                 fontWeight={
                                                                     'bold'
@@ -228,12 +252,32 @@ const Cart = () => {
                                                         alignItems={'center'}
                                                         gridColumnGap={2}
                                                     >
+                                                        <AddIcon
+                                                            cursor={'pointer'}
+                                                            onClick={() => {
+                                                                addItem(
+                                                                    product,
+                                                                    '1',
+                                                                    product?.selectedSize
+                                                                );
+                                                            }}
+                                                            ps={2}
+                                                        />
                                                         <Text
                                                             fontWeight={'bold'}
                                                             px={6}
                                                         >
                                                             {product.quantity}
                                                         </Text>
+                                                        <MinusIcon
+                                                            cursor={'pointer'}
+                                                            onClick={() => {
+                                                                removeItem(
+                                                                    product
+                                                                );
+                                                            }}
+                                                            pe={2}
+                                                        />
                                                     </Flex>
                                                 </HStack>
                                             </Flex>
