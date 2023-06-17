@@ -238,11 +238,12 @@ const LayoutNew = () => {
                     {isMobileView && (
                         <Box
                             position={'absolute'}
-                            right="8"
+                            top="10"
+                            left="0"
                             h="full"
                             zIndex={'overlay'}
+                            pt="4"
                             ps="2"
-                            top={20}
                         >
                             <Flex
                                 flexDirection={'column'}
@@ -284,7 +285,7 @@ const LayoutNew = () => {
                     )}
                     <NextImage
                         src={
-                            'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/Tactical.jpg?alt=media&token=60b38d59-fd1b-4aa6-9043-693bc5d5ffb3'
+                            'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/Tactical_left.jpg?alt=media&token=66752436-7407-4a15-be31-79ce5bf3cc0a'
                         }
                         objectFit="contain"
                         height={isMobileView ? 1000 : 600}
