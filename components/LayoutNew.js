@@ -482,9 +482,11 @@ const LayoutNew = () => {
                         src={
                             'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/bottom_design.jpg?alt=media&token=a407d639-01a9-402f-bb03-0ab156356ce8'
                         }
-                        objectFit="fill"
-                        height={isMobileView ? 1000 : 800}
-                        width={isMobileView ? 1600 : 1600}
+                        objectFit="contain"
+                        height={isMobileView ? 1000 : 400}
+                        width={isMobileView ? 1600 : 600}
+                        layout="responsive"
+                        quality={100}
                     />
                 </Box>
             </Flex>
@@ -499,10 +501,11 @@ const LayoutNew = () => {
                         src={
                             'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/Military%20Stroies%20banner.jpg?alt=media&token=b66de554-64d2-46bd-b480-68c810b8a4ad'
                         }
-                        objectFit="fill"
-                        height={isMobileView ? 1000 : 1000}
-                        width={isMobileView ? 1600 : 2000}
+                        objectFit="contain"
+                        height={isMobileView ? 1000 : 400}
+                        width={isMobileView ? 1600 : 600}
                         layout="responsive"
+                        quality={100}
                     />
                 </Box>
             </Flex>
