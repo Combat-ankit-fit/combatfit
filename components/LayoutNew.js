@@ -471,7 +471,13 @@ const LayoutNew = () => {
                     />
                 </Box>
             </Flex>
-            <Flex width="full">
+            <Flex
+                width="full"
+                onClick={() => {
+                    router?.push('/contact-us');
+                }}
+                cursor={'pointer'}
+            >
                 <Box
                     id="second__image"
                     mt={{ base: 10, md: 8 }}
@@ -480,7 +486,7 @@ const LayoutNew = () => {
                 >
                     <NextImage
                         src={
-                            'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/bottom_design.jpg?alt=media&token=a407d639-01a9-402f-bb03-0ab156356ce8'
+                            'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/new_customized.jpg?alt=media&token=40774237-b76d-42c7-b60a-e9f6d6829d84'
                         }
                         objectFit="contain"
                         height={isMobileView ? 1000 : 400}
@@ -490,7 +496,13 @@ const LayoutNew = () => {
                     />
                 </Box>
             </Flex>
-            <Flex width="full">
+            <Flex
+                width="full"
+                onClick={() => {
+                    router?.push('/contact-us');
+                }}
+                cursor={'pointer'}
+            >
                 <Box
                     id="second__image"
                     mt={{ base: 10, md: 8 }}
