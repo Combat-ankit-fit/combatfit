@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../components/Layout';
+import LayoutNew from '../components/LayoutNew';
 
 import useSWRImmutable from 'swr/immutable';
 
@@ -10,18 +10,7 @@ const Home = () => {
     useSWRImmutable('/api/get-items?id=coffee-mugs');
 
     useSWRImmutable('/api/get-items?id=whiskey');
-    return (
-        <Layout
-            sidebarRequired={false}
-            firstImage={true}
-            streamImages={true}
-            secondImage={true}
-            bottomGridImages={true}
-            souvenirs={true}
-            mugs={true}
-            homepage={true}
-        ></Layout>
-    );
+    return <LayoutNew></LayoutNew>;
 };
 
 export default Home;

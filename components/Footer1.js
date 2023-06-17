@@ -37,7 +37,7 @@ const Footer = ({ homepage = false }) => {
                     <Grid templateColumns="repeat(2, 1fr)" gap={2} mb="2">
                         <Flex flexDirection={'column'}>
                             <Text
-                                color={'white'}
+                                color={'orange'}
                                 fontWeight="bold"
                                 fontSize={'xl'}
                             >
@@ -46,7 +46,7 @@ const Footer = ({ homepage = false }) => {
                         </Flex>
                         <Flex flexDirection={'column'} alignItems="baseline">
                             <Text
-                                color={'white'}
+                                color={'orange'}
                                 textAlign="center"
                                 fontWeight="bold"
                                 fontSize={'xl'}
