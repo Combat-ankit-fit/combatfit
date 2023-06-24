@@ -104,10 +104,11 @@ const LayoutNew = () => {
                     Our Categories
                 </Text>
                 <Text color="white">
-                    Order our diverse range of clothing categories. Active for
-                    dynamic performance. Tactical for strategic missions.
-                    Inspire for style and motivation. Winter for extreme
-                    conditions, and Customized for personalized apparel.
+                    Explore our diverse range of clothing categories: Active for
+                    dynamic performance, Tactical for strategic missions,
+                    Inspire for style and motivation, Winter for extreme
+                    conditions, and Customized for personalized military
+                    apparel.
                 </Text>
             </Flex>
             <Flex>
