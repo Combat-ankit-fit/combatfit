@@ -6,6 +6,7 @@ const nextConfig = {
         domains: [
             'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/',
             'firebasestorage.googleapis.com',
+            'storage.googleapis.com',
         ],
     },
 };

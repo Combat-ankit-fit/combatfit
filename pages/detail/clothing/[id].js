@@ -116,6 +116,18 @@ const ItemDetail = () => {
         else return false;
     };
 
+    const getFeatureIcon = (feature) => {
+        if (feature === 'Breathability')
+            return 'https://storage.googleapis.com/clothing-app-b7613.appspot.com/breathability.png?GoogleAccessId=service-280253514387@gcp-sa-firebasestorage.iam.gserviceaccount.com&Expires=1688717105&Signature=EN5saf%2BhB5D6T2PylYEt2C5J%2BgGXBJFMb5vGTkENPylY/KZwZqHpgsI6sG%2BZqLkapf8Eq6IzZ8UXdgKQmXs8EwAHhzelI9HRtnigIQejOYm/rnUtAVC684T57J5ywD/wLpASddx/7TG3oVLvnBoDjPJj2Oyasu7YySPmqgLxIipf8cKCAKyu%2BKezDcuXC1A0Y8hLuWaLXHTSxdq6nL93mlD52QnHCwsOpsgtHCVylpkNJZUvDMnwiWQdD6uUQL1yZayYnUL0iwzumUMssG39pIztoRhIQT2UdvE71tWSA0bugMtAj4GxJ4oWQntkMyXqTlQCwQ8I8qzeRwakhbUoZw%3D%3D';
+        if (feature === 'Durability')
+            return 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/durability.png?alt=media&token=af16a54a-6bc9-4166-87e9-bd72aca8c097';
+        if (feature === 'Freedom of movement')
+            return 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/freedom-of-movement.png?alt=media&token=1e1d5730-f281-42b5-b0f2-591502288821';
+        if (feature === 'Ergonomic designs')
+            return 'https://storage.googleapis.com/clothing-app-b7613.appspot.com/breathability.png?GoogleAccessId=service-280253514387@gcp-sa-firebasestorage.iam.gserviceaccount.com&Expires=1688717105&Signature=EN5saf%2BhB5D6T2PylYEt2C5J%2BgGXBJFMb5vGTkENPylY/KZwZqHpgsI6sG%2BZqLkapf8Eq6IzZ8UXdgKQmXs8EwAHhzelI9HRtnigIQejOYm/rnUtAVC684T57J5ywD/wLpASddx/7TG3oVLvnBoDjPJj2Oyasu7YySPmqgLxIipf8cKCAKyu%2BKezDcuXC1A0Y8hLuWaLXHTSxdq6nL93mlD52QnHCwsOpsgtHCVylpkNJZUvDMnwiWQdD6uUQL1yZayYnUL0iwzumUMssG39pIztoRhIQT2UdvE71tWSA0bugMtAj4GxJ4oWQntkMyXqTlQCwQ8I8qzeRwakhbUoZw%3D%3D';
+        return 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/ergonomic-designs.png?alt=media&token=68283ef3-9b79-4775-abac-3aaf91e6bb12';
+    };
+
     return (
         <Layout
             sidebarRequired={false}
@@ -241,7 +253,7 @@ const ItemDetail = () => {
                             return (
                                 <HStack key={index}>
                                     <NextImage
-                                        src="/breathability.jpg"
+                                        src={getFeatureIcon(feature)}
                                         objectFit="contain"
                                         width={'20px'}
                                         height="20px"
