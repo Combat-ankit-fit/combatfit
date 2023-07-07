@@ -1,3 +1,5 @@
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
 import React from 'react';
 import { Box, Flex, Text, Button, useBreakpointValue } from '@chakra-ui/react';
 import Header from './Header';
@@ -5,10 +7,18 @@ import NextImage from 'next/image';
 import Footer from './Footer1';
 import { useRouter } from 'next/router';
 import MobileDrawer from './MobileDrawer';
+import { Carousel } from 'react-responsive-carousel';
 
 const LayoutNew = () => {
     const router = useRouter();
     const isMobileView = useBreakpointValue({ base: true, md: false });
+
+    const carousalImages = [
+        'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/new_inspire.jpg?alt=media&token=08609396-c981-484c-894d-70987d02a4ca',
+        'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/new_polo.jpg?alt=media&token=d7bdf65e-e4e9-426a-bb81-44456b37c4bf',
+        'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/new_tactical.jpg?alt=media&token=78556de7-2dcc-474b-8382-bf11866269ad',
+    ];
+
     return (
         <Box bgColor="black">
             <Box id="layout" display={'flex'}>
@@ -24,79 +34,76 @@ const LayoutNew = () => {
                 <Box
                     w="full"
                     id="firstimage"
-                    mt={{ base: 10, md: 8 }}
+                    mt={{ base: 4, md: 2 }}
                     position={'relative'}
+                    height={isMobileView ? '220px' : '800px'}
+                    cursor={'pointer'}
+                    sx={{
+                        '.carousel-status': {
+                            display: 'none',
+                        },
+                        '.control-dots': {
+                            display: 'none',
+                        },
+                        '.carousel-slider > button': {
+                            display: 'none',
+                        },
+                        '.carousel-root': {
+                            height: '100%',
+                        },
+                        '.carousel-slider': {
+                            height: '100%',
+                        },
+                        '.slider-wrapper': {
+                            height: '100%',
+                        },
+                        '.slider-wrapper > ul': {
+                            height: '100% !important',
+                        },
+                        '.slider-wrapper > ul > li > div': {
+                            height: '100% !important',
+                        },
+                        '.slider-wrapper > ul > li > div > span': {
+                            height: '100% !important',
+                        },
+                    }}
                 >
-                    {isMobileView && (
-                        <Box
-                            position={'absolute'}
-                            top="0px"
-                            left="0"
-                            h="full"
-                            id="hello"
-                            zIndex={'overlay'}
-                            pt="4"
-                            ps="2"
-                        >
-                            <Flex
-                                flexDirection={'column'}
-                                alignItems="center"
-                                ms="8"
-                                mt="4"
-                            >
-                                <Text
-                                    color="white"
-                                    fontSize="2xl"
-                                    maxW="xs"
-                                    textAlign={'center'}
-                                    fontWeight={'bold'}
-                                >
-                                    Wear your
-                                </Text>
-                                <Text
-                                    color="white"
-                                    fontWeight={'bold'}
-                                    fontSize="2xl"
-                                    maxW="xs"
-                                    textAlign={'center'}
-                                >
-                                    values to be the
-                                </Text>
-                                <Text
-                                    color="white"
-                                    fontWeight={'bold'}
-                                    fontSize="2xl"
-                                    maxW="xs"
-                                    textAlign={'center'}
-                                    mb="8"
-                                >
-                                    change
-                                </Text>
-
-                                <Button
-                                    colorScheme="primary"
-                                    color="black"
-                                    maxW={'min-content'}
+                    <Carousel showThumbs={false} autoPlay infiniteLoop>
+                        {carousalImages.map((item, index) => {
+                            return (
+                                <Box
+                                    key={index}
                                     onClick={() => {
-                                        router.push('/items/all-items');
+                                        if (index === 0) {
+                                            router.push(
+                                                '/clothing-category?item=inspire'
+                                            );
+                                        }
+                                        if (index === 1) {
+                                            router.push('/items/all-items');
+                                        }
+                                        if (index === 2) {
+                                            router.push(
+                                                '/clothing-category?item=tactical'
+                                            );
+                                        }
                                     }}
                                 >
-                                    Order Now
-                                </Button>
-                            </Flex>
-                        </Box>
-                    )}
-                    <NextImage
-                        src={
-                            isMobileView
-                                ? 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/banner01.jpg?alt=media&token=0a8f99d5-9b9b-459d-a7cb-accf316994d1'
-                                : 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/New_Banner02.jpg?alt=media&token=05674af2-2639-494d-a96d-4eb03cf1f4d2'
-                        }
-                        objectFit="fill"
-                        height={isMobileView ? 1000 : 1000}
-                        width={isMobileView ? 1600 : 2000}
-                        layout="responsive"
-                    />
+                                    <NextImage
+                                        id={index}
+                                        key={index}
+                                        src={item}
+                                        height={isMobileView ? 60 : 600}
+                                        width={isMobileView ? 60 : 600}
+                                        objectFit={
+                                            isMobileView ? 'contain' : 'contain'
+                                        }
+                                        layout="responsive"
+                                    />
+                                </Box>
+                            );
+                        })}
+                    </Carousel>
                 </Box>
             </Box>
             <Flex flexDirection={'column'} px={10} py={4}>
