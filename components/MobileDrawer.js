@@ -75,6 +75,9 @@ const MobileDrawer = ({
                                 display={'flex'}
                                 flex="1"
                                 justifyContent={'center'}
+                                onClick={() => {
+                                    router.push('/');
+                                }}
                             >
                                 <NextImage
                                     src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/combatfit%20logo.png?alt=media&token=9a9149de-66fd-4b48-b70c-d9cbce87ddbb"
