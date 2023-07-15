@@ -205,7 +205,6 @@ const LayoutNew = () => {
                         flexDirection={'column'}
                         justifyContent={'center'}
                         alignItems={'center'}
-                        gridRowGap={4}
                         width={'lg'}
                     >
                         <Text
@@ -215,14 +214,16 @@ const LayoutNew = () => {
                         >
                             Active
                         </Text>
-                        <Text color="white">Collection</Text>
+                        <Text color="white" fontSize={'4xl'} mb="4">
+                            Collection
+                        </Text>
                         <Button
                             colorScheme="primary"
                             onClick={() => {
                                 router.push('/clothing-category?item=active');
                             }}
                         >
-                            Order Now
+                            Explore Now
                         </Button>
                     </Flex>
                 )}
@@ -243,7 +244,14 @@ const LayoutNew = () => {
                         >
                             Tactical
                         </Text>
-                        <Text color="white">Collection</Text>
+                        <Text
+                            color="white"
+                            color="white"
+                            fontSize={'4xl'}
+                            mb="4"
+                        >
+                            Collection
+                        </Text>
                         <Button
                             colorScheme="primary"
                             onClick={() => {
@@ -396,7 +404,14 @@ const LayoutNew = () => {
                         >
                             Inspire
                         </Text>
-                        <Text color="white">Collection</Text>
+                        <Text
+                            color="white"
+                            color="white"
+                            fontSize={'4xl'}
+                            mb="4"
+                        >
+                            Collection
+                        </Text>
                         <Button
                             colorScheme="primary"
                             onClick={() => {
@@ -424,7 +439,14 @@ const LayoutNew = () => {
                         >
                             Winter
                         </Text>
-                        <Text color="white">Collection</Text>
+                        <Text
+                            color="white"
+                            color="white"
+                            fontSize={'4xl'}
+                            mb="4"
+                        >
+                            Collection
+                        </Text>
                         <Button
                             colorScheme="primary"
                             onClick={() => {
