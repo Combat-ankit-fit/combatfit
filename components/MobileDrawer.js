@@ -33,7 +33,6 @@ const MobileDrawer = ({
 }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const clothingItems = [
-        { item: 'All Items', path: '/all-items' },
         { item: 'Active', path: '/all-items' },
         { item: 'Tactical', path: '/all-items' },
         { item: 'Inspire', path: '/all-items' },
