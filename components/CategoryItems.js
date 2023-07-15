@@ -56,8 +56,7 @@ const CategoryItems = (props) => {
                 ) : (
                     <Flex justifyContent={'center'} alignItems="center">
                         <Text fontWeight="bold">
-                            Feel free to exlore this category in sometime.
-                            Thanks!
+                            Please wait for sometime, Thanks!
                         </Text>
                     </Flex>
                 )}

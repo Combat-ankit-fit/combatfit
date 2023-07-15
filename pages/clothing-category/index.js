@@ -11,7 +11,9 @@ const ClothingCategory = () => {
 
     const router = useRouter();
 
-    const { data: AllClothingData } = useSWR('/api/get-items?id=clothing');
+    const { data: AllClothingData, error } = useSWR(
+        '/api/get-items?id=clothing'
+    );
 
     React.useEffect(() => {
         const queryParam = router?.query?.item;
@@ -22,7 +24,7 @@ const ClothingCategory = () => {
         setRefinedClothingData([...relevantData]);
     }, [router?.query?.item, AllClothingData]);
 
-    return <CategoryItem item={refinedClothingData} />;
+    return <CategoryItem item={refinedClothingData} error={error} />;
 };
 
 export default ClothingCategory;
