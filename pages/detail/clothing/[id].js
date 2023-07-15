@@ -235,7 +235,7 @@ const ItemDetail = () => {
                                 selectedSize === null || itemQuantity === 0
                             }
                         >
-                            Buy Online
+                            Buy Now
                         </Button>
                     </Flex>
                 </Flex>
