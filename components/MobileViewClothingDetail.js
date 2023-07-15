@@ -287,7 +287,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                             onClick={() => {
                                 setSelectedSize(size);
                                 setSelectedSizeIndex(index);
-                                setItemQuantity(0);
+                                setItemQuantity(1);
                             }}
                             {...(index === selectedSizeIndex && {
                                 bgColor: 'orange',

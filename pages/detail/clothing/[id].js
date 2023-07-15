@@ -186,7 +186,7 @@ const ItemDetail = () => {
                                         onClick={() => {
                                             setSelectedSize(size);
                                             setSelectedSizeIndex(index);
-                                            setItemQuantity(0);
+                                            setItemQuantity(1);
                                         }}
                                         {...(index === selectedSizeIndex && {
                                             bgColor: 'orange',
