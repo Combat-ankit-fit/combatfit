@@ -61,7 +61,7 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                     cursor="pointer"
                 >
                     <NextImage
-                        src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/newlogo.png?alt=media&token=fdadc7e3-2bd3-4163-a866-10cd07b2d04f"
+                        src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/combatfit%20logo.png?alt=media&token=9a9149de-66fd-4b48-b70c-d9cbce87ddbb"
                         height="20px"
                         width="100px"
                         objectFit="contain"
