@@ -149,13 +149,22 @@ const Footer = ({ homepage = false }) => {
                         <Text
                             color={'white'}
                             textAlign={'justify'}
-                            fontSize="lg"
+                            fontSize={{ base: 'xs', md: 'lg' }}
                         >
-                            At CombatFit, we are driven by three main principles
-                            quality, transparency and value to the clients.
-                            CombatFit aims to provide premium quality clothing,
-                            gear and accessories which are truly unique and at a
-                            price which is unbeatable.
+                            At CombatFit, we imbibe our values from Armed Forces
+                            which teaches us time immemorial lessons about life
+                            not only in broader sense and but also in minutest
+                            details, the very basics of everyday life. This is
+                            what we reflect in all our products, be it outdoors
+                            and active wear clothing, inspired souvenirs and
+                            various other lifestyle products. We are driven by
+                            three main principles - Quality, Transparency and
+                            Value to the clients. The whole idea behind bringing
+                            CombatFit to life is to provide premium quality
+                            outdoor and active wear clothing and gear which are
+                            ergonomically designed and functionally suitable.
+                            This truly fascinates us to deliver our best to the
+                            very best.
                         </Text>
                     </Box>
 
