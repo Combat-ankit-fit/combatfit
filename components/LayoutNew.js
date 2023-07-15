@@ -531,13 +531,7 @@ const LayoutNew = () => {
                     />
                 </Box>
             </Flex>
-            <Flex
-                width="full"
-                onClick={() => {
-                    router?.push('/contact-us');
-                }}
-                cursor={'pointer'}
-            >
+            <Flex width="full">
                 <Box
                     id="second__image"
                     mt={{ base: 0, md: 8 }}
