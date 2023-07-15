@@ -91,16 +91,23 @@ const MobileDrawer = ({
                             position={'relative'}
                             display="flex"
                             cursor={'pointer'}
+                            sx={{
+                                svg: {
+                                    mt: 1,
+                                },
+                            }}
+                            maxWidth="sm"
                         >
                             <Text
                                 position={'absolute'}
                                 color="white"
-                                marginLeft={4}
+                                marginLeft={'20px'}
                                 fontSize="sm"
                             >
                                 {cartCount}
                             </Text>
                             <AiOutlineShoppingCart
+                                size="20px"
                                 color="white"
                                 onClick={() => {
                                     router.push('/cart');
