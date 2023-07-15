@@ -519,8 +519,8 @@ const LayoutNew = () => {
                         src={
                             'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/new_customized_ankit.jpg?alt=media&token=9f3fa646-fa60-470b-ac2f-528a2152932f'
                         }
-                        objectFit={isMobileView ? 'contain' : 'cover'}
-                        height={isMobileView ? 600 : 300}
+                        objectFit={isMobileView ? 'contain' : 'fill'}
+                        height={isMobileView ? 600 : 250}
                         width={isMobileView ? 1200 : 600}
                         layout="responsive"
                         quality={100}
