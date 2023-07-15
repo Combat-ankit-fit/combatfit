@@ -81,7 +81,6 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                             router.push('/');
                         }}
                         fontSize={'md'}
-                        fontWeight="bold"
                     >
                         Home
                     </Text>
@@ -92,6 +91,9 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                                 backgroundColor="black !important"
                                 color="white"
                                 fontSize={'md'}
+                                sx={{
+                                    fontWeight: '400',
+                                }}
                             >
                                 Clothing
                             </MenuButton>
@@ -166,6 +168,9 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                                 backgroundColor="black !important"
                                 color="white"
                                 fontSize={'md'}
+                                sx={{
+                                    fontWeight: '400',
+                                }}
                             >
                                 Souvenirs
                             </MenuButton>
@@ -209,7 +214,6 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                             router.push('/vision');
                         }}
                         fontSize={'md'}
-                        fontWeight="bold"
                     >
                         Vision
                     </Text>
@@ -221,7 +225,6 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                         }}
                         whiteSpace="pre"
                         fontSize={'md'}
-                        fontWeight="bold"
                     >
                         Contact Us
                     </Text>
