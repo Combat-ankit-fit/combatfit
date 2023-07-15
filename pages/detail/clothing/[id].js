@@ -144,8 +144,8 @@ const ItemDetail = () => {
                                 <Box mb="4" cursor={'pointer'} key={index}>
                                     <NextImage
                                         src={item}
-                                        height={150}
-                                        width={150}
+                                        height={120}
+                                        width={120}
                                         objectFit="contain"
                                         onClick={() => {
                                             setCentralImage(item);
