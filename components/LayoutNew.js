@@ -128,12 +128,10 @@ const LayoutNew = () => {
                 </Text>
                 <Text color="white" textAlign="justify">
                     For the diverse roles performed by our Heroes in Uniform, we
-                    make sure each product line of ours aptly fits well and
-                    meets the specific requirements. Hence we offer Active Wears
-                    for unbeatable sports performance, Tactical Wears for
-                    special operations, Inspire Wears to stay invogue anytime
-                    anywhere, Winter Wears to combat the cold and harsh and
-                    Customized clothing categories.
+                    offer Active Wears for unbeatable sports performance,
+                    Tactical Wears for special operations, Inspire Wears to stay
+                    invogue anytime anywhere, Winter Wears to combat the cold
+                    and harsh and Customized clothing categories.
                 </Text>
             </Flex>
             <Flex>
