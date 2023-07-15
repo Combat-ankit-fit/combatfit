@@ -169,15 +169,16 @@ const LayoutNew = () => {
                                     color="white"
                                     maxW="xs"
                                     textAlign={'center'}
-                                    mb="8"
+                                    mb="2"
                                 >
                                     Collection
                                 </Text>
 
                                 <Button
                                     colorScheme="primary"
-                                    color="black"
-                                    maxW={'min-content'}
+                                    color="white"
+                                    size="10px"
+                                    p={2}
                                     onClick={() => {
                                         router.push(
                                             '/clothing-category?item=active'
@@ -297,8 +298,9 @@ const LayoutNew = () => {
 
                                 <Button
                                     colorScheme="primary"
-                                    color="black"
-                                    maxW={'min-content'}
+                                    color="white"
+                                    size="10px"
+                                    p={2}
                                     onClick={() => {
                                         router?.push(
                                             '/clothing-category?item=tactical'
@@ -360,8 +362,9 @@ const LayoutNew = () => {
 
                                 <Button
                                     colorScheme="primary"
-                                    color="black"
-                                    maxW={'min-content'}
+                                    color="white"
+                                    size="10px"
+                                    p={2}
                                     onClick={() => {
                                         router.push(
                                             '/clothing-category?item=inspire'
@@ -479,8 +482,9 @@ const LayoutNew = () => {
 
                                 <Button
                                     colorScheme="primary"
-                                    color="black"
-                                    maxW={'min-content'}
+                                    color="white"
+                                    size="10px"
+                                    p={2}
                                     onClick={() => {
                                         router.push(
                                             '/clothing-category?item=winter'
