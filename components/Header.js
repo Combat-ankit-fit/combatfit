@@ -148,12 +148,7 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                                 </MenuItem>
                                 <MenuItem
                                     onClick={() => {
-                                        router?.push({
-                                            pathname: '/clothing-category',
-                                            query: {
-                                                item: 'customized',
-                                            },
-                                        });
+                                        router?.push('/contact-us');
                                     }}
                                 >
                                     Customized
