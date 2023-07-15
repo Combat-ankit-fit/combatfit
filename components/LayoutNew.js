@@ -137,7 +137,7 @@ const LayoutNew = () => {
             <Flex>
                 <Box
                     id="firstimage"
-                    mt={{ base: 10, md: 8 }}
+                    mt={{ base: 1, md: 8 }}
                     position={'relative'}
                 >
                     {isMobileView && (
@@ -193,7 +193,7 @@ const LayoutNew = () => {
                         src={
                             'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/Active.jpg?alt=media&token=3e73c5fc-d108-43e1-909c-20d970ab8009'
                         }
-                        objectFit="contain"
+                        objectFit={isMobileView ? 'cover' : 'contain'}
                         height={isMobileView ? 1000 : 600}
                         width={isMobileView ? 1600 : 1000}
                     />
@@ -259,7 +259,7 @@ const LayoutNew = () => {
                 )}
                 <Box
                     id="second__image"
-                    mt={{ base: 10, md: 8 }}
+                    mt={{ base: 4, md: 8 }}
                     position={'relative'}
                 >
                     {isMobileView && (
@@ -314,7 +314,7 @@ const LayoutNew = () => {
                         src={
                             'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/Tactical_left.jpg?alt=media&token=66752436-7407-4a15-be31-79ce5bf3cc0a'
                         }
-                        objectFit="contain"
+                        objectFit={isMobileView ? 'cover' : 'contain'}
                         height={isMobileView ? 1000 : 600}
                         width={isMobileView ? 1600 : 1000}
                     />
@@ -323,7 +323,7 @@ const LayoutNew = () => {
             <Flex my={4}>
                 <Box
                     id="third__image"
-                    mt={{ base: 10, md: 8 }}
+                    mt={{ base: 1, md: 8 }}
                     position={'relative'}
                 >
                     {isMobileView && (
@@ -377,7 +377,7 @@ const LayoutNew = () => {
                         src={
                             'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/Inspire.jpg?alt=media&token=f7f83fa1-7873-4b3c-b0a7-ce7b10417299'
                         }
-                        objectFit="contain"
+                        objectFit={isMobileView ? 'cover' : 'contain'}
                         height={isMobileView ? 1000 : 600}
                         width={isMobileView ? 1600 : 1000}
                     />
@@ -442,7 +442,7 @@ const LayoutNew = () => {
                 )}
                 <Box
                     id="second__image"
-                    mt={{ base: 10, md: 8 }}
+                    mt={{ base: 0, md: 8 }}
                     position={'relative'}
                 >
                     {isMobileView && (
@@ -496,7 +496,7 @@ const LayoutNew = () => {
                         src={
                             'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/Winter.jpg?alt=media&token=49d61921-b392-4302-a7e6-f96e9126e29a'
                         }
-                        objectFit="contain"
+                        objectFit={isMobileView ? 'cover' : 'contain'}
                         height={isMobileView ? 1000 : 600}
                         width={isMobileView ? 1600 : 1000}
                     />
@@ -511,17 +511,17 @@ const LayoutNew = () => {
             >
                 <Box
                     id="second__image"
-                    mt={{ base: 10, md: 8 }}
+                    mt={{ base: 0, md: 8 }}
                     position={'relative'}
                     width="full"
                 >
                     <NextImage
                         src={
-                            'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/new_customized.jpg?alt=media&token=40774237-b76d-42c7-b60a-e9f6d6829d84'
+                            'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/new_customized_ankit.jpg?alt=media&token=9f3fa646-fa60-470b-ac2f-528a2152932f'
                         }
-                        objectFit="contain"
-                        height={isMobileView ? 1000 : 400}
-                        width={isMobileView ? 1600 : 600}
+                        objectFit={isMobileView ? 'contain' : 'cover'}
+                        height={isMobileView ? 600 : 300}
+                        width={isMobileView ? 1200 : 600}
                         layout="responsive"
                         quality={100}
                     />
@@ -536,17 +536,17 @@ const LayoutNew = () => {
             >
                 <Box
                     id="second__image"
-                    mt={{ base: 10, md: 8 }}
+                    mt={{ base: 0, md: 8 }}
                     position={'relative'}
                     width="full"
                 >
                     <NextImage
                         src={
-                            'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/Military%20Stroies%20banner.jpg?alt=media&token=b66de554-64d2-46bd-b480-68c810b8a4ad'
+                            'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/new_military_ankit.jpg?alt=media&token=f04ef7a5-e215-4ddb-8485-8c1ea370544e'
                         }
-                        objectFit="contain"
-                        height={isMobileView ? 1000 : 400}
-                        width={isMobileView ? 1600 : 600}
+                        objectFit={isMobileView ? 'contain' : 'cover'}
+                        height={isMobileView ? 600 : 300}
+                        width={isMobileView ? 1200 : 600}
                         layout="responsive"
                         quality={100}
                     />
