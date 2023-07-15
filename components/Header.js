@@ -62,7 +62,7 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                 >
                     <NextImage
                         src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/newlogo.png?alt=media&token=fdadc7e3-2bd3-4163-a866-10cd07b2d04f"
-                        height="15px"
+                        height="20px"
                         width="100px"
                         objectFit="contain"
                     />
@@ -71,7 +71,7 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                 <Flex
                     justifyContent={'space-around'}
                     w="2xl"
-                    gridColumnGap={6}
+                    gridColumnGap={4}
                     alignItems="center"
                 >
                     <Text
@@ -80,15 +80,18 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                         onClick={() => {
                             router.push('/');
                         }}
+                        fontSize={'md'}
+                        fontWeight="bold"
                     >
                         Home
                     </Text>
-                    <Box width="20%" bgColor={'black'}>
+                    <Box bgColor={'black'}>
                         <Menu>
                             <MenuButton
                                 as={Button}
                                 backgroundColor="black !important"
                                 color="white"
+                                fontSize={'md'}
                             >
                                 Clothing
                             </MenuButton>
@@ -156,12 +159,13 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                             </MenuList>
                         </Menu>
                     </Box>
-                    <Box width="20%" bgColor={'black'}>
+                    <Box bgColor={'black'}>
                         <Menu>
                             <MenuButton
                                 as={Button}
                                 backgroundColor="black !important"
                                 color="white"
+                                fontSize={'md'}
                             >
                                 Souvenirs
                             </MenuButton>
@@ -204,6 +208,8 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                         onClick={() => {
                             router.push('/vision');
                         }}
+                        fontSize={'md'}
+                        fontWeight="bold"
                     >
                         Vision
                     </Text>
@@ -214,6 +220,8 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                             router.push('/contact-us');
                         }}
                         whiteSpace="pre"
+                        fontSize={'md'}
+                        fontWeight="bold"
                     >
                         Contact Us
                     </Text>
@@ -226,12 +234,13 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                         <Text
                             position={'absolute'}
                             color="white"
-                            marginLeft={4}
+                            marginLeft={6}
                             fontSize="sm"
                         >
                             {cartCount}
                         </Text>
                         <AiOutlineShoppingCart
+                            size="24px"
                             color="white"
                             onClick={() => {
                                 router.push('/cart');

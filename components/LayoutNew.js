@@ -11,7 +11,21 @@ import { Carousel } from 'react-responsive-carousel';
 
 const LayoutNew = () => {
     const router = useRouter();
-    const isMobileView = useBreakpointValue({ base: true, md: false });
+    const isMobileView = useBreakpointValue({
+        base: true,
+        md: false,
+        lg: false,
+    });
+    const isTabletView = useBreakpointValue({
+        base: false,
+        md: true,
+        lg: false,
+    });
+    const isDesktopView = useBreakpointValue({
+        base: false,
+        md: false,
+        lg: true,
+    });
 
     const carousalImages = [
         'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/new_inspire.jpg?alt=media&token=08609396-c981-484c-894d-70987d02a4ca',
@@ -64,7 +78,9 @@ const LayoutNew = () => {
                             height: '100% !important',
                         },
                         '.slider-wrapper > ul > li > div > span': {
-                            height: '100% !important',
+                            height: isMobileView
+                                ? '100% !important'
+                                : '85% !important',
                         },
                     }}
                 >
