@@ -50,7 +50,7 @@ const LayoutNew = () => {
                     id="firstimage"
                     mt={{ base: 4, md: 2 }}
                     position={'relative'}
-                    height={isMobileView ? '220px' : '800px'}
+                    height={isMobileView ? '220px' : '600px'}
                     cursor={'pointer'}
                     sx={{
                         '.carousel-status': {
@@ -63,7 +63,7 @@ const LayoutNew = () => {
                             display: 'none',
                         },
                         '.carousel-root': {
-                            height: '100%',
+                            height: isMobileView ? '100%' : '110%',
                         },
                         '.carousel-slider': {
                             height: '100%',
@@ -109,10 +109,10 @@ const LayoutNew = () => {
                                         id={index}
                                         key={index}
                                         src={item}
-                                        height={isMobileView ? 60 : 600}
+                                        height={isMobileView ? 60 : 500}
                                         width={isMobileView ? 60 : 600}
                                         objectFit={
-                                            isMobileView ? 'contain' : 'contain'
+                                            isMobileView ? 'contain' : 'cover'
                                         }
                                         layout="responsive"
                                     />
@@ -127,11 +127,13 @@ const LayoutNew = () => {
                     Our Categories
                 </Text>
                 <Text color="white">
-                    Explore our diverse range of clothing categories: Active for
-                    dynamic performance, Tactical for strategic missions,
-                    Inspire for style and motivation, Winter for extreme
-                    conditions, and Customized for personalized military
-                    apparel.
+                    For the diverse roles performed by our Heroes in Uniform, we
+                    make sure each product line of ours aptly fits well and
+                    meets the specific requirements. Hence we offer Active Wears
+                    for unbeatable sports performance, Tactical Wears for
+                    special operations, Inspire Wears to stay invogue anytime
+                    anywhere, Winter Wears to combat the cold and harsh and
+                    Customized clothing categories.
                 </Text>
             </Flex>
             <Flex>
