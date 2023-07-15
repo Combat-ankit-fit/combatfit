@@ -126,7 +126,7 @@ const LayoutNew = () => {
                 <Text color="white" fontWeight={'bold'}>
                     Our Categories
                 </Text>
-                <Text color="white">
+                <Text color="white" textAlign="justify">
                     For the diverse roles performed by our Heroes in Uniform, we
                     make sure each product line of ours aptly fits well and
                     meets the specific requirements. Hence we offer Active Wears
