@@ -244,12 +244,7 @@ const LayoutNew = () => {
                         >
                             Tactical
                         </Text>
-                        <Text
-                            color="white"
-                            color="white"
-                            fontSize={'4xl'}
-                            mb="4"
-                        >
+                        <Text color="white" fontSize={'4xl'} mb="4">
                             Collection
                         </Text>
                         <Button
@@ -404,12 +399,7 @@ const LayoutNew = () => {
                         >
                             Inspire
                         </Text>
-                        <Text
-                            color="white"
-                            color="white"
-                            fontSize={'4xl'}
-                            mb="4"
-                        >
+                        <Text color="white" fontSize={'4xl'} mb="4">
                             Collection
                         </Text>
                         <Button
@@ -439,12 +429,7 @@ const LayoutNew = () => {
                         >
                             Winter
                         </Text>
-                        <Text
-                            color="white"
-                            color="white"
-                            fontSize={'4xl'}
-                            mb="4"
-                        >
+                        <Text color="white" fontSize={'4xl'} mb="4">
                             Collection
                         </Text>
                         <Button
