@@ -186,7 +186,7 @@ const LayoutNew = () => {
                                         );
                                     }}
                                 >
-                                    Order Now
+                                    Explore Now
                                 </Button>
                             </Flex>
                         </Box>
@@ -255,7 +255,7 @@ const LayoutNew = () => {
                                 );
                             }}
                         >
-                            Order Now
+                            Explore Now
                         </Button>
                     </Flex>
                 )}
@@ -307,7 +307,7 @@ const LayoutNew = () => {
                                         );
                                     }}
                                 >
-                                    Order Now
+                                    Explore Now
                                 </Button>
                             </Flex>
                         </Box>
@@ -370,7 +370,7 @@ const LayoutNew = () => {
                                         );
                                     }}
                                 >
-                                    Order Now
+                                    Explore Now
                                 </Button>
                             </Flex>
                         </Box>
@@ -408,7 +408,7 @@ const LayoutNew = () => {
                                 router.push('/clothing-category?item=inspire');
                             }}
                         >
-                            Order Now
+                            Explore Now
                         </Button>
                     </Flex>
                 )}
@@ -438,7 +438,7 @@ const LayoutNew = () => {
                                 router.push('/clothing-category?item=winter');
                             }}
                         >
-                            Order Now
+                            Explore Now
                         </Button>
                     </Flex>
                 )}
@@ -489,7 +489,7 @@ const LayoutNew = () => {
                                         );
                                     }}
                                 >
-                                    Order Now
+                                    Explore Now
                                 </Button>
                             </Flex>
                         </Box>
