@@ -58,7 +58,7 @@ async function generateSitemap() {
 }
 
 export const getServerSideProps = async (ctx) => {
-    ctx.res.setHeader('Content-Type', 'text/xml');
+    ctx.res.setHeader('Content-Type', 'application/xml');
     const xml = await generateSitemap();
 
     ctx.res.write(xml);
