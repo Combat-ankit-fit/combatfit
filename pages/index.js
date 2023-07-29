@@ -15,11 +15,7 @@ const Home = () => {
         <>
             <Seo
                 title={'CombatFit - Tactical and Active Clothing'}
-                description="Combat Fit T shirt, Combatfit tshirt, army t shirt, olive green t shirt, army t shirt for men, military t shirts,
-            men army tshirt, army tshirt, olive green tshirt for women, t shirt special forces, army green t shirt, army
-            print t shirt, para sf t shirt, army color t shirt, olive t shirts, army t shirt full, army t shirt commando, olive
-            green t shirt mens, womens olive green t shirt, army colored shirt, army t shirt flipkart, bts army t shirt,
-            para commando t shirt, army full sleeve t shirt, olive color t shirt, us army t shirt, army running t shirt"
+                description="Deals in premium tactical, outdoor and active wear clothing and accessories with focus on military, police, outdoor and adventure enthusiasts"
             />
             <LayoutNew></LayoutNew>
         </>
