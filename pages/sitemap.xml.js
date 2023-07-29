@@ -33,31 +33,13 @@ export const getServerSideProps = async (ctx) => {
             id: 'vision',
         },
         {
-            id: 'clothing-category?item=active',
-        },
-        {
-            id: 'clothing-category?item=tactical',
-        },
-        {
-            id: 'clothing-category?item=inspire',
-        },
-        {
-            id: 'clothing-category?item=winter',
+            id: 'clothing-category',
         },
         {
             id: 'contact-us',
         },
         {
-            id: 'items/coffee-mugs',
-        },
-        {
-            id: 'items/beer',
-        },
-        {
-            id: 'items/posters',
-        },
-        {
-            id: 'items/whiskey',
+            id: 'items',
         },
     ];
 
