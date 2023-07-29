@@ -14,7 +14,7 @@ const Home = () => {
     return (
         <>
             <Seo
-                title={'Combatfit Homepage'}
+                title={'CombatFit - Tactical and Active Clothing'}
                 description="Combat Fit T shirt, Combatfit tshirt, army t shirt, olive green t shirt, army t shirt for men, military t shirts,
             men army tshirt, army tshirt, olive green tshirt for women, t shirt special forces, army green t shirt, army
             print t shirt, para sf t shirt, army color t shirt, olive t shirts, army t shirt full, army t shirt commando, olive
