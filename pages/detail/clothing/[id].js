@@ -309,7 +309,9 @@ const ItemDetail = () => {
                                 bgColor="orange"
                                 onClick={handleOnAddToCart}
                                 disabled={
-                                    selectedSize === null || itemQuantity === 0
+                                    selectedSize === null ||
+                                    itemQuantity === 0 ||
+                                    imageInfo?.availability === 'no'
                                 }
                             >
                                 Add to cart
@@ -322,11 +324,16 @@ const ItemDetail = () => {
                                     redirectToCheckout();
                                 }}
                                 disabled={
-                                    selectedSize === null || itemQuantity === 0
+                                    selectedSize === null ||
+                                    itemQuantity === 0 ||
+                                    imageInfo?.availability === 'no'
                                 }
                             >
                                 Buy Now
                             </Button>
+                            <Text color="red" textAlign={'center'}>
+                                This Item is Out of Stock
+                            </Text>
                         </Flex>
                     </Flex>
                     <Text fontWeight={'bold'}>Made For</Text>

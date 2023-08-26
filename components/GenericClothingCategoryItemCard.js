@@ -28,10 +28,6 @@ const GenericItemCard = (props) => {
             position={'relative'}
             cursor="pointer"
             onClick={() => {
-                if (info?.availability === 'no') {
-                    return;
-                }
-
                 router.push({
                     pathname: `/detail/clothing/${info?.identifier}`,
                     query: {

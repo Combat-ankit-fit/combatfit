@@ -321,7 +321,11 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                     onClick={handleOnAddToCart}
                     mb="4"
                     mt="4"
-                    disabled={selectedSize === null || itemQuantity === 0}
+                    disabled={
+                        selectedSize === null ||
+                        itemQuantity === 0 ||
+                        imageInfo?.availability === 'no'
+                    }
                 >
                     Add to cart
                 </Button>
@@ -333,7 +337,11 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                 width={'full'}
                 mb="4"
                 mt="4"
-                disabled={selectedSize === null || itemQuantity === 0}
+                disabled={
+                    selectedSize === null ||
+                    itemQuantity === 0 ||
+                    imageInfo?.availability === 'no'
+                }
                 onClick={() => {
                     if (
                         router?.query?.name === 'notepads' ||
@@ -346,6 +354,10 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             >
                 Buy now
             </Button>
+
+            <Text color="red" textAlign={'center'} mb={8}>
+                This Item is Out of Stock
+            </Text>
 
             {(itemCategory === 'trousers' ||
                 itemCategory === 'casual-tshirts' ||
