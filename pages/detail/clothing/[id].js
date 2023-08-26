@@ -30,6 +30,8 @@ import {
 } from '@chakra-ui/react';
 import { useShoppingCart } from '../../../context/CartProvider';
 import Seo from '../../../components/Seo';
+import { Controlled as ControlledZoom } from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
 
 const ItemDetail = () => {
     const router = useRouter();
@@ -38,6 +40,12 @@ const ItemDetail = () => {
         md: false,
         lg: false,
     });
+
+    const [isZoomed, setIsZoomed] = React.useState(false);
+
+    const handleZoomChange = React.useCallback((shouldZoom) => {
+        setIsZoomed(shouldZoom);
+    }, []);
 
     const { addItem, cartDetails } = useShoppingCart();
 
@@ -231,12 +239,18 @@ const ItemDetail = () => {
                             width={700}
                             me="3"
                         >
-                            <NextImage
-                                src={centralImage}
-                                height={500}
-                                width={400}
-                                layout="fixed"
-                            />
+                            {' '}
+                            <ControlledZoom
+                                isZoomed={isZoomed}
+                                onZoomChange={handleZoomChange}
+                            >
+                                <NextImage
+                                    src={centralImage}
+                                    height={500}
+                                    width={400}
+                                    layout="fixed"
+                                />
+                            </ControlledZoom>
                         </Box>
                         <Flex flexDir={'column'} gridRowGap={6}>
                             <Text fontWeight={'bold'}>{imageInfo?.alt}</Text>
