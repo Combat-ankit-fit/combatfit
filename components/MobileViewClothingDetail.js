@@ -355,9 +355,11 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                 Buy now
             </Button>
 
-            <Text color="red" textAlign={'center'} mb={8}>
-                This Item is Out of Stock
-            </Text>
+            {imageInfo?.availability === 'no' && (
+                <Text color="red" textAlign={'center'} mb={8}>
+                    This Item is Out of Stock
+                </Text>
+            )}
 
             {(itemCategory === 'trousers' ||
                 itemCategory === 'casual-tshirts' ||

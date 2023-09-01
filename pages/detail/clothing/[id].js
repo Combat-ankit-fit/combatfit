@@ -331,9 +331,11 @@ const ItemDetail = () => {
                             >
                                 Buy Now
                             </Button>
-                            <Text color="red" textAlign={'center'}>
-                                This Item is Out of Stock
-                            </Text>
+                            {imageInfo?.availability === 'no' && (
+                                <Text color="red" textAlign={'center'}>
+                                    This Item is Out of Stock
+                                </Text>
+                            )}
                         </Flex>
                     </Flex>
                     <Text fontWeight={'bold'}>Made For</Text>
