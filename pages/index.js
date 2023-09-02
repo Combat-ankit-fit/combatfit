@@ -10,6 +10,8 @@ const Home = () => {
     useSWRImmutable('/api/get-items?id=notepad');
     useSWRImmutable('/api/get-items?id=coffee-mugs');
 
+    useSWRImmutable('/api/get-items?id=clothing');
+
     useSWRImmutable('/api/get-items?id=whiskey');
     return (
         <>

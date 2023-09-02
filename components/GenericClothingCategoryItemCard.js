@@ -75,6 +75,12 @@ const GenericItemCard = (props) => {
                 >
                     Rs. {props?.info?.price}
                 </Button>
+
+                {props?.info?.original && (
+                    <Text textDecoration={'line-through'}>
+                        MRP: Rs. {props?.info?.original}
+                    </Text>
+                )}
             </Flex>
         </Box>
     );

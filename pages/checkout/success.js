@@ -112,9 +112,7 @@ const Success = () => {
                                     px="10"
                                     mt="6"
                                 >
-                                    <Text fontWeight={'bold'}>
-                                        Transaction Id
-                                    </Text>
+                                    <Text fontWeight={'bold'}>Order Id</Text>
                                     <Text fontWeight={'bold'}>
                                         {checkoutSessionData?.created}
                                     </Text>
