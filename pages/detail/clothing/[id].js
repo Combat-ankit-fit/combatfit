@@ -350,15 +350,9 @@ const ItemDetail = () => {
                             </Text>
                             {imageInfo?.features?.map((feature, index) => {
                                 return (
-                                    <HStack key={index}>
-                                        <NextImage
-                                            src={getFeatureIcon(feature)}
-                                            objectFit="contain"
-                                            width={'20px'}
-                                            height="20px"
-                                        />
-                                        <Text fontSize={'lg'}>{feature}</Text>
-                                    </HStack>
+                                    <UnorderedList key={index}>
+                                        <ListItem>{feature}</ListItem>
+                                    </UnorderedList>
                                 );
                             })}
                         </Flex>
@@ -374,17 +368,9 @@ const ItemDetail = () => {
                             {imageInfo?.specification?.map(
                                 (specification, index) => {
                                     return (
-                                        <HStack key={index}>
-                                            <NextImage
-                                                src="/specification.jpg"
-                                                objectFit="contain"
-                                                width={'20px'}
-                                                height="20px"
-                                            />
-                                            <Text fontSize={'lg'}>
-                                                {specification}
-                                            </Text>
-                                        </HStack>
+                                        <UnorderedList key={index}>
+                                            <ListItem>{specification}</ListItem>
+                                        </UnorderedList>
                                     );
                                 }
                             )}

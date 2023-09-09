@@ -1,7 +1,16 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import React from 'react';
-import { Box, Text, Button, VStack, HStack, Flex } from '@chakra-ui/react';
+import {
+    Box,
+    Text,
+    Button,
+    VStack,
+    HStack,
+    Flex,
+    UnorderedList,
+    ListItem,
+} from '@chakra-ui/react';
 import { Carousel } from 'react-responsive-carousel';
 import Layout from '../components/Layout';
 import { coffeeMugs } from '../utils/mugs';
@@ -396,23 +405,13 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                         {' '}
                         Product Features
                     </Text>
-                    <VStack width="full">
+                    <VStack width="full" alignItems={'baseline'}>
                         {' '}
                         {imageInfo?.features?.map((feature, index) => {
                             return (
-                                <HStack
-                                    key={index}
-                                    width={'full'}
-                                    justifyContent="flex-start"
-                                >
-                                    <NextImage
-                                        src={getFeatureIcon(feature)}
-                                        objectFit="contain"
-                                        width={'20px'}
-                                        height="20px"
-                                    />
-                                    <Text fontSize={'lg'}>{feature}</Text>
-                                </HStack>
+                                <UnorderedList key={index}>
+                                    <ListItem>{feature}</ListItem>
+                                </UnorderedList>
                             );
                         })}
                     </VStack>
@@ -430,23 +429,13 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                         {' '}
                         Product Specifications
                     </Text>
-                    <VStack width="full">
+                    <VStack width="full" alignItems={'baseline'}>
                         {' '}
                         {imageInfo?.specification?.map((feature, index) => {
                             return (
-                                <HStack
-                                    key={index}
-                                    width={'full'}
-                                    justifyContent="flex-start"
-                                >
-                                    <NextImage
-                                        src="/specification.jpg"
-                                        objectFit="contain"
-                                        width={'20px'}
-                                        height="20px"
-                                    />
-                                    <Text fontSize={'lg'}>{feature}</Text>
-                                </HStack>
+                                <UnorderedList key={index}>
+                                    <ListItem>{feature}</ListItem>
+                                </UnorderedList>
                             );
                         })}
                     </VStack>
