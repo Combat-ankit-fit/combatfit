@@ -210,52 +210,9 @@ const ContactUs = () => {
                         </Box>
                     </Box>
                 )}
-                <Box
-                    position={'absolute'}
-                    left="0"
-                    height={'full'}
-                    width="full"
-                    zIndex={'overlay'}
-                >
-                    <Flex
-                        height={'full'}
-                        width="full"
-                        justifyContent={'center'}
-                        alignItems="center"
-                        flexDir={'column'}
-                        gridRowGap="3"
-                    >
-                        <Text
-                            color="white"
-                            fontWeight={'bold'}
-                            fontSize={{ base: '2xl', md: '7xl' }}
-                        >
-                            COMBATFIT
-                        </Text>
-                        <Text color="white" fontSize="lg">
-                            Just a call away
-                        </Text>
-                        <Button colorScheme="primary">Reach out</Button>
-                    </Flex>
-                    <Box
-                        bgColor={'orange'}
-                        w="full"
-                        height="12"
-                        display={'flex'}
-                        alignItems="center"
-                        px="4"
-                    >
-                        <Text
-                            color="white"
-                            cursor={'pointer'}
-                            onClick={() => router.push('/')}
-                        >
-                            &lt;Back
-                        </Text>
-                    </Box>
-                </Box>
+
                 <NextImage
-                    src="/contact.png"
+                    src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/new_contactus.jpg?alt=media&token=211d556d-73c2-45a7-a077-89585c460cd6"
                     objectFit="cover"
                     height={isMobileView ? 1000 : 500}
                     width={1600}

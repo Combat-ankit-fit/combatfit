@@ -199,45 +199,11 @@ const ContactUs = () => {
                         </Box>
                     </Box>
                 )}
-                <Box
-                    position={'absolute'}
-                    left="0"
-                    height={'full'}
-                    width="full"
-                    zIndex={'overlay'}
-                >
-                    <Flex
-                        height={'full'}
-                        width="full"
-                        justifyContent={'center'}
-                        alignItems="center"
-                        flexDir={'column'}
-                        gridRowGap="3"
-                    >
-                        <Text
-                            color="white"
-                            fontWeight={'bold'}
-                            fontSize={{ base: '2xl', md: '7xl' }}
-                        >
-                            VISION
-                        </Text>
 
-                        <Text
-                            fontWeight={'bold'}
-                            color="white"
-                            fontSize={{ base: '2xl', md: '6xl' }}
-                            fontStyle="italic"
-                        >
-                            Fitness for life
-                        </Text>
-                    </Flex>
-                </Box>
                 <Box id="hello">
                     <NextImage
                         src={
-                            isMobileView
-                                ? '/vision-banner.jpg'
-                                : 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/New_Vision.jpg?alt=media&token=505167b0-bde8-4536-9355-c04278ca53b3'
+                            'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/new_vision-page.jpg?alt=media&token=af57a216-0c3e-4d19-9b71-0f0c28831acc'
                         }
                         objectFit="cover"
                         height={isMobileView ? 1000 : 500}
