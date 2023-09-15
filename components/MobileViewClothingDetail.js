@@ -1,5 +1,3 @@
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-
 import React from 'react';
 import {
     Box,
@@ -11,7 +9,6 @@ import {
     UnorderedList,
     ListItem,
 } from '@chakra-ui/react';
-import { Carousel } from 'react-responsive-carousel';
 import Layout from '../components/Layout';
 import { coffeeMugs } from '../utils/mugs';
 import { trousers } from '../utils/trousers';
@@ -33,6 +30,8 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import getStripe from '../getStripe';
 import { useShoppingCart } from '../context/CartProvider';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
     const [synonumousImages, setSynonymousImages] = React.useState([]);
@@ -141,6 +140,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             )[0];
 
             // setSynonymousImages([...specificItem?.extraImages]);
+            setCentralImage(specificItem?.name);
             setSizeAvailable(specificItem?.sizeVariant);
 
             setImageInfo({ ...specificItem });
@@ -214,17 +214,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
         ];
     };
 
-    const getFeatureIcon = (feature) => {
-        if (feature === 'Breathability')
-            return 'https://storage.googleapis.com/clothing-app-b7613.appspot.com/breathability.png?GoogleAccessId=service-280253514387@gcp-sa-firebasestorage.iam.gserviceaccount.com&Expires=1688717105&Signature=EN5saf%2BhB5D6T2PylYEt2C5J%2BgGXBJFMb5vGTkENPylY/KZwZqHpgsI6sG%2BZqLkapf8Eq6IzZ8UXdgKQmXs8EwAHhzelI9HRtnigIQejOYm/rnUtAVC684T57J5ywD/wLpASddx/7TG3oVLvnBoDjPJj2Oyasu7YySPmqgLxIipf8cKCAKyu%2BKezDcuXC1A0Y8hLuWaLXHTSxdq6nL93mlD52QnHCwsOpsgtHCVylpkNJZUvDMnwiWQdD6uUQL1yZayYnUL0iwzumUMssG39pIztoRhIQT2UdvE71tWSA0bugMtAj4GxJ4oWQntkMyXqTlQCwQ8I8qzeRwakhbUoZw%3D%3D';
-        if (feature === 'Durability')
-            return 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/durability.png?alt=media&token=af16a54a-6bc9-4166-87e9-bd72aca8c097';
-        if (feature === 'Freedom of movement')
-            return 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/freedom-of-movement.png?alt=media&token=1e1d5730-f281-42b5-b0f2-591502288821';
-        if (feature === 'Ergonomic designs')
-            return 'https://storage.googleapis.com/clothing-app-b7613.appspot.com/breathability.png?GoogleAccessId=service-280253514387@gcp-sa-firebasestorage.iam.gserviceaccount.com&Expires=1688717105&Signature=EN5saf%2BhB5D6T2PylYEt2C5J%2BgGXBJFMb5vGTkENPylY/KZwZqHpgsI6sG%2BZqLkapf8Eq6IzZ8UXdgKQmXs8EwAHhzelI9HRtnigIQejOYm/rnUtAVC684T57J5ywD/wLpASddx/7TG3oVLvnBoDjPJj2Oyasu7YySPmqgLxIipf8cKCAKyu%2BKezDcuXC1A0Y8hLuWaLXHTSxdq6nL93mlD52QnHCwsOpsgtHCVylpkNJZUvDMnwiWQdD6uUQL1yZayYnUL0iwzumUMssG39pIztoRhIQT2UdvE71tWSA0bugMtAj4GxJ4oWQntkMyXqTlQCwQ8I8qzeRwakhbUoZw%3D%3D';
-        return 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/ergonomic-designs.png?alt=media&token=68283ef3-9b79-4775-abac-3aaf91e6bb12';
-    };
+    console.log('imageInfo is:-', centralImage);
 
     return (
         <Layout
@@ -237,40 +227,80 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
             <Text fontWeight={'bold'} mb="2">
                 {getHeaderInfo()}
             </Text>
-            <Box
-                w="full"
-                id="main__box"
-                border="1px solid lightgray"
-                sx={{
-                    '.carousel-status': {
-                        display: 'none',
-                    },
-                    '.control-dots': {
-                        marginTop: '24px',
-                    },
-                }}
-            >
-                <Carousel showThumbs={false}>
-                    {itemCategory !== 'beer' &&
-                        itemCategory !== 'notepads' &&
-                        allImages?.map((image, index) => {
+
+            {centralImage && centralImage?.includes('firebase') && (
+                <NextImage
+                    src={centralImage}
+                    height={400}
+                    width={400}
+                    objectFit="contain"
+                />
+            )}
+
+            <Box w="full" id="main__box">
+                <Carousel
+                    additionalTransfrom={0}
+                    arrows
+                    autoPlaySpeed={3000}
+                    centerMode={false}
+                    className=""
+                    containerClass="container-with-dots"
+                    dotListClass=""
+                    draggable
+                    focusOnSelect={false}
+                    infinite
+                    itemClass=""
+                    keyBoardControl
+                    minimumTouchDrag={80}
+                    pauseOnHover
+                    renderArrowsWhenDisabled={false}
+                    renderButtonGroupOutside={false}
+                    renderDotsOutside={false}
+                    removeArrowOnDeviceType={['tablet', 'mobile']}
+                    responsive={{
+                        mobile: {
+                            breakpoint: {
+                                max: 464,
+                                min: 0,
+                            },
+                            items: 1,
+                            partialVisibilityGutter: 30,
+                        },
+                    }}
+                    rewind={false}
+                    rewindWithAnimation={false}
+                    rtl={false}
+                    shouldResetAutoplay
+                    showDots={false}
+                    slidesToSlide={1}
+                    swipeable
+                >
+                    <Box display={'flex'} flexDirection={'row'}>
+                        {allImages?.map((image, index) => {
                             return (
-                                <NextImage
-                                    id={index}
+                                <Box
                                     key={index}
-                                    src={
-                                        itemCategory !== 'posters' &&
-                                        itemCategory !== 'all-items'
-                                            ? `/${image}.jpg`
-                                            : image
-                                    }
-                                    height={400}
-                                    width={400}
-                                    objectFit="contain"
-                                />
+                                    border="1px"
+                                    borderStyle={'dotted'}
+                                    me={1}
+                                    onClick={() => {
+                                        setCentralImage(image);
+                                    }}
+                                >
+                                    <NextImage
+                                        id={index}
+                                        key={index}
+                                        src={image}
+                                        height={400}
+                                        width={400}
+                                        objectFit="contain"
+                                    />
+                                </Box>
                             );
                         })}
+                    </Box>
                 </Carousel>
+
                 {(itemCategory === 'beer' || itemCategory === 'notepads') && (
                     <NextImage
                         src={imageInfo?.name}

@@ -31,6 +31,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
     "react-medium-image-zoom": "^5.1.8",
+    "react-multi-carousel": "^2.8.4",
     "react-responsive-carousel": "^3.2.23",
     "stripe": "^11.12.0",
     "styled-components": "^5.3.5",
