@@ -203,7 +203,9 @@ const ContactUs = () => {
                 <Box id="hello">
                     <NextImage
                         src={
-                            'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/new_vision-page.jpg?alt=media&token=af57a216-0c3e-4d19-9b71-0f0c28831acc'
+                            !isMobileView
+                                ? 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/new_vision-sep15.jpg?alt=media&token=87e433ab-554c-45b0-911d-e07d536da380'
+                                : 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/vision_page_mobile%20view_sep15.jpg?alt=media&token=545e5198-d10b-4e54-ae95-9a5c1cc21bb5'
                         }
                         objectFit="cover"
                         height={isMobileView ? 1000 : 500}

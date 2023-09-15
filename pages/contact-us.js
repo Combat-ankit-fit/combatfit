@@ -212,9 +212,13 @@ const ContactUs = () => {
                 )}
 
                 <NextImage
-                    src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/new_contactus.jpg?alt=media&token=211d556d-73c2-45a7-a077-89585c460cd6"
+                    src={
+                        isMobileView
+                            ? 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/contact%20us_mobile%20view_sep15.jpg?alt=media&token=4ea37825-1de8-4b31-ac1a-3779b17eff69'
+                            : 'https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/new_vision-sep15.jpg?alt=media&token=87e433ab-554c-45b0-911d-e07d536da380'
+                    }
                     objectFit="cover"
-                    height={isMobileView ? 1000 : 500}
+                    height={isMobileView ? 1000 : 800}
                     width={1600}
                     layout="responsive"
                 />
