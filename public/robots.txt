@@ -1,0 +1,5 @@
+# Host
+Host: https://combatfit.in
+
+# Sitemaps
+Sitemap: https://combatfit.in/sitemap.xml

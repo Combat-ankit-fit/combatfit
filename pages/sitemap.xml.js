@@ -19,6 +19,8 @@ async function generateSiteMap(posts) {
                return `
          <url>
              <loc>${`${EXTERNAL_DATA_URL}${id}`}</loc>
+             <lastmod>2023-09-03T06:42:44.731Z</lastmod>
+             <changefreq>weekly</changefreq>
          </url>
        `;
            })
@@ -33,17 +35,14 @@ export const getServerSideProps = async (ctx) => {
     // const request = await fetch(EXTERNAL_DATA_URL);
     const posts = [
         {
-        id: '/'
+            id: 'vision',
         },
         {
-            id: '/vision',
-        },   
-        {
-            id: '/contact-us',
+            id: 'contact-us',
         },
         {
-            id: 'detail/clothing/CF-ACT-TS01?name=all-items'
-        }
+            id: 'detail/clothing/CF-ACT-TS01?name=all-items',
+        },
     ];
 
     const xml = await generateSiteMap(posts);
