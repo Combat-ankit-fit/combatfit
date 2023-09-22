@@ -9,6 +9,9 @@ async function generateSiteMap(posts) {
        <!--We manually set the two URLs we know already-->
        <url>
          <loc>https://combatfit.in/</loc>
+         <lastmod>2023-09-03T06:42:44.731Z</lastmod>
+         <changefreq>weekly</changefreq>
+         
        </url>
       
        ${posts
@@ -30,17 +33,17 @@ export const getServerSideProps = async (ctx) => {
     // const request = await fetch(EXTERNAL_DATA_URL);
     const posts = [
         {
-            id: 'vision',
+        id: '/'
         },
         {
-            id: 'clothing-category',
+            id: '/vision',
+        },   
+        {
+            id: '/contact-us',
         },
         {
-            id: 'contact-us',
-        },
-        {
-            id: 'items',
-        },
+            id: 'detail/clothing/CF-ACT-TS01?name=all-items'
+        }
     ];
 
     const xml = await generateSiteMap(posts);
