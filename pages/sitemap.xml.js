@@ -9,7 +9,7 @@ async function generateSiteMap(posts) {
        <!--We manually set the two URLs we know already-->
        <url>
          <loc>https://combatfit.in/</loc>
-         <lastmod>2023-09-03T06:42:44.731Z</lastmod>
+         <lastmod>2023-09-22T11:22:01+00:00</lastmod>
          <changefreq>weekly</changefreq>
          
        </url>
@@ -19,7 +19,7 @@ async function generateSiteMap(posts) {
                return `
          <url>
              <loc>${`${EXTERNAL_DATA_URL}${id}`}</loc>
-             <lastmod>2023-09-03T06:42:44.731Z</lastmod>
+             <lastmod>2023-09-22T11:22:01+00:00</lastmod>
              <changefreq>weekly</changefreq>
          </url>
        `;
