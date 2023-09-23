@@ -230,33 +230,31 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                     },
                 }}
             >
-                {itemCategory !== 'beer' &&
-                    itemCategory !== 'coffee-mugs' &&
-                    itemCategory !== 'notepads' && (
-                        <Carousel showThumbs={false}>
-                            {allImages?.map((image, index) => {
-                                return (
-                                    <NextImage
-                                        id={index}
-                                        key={index}
-                                        src={
-                                            itemCategory !== 'posters' &&
-                                            itemCategory !== 'all-items' &&
-                                            itemCategory !== 'whiskey'
-                                                ? `/${image}.jpg`
-                                                : image
-                                        }
-                                        height={400}
-                                        width={400}
-                                        objectFit="contain"
-                                    />
-                                );
-                            })}
-                        </Carousel>
-                    )}
-                {(itemCategory === 'beer' ||
-                    itemCategory === 'notepads' ||
-                    itemCategory === 'coffee-mugs') && (
+                {itemCategory !== 'notepads' && (
+                    <Carousel showThumbs={false}>
+                        {allImages?.map((image, index) => {
+                            return (
+                                <NextImage
+                                    id={index}
+                                    key={index}
+                                    src={
+                                        itemCategory !== 'posters' &&
+                                        itemCategory !== 'all-items' &&
+                                        itemCategory !== 'whiskey' &&
+                                        itemCategory !== 'coffee-mugs' &&
+                                        itemCategory !== 'beer'
+                                            ? `/${image}.jpg`
+                                            : image
+                                    }
+                                    height={400}
+                                    width={400}
+                                    objectFit="contain"
+                                />
+                            );
+                        })}
+                    </Carousel>
+                )}
+                {itemCategory === 'notepads' && (
                     <NextImage
                         src={imageInfo?.name}
                         height={350}

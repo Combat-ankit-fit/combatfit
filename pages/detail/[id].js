@@ -179,7 +179,11 @@ const ItemDetail = () => {
                                                 router?.query?.name !==
                                                     'posters' &&
                                                 router?.query?.name !==
-                                                    'coffee-mugs'
+                                                    'coffee-mugs' &&
+                                                router?.query?.name !==
+                                                    'beer' &&
+                                                router?.query?.name !==
+                                                    'whiskey'
                                                     ? `/${item}.jpg`
                                                     : item
                                             }
