@@ -325,19 +325,37 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                     );
                 })}
 
+            {itemCategory === 'coffee-mugs' && (
+                <Text mb={8}>{imageInfo?.description}</Text>
+            )}
+
+            {itemCategory === 'coffee-mugs' && (
+                <Text
+                    mb={2}
+                    fontWeight="bold"
+                    fontSize={'xl'}
+                    width="full"
+                    textAlign="start"
+                >
+                    Product Specifications
+                </Text>
+            )}
+
             {itemCategory === 'coffee-mugs' &&
                 mugsFeatures()?.map((feature, index) => {
                     return (
-                        <Box border="1px solid black" p="4" mb="2" key={index}>
-                            <Text fontWeight={'bold'}>{feature}</Text>
-                        </Box>
+                        <UnorderedList key={index} mb={2}>
+                            <ListItem>{feature}</ListItem>
+                        </UnorderedList>
                     );
                 })}
 
             {itemCategory !== 'coffee-mugs' && (
                 <Text fontWeight={'bold'}>Made For</Text>
             )}
-            <Text>{imageInfo?.description}</Text>
+            {itemCategory !== 'coffee-mugs' && (
+                <Text>{imageInfo?.description}</Text>
+            )}
 
             {imageInfo?.features?.length > 0 && (
                 <VStack>

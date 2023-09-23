@@ -175,6 +175,28 @@ const Cart = () => {
                                                             }
                                                             gridColumnGap={2}
                                                         >
+                                                            <MinusIcon
+                                                                cursor={
+                                                                    'pointer'
+                                                                }
+                                                                onClick={() => {
+                                                                    removeItem(
+                                                                        product
+                                                                    );
+                                                                }}
+                                                                pe={2}
+                                                            />
+
+                                                            <Text
+                                                                fontWeight={
+                                                                    'bold'
+                                                                }
+                                                                px={6}
+                                                            >
+                                                                {
+                                                                    product.quantity
+                                                                }
+                                                            </Text>
                                                             <AddIcon
                                                                 cursor={
                                                                     'pointer'
@@ -188,27 +210,6 @@ const Cart = () => {
                                                                 }}
                                                                 ps={2}
                                                             />
-                                                            <MinusIcon
-                                                                cursor={
-                                                                    'pointer'
-                                                                }
-                                                                onClick={() => {
-                                                                    removeItem(
-                                                                        product
-                                                                    );
-                                                                }}
-                                                                pe={2}
-                                                            />
-                                                            <Text
-                                                                fontWeight={
-                                                                    'bold'
-                                                                }
-                                                                px={6}
-                                                            >
-                                                                {
-                                                                    product.quantity
-                                                                }
-                                                            </Text>
                                                         </Flex>
                                                     </HStack>
                                                 )}

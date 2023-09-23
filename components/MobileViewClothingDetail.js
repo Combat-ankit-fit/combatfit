@@ -431,6 +431,7 @@ const MobileViewDetail = ({ itemCategory = '', itemId = '' }) => {
                         fontSize={'xl'}
                         width="full"
                         textAlign="start"
+                        mt={8}
                     >
                         {' '}
                         Product Features

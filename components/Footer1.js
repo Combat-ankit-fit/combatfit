@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import React from 'react';
+import NextImage from 'next/image';
 
 const Footer = ({ homepage = false }) => {
     const isMobileView = useBreakpointValue({ base: true, md: false });
@@ -30,7 +31,11 @@ const Footer = ({ homepage = false }) => {
                     flexDir="column"
                 >
                     <Divider borderColor={'darkgrey'} my="8" />
-                    <Text color="orange" fontWeight="bold" fontSize={'xl'}>
+                    <Text
+                        color="orange"
+                        fontWeight="bold"
+                        fontSize={{ base: 'md', md: 'xl' }}
+                    >
                         PRODUCTS
                     </Text>
 
@@ -39,7 +44,7 @@ const Footer = ({ homepage = false }) => {
                             <Text
                                 color={'orange'}
                                 fontWeight="bold"
-                                fontSize={'xl'}
+                                fontSize={{ base: 'md', md: 'xl' }}
                             >
                                 Clothing
                             </Text>
@@ -49,7 +54,7 @@ const Footer = ({ homepage = false }) => {
                                 color={'orange'}
                                 textAlign="center"
                                 fontWeight="bold"
-                                fontSize={'xl'}
+                                fontSize={{ base: 'md', md: 'xl' }}
                             >
                                 Souvenirs
                             </Text>
@@ -62,7 +67,7 @@ const Footer = ({ homepage = false }) => {
                                 onClick={() => {
                                     router.push('/items/all-items');
                                 }}
-                                fontSize="lg"
+                                fontSize={{ base: 'md', md: 'xl' }}
                             >
                                 Tshirts
                             </Text>
@@ -71,7 +76,7 @@ const Footer = ({ homepage = false }) => {
                                     router.push('/items/all-items');
                                 }}
                                 color={'white'}
-                                fontSize="lg"
+                                fontSize={{ base: 'md', md: 'xl' }}
                             >
                                 Sweatshirts
                             </Text>
@@ -80,7 +85,7 @@ const Footer = ({ homepage = false }) => {
                                 onClick={() => {
                                     router.push('/items/all-items');
                                 }}
-                                fontSize="lg"
+                                fontSize={{ base: 'md', md: 'xl' }}
                             >
                                 Trousers
                             </Text>
@@ -89,7 +94,7 @@ const Footer = ({ homepage = false }) => {
                                 onClick={() => {
                                     router.push('/items/all-items');
                                 }}
-                                fontSize="lg"
+                                fontSize={{ base: 'md', md: 'xl' }}
                             >
                                 Shorts
                             </Text>
@@ -104,7 +109,7 @@ const Footer = ({ homepage = false }) => {
                                 onClick={() => {
                                     router.push('/items/coffee-mugs');
                                 }}
-                                fontSize="lg"
+                                fontSize={{ base: 'md', md: 'xl' }}
                             >
                                 Coffee Mugs
                             </Text>
@@ -113,7 +118,7 @@ const Footer = ({ homepage = false }) => {
                                 onClick={() => {
                                     router.push('/items/beer');
                                 }}
-                                fontSize="lg"
+                                fontSize={{ base: 'md', md: 'xl' }}
                             >
                                 Beer Mugs
                             </Text>
@@ -122,7 +127,7 @@ const Footer = ({ homepage = false }) => {
                                 onClick={() => {
                                     router.push('/');
                                 }}
-                                fontSize="lg"
+                                fontSize={{ base: 'md', md: 'xl' }}
                             >
                                 Whisky Glasses
                             </Text>
@@ -131,7 +136,7 @@ const Footer = ({ homepage = false }) => {
                                 onClick={() => {
                                     router.push('/items/posters');
                                 }}
-                                fontSize="lg"
+                                fontSize={{ base: 'md', md: 'xl' }}
                             >
                                 Posters
                             </Text>
@@ -149,7 +154,7 @@ const Footer = ({ homepage = false }) => {
                         <Text
                             color={'white'}
                             textAlign={'justify'}
-                            fontSize={{ base: 'xs', md: 'lg' }}
+                            fontSize={{ base: 'sm', md: 'lg' }}
                         >
                             At CombatFit, we imbibe our values from Armed Forces
                             which teaches us time immemorial lessons about life
@@ -171,24 +176,79 @@ const Footer = ({ homepage = false }) => {
                     <Flex
                         justifyContent={'space-between'}
                         w="full"
-                        alignItems={'center'}
                         mt="8"
                         mb="4"
+                        flexDirection={'row'}
+                        alignItems="center"
                     >
-                        <Flex flexDir={'column'}>
-                            <Text color="white">Need Support?</Text>
-                            <Text color="white">Get in touch ...</Text>
+                        <Flex flexDirection="column">
+                            <Text color="white" fontSize="md">
+                                Keep in touch
+                            </Text>
+                            <Flex>
+                                <Box
+                                    cursor="pointer"
+                                    onClick={() => {
+                                        window.open(
+                                            'https://instagram.com/combatfit.in?igshid=NGVhN2U2NjQ0Yg=='
+                                        );
+                                    }}
+                                >
+                                    <NextImage
+                                        src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/insta.png?alt=media&token=ebdb2795-d600-45fc-ac09-1fef60ea4d59"
+                                        height={isMobileView ? '20px' : '40px'}
+                                        width={isMobileView ? '20px' : '40px'}
+                                        objectFit="contain"
+                                    />
+                                </Box>
+                                <Box
+                                    ms={1}
+                                    cursor="pointer"
+                                    onClick={() => {
+                                        window.open(
+                                            'https://www.facebook.com/combatfit.in/'
+                                        );
+                                    }}
+                                >
+                                    <NextImage
+                                        src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/fb.png?alt=media&token=bd71a066-2714-42ce-a705-a4c944f811b0"
+                                        height={isMobileView ? '20px' : '40px'}
+                                        width={isMobileView ? '20px' : '40px'}
+                                        objectFit="contain"
+                                    />
+                                </Box>
+                                <Box
+                                    ms={1}
+                                    cursor="pointer"
+                                    onClick={() => {
+                                        window.open('https://pin.it/60AJdQq');
+                                    }}
+                                >
+                                    <NextImage
+                                        src="https://firebasestorage.googleapis.com/v0/b/clothing-app-b7613.appspot.com/o/pinterest.png?alt=media&token=6da85e0c-3b82-4007-92db-7493688310c5"
+                                        height={isMobileView ? '20px' : '40px'}
+                                        width={isMobileView ? '20px' : '40px'}
+                                        objectFit="contain"
+                                    />
+                                </Box>
+                            </Flex>
                         </Flex>
 
-                        <Button
-                            colorScheme="primary"
-                            color="black"
-                            onClick={() => {
-                                router.push('/contact-us');
-                            }}
-                        >
-                            Contact us
-                        </Button>
+                        <Flex flexDir={'column'}>
+                            <Text color="white" fontSize="md">
+                                Need Support?
+                            </Text>
+
+                            <Button
+                                colorScheme="primary"
+                                color="black"
+                                onClick={() => {
+                                    router.push('/contact-us');
+                                }}
+                            >
+                                Contact us
+                            </Button>
+                        </Flex>
                     </Flex>
                 </Flex>
             </React.Fragment>
