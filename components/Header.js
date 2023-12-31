@@ -156,7 +156,12 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                             </MenuList>
                         </Menu>
                     </Box>
-                    <Box bgColor={'black'}>
+                    <Box
+                        bgColor={'black'}
+                        sx={{
+                            display: 'none',
+                        }}
+                    >
                         <Menu>
                             <MenuButton
                                 as={Button}

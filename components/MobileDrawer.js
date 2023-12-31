@@ -267,7 +267,14 @@ const MobileDrawer = ({
                             </Box>
                         </List>
                     </Box>
-                    <Box pb="4" display={'flex'} flexDirection="column">
+                    <Box
+                        pb="4"
+                        display={'flex'}
+                        flexDirection="column"
+                        sx={{
+                            display: 'none',
+                        }}
+                    >
                         <Text color="white">Souviners</Text>
                         <List spacing={3}>
                             <Box py="2" px="4">
