@@ -1,6 +1,7 @@
 import React from 'react';
 import LayoutNew from '../components/LayoutNew';
 import Seo from '../components/Seo';
+import Head from 'next/head';
 
 import useSWRImmutable from 'swr/immutable';
 
@@ -19,6 +20,9 @@ const Home = () => {
                 title={'CombatFit - Tactical and Active Clothing'}
                 description="Deals in premium tactical, outdoor and active wear clothing and accessories with focus on military, police, outdoor and adventure enthusiasts"
             />
+            <Head>
+                <meta name="google-site-verification" content="jTDIB1RkEUtE-xfMvqU5flltZB4x3b7zPkSjoYVd7lc" />
+            </Head>
             <LayoutNew></LayoutNew>
         </>
     );
