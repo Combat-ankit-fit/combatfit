@@ -18,10 +18,13 @@ const Home = () => {
         <>
             <Seo
                 title={'CombatFit - Tactical and Active Clothing'}
-                description="Deals in premium tactical, outdoor and active wear clothing and accessories with focus on military, police, outdoor and adventure enthusiasts"
+                description="Deals in premium tactical, outdoor and active wear clothing and accessories with focus on military, Army clothing, police, outdoor and adventure enthusiasts, cotton t-shirts."
             />
             <Head>
-                <meta name="google-site-verification" content="jTDIB1RkEUtE-xfMvqU5flltZB4x3b7zPkSjoYVd7lc" />
+                <meta
+                    name="google-site-verification"
+                    content="jTDIB1RkEUtE-xfMvqU5flltZB4x3b7zPkSjoYVd7lc"
+                />
             </Head>
             <LayoutNew></LayoutNew>
         </>

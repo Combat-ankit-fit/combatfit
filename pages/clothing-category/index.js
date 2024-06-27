@@ -93,7 +93,7 @@ windcheater for rain, wildcraft windcheater, puma windcheater, windcheater for b
 winter, waterproof windcheater, white windcheater, hrx windcheater, zeel windcheater, quechua
 windcheater, reebok wind cheater, best windcheater for bikers, monte carlo windcheater, ladies
 windcheater, windcheater for summer, woodland windcheater, allen solly windcheater, shiv naresh
-windcheater"
+windcheater, Army clothing, cotton t-shirts"
             />
             <CategoryItem item={refinedClothingData} error={error} />
         </>
