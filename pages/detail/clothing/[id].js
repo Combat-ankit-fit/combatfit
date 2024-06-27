@@ -205,7 +205,7 @@ const ItemDetail = () => {
         winter, waterproof windcheater, white windcheater, hrx windcheater, zeel windcheater, quechua
         windcheater, reebok wind cheater, best windcheater for bikers, monte carlo windcheater, ladies
         windcheater, windcheater for summer, woodland windcheater, allen solly windcheater, shiv naresh
-        windcheater"
+        windcheater, Army clothing, cotton t-shirts"
             />
             <Layout
                 sidebarRequired={false}

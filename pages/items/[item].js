@@ -63,7 +63,7 @@ const Item = () => {
             personalised whiskey glass, unique whiskey glasses, old fashioned whiskey glasses, versace whiskey
             glasses, whiskey in glass, blenders pride glass, ocean whiskey glasses, whiskey highball Combatfit Motivational Poster, Combat Fit Motivational Poster, Inspirational posters, Motivational
             posters, Encouragement posters, Positive affirmations posters, Success posters, Goal setting posters, Growth mindset posters, Leadership posters, Teamwork posters, Entrepreneur posters, Motivational
-            Poster for wall, Motivational Poster for students/office"
+            Poster for wall, Motivational Poster for students/office, Army clothing, cotton t-shirts"
             />
             {queryParam === 'all-items' && (
                 <ItemProvider>
