@@ -37,7 +37,6 @@ const MobileDrawer = ({
         { item: 'Tactical', path: '/all-items' },
         { item: 'Inspire', path: '/all-items' },
         { item: 'Winter', path: '/all-items' },
-        { item: 'Customized', path: '/all-items' },
     ];
     const souvenirs = [
         { item: 'Coffee Mugs', path: '/coffee-mugs' },
