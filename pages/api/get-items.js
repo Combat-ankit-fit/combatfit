@@ -75,16 +75,7 @@ export default async function handler(req, res) {
                 console.log('Error is:-', e);
             }
         }
-        if (req?.query?.id === 'notepad') {
-            try {
-                const notepadItems = await Notepad.find().then((documents) => {
-                    return documents;
-                });
-                return res.json(notepadItems);
-            } catch (e) {
-                console.log('Error is:-', e);
-            }
-        }
+        
         if (req?.query?.id === 'coffee-mugs') {
             try {
                 const coffeeItems = await Coffee.find().then((documents) => {
