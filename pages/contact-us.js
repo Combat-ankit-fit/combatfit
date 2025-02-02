@@ -337,7 +337,7 @@ const ContactUs = () => {
                     </Flex>
 
                     <Spacer />
-                    <Flex id="top" flexDirection={"column"} gap={4}>
+                    <Flex id="top" flexDirection={'column'} gap={4}>
                         <Flex
                             w={isMobileView ? '100%' : '50%'}
                             flexDirection={'column'}
@@ -348,7 +348,7 @@ const ContactUs = () => {
                                 mb: '100px',
                             })}
                             id="second"
-                            width={"100%"}
+                            width={'100%'}
                         >
                             <Flex flexDirection={'column'} gridRowGap={'4'}>
                                 <Text color="white" textAlign={'center'}>
@@ -360,31 +360,6 @@ const ContactUs = () => {
                                 </Text>
                                 <Text color="white" mb="2">
                                     +91 8826552468
-                                </Text>
-                            </Flex>
-                        </Flex>
-                        <Flex
-                            w={isMobileView ? '100%' : '50%'}
-                            flexDirection={'column'}
-                            bgColor="#696969"
-                            p="4"
-                            borderRadius={12}
-                            {...(isMobileView && {
-                                mb: '100px',
-                            })}
-                            id="second"
-                            width={"100%"}
-                        >
-                            <Flex flexDirection={'column'} gridRowGap={'4'}>
-                                <Text color="white" textAlign={'center'}>
-                                    For Export Enqueries:- Silken Repose
-                                </Text>
-                                <Divider />
-                                <Text color="white" cursor="pointer">
-                                    vkumar@silkenrepose.com silkenrepose@gmail.com
-                                </Text>
-                                <Text color="white" mb="2">
-                                    +91-9015149998
                                 </Text>
                             </Flex>
                         </Flex>

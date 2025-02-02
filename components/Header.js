@@ -215,7 +215,7 @@ const Header = ({ breadCrumbsRequired, breadCrumbsPath }) => {
                         }}
                         fontSize={'md'}
                     >
-                        Vision
+                        About Us
                     </Text>
                     <Text
                         color="white"

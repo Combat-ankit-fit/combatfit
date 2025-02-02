@@ -65,14 +65,14 @@ const Footer = ({ homepage = false }) => {
                             <Text
                                 color="white"
                                 cursor="pointer"
-                                onClick={() => router.push('/clothing')}
+                                onClick={() => router.push('/')}
                             >
                                 Clothing
                             </Text>
                             <Text
                                 color="white"
                                 cursor="pointer"
-                                onClick={() => router.push('/contact-us')}
+                                onClick={() => router.push('/vision')}
                             >
                                 About Us
                             </Text>
@@ -164,15 +164,7 @@ const Footer = ({ homepage = false }) => {
                             >
                                 Exchange & Return
                             </Text>
-                            <Text
-                                color="white"
-                                cursor="pointer"
-                                onClick={() =>
-                                    router.push('/contact-us')
-                                }
-                            >
-                                Size Chart
-                            </Text>
+                           
                         </Flex>
 
                         {/* Follow Us Section */}
@@ -232,7 +224,7 @@ const Footer = ({ homepage = false }) => {
                     <Flex
                         justifyContent={'space-between'}
                         w="full"
-                        mt="8"
+                        mt="3"
                         mb="4"
                         flexDirection={'row'}
                         alignItems="center"
