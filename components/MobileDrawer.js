@@ -267,40 +267,7 @@ const MobileDrawer = ({
                             </Box>
                         </List>
                     </Box>
-                    <Box
-                        pb="4"
-                        display={'flex'}
-                        flexDirection="column"
-                        sx={{
-                            display: 'none',
-                        }}
-                    >
-                        <Text color="white">Souviners</Text>
-                        <List spacing={3}>
-                            <Box py="2" px="4">
-                                {souvenirs?.map((souvenir) => {
-                                    return (
-                                        <ListItem
-                                            color={'white'}
-                                            key={souvenir?.item}
-                                            onClick={() => {
-                                                onClose();
-                                                router.push(
-                                                    `/items/${souvenir?.path}`
-                                                );
-                                            }}
-                                        >
-                                            <ListIcon
-                                                as={ChevronRightIcon}
-                                                color="white"
-                                            />
-                                            {souvenir?.item}
-                                        </ListItem>
-                                    );
-                                })}
-                            </Box>
-                        </List>
-                    </Box>
+                   
 
                     <Box pb="4" display={'flex'}>
                         <Text
@@ -309,7 +276,7 @@ const MobileDrawer = ({
                                 router.push('/vision');
                             }}
                         >
-                            Vision
+                            About Us
                         </Text>
                     </Box>
                     <Box pb="4" display={'flex'}>
